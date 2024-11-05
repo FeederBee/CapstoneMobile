@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://y08jbm5nux2s"]
+
+[ext_resource type="Texture2D" uid="uid://blnib6wtebggj" path="res://Assets/Sprites/Map/map_downleftarea.jpg" id="1_7vw74"]
+[ext_resource type="TileSet" uid="uid://0ys1sn5yxass" path="res://Assets/Main.tres" id="2_iwpu7"]
+
+[node name="kedokteran_area" type="Node2D"]
+
+[node name="MapDownleftarea" type="Sprite2D" parent="."]
+position = Vector2(177, 163)
+texture = ExtResource("1_7vw74")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_iwpu7")
+format = 2
+layer_0/name = "Ground"
+layer_0/z_index = -2
+layer_1/name = "Trotoar"
+layer_1/z_index = -1
+layer_2/name = "Jalan"
+layer_3/name = "Addition"
+layer_3/z_index = 1
+layer_4/name = "Bangunan"
+layer_4/z_index = 2
