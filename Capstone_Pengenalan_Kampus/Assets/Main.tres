@@ -1,10 +1,10 @@
 [gd_resource type="TileSet" load_steps=5 format=3 uid="uid://0ys1sn5yxass"]
 
-[ext_resource type="Texture2D" uid="uid://bthdrx7hgx1ym" path="res://Assets/Sprites/Map/CP_V1.0.4.png" id="1_8ek4c"]
-[ext_resource type="Texture2D" uid="uid://c6ulyg3vyrx8" path="res://Assets/Sprites/Map/Tileset-Terrain2.png" id="2_sedoi"]
+[ext_resource type="Texture2D" uid="uid://bthdrx7hgx1ym" path="res://Assets/Map/CP_V1.0.4.png" id="1_qo8eg"]
+[ext_resource type="Texture2D" uid="uid://c6ulyg3vyrx8" path="res://Assets/Map/Tileset-Terrain2.png" id="2_5qx1t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_um5rn"]
-texture = ExtResource("1_8ek4c")
+texture = ExtResource("1_qo8eg")
 2:2/0 = 0
 3:2/0 = 0
 4:2/0 = 0
@@ -461,12 +461,6 @@ texture = ExtResource("1_8ek4c")
 16:32/0 = 0
 19:32/0 = 0
 20:32/0 = 0
-24:32/0 = 0
-26:32/0 = 0
-24:33/0 = 0
-25:33/0 = 0
-26:33/0 = 0
-27:33/0 = 0
 1:38/0 = 0
 3:38/0 = 0
 5:38/0 = 0
@@ -585,9 +579,14 @@ texture = ExtResource("1_8ek4c")
 17:2/0/texture_origin = Vector2i(0, 40)
 17:2/0/y_sort_origin = 1
 17:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-39.875, -40.125, 38.875, -40.375, 39.9515, 8.83884, -39.9515, 7.42462)
+24:31/0 = 0
+24:32/size_in_atlas = Vector2i(1, 2)
+24:32/0 = 0
+26:32/size_in_atlas = Vector2i(1, 2)
+26:32/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lwrjb"]
-texture = ExtResource("2_sedoi")
+texture = ExtResource("2_5qx1t")
 18:0/0 = 0
 19:0/0 = 0
 22:0/0 = 0
