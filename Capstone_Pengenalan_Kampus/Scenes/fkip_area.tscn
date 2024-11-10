@@ -30,6 +30,8 @@ tile_set = ExtResource("1_0hgxi")
 
 [node name="Bangunan" type="TileMapLayer" parent="TileMap"]
 use_parent_material = true
+scale = Vector2(3, 3)
+tile_map_data = PackedByteArray("AAASACYAAAARAAIAAAAiADEAAAARAAIAAAAmABgAAAARAAIAAAAVABAAAAARAAIAAAAkAAgAAAARAAIAAAA=")
 tile_set = ExtResource("1_0hgxi")
 
 [node name="MapRightarea" type="Sprite2D" parent="."]

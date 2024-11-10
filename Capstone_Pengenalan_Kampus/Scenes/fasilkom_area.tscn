@@ -8,6 +8,7 @@
 [node name="FasilkomArea" type="Node2D"]
 
 [node name="MapFasilkomarea" type="Sprite2D" parent="."]
+visible = false
 self_modulate = Color(1, 1, 1, 0.760784)
 show_behind_parent = true
 z_index = 1
@@ -41,6 +42,8 @@ tile_set = ExtResource("1_sv1kh")
 
 [node name="Bangunan" type="TileMapLayer" parent="TileMap"]
 use_parent_material = true
+scale = Vector2(3, 3)
+tile_map_data = PackedByteArray("AAAsAB0AAAARAAIAAAAXABoAAAARAAIAAAAPACoAAAARAAIAAAA=")
 tile_set = ExtResource("1_sv1kh")
 
 [node name="Player" parent="." instance=ExtResource("1_atf4d")]
