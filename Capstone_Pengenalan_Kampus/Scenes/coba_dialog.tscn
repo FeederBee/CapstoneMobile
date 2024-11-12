@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqwuox3ln20ie"]
+[gd_scene load_steps=4 format=3 uid="uid://cqwuox3ln20ie"]
 
 [ext_resource type="PackedScene" uid="uid://db5ao624oyl2w" path="res://Scenes/NPCs/NPC1.tscn" id="1_hm8gi"]
 [ext_resource type="PackedScene" uid="uid://b3x8rw66ja1e0" path="res://Scenes/PlayerInstance.tscn" id="2_vaiah"]
+[ext_resource type="PackedScene" uid="uid://v3xh7k6mv0ll" path="res://Scenes/NPCs/slime.tscn" id="3_nvoi4"]
 
 [node name="coba_dialog" type="Node2D"]
 
@@ -10,3 +11,6 @@ position = Vector2(583, 200)
 
 [node name="Player" parent="." instance=ExtResource("2_vaiah")]
 position = Vector2(787, 308)
+
+[node name="Slime" parent="." instance=ExtResource("3_nvoi4")]
+position = Vector2(622, 381)

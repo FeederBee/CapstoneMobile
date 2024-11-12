@@ -1,0 +1,107 @@
+[gd_scene load_steps=14 format=3 uid="uid://v3xh7k6mv0ll"]
+
+[ext_resource type="Texture2D" uid="uid://b1nbq3b0piq1c" path="res://Assets/Sprites/NPC/slime_idle2.png" id="1_catqv"]
+[ext_resource type="Script" path="res://Scripts/NPCs/slime.gd" id="1_qw8ql"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_res7w"]
+atlas = ExtResource("1_catqv")
+region = Rect2(0, 216, 80, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iu0hh"]
+atlas = ExtResource("1_catqv")
+region = Rect2(80, 216, 80, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmecb"]
+atlas = ExtResource("1_catqv")
+region = Rect2(160, 216, 80, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17ja8"]
+atlas = ExtResource("1_catqv")
+region = Rect2(240, 216, 80, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxtgm"]
+atlas = ExtResource("1_catqv")
+region = Rect2(320, 216, 80, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oj8fh"]
+atlas = ExtResource("1_catqv")
+region = Rect2(400, 216, 80, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xh2r"]
+atlas = ExtResource("1_catqv")
+region = Rect2(480, 216, 80, 72)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0muy2"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_res7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iu0hh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmecb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17ja8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxtgm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oj8fh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xh2r")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vt4tl"]
+radius = 79.0569
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y72uh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_o1xu4"]
+font_size = 12
+
+[node name="Slime" type="CharacterBody2D"]
+script = ExtResource("1_qw8ql")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(6, -5)
+sprite_frames = SubResource("SpriteFrames_0muy2")
+animation = &"idle"
+frame_progress = 0.215809
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_vt4tl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_y72uh")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 2.0
+offset_top = -23.0
+offset_right = 9.0
+text = "!"
+label_settings = SubResource("LabelSettings_o1xu4")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_player_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_player_body_exited"]
