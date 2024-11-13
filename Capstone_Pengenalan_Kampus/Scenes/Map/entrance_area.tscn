@@ -7,6 +7,7 @@
 [node name="entrance_area" type="Node2D"]
 
 [node name="EntranceArea" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(1324, 1088)
 scale = Vector2(11, 11)
 texture = ExtResource("1_oxpo6")

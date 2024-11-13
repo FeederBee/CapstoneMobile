@@ -90,7 +90,9 @@ func _input(event: InputEvent) -> void:
 		_reset()
 		_set_joystick_visibility(false)
 		return 
-	else :
+	elif global_variable.change_map:
+		_reset()
+	else : 
 		_set_joystick_visibility(true)
 		if event is InputEventScreenTouch:
 			#print("Touch event detected")#Debug

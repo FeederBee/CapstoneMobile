@@ -1,8 +1,10 @@
 extends CharacterBody2D
 
 @export var speed : float = 100
+@export var transparency_value : float = 0.5
+
 @onready var animated_sprite := $AnimatedSprite2D
-#@onready var detection_area := $Area2D # Area2D yang mendeteksi collision
+@onready var detection_area := $Player_detection # Area2D yang mendeteksi collision
 
 var move_vector := Vector2.ZERO
 var last_direction := Vector2.DOWN
@@ -49,18 +51,10 @@ func _play_idle_animation():
 func player(_delta):
 	pass #Check body entered area
 
-# Fungsi untuk menangani sinyal saat memasuki area NPC
-func _on_player_area_entered(area: Area2D) -> void:
-	if area.name == "Anjing":  # Atur nama atau properti lain yang sesuai untuk mendeteksi NPC
-		is_colliding_with_npc = true
-		print('Masuk Anjing')
-		#$"../Anjing/text"
-		#$CanvasLayer.visible = false
-		# Tambahkan logika tambahan untuk saat bertabrakan dengan NPC jika perlu
+func _on_player_detection_area_entered(area: Area2D) -> void:
+	if area.name == 'gedung_visibility':
+		animated_sprite.self_modulate = Color(1, 1, 1, transparency_value)
 
-# Fungsi untuk menangani sinyal saat keluar dari area NPC
-func _on_player_area_exited(area: Area2D) -> void:
-	if area.name == "Anjing":
-		is_colliding_with_npc = false
-		$CanvasLayer.visible = true
-		print('Keluar Anjing')
+func _on_player_detection_area_exited(area: Area2D) -> void:
+	if area.name == 'gedung_visibility':
+		animated_sprite.self_modulate = Color(1, 1, 1, 1)

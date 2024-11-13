@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=4 uid="uid://c1n0deyab55tu"]
+[gd_scene load_steps=5 format=4 uid="uid://c1n0deyab55tu"]
 
+[ext_resource type="Script" path="res://Scripts/Map/pertanian_area.gd" id="1_r5g33"]
 [ext_resource type="TileSet" uid="uid://0ys1sn5yxass" path="res://Assets/Main.tres" id="1_xp2e6"]
 [ext_resource type="Texture2D" uid="uid://dc3c38nuic7yq" path="res://Assets/Map/map_upleftarea.jpg" id="2_pl6my"]
 [ext_resource type="PackedScene" uid="uid://b3x8rw66ja1e0" path="res://Scenes/PlayerInstance.tscn" id="3_ixdss"]
 
 [node name="pertanian_area" type="Node2D"]
+script = ExtResource("1_r5g33")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_xp2e6")

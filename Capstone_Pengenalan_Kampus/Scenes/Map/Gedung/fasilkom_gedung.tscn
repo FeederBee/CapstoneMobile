@@ -1,0 +1,138 @@
+[gd_scene load_steps=12 format=3 uid="uid://coyrf3s55x4y2"]
+
+[ext_resource type="Texture2D" uid="uid://inmngjrn67wf" path="res://Assets/Map/Gedung/Fasilkom_gedung.png" id="1_0rkyx"]
+[ext_resource type="Script" path="res://Scripts/Map/fasilkom_gedung.gd" id="1_8u3n0"]
+[ext_resource type="Texture2D" uid="uid://bp5kd8ke1bnwy" path="res://Assets/Map/Gedung/Fasilkom_tulisan.png" id="2_qdr6j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ik6h"]
+size = Vector2(127, 44.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qjjp"]
+size = Vector2(108, 47)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_osdde"]
+size = Vector2(128, 238.5)
+
+[sub_resource type="Animation" id="Animation_sr83m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FasilkomGedung:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FasilkomGedung:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8d1ql"]
+resource_name = "fasilkom"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FasilkomGedung:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.866667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.819608), Color(1, 1, 1, 0.615686), Color(1, 1, 1, 0.482353)]
+}
+
+[sub_resource type="Animation" id="Animation_a3n5s"]
+resource_name = "gedung_fadeIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FasilkomGedung:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.470588), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_epgkm"]
+resource_name = "gedung_fadeout"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FasilkomGedung:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.470588)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uj5c3"]
+_data = {
+"RESET": SubResource("Animation_sr83m"),
+"fasilkom": SubResource("Animation_8d1ql"),
+"gedung_fadeIn": SubResource("Animation_a3n5s"),
+"gedung_fadeout": SubResource("Animation_epgkm")
+}
+
+[node name="Fasilkom_gedung" type="Node2D"]
+script = ExtResource("1_8u3n0")
+
+[node name="FasilkomGedung" type="Sprite2D" parent="."]
+texture = ExtResource("1_0rkyx")
+offset = Vector2(0, -80)
+
+[node name="FasilkomTulisan" type="Sprite2D" parent="."]
+position = Vector2(-78, 77)
+texture = ExtResource("2_qdr6j")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(6, 17.25)
+shape = SubResource("RectangleShape2D_5ik6h")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-79, 78.5)
+shape = SubResource("RectangleShape2D_6qjjp")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-58, 33, 61.375, 33, 70, 33, 70, 60, 61, 60, 61, 30, -1, 33, -1, 60, -57, 60)
+
+[node name="gedung_visibility" type="Area2D" parent="."]
+visible = false
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="gedung_visibility"]
+position = Vector2(6, -119.25)
+shape = SubResource("RectangleShape2D_osdde")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uj5c3")
+}
+speed_scale = 3.0
+
+[connection signal="body_entered" from="gedung_visibility" to="." method="_on_visibility_body_entered"]
+[connection signal="body_exited" from="gedung_visibility" to="." method="_on_visibility_body_exited"]
