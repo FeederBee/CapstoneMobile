@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dwj1njkqv3grr"]
+[gd_scene load_steps=14 format=4 uid="uid://dwj1njkqv3grr"]
 
 [ext_resource type="Texture2D" uid="uid://c7xxaj26e52n2" path="res://Assets/Map/map_Fasilkomarea.jpg" id="1_w2nyb"]
 [ext_resource type="Script" path="res://Scripts/Map/fasilkom_area.gd" id="1_xuohr"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b3x8rw66ja1e0" path="res://Scenes/PlayerInstance.tscn" id="3_upaks"]
 [ext_resource type="PackedScene" uid="uid://xd7ddvki6w8u" path="res://Scenes/anjing.tscn" id="4_oliri"]
 [ext_resource type="PackedScene" uid="uid://coyrf3s55x4y2" path="res://Scenes/Map/Gedung/fasilkom_gedung.tscn" id="6_tt0ws"]
+[ext_resource type="Texture2D" uid="uid://c7sivtc4oy7x4" path="res://Assets/Sprites/UI/Button_pause.png" id="8_aad6n"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xqlex"]
 
@@ -93,7 +94,7 @@ y_sort_enabled = true
 position = Vector2(2281, 1429)
 
 [node name="Player" parent="Y_sort" instance=ExtResource("3_upaks")]
-position = Vector2(94, 2612)
+position = Vector2(2492, 1624)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Y_sort/Player"]
 remote_path = NodePath("../../../Camera2D")
@@ -104,21 +105,17 @@ up_direction = Vector2(0.707107, -0.707107)
 
 [node name="Change_area" type="Node2D" parent="."]
 
-[node name="Ganti_fkip_atas" type="Area2D" parent="Change_area"]
+[node name="fkip" type="Area2D" parent="Change_area"]
 
-[node name="to_fisip" type="CollisionShape2D" parent="Change_area/Ganti_fkip_atas"]
+[node name="to_fisip" type="CollisionShape2D" parent="Change_area/fkip"]
 position = Vector2(2603.5, 984.5)
 shape = SubResource("RectangleShape2D_bebe4")
 
-[node name="Ganti_fkip_mid" type="Area2D" parent="Change_area"]
-
-[node name="to_fkip" type="CollisionShape2D" parent="Change_area/Ganti_fkip_mid"]
+[node name="to_fkip" type="CollisionShape2D" parent="Change_area/fkip"]
 position = Vector2(2602, 1592.5)
 shape = SubResource("RectangleShape2D_keil5")
 
-[node name="Ganti_fkip_down" type="Area2D" parent="Change_area"]
-
-[node name="to_fkip2" type="CollisionShape2D" parent="Change_area/Ganti_fkip_down"]
+[node name="to_fkip2" type="CollisionShape2D" parent="Change_area/fkip"]
 position = Vector2(2604.5, 2520.5)
 shape = SubResource("RectangleShape2D_gtyhd")
 
@@ -129,6 +126,19 @@ position = Vector2(85, 2657)
 position = Vector2(3, 9)
 shape = SubResource("RectangleShape2D_12fpr")
 
+[node name="CanvasButton" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Node2D" parent="CanvasButton"]
+
+[node name="fk_btn" type="TouchScreenButton" parent="CanvasButton/Button"]
+position = Vector2(1140, 539)
+scale = Vector2(0.643275, 0.25731)
+texture_normal = ExtResource("8_aad6n")
+
+[node name="fkip_btn" type="TouchScreenButton" parent="CanvasButton/Button"]
+position = Vector2(1078, 480)
+texture_normal = ExtResource("8_aad6n")
+
 [node name="Boundary" type="StaticBody2D" parent="."]
 collision_layer = 64
 collision_mask = 3
@@ -137,7 +147,7 @@ collision_mask = 3
 polygon = PackedVector2Array(2590, 1632, 2590, 2480, 2601, 2480, 2601, 2560, 2590, 2560, 2590, 2654, 124, 2656, 124.215, 2662.74, 52, 2663, 52, 2656, 18, 2656, 18, 47, 2590, 47, 2590, 944, 2601, 944, 2601, 1024, 2590, 1024, 2590, 1551, 2601, 1551, 2601, 1632, 2590, 1632, 2592, 1634, 2610, 1634, 2611, 1548, 2592, 1548, 2592, 1026, 2611, 1026, 2611, 942, 2592, 942, 2592, 45, 16, 45, 16, 2661, 48, 2661, 48, 2669, 124.214, 2668.61, 128.45, 2668.59, 128, 2659, 2592, 2656, 2592, 2563, 2608, 2563, 2608, 2478, 2592, 2478, 2592, 1634)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(94, 2612)
+position = Vector2(2492, 1624)
 zoom = Vector2(2, 2)
 limit_left = -165
 limit_top = 45
@@ -154,8 +164,9 @@ position = Vector2(1268, 1350)
 scale = Vector2(11, 11)
 texture = ExtResource("1_w2nyb")
 
-[connection signal="body_entered" from="Change_area/Ganti_fkip_atas" to="." method="_on_ganti_area_body_entered"]
-[connection signal="body_entered" from="Change_area/Ganti_fkip_mid" to="." method="_on_ganti_area_body_entered"]
-[connection signal="body_entered" from="Change_area/Ganti_fkip_down" to="." method="_on_ganti_area_body_entered"]
+[connection signal="body_entered" from="Change_area/fkip" to="." method="_on_fkip_body_entered"]
+[connection signal="body_exited" from="Change_area/fkip" to="." method="_on_fkip_body_exited"]
 [connection signal="body_entered" from="Change_area/fk" to="." method="_on_fk_body_entered"]
 [connection signal="body_exited" from="Change_area/fk" to="." method="_on_fk_body_exited"]
+[connection signal="pressed" from="CanvasButton/Button/fk_btn" to="." method="_on_fk_button_pressed"]
+[connection signal="pressed" from="CanvasButton/Button/fkip_btn" to="." method="_on_fkip_btn_pressed"]

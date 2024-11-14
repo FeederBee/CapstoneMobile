@@ -90,35 +90,37 @@ func _input(event: InputEvent) -> void:
 		_reset()
 		_set_joystick_visibility(false)
 		return 
-	elif global_variable.change_map:
-		_reset()
 	else : 
 		_set_joystick_visibility(true)
-		if event is InputEventScreenTouch:
-			#print("Touch event detected")#Debug
-			if event.pressed:
-				#print("Touch pressed at:", event.position) #Debug
-				if _is_point_inside_joystick_area(event.position) and _touch_index == -1:
-					if joystick_mode == Joystick_mode.DYNAMIC or joystick_mode == Joystick_mode.FOLLOWING or (joystick_mode == Joystick_mode.FIXED and _is_point_inside_base(event.position)):
-						if joystick_mode == Joystick_mode.DYNAMIC or joystick_mode == Joystick_mode.FOLLOWING:
-							_move_base(event.position)
-						if visibility_mode == Visibility_mode.WHEN_TOUCHED:
-							show()
-						_touch_index = event.index
-						_tip.modulate = pressed_color
-						_update_joystick(event.position)
-						get_viewport().set_input_as_handled()
-			elif event.index == _touch_index:
-				#print("Touch released")#Debug
-				_reset()
-				if visibility_mode == Visibility_mode.WHEN_TOUCHED:
-					hide()
-				get_viewport().set_input_as_handled()
-		elif event is InputEventScreenDrag:
-			if event.index == _touch_index:
-				#print("Dragging at:", event.position)#Debug
-				_update_joystick(event.position)
-				get_viewport().set_input_as_handled()
+		if global_variable.change_map:
+			_reset()
+			return
+		else : 
+			if event is InputEventScreenTouch:
+				#print("Touch event detected")#Debug
+				if event.pressed:
+					#print("Touch pressed at:", event.position) #Debug
+					if _is_point_inside_joystick_area(event.position) and _touch_index == -1:
+						if joystick_mode == Joystick_mode.DYNAMIC or joystick_mode == Joystick_mode.FOLLOWING or (joystick_mode == Joystick_mode.FIXED and _is_point_inside_base(event.position)):
+							if joystick_mode == Joystick_mode.DYNAMIC or joystick_mode == Joystick_mode.FOLLOWING:
+								_move_base(event.position)
+							if visibility_mode == Visibility_mode.WHEN_TOUCHED:
+								show()
+							_touch_index = event.index
+							_tip.modulate = pressed_color
+							_update_joystick(event.position)
+							get_viewport().set_input_as_handled()
+				elif event.index == _touch_index:
+					#print("Touch released")#Debug
+					_reset()
+					if visibility_mode == Visibility_mode.WHEN_TOUCHED:
+						hide()
+					get_viewport().set_input_as_handled()
+			elif event is InputEventScreenDrag:
+				if event.index == _touch_index:
+					#print("Dragging at:", event.position)#Debug
+					_update_joystick(event.position)
+					get_viewport().set_input_as_handled()
 	
 
 func _move_base(new_position: Vector2) -> void:
