@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var speed : float = 100
-@export var transparency_value : float = 0.5
+@export var transparency_value : float = 1
 
 @onready var animated_sprite := $AnimatedSprite2D
 @onready var detection_area := $Player_detection # Area2D yang mendeteksi collision
