@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cvawfo4fqiy37" path="res://Assets/Sprites/Player/walkL.png" id="6_rfduw"]
 [ext_resource type="Texture2D" uid="uid://c7s8s0376mk6p" path="res://Assets/Sprites/Player/walkR.png" id="7_tgcvc"]
 [ext_resource type="Texture2D" uid="uid://cvd5cexhclv14" path="res://Assets/Sprites/Player/walkU.png" id="8_nylhq"]
-[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://Scenes/virtual_joystick.tscn" id="10_0s18b"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://Scenes/Player/virtual_joystick.tscn" id="10_0s18b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yla8l"]
 atlas = ExtResource("1_sayhj")
