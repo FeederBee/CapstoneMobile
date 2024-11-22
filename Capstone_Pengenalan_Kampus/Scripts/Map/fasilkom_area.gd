@@ -1,5 +1,8 @@
 extends Node2D
 
+@export var spawnx: float = 2544
+@export var spawny: float = 1219
+
 var fk_btn
 var fkip_btn_up
 var fkip_btn_mid
@@ -11,7 +14,7 @@ func _ready() -> void:
 	
 	var player_instance = get_node("Y_sort/Player")	
 	if global_variable.spawn_position == Vector2.ZERO :
-		player_instance.global_position = Vector2(2267, 1489)
+		player_instance.global_position = Vector2(spawnx, spawny)
 	else :
 		player_instance.global_position = global_variable.spawn_position
 
