@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb5ch1xorp1lm"
-path="res://.godot/imported/GUI-buttonborder.png-365680bd39ebc7ba0348a061877791a3.ctex"
+uid="uid://g58jfdlkjvpv"
+path="res://.godot/imported/slime_move.png-5b0dbc3ce0658593fd40beeb2170f287.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/UI/GUI-buttonborder.png"
-dest_files=["res://.godot/imported/GUI-buttonborder.png-365680bd39ebc7ba0348a061877791a3.ctex"]
+source_file="res://Assets/Sprites/NPC/slime_move.png"
+dest_files=["res://.godot/imported/slime_move.png-5b0dbc3ce0658593fd40beeb2170f287.ctex"]
 
 [params]
 

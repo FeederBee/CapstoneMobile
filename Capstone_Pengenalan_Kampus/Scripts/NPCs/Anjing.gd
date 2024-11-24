@@ -36,7 +36,7 @@ func _set_to_idle() -> void:
 	_play_idle_animation()
 	velocity = Vector2.ZERO
 
-func _move_towards_target(delta: float) -> void:
+func _move_towards_target(_delta: float) -> void:
 	# Menggerakkan NPC ke arah target
 	var direction = (target_position - position).normalized()
 	velocity = direction * speed

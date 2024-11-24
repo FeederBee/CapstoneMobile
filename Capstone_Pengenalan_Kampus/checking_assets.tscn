@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://hsbs5tjp46ww"]
 
-[ext_resource type="Texture2D" uid="uid://bthdrx7hgx1ym" path="res://Assets/Map/TileMap/CP_V1.0.4.png" id="1_2l6os"]
+[ext_resource type="Texture2D" uid="uid://bthdrx7hgx1ym" path="res://Assets/Map/Objects/CP_V1.0.4.png" id="1_2l6os"]
 
 [node name="CheckingAssets" type="Node2D"]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bthdrx7hgx1ym"
-path="res://.godot/imported/CP_V1.0.4.png-cbafd0281609a23ccfc22e35b65cba03.ctex"
+uid="uid://dbtflhhy3mgnr"
+path="res://.godot/imported/rambu dll.png-f4ded3233903494c17c04110d371d907.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Map/TileMap/CP_V1.0.4.png"
-dest_files=["res://.godot/imported/CP_V1.0.4.png-cbafd0281609a23ccfc22e35b65cba03.ctex"]
+source_file="res://Assets/Map/Objects/rambu dll.png"
+dest_files=["res://.godot/imported/rambu dll.png-f4ded3233903494c17c04110d371d907.ctex"]
 
 [params]
 

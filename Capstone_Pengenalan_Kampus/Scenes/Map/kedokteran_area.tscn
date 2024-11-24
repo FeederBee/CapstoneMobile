@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://y08jbm5nux2s"]
+[gd_scene load_steps=11 format=4 uid="uid://y08jbm5nux2s"]
 
 [ext_resource type="Texture2D" uid="uid://blnib6wtebggj" path="res://Assets/Map/map_downleftarea.jpg" id="1_ludrc"]
 [ext_resource type="Script" path="res://Scripts/Map/kedokteran_area.gd" id="1_mxij8"]
 [ext_resource type="TileSet" uid="uid://0ys1sn5yxass" path="res://Assets/Main.tres" id="2_5d3l0"]
 [ext_resource type="PackedScene" uid="uid://b3x8rw66ja1e0" path="res://Scenes/Player/Player.tscn" id="3_uih6y"]
+[ext_resource type="TileSet" uid="uid://dahe2tbct5vha" path="res://Assets/trotoar&Jalan.tres" id="4_p660g"]
 [ext_resource type="Texture2D" uid="uid://c7sivtc4oy7x4" path="res://Assets/Sprites/UI/Button_pause.png" id="5_jho2e"]
 [ext_resource type="Texture2D" uid="uid://b4n1fu40ar63d" path="res://Assets/Sprites/UI/Button_play.png" id="6_s1ohf"]
 [ext_resource type="Texture2D" uid="uid://2oyd16shhv8x" path="res://Assets/Sprites/UI/Button_load.png" id="6_sn6fn"]
@@ -65,6 +66,15 @@ position = Vector2(1593, 78)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Y_sort/Player"]
 remote_path = NodePath("../../../Camera2D")
+
+[node name="Ground" type="TileMap" parent="Y_sort"]
+tile_set = ExtResource("4_p660g")
+format = 2
+layer_0/name = "Base"
+layer_1/name = "Rumput"
+layer_2/name = "Trotoar"
+layer_3/name = "Jalan"
+layer_4/name = "SelokanG"
 
 [node name="Change_map" type="Node2D" parent="."]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c15xmltyiqxxa"
-path="res://.godot/imported/Button_spritet.png-12e8b793bde706969031687e2efa3409.ctex"
+uid="uid://cigusq5bjpyyv"
+path="res://.godot/imported/replaceperpus.png-180ee7a479edd531dbd384395527fa72.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/UI/Button_spritet.png"
-dest_files=["res://.godot/imported/Button_spritet.png-12e8b793bde706969031687e2efa3409.ctex"]
+source_file="res://Assets/Map/Gedung/replaceperpus.png"
+dest_files=["res://.godot/imported/replaceperpus.png-180ee7a479edd531dbd384395527fa72.ctex"]
 
 [params]
 

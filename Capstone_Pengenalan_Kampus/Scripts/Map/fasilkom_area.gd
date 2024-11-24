@@ -12,7 +12,7 @@ var entrance_r_btn
 
 func _ready() -> void:
 	
-	var player_instance = get_node("Y_sort/Player")	
+	var player_instance = get_node("Y_sort/Karakter/Player")	
 	if global_variable.spawn_position == Vector2.ZERO :
 		player_instance.global_position = Vector2(spawnx, spawny)
 	else :
@@ -82,19 +82,20 @@ func _on_fk_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Map/kedokteran_area.tscn")
 	global_variable.spawn_position = Vector2(2568, 57)
 
+#FKIP
 func _on_fkip_btn_up_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Map/fkip_area.tscn")
-	global_variable.spawn_position = Vector2(56, 904)
+	global_variable.spawn_position = Vector2(121, 1161)
 func _on_fkip_btn_mid_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Map/fkip_area.tscn")
-	global_variable.spawn_position = Vector2(49, 1497)
+	global_variable.spawn_position = Vector2(117, 2058)
 func _on_fkip_btn_down_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Map/fkip_area.tscn")
-	global_variable.spawn_position = Vector2(49, 2822)
+	global_variable.spawn_position = Vector2(118, 3355)
 
 func _on_entrance_l_btn_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Map/entrance_area.tscn")
-	global_variable.spawn_position = Vector2(2297, 26)
+	global_variable.spawn_position = Vector2(1097, 50)
 func _on_entrance_r_btn_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Map/entrance_area.tscn")
-	global_variable.spawn_position = Vector2(1498, 26)
+	global_variable.spawn_position = Vector2(2921, 51)

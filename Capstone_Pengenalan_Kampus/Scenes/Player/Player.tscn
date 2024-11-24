@@ -572,7 +572,7 @@ script = ExtResource("1_y8avl")
 scale = Vector2(1.00586, 1.00586)
 sprite_frames = SubResource("SpriteFrames_sfhfp")
 animation = &"walkL"
-offset = Vector2(0, -10)
+offset = Vector2(0, -5.71)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

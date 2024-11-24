@@ -19,7 +19,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 #Area2D Signal
@@ -42,8 +42,8 @@ func _on_to_fasilkom_l_body_exited(body: Node2D) -> void:
 #Button Touch Signal
 func _on_fasilkom_l_btn_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Map/fasilkom_area.tscn")
-	global_variable.spawn_position = Vector2(1688, 2643)
+	global_variable.spawn_position = Vector2(1369, 2808)
 
 func _on_fasilkom_r_btn_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Map/fasilkom_area.tscn")
-	global_variable.spawn_position = Vector2(2217, 2643)
+	global_variable.spawn_position = Vector2(2393, 2811)

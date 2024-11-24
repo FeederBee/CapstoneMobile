@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4n1fu40ar63d"
-path="res://.godot/imported/Button_play.png-45c6a60054e27a3b00059b251a0c205c.ctex"
+uid="uid://dcrcjaxgt5fau"
+path="res://.godot/imported/javaria-aslam-19.png-737d1018e8fb632ae537bbf736712d6e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/UI/Button_play.png"
-dest_files=["res://.godot/imported/Button_play.png-45c6a60054e27a3b00059b251a0c205c.ctex"]
+source_file="res://Assets/Map/Gedung/javaria-aslam-19.png"
+dest_files=["res://.godot/imported/javaria-aslam-19.png-737d1018e8fb632ae537bbf736712d6e.ctex"]
 
 [params]
 
