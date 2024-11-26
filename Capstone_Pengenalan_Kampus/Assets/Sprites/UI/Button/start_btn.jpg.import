@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bopfxklqss87u"
-path="res://.godot/imported/button_nextmap.png-6fa2b68d8c8f9b3f58bbf7c306cfe4c1.ctex"
+uid="uid://b73000ilafhiu"
+path="res://.godot/imported/start_btn.jpg-433bdae7c62cc3427df0b3179aa96951.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/UI/button_nextmap.png"
-dest_files=["res://.godot/imported/button_nextmap.png-6fa2b68d8c8f9b3f58bbf7c306cfe4c1.ctex"]
+source_file="res://Assets/Sprites/UI/Button/start_btn.jpg"
+dest_files=["res://.godot/imported/start_btn.jpg-433bdae7c62cc3427df0b3179aa96951.ctex"]
 
 [params]
 

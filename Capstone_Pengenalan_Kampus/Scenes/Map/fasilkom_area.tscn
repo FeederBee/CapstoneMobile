@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bllenf7wy4yxd" path="res://Assets/Map/Gedung/gedung2.png" id="14_d22v7"]
 [ext_resource type="Texture2D" uid="uid://dcrcjaxgt5fau" path="res://Assets/Map/Gedung/javaria-aslam-19.png" id="14_vqcy3"]
 [ext_resource type="PackedScene" uid="uid://d14ofec4y5buo" path="res://Scenes/NPCs/kucing.tscn" id="17_p1m2e"]
-[ext_resource type="Texture2D" uid="uid://bopfxklqss87u" path="res://Assets/Sprites/UI/button_nextmap.png" id="18_3gfin"]
+[ext_resource type="Texture2D" uid="uid://bopfxklqss87u" path="res://Assets/Sprites/UI/Button/button_nextmap.png" id="18_3gfin"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bebe4"]
 size = Vector2(23, 71)

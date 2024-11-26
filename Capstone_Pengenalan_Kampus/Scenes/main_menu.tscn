@@ -1,10 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cymw13qsausvp"]
+[gd_scene load_steps=5 format=3 uid="uid://cymw13qsausvp"]
 
 [ext_resource type="Script" path="res://Scripts/UIs/main_menu.gd" id="1_7xja6"]
-[ext_resource type="Texture2D" uid="uid://b4n1fu40ar63d" path="res://Assets/Sprites/UI/Button_play.png" id="2_6mpb2"]
-[ext_resource type="Texture2D" uid="uid://2oyd16shhv8x" path="res://Assets/Sprites/UI/Button_load.png" id="3_uhrfg"]
+[ext_resource type="Texture2D" uid="uid://b73000ilafhiu" path="res://Assets/Sprites/UI/Button/start_btn.jpg" id="2_hme2p"]
 [ext_resource type="Script" path="res://Scripts/UIs/load.gd" id="4_pxp3h"]
-[ext_resource type="Texture2D" uid="uid://c7y81dnt51522" path="res://Assets/Sprites/UI/GUI-buttonmainmenu.png" id="5_7um0k"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_thfdb"]
 font_size = 7
@@ -27,15 +25,13 @@ offset_bottom = 40.0
 layout_mode = 2
 
 [node name="Play" type="TouchScreenButton" parent="MarginContainer/VBoxContainer"]
-position = Vector2(500, 375)
-scale = Vector2(0.676829, 0.364706)
-texture_normal = ExtResource("2_6mpb2")
-texture_pressed = ExtResource("2_6mpb2")
+position = Vector2(500, 390)
+scale = Vector2(3, 3.48485)
+texture_normal = ExtResource("2_hme2p")
 
 [node name="Load" type="TouchScreenButton" parent="MarginContainer/VBoxContainer"]
 position = Vector2(499, 460)
 scale = Vector2(0.665992, 0.369942)
-texture_normal = ExtResource("3_uhrfg")
 script = ExtResource("4_pxp3h")
 
 [node name="Setting" type="TouchScreenButton" parent="MarginContainer/VBoxContainer"]
@@ -43,7 +39,6 @@ script = ExtResource("4_pxp3h")
 [node name="Quit" type="TouchScreenButton" parent="MarginContainer/VBoxContainer"]
 position = Vector2(499, 543)
 scale = Vector2(7.52273, 6.33333)
-texture_normal = ExtResource("5_7um0k")
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Quit"]
 offset_left = 14.0

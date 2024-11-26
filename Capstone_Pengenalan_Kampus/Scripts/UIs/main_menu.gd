@@ -11,7 +11,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_play_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Main.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Map/entrance_area.tscn")
 
 func _on_load_pressed() -> void:
 	#GameManager.load_game()  # Memuat game dari posisi terakhir

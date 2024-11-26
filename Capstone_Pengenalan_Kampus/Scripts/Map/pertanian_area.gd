@@ -6,7 +6,7 @@ var fk2_btn
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var player_instance = get_node("Y_sort/Player")	
+	var player_instance = get_node("Y_sort/Karakter/Player")	
 	if global_variable.spawn_position == Vector2.ZERO :
 		player_instance.global_position = Vector2(1446, 3097)
 	else :
