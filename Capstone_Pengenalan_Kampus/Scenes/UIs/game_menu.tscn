@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://85745yt6h7dj"]
+
+[ext_resource type="Texture2D" uid="uid://bee0jthtf5klk" path="res://Assets/Sprites/UI/Button/btn-p.png" id="1_eg6bq"]
+[ext_resource type="Script" path="res://Scripts/UIs/game_menu.gd" id="1_vmydb"]
+
+[node name="Game_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vmydb")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Pause" type="TouchScreenButton" parent="CanvasLayer"]
+position = Vector2(1208, 24)
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("1_eg6bq")
+
+[connection signal="pressed" from="CanvasLayer/Pause" to="." method="_on_pause_pressed"]

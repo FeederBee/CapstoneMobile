@@ -19,6 +19,10 @@ func _ready() -> void:
 	fasilkom_mid = get_node("CanvasLayer/fasilkom_bwh_btn")
 	fasilkom_down = get_node("CanvasLayer/fasilkom_mid_btn")
 	
+	fasilkom_up.visible = false
+	fasilkom_mid.visible = false
+	fasilkom_down.visible = false
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

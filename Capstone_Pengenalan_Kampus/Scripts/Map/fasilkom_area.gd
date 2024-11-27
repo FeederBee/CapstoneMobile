@@ -3,7 +3,7 @@ extends Node2D
 @export var spawnx: float = 2544
 @export var spawny: float = 1219
 
-var fk_btn
+var ftp_btn
 var fkip_btn_up
 var fkip_btn_mid
 var fkip_btn_down
@@ -18,14 +18,14 @@ func _ready() -> void:
 	else :
 		player_instance.global_position = global_variable.spawn_position
 
-	fk_btn = get_node("ChangeMap_btn/fk_btn")
+	ftp_btn = get_node("ChangeMap_btn/ftp_btn")
 	fkip_btn_up = get_node("ChangeMap_btn/fkip_btn_up")
 	fkip_btn_mid = get_node("ChangeMap_btn/fkip_btn_mid")
 	fkip_btn_down = get_node("ChangeMap_btn/fkip_btn_down")
 	entrance_l_btn = get_node("ChangeMap_btn/entrance_l_btn")
 	entrance_r_btn = get_node("ChangeMap_btn/entrance_r_btn")
 	
-	fk_btn.visible = false
+	ftp_btn.visible = false
 	fkip_btn_up.visible = false
 	fkip_btn_mid.visible = false
 	fkip_btn_down.visible = false
@@ -37,12 +37,12 @@ func _process(delta: float) -> void:
 	pass
 
 #Area2D Signal
-func _on_fk_body_entered(body: Node2D) -> void:
+func _on_ftp_body_entered(body: Node2D) -> void:
 	if body.has_method('player'):
-		fk_btn.visible = true
-func _on_fk_body_exited(body: Node2D) -> void:
+		ftp_btn.visible = true
+func _on_ftp_body_exited(body: Node2D) -> void:
 	if body.has_method('player'):
-		fk_btn.visible = false
+		ftp_btn.visible = false
 
 func _on_fkip_up_body_entered(body: Node2D) -> void:
 	if body.has_method('player'):
@@ -78,9 +78,9 @@ func _on_entrance_r_body_exited(body: Node2D) -> void:
 
 
 #Touch Button Signal
-func _on_fk_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Map/kedokteran_area.tscn")
-	global_variable.spawn_position = Vector2(2568, 57)
+func _on_ftp_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/Map/ftp_area.tscn")
+	global_variable.spawn_position = Vector2(4149, 2649)
 
 #FKIP
 func _on_fkip_btn_up_pressed() -> void:

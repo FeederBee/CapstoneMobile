@@ -49,12 +49,12 @@ func _on_to_fk_2_body_exited(body: Node2D) -> void:
 
 func _on_fasilkom_btn_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Map/fasilkom_area.tscn")
-	global_variable.spawn_position = Vector2(276, 1517)
+	global_variable.spawn_position = Vector2(10, 1508)
 
 func _on_fk_btn_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Map/kedokteran_area.tscn")
-	global_variable.spawn_position = Vector2(2563, 64)
+	global_variable.spawn_position = Vector2(2634, 58)
 
 func _on_fk_2_btn_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Map/kedokteran_area.tscn")
-	global_variable.spawn_position = Vector2(1593, 78)
+	global_variable.spawn_position = Vector2(1497, 58)
