@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://bxr4xrnk238qd"]
+[gd_scene load_steps=21 format=4 uid="uid://bxr4xrnk238qd"]
 
 [ext_resource type="Script" path="res://Scripts/Map/entrance_area.gd" id="1_omukd"]
 [ext_resource type="Texture2D" uid="uid://dbos6g8eyweqh" path="res://Assets/Map/entrance_area.jpg" id="1_oxpo6"]
@@ -13,6 +13,83 @@
 [ext_resource type="Texture2D" uid="uid://dgqucdvintfyv" path="res://Assets/Map/Gedung/masjid.png" id="9_rbygt"]
 [ext_resource type="Texture2D" uid="uid://bllenf7wy4yxd" path="res://Assets/Map/Gedung/gedung2.png" id="10_ccoib"]
 [ext_resource type="Texture2D" uid="uid://bopfxklqss87u" path="res://Assets/Sprites/UI/Button/button_nextmap.png" id="13_ut41c"]
+[ext_resource type="PackedScene" uid="uid://85745yt6h7dj" path="res://Scenes/UIs/game_menu.tscn" id="14_71mk7"]
+
+[sub_resource type="Animation" id="Animation_wlbwy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_uc1m7"]
+resource_name = "screen_fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_4xip7"]
+resource_name = "screen_fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aocrf"]
+_data = {
+"RESET": SubResource("Animation_wlbwy"),
+"screen_fade_in": SubResource("Animation_uc1m7"),
+"screen_fade_out": SubResource("Animation_4xip7")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4cib8"]
 size = Vector2(72, 9)
@@ -22,6 +99,32 @@ size = Vector2(72, 10)
 
 [node name="entrance_area" type="Node2D"]
 script = ExtResource("1_omukd")
+
+[node name="Transition" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="ColorRect" type="ColorRect" parent="Transition"]
+self_modulate = Color(0, 0, 0, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Transition"]
+libraries = {
+"": SubResource("AnimationLibrary_aocrf")
+}
+speed_scale = 1.5
+
+[node name="ColorRect2" type="ColorRect" parent="Transition"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="Y_sort" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -94,13 +197,20 @@ position = Vector2(1078, 1924)
 scale = Vector2(7, 7)
 texture = ExtResource("10_ccoib")
 
-[node name="Player" parent="Y_sort" instance=ExtResource("3_svhck")]
+[node name="Karakter" type="Node2D" parent="Y_sort"]
 y_sort_enabled = true
-position = Vector2(2921, 51)
-speed = 1000.0
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Y_sort/Player"]
-remote_path = NodePath("../../../Camera2D")
+[node name="Player" parent="Y_sort/Karakter" instance=ExtResource("3_svhck")]
+y_sort_enabled = true
+position = Vector2(1929, 2384)
+
+[node name="Camera2D" type="Camera2D" parent="Y_sort/Karakter/Player"]
+zoom = Vector2(3, 3)
+limit_left = 65
+limit_top = 35
+limit_right = 3140
+limit_bottom = 2500
+editor_draw_limits = true
 
 [node name="Change_map" type="Node2D" parent="."]
 
@@ -116,18 +226,6 @@ shape = SubResource("RectangleShape2D_4cib8")
 position = Vector2(1096, 25)
 shape = SubResource("RectangleShape2D_lmq8g")
 
-[node name="ChangeMap_btn" type="CanvasLayer" parent="."]
-
-[node name="fasilkom_l_btn" type="TouchScreenButton" parent="ChangeMap_btn"]
-position = Vector2(1000, 580)
-scale = Vector2(4, 4)
-texture_normal = ExtResource("13_ut41c")
-
-[node name="fasilkom_r_btn" type="TouchScreenButton" parent="ChangeMap_btn"]
-position = Vector2(1000, 580)
-scale = Vector2(4, 4)
-texture_normal = ExtResource("13_ut41c")
-
 [node name="Boundary" type="StaticBody2D" parent="."]
 collision_layer = 64
 collision_mask = 3
@@ -135,18 +233,34 @@ collision_mask = 3
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Boundary"]
 polygon = PackedVector2Array(3187, 3, 3192, 2531, 65, 2533, 65, 35, 204, 35, 203, 2500, 3140, 2500, 3140, 35, 2958, 35, 2958, 25, 2882, 25, 2882, 35, 1134, 35, 1134, 22, 1058, 22, 1058, 35, 204, 35, 10, 0)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(2921, 51)
-zoom = Vector2(2.5, 2.5)
-limit_left = 65
-limit_top = 35
-limit_right = 3140
-limit_bottom = 2500
-editor_draw_limits = true
+[node name="ControlLayer" type="CanvasLayer" parent="."]
+
+[node name="Game_Menu" parent="ControlLayer" instance=ExtResource("14_71mk7")]
+
+[node name="ChangeMap_btn" type="Control" parent="ControlLayer"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="fasilkom_l_btn" type="TouchScreenButton" parent="ControlLayer/ChangeMap_btn"]
+position = Vector2(-300, -160)
+scale = Vector2(4, 4)
+texture_normal = ExtResource("13_ut41c")
+
+[node name="fasilkom_r_btn" type="TouchScreenButton" parent="ControlLayer/ChangeMap_btn"]
+position = Vector2(-300, -160)
+scale = Vector2(4, 4)
+texture_normal = ExtResource("13_ut41c")
 
 [connection signal="body_entered" from="Change_map/to_fasilkom_R" to="." method="_on_to_fasilkom_r_body_entered"]
 [connection signal="body_exited" from="Change_map/to_fasilkom_R" to="." method="_on_to_fasilkom_r_body_exited"]
 [connection signal="body_entered" from="Change_map/to_fasilkom_L" to="." method="_on_to_fasilkom_l_body_entered"]
 [connection signal="body_exited" from="Change_map/to_fasilkom_L" to="." method="_on_to_fasilkom_l_body_exited"]
-[connection signal="pressed" from="ChangeMap_btn/fasilkom_l_btn" to="." method="_on_fasilkom_l_btn_pressed"]
-[connection signal="pressed" from="ChangeMap_btn/fasilkom_r_btn" to="." method="_on_fasilkom_r_btn_pressed"]
+[connection signal="pressed" from="ControlLayer/ChangeMap_btn/fasilkom_l_btn" to="." method="_on_fasilkom_l_btn_pressed"]
+[connection signal="pressed" from="ControlLayer/ChangeMap_btn/fasilkom_r_btn" to="." method="_on_fasilkom_r_btn_pressed"]

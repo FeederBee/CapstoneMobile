@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var transition = $Transition/AnimationPlayer
+
 @export var spawnx: float = 2544
 @export var spawny: float = 1219
 
@@ -7,17 +9,23 @@ var fasilkom_up
 var fasilkom_mid
 var fasilkom_down 
 
+#Path
+var transition_path = "fkip_area/Transition/AnimationPlayer"
+var fasilkom_path = "res://Scenes/Map/fasilkom_area.tscn"
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	transition.play('screen_fade_in')
+	
 	var player_instance = get_node("Y_sort/Karakter/Player")	
-	if global_variable.spawn_position == Vector2.ZERO :
+	if Global.spawn_position == Vector2.ZERO :
 		player_instance.global_position = Vector2(spawnx, spawny)
 	else :
-		player_instance.global_position = global_variable.spawn_position
+		player_instance.global_position = Global.spawn_position
 	
-	fasilkom_up = get_node("CanvasLayer/fasilkom_atas_btn")
-	fasilkom_mid = get_node("CanvasLayer/fasilkom_bwh_btn")
-	fasilkom_down = get_node("CanvasLayer/fasilkom_mid_btn")
+	fasilkom_up = get_node("ControlLayer/ChangeMap_btn/fasilkom_atas_btn")
+	fasilkom_mid = get_node("ControlLayer/ChangeMap_btn/fasilkom_bwh_btn")
+	fasilkom_down = get_node("ControlLayer/ChangeMap_btn/fasilkom_mid_btn")
 	
 	fasilkom_up.visible = false
 	fasilkom_mid.visible = false
@@ -58,11 +66,11 @@ func _on_to_fasilkom_bwh_body_exited(body: Node2D) -> void:
 #TouchButton signal
 #Fasilkom
 func _on_fasilkom_atas_btn_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Map/fasilkom_area.tscn")
-	global_variable.spawn_position = Vector2(2930, 984)
+	Global.change_scene_to(fasilkom_path, transition_path)
+	Global.spawn_position = Vector2(2930, 984)
 func _on_fasilkom_bwh_btn_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Map/fasilkom_area.tscn")
-	global_variable.spawn_position = Vector2(2930, 1594)
+	Global.change_scene_to(fasilkom_path, transition_path)
+	Global.spawn_position = Vector2(2930, 1594)
 func _on_fasilkom_mid_btn_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Map/fasilkom_area.tscn")
-	global_variable.spawn_position = Vector2(2930, 2650)
+	Global.change_scene_to(fasilkom_path, transition_path)
+	Global.spawn_position = Vector2(2930, 2650)

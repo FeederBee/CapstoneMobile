@@ -20,7 +20,8 @@ config/icon="res://icon.svg"
 
 GameManager="*res://GameManager.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
-global_variable="*res://global_variable.gd"
+Global="*res://Global.gd"
+MapManager="*res://MapManager.gd"
 
 [dialogic]
 
@@ -39,7 +40,6 @@ variables={}
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
-window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

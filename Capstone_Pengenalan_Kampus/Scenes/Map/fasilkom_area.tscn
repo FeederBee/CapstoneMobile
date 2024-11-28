@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://dwj1njkqv3grr"]
+[gd_scene load_steps=30 format=4 uid="uid://dwj1njkqv3grr"]
 
 [ext_resource type="Texture2D" uid="uid://c7xxaj26e52n2" path="res://Assets/Map/map_Fasilkomarea.jpg" id="1_w2nyb"]
 [ext_resource type="Script" path="res://Scripts/Map/fasilkom_area.gd" id="1_xuohr"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dcrcjaxgt5fau" path="res://Assets/Map/Gedung/javaria-aslam-19.png" id="14_vqcy3"]
 [ext_resource type="PackedScene" uid="uid://d14ofec4y5buo" path="res://Scenes/NPCs/kucing.tscn" id="17_p1m2e"]
 [ext_resource type="Texture2D" uid="uid://bopfxklqss87u" path="res://Assets/Sprites/UI/Button/button_nextmap.png" id="18_3gfin"]
+[ext_resource type="PackedScene" uid="uid://85745yt6h7dj" path="res://Scenes/UIs/game_menu.tscn" id="19_8pnkm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bebe4"]
 size = Vector2(23, 71)
@@ -37,7 +38,83 @@ size = Vector2(73, 17)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q3cof"]
 size = Vector2(70, 20)
 
-[node name="FasilkomArea" type="Node2D"]
+[sub_resource type="Animation" id="Animation_sm60a"]
+resource_name = "screen_fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fade:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_jmlic"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fade:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_weotb"]
+resource_name = "screen_fade-out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fade:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mali1"]
+_data = {
+"RESET": SubResource("Animation_jmlic"),
+"screen_fade_in": SubResource("Animation_sm60a"),
+"screen_fade_out": SubResource("Animation_weotb")
+}
+
+[node name="fasilkom_area" type="Node2D"]
 script = ExtResource("1_xuohr")
 spawnx = 2063.0
 spawny = 584.0
@@ -161,13 +238,13 @@ y_sort_enabled = true
 
 [node name="Anjing" parent="Y_sort/Karakter" instance=ExtResource("4_oliri")]
 position = Vector2(2350, 2239)
+up_direction = Vector2(0.707107, -0.707107)
 
 [node name="Kucing" parent="Y_sort/Karakter" instance=ExtResource("17_p1m2e")]
 position = Vector2(1489, 417)
 
 [node name="Player" parent="Y_sort/Karakter" instance=ExtResource("3_upaks")]
 position = Vector2(10, 1508)
-speed = 500.0
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Y_sort/Karakter/Player"]
 remote_path = NodePath("../../../../Camera2D")
@@ -200,7 +277,7 @@ position = Vector2(85, 2657)
 collision_layer = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Change_map/ftp"]
-position = Vector2(-101, -1145)
+position = Vector2(-143, -1145)
 shape = SubResource("RectangleShape2D_12fpr")
 
 [node name="entrance_l" type="Area2D" parent="Change_map"]
@@ -215,37 +292,52 @@ shape = SubResource("RectangleShape2D_023bd")
 position = Vector2(2408, 2834)
 shape = SubResource("RectangleShape2D_q3cof")
 
-[node name="ChangeMap_btn" type="CanvasLayer" parent="."]
+[node name="ControlLayer" type="CanvasLayer" parent="."]
 
-[node name="fkip_btn_up" type="TouchScreenButton" parent="ChangeMap_btn"]
-position = Vector2(1000, 580)
+[node name="ChangeMap_btn" type="Control" parent="ControlLayer"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="fkip_btn_up" type="TouchScreenButton" parent="ControlLayer/ChangeMap_btn"]
+position = Vector2(-300, -160)
 scale = Vector2(4, 4)
 texture_normal = ExtResource("18_3gfin")
 
-[node name="fkip_btn_mid" type="TouchScreenButton" parent="ChangeMap_btn"]
-position = Vector2(1000, 580)
+[node name="fkip_btn_mid" type="TouchScreenButton" parent="ControlLayer/ChangeMap_btn"]
+position = Vector2(-300, -160)
 scale = Vector2(4, 4)
 texture_normal = ExtResource("18_3gfin")
 
-[node name="fkip_btn_down" type="TouchScreenButton" parent="ChangeMap_btn"]
-position = Vector2(1000, 580)
+[node name="fkip_btn_down" type="TouchScreenButton" parent="ControlLayer/ChangeMap_btn"]
+position = Vector2(-300, -160)
 scale = Vector2(4, 4)
 texture_normal = ExtResource("18_3gfin")
 
-[node name="ftp_btn" type="TouchScreenButton" parent="ChangeMap_btn"]
-position = Vector2(1000, 580)
+[node name="ftp_btn" type="TouchScreenButton" parent="ControlLayer/ChangeMap_btn"]
+position = Vector2(-300, -160)
 scale = Vector2(4, 4)
 texture_normal = ExtResource("18_3gfin")
 
-[node name="entrance_l_btn" type="TouchScreenButton" parent="ChangeMap_btn"]
-position = Vector2(1000, 580)
+[node name="entrance_l_btn" type="TouchScreenButton" parent="ControlLayer/ChangeMap_btn"]
+position = Vector2(-300, -160)
 scale = Vector2(4, 4)
 texture_normal = ExtResource("18_3gfin")
 
-[node name="entrance_r_btn" type="TouchScreenButton" parent="ChangeMap_btn"]
-position = Vector2(1000, 580)
+[node name="entrance_r_btn" type="TouchScreenButton" parent="ControlLayer/ChangeMap_btn"]
+position = Vector2(-300, -160)
 scale = Vector2(4, 4)
 texture_normal = ExtResource("18_3gfin")
+
+[node name="Game_Menu" parent="ControlLayer" instance=ExtResource("19_8pnkm")]
 
 [node name="Boundary" type="StaticBody2D" parent="."]
 collision_layer = 64
@@ -253,16 +345,40 @@ collision_mask = 3
 
 [node name="Boundary" type="CollisionPolygon2D" parent="Boundary"]
 position = Vector2(-1, 0)
-polygon = PackedVector2Array(2946, 1629, 2946, 2610, 2960, 2610, 2960, 2687, 2946, 2687, 2946, 2816, 2444, 2816, 2444, 2829, 2370, 2829, 2371, 2816, 1404, 2816, 1404, 2830, 1332, 2830, 1332, 2816, 1, 2816, 1, 1548, -19, 1549, -19, 1476, 1, 1476, 1, 45, 2946, 45, 2946, 948, 2959, 948, 2959, 1021, 2946, 1021, 2946, 1556, 2976, 1556, 2977, 41, -164, 32, -164, 2849, 2987, 2852, 2976, 1556, 2964, 1556, 2964, 1629)
+polygon = PackedVector2Array(2946, 1629, 2946, 2610, 2960, 2610, 2960, 2687, 2946, 2687, 2946, 2816, 2444, 2816, 2444, 2829, 2370, 2829, 2371, 2816, 1404, 2816, 1404, 2830, 1332, 2830, 1332, 2816, -43, 2816, -43, 1549, -60, 1549, -60, 1476, -43, 1476, -43, 45, 2946, 45, 2946, 948, 2959, 948, 2959, 1021, 2946, 1021, 2946, 1556, 2976, 1556, 2977, 41, -164, 32, -164, 2849, 2987, 2852, 2976, 1556, 2964, 1556, 2964, 1629)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(10, 1508)
-zoom = Vector2(2.5, 2.5)
-limit_left = -165
+zoom = Vector2(3, 3)
+limit_left = -44
 limit_top = 45
 limit_right = 2946
 limit_bottom = 2816
 editor_draw_limits = true
+
+[node name="Transition" type="CanvasLayer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Transition"]
+libraries = {
+"": SubResource("AnimationLibrary_mali1")
+}
+speed_scale = 1.5
+
+[node name="fade" type="ColorRect" parent="Transition"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Transition"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="body_entered" from="Change_map/fkip_up" to="." method="_on_fkip_up_body_entered"]
 [connection signal="body_exited" from="Change_map/fkip_up" to="." method="_on_fkip_up_body_exited"]
@@ -276,9 +392,9 @@ editor_draw_limits = true
 [connection signal="body_exited" from="Change_map/entrance_l" to="." method="_on_entrance_l_body_exited"]
 [connection signal="body_entered" from="Change_map/entrance_r" to="." method="_on_entrance_r_body_entered"]
 [connection signal="body_exited" from="Change_map/entrance_r" to="." method="_on_entrance_r_body_exited"]
-[connection signal="pressed" from="ChangeMap_btn/fkip_btn_up" to="." method="_on_fkip_btn_up_pressed"]
-[connection signal="pressed" from="ChangeMap_btn/fkip_btn_mid" to="." method="_on_fkip_btn_mid_pressed"]
-[connection signal="pressed" from="ChangeMap_btn/fkip_btn_down" to="." method="_on_fkip_btn_down_pressed"]
-[connection signal="pressed" from="ChangeMap_btn/ftp_btn" to="." method="_on_ftp_button_pressed"]
-[connection signal="pressed" from="ChangeMap_btn/entrance_l_btn" to="." method="_on_entrance_l_btn_pressed"]
-[connection signal="pressed" from="ChangeMap_btn/entrance_r_btn" to="." method="_on_entrance_r_btn_pressed"]
+[connection signal="pressed" from="ControlLayer/ChangeMap_btn/fkip_btn_up" to="." method="_on_fkip_btn_up_pressed"]
+[connection signal="pressed" from="ControlLayer/ChangeMap_btn/fkip_btn_mid" to="." method="_on_fkip_btn_mid_pressed"]
+[connection signal="pressed" from="ControlLayer/ChangeMap_btn/fkip_btn_down" to="." method="_on_fkip_btn_down_pressed"]
+[connection signal="pressed" from="ControlLayer/ChangeMap_btn/ftp_btn" to="." method="_on_ftp_button_pressed"]
+[connection signal="pressed" from="ControlLayer/ChangeMap_btn/entrance_l_btn" to="." method="_on_entrance_l_btn_pressed"]
+[connection signal="pressed" from="ControlLayer/ChangeMap_btn/entrance_r_btn" to="." method="_on_entrance_r_btn_pressed"]

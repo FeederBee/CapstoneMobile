@@ -63,10 +63,10 @@ var _touch_index : int = -1
 @onready var _default_color : Color = _tip.modulate
 
 # FUNCTIONS
-
 func _ready() -> void:
+	_reset()
 		# Periksa kondisi dialog saat start
-	if global_variable.is_dialog:
+	if Global.is_dialog:
 		# Sembunyikan joystick jika dalam dialog
 		_set_joystick_visibility(false)
 	else:
@@ -85,19 +85,21 @@ func _ready() -> void:
 		hide()
 
 func _input(event: InputEvent) -> void:
-		# Tambahkan pengecekan kondisi is_dialog
-	if global_variable.is_dialog:
-		_reset()
-		_set_joystick_visibility(false)
+		# Tambahkan pengecekan kondisi apakah joystick tersedia atau tidak
+	if !Global.is_joystick:
+		#_reset()
+		is_pressed = false
+		#InputEventScreenTouch.is_canceled()
+		#_set_joystick_visibility(false)
 		return 
 	else : 
 		_set_joystick_visibility(true)
-		if global_variable.change_map:
+		if Global.change_map :
 			_reset()
 			return
 		else : 
 			if event is InputEventScreenTouch:
-				#print("Touch event detected")#Debug
+				print("Touch event detected")#Debug
 				if event.pressed:
 					#print("Touch pressed at:", event.position) #Debug
 					if _is_point_inside_joystick_area(event.position) and _touch_index == -1:
@@ -205,3 +207,7 @@ func _set_joystick_visibility(is_visible: bool) -> void:
 		show()
 	else:
 		hide()
+
+func _exit_tree() -> void:
+	# Reset joystick input saat node dihapus
+	_reset()  

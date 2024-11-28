@@ -62,4 +62,4 @@ func _on_player_detection_area_exited(area: Area2D) -> void:
 
 func _on_player_detection_body_entered(body: Node2D) -> void:
 	if body.has_method('tree'):
-		global_variable.blur = true
+		Global.blur = true

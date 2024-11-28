@@ -5,18 +5,16 @@
 
 [node name="Game_Menu" type="Control"]
 layout_mode = 3
-anchors_preset = 15
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+grow_horizontal = 0
 script = ExtResource("1_vmydb")
+metadata/_edit_use_anchors_ = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Pause" type="TouchScreenButton" parent="CanvasLayer"]
-position = Vector2(1208, 24)
+[node name="Pause" type="TouchScreenButton" parent="."]
+position = Vector2(-104, 48)
 scale = Vector2(0.4, 0.4)
 texture_normal = ExtResource("1_eg6bq")
 
-[connection signal="pressed" from="CanvasLayer/Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="Pause" to="." method="_on_pause_pressed"]
