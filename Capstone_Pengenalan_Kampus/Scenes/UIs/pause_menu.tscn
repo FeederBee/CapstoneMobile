@@ -1,28 +1,119 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckjwat7xobr5c"]
+[gd_scene load_steps=6 format=3 uid="uid://85745yt6h7dj"]
 
-[ext_resource type="Script" path="res://Scripts/UIs/pause_control.gd" id="1_t5k11"]
-[ext_resource type="Texture2D" uid="uid://c7sivtc4oy7x4" path="res://Assets/Sprites/UI/Button_pause.png" id="2_vfqpm"]
+[ext_resource type="Texture2D" uid="uid://bee0jthtf5klk" path="res://Assets/Sprites/UI/Button/btn-p.png" id="1_eg6bq"]
+[ext_resource type="Script" path="res://Scripts/UIs/game_menu.gd" id="1_vmydb"]
+[ext_resource type="Texture2D" uid="uid://bbml15viodbpj" path="res://Assets/Sprites/UI/Button/btn_bg-biru.png" id="3_8pqmc"]
+[ext_resource type="LabelSettings" uid="uid://dn3nilvhdaih5" path="res://Assets/font_game_menu.tres" id="4_wdk18"]
+[ext_resource type="Texture2D" uid="uid://cdiwqrpai2xa3" path="res://Assets/Sprites/UI/Button/btn_bg-pink.png" id="5_64n4x"]
 
-[node name="pause_menu" type="Node2D"]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Pause Control" type="Control" parent="CanvasLayer"]
+[node name="pause_menu" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("1_t5k11")
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+script = ExtResource("1_vmydb")
+metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Pause Control"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Pause" type="TouchScreenButton" parent="."]
+position = Vector2(-104, 48)
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("1_eg6bq")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Pause Control/MarginContainer"]
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+process_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
+self_modulate = Color(1, 1, 1, 0.576471)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" parent="PauseMenu"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Resume" type="TouchScreenButton" parent="PauseMenu/Control"]
+position = Vector2(-115, -129)
+texture_normal = ExtResource("3_8pqmc")
+
+[node name="Label" type="Label" parent="PauseMenu/Control/Resume"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.5
+offset_top = -31.5
+offset_right = 108.5
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_stretch_ratio = 0.0
+theme_override_font_sizes/font_size = 56
+text = "Resume"
+label_settings = ExtResource("4_wdk18")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Volume" type="TouchScreenButton" parent="PauseMenu/Control"]
+
+[node name="Main-Menu" type="TouchScreenButton" parent="PauseMenu/Control"]
+position = Vector2(-116, 45)
+texture_normal = ExtResource("5_64n4x")
+
+[node name="Label" type="Label" parent="PauseMenu/Control/Main-Menu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -23.5
+offset_right = 112.0
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Main menu"
+label_settings = ExtResource("4_wdk18")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -21.5
+offset_right = 20.0
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PauseMenu/Control/VBoxContainer"]
 layout_mode = 2
 
-[node name="Pause" type="TouchScreenButton" parent="CanvasLayer/Pause Control/MarginContainer/VBoxContainer"]
-position = Vector2(1197, 26)
-scale = Vector2(0.333333, 0.333333)
-texture_normal = ExtResource("2_vfqpm")
+[node name="HSlider" type="HSlider" parent="PauseMenu/Control/VBoxContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="PauseMenu/Control/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/Control/Main-Menu" to="." method="_on_main_menu_pressed"]

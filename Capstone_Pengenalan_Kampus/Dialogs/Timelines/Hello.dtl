@@ -1,6 +1,0 @@
-join npc1 center
-npc1: Hallo ...
-npc1: Aku Astod, Pencomli Handal! ...
-npc1: Umur hanyalah angka .. lubang bisa dipaksa...!
-[signal arg="dialog"]
-[end_timeline]

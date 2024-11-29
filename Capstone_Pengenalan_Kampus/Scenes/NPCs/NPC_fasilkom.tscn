@@ -91,25 +91,30 @@ animations = [{
 "texture": SubResource("AtlasTexture_bid61")
 }],
 "loop": true,
-"name": &"Idle",
+"name": &"idle",
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_78nnk"]
-radius = 72.1734
+[sub_resource type="CircleShape2D" id="CircleShape2D_4qmw6"]
+radius = 6.08276
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="NPC_fasilkom" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_1qu47")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, -2)
 sprite_frames = SubResource("SpriteFrames_qnj1a")
-animation = &"Idle"
-frame_progress = 0.920738
+animation = &"idle"
+offset = Vector2(0.565, -5.825)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4qmw6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_78nnk")
+[node name="dialog" type="Area2D" parent="."]
+collision_layer = 2
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_dialog_body_entered"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="dialog"]
+polygon = PackedVector2Array(0, 0, -6, 19, 6, 19)
+
+[connection signal="area_entered" from="dialog" to="." method="_on_dialog_area_entered"]
+[connection signal="body_entered" from="dialog" to="." method="_on_dialog_body_entered"]

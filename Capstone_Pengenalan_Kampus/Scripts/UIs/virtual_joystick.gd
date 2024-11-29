@@ -66,11 +66,11 @@ var _touch_index : int = -1
 func _ready() -> void:
 	_reset()
 		# Periksa kondisi dialog saat start
-	if Global.is_dialog:
-		# Sembunyikan joystick jika dalam dialog
-		_set_joystick_visibility(false)
-	else:
-		_set_joystick_visibility(true)
+	#if Global.is_dialog:
+		## Sembunyikan joystick jika dalam dialog
+		#_set_joystick_visibility(false)
+	#else:
+		#_set_joystick_visibility(true)
 	
 	#self.mouse_filter = Control.MOUSE_FILTER_PASS
 	if ProjectSettings.get_setting("input_devices/pointing/emulate_mouse_from_touch"):
@@ -87,42 +87,34 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 		# Tambahkan pengecekan kondisi apakah joystick tersedia atau tidak
 	if !Global.is_joystick:
-		#_reset()
-		is_pressed = false
-		#InputEventScreenTouch.is_canceled()
-		#_set_joystick_visibility(false)
+		_reset()
 		return 
-	else : 
-		_set_joystick_visibility(true)
-		if Global.change_map :
-			_reset()
-			return
-		else : 
-			if event is InputEventScreenTouch:
-				print("Touch event detected")#Debug
-				if event.pressed:
-					#print("Touch pressed at:", event.position) #Debug
-					if _is_point_inside_joystick_area(event.position) and _touch_index == -1:
-						if joystick_mode == Joystick_mode.DYNAMIC or joystick_mode == Joystick_mode.FOLLOWING or (joystick_mode == Joystick_mode.FIXED and _is_point_inside_base(event.position)):
-							if joystick_mode == Joystick_mode.DYNAMIC or joystick_mode == Joystick_mode.FOLLOWING:
-								_move_base(event.position)
-							if visibility_mode == Visibility_mode.WHEN_TOUCHED:
-								show()
-							_touch_index = event.index
-							_tip.modulate = pressed_color
-							_update_joystick(event.position)
-							get_viewport().set_input_as_handled()
-				elif event.index == _touch_index:
-					#print("Touch released")#Debug
-					_reset()
-					if visibility_mode == Visibility_mode.WHEN_TOUCHED:
-						hide()
-					get_viewport().set_input_as_handled()
-			elif event is InputEventScreenDrag:
-				if event.index == _touch_index:
-					#print("Dragging at:", event.position)#Debug
-					_update_joystick(event.position)
-					get_viewport().set_input_as_handled()
+	else :  
+		if event is InputEventScreenTouch:
+			#print("Touch event detected")#Debug
+			if event.pressed:
+				#print("Touch pressed at:", event.position) #Debug
+				if _is_point_inside_joystick_area(event.position) and _touch_index == -1:
+					if joystick_mode == Joystick_mode.DYNAMIC or joystick_mode == Joystick_mode.FOLLOWING or (joystick_mode == Joystick_mode.FIXED and _is_point_inside_base(event.position)):
+						if joystick_mode == Joystick_mode.DYNAMIC or joystick_mode == Joystick_mode.FOLLOWING:
+							_move_base(event.position)
+						if visibility_mode == Visibility_mode.WHEN_TOUCHED:
+							show()
+						_touch_index = event.index
+						_tip.modulate = pressed_color
+						_update_joystick(event.position)
+						get_viewport().set_input_as_handled()
+			elif event.index == _touch_index:
+				#print("Touch released")#Debug
+				_reset()
+				if visibility_mode == Visibility_mode.WHEN_TOUCHED:
+					hide()
+				get_viewport().set_input_as_handled()
+		elif event is InputEventScreenDrag:
+			if event.index == _touch_index:
+				#print("Dragging at:", event.position)#Debug
+				_update_joystick(event.position)
+				get_viewport().set_input_as_handled()
 	
 
 func _move_base(new_position: Vector2) -> void:
@@ -202,11 +194,11 @@ func _reset():
 #func _deactive():
 	#is_pressed = false
 # Fungsi baru untuk mengatur visibilitas joystick
-func _set_joystick_visibility(is_visible: bool) -> void:
-	if is_visible:
-		show()
-	else:
-		hide()
+#func _set_joystick_visibility(is_visible: bool) -> void:
+	#if is_visible:
+		#show()
+	#else:
+		#hide()
 
 func _exit_tree() -> void:
 	# Reset joystick input saat node dihapus

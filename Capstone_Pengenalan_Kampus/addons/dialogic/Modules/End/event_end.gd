@@ -9,7 +9,6 @@ extends DialogicEvent
 ################################################################################
 
 func _execute() -> void:
-	global_variable.is_dialog = false
 	dialogic.end_timeline()
 
 #endregion

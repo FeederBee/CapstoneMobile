@@ -1,16 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://cymw13qsausvp"]
+[gd_scene load_steps=13 format=3 uid="uid://cymw13qsausvp"]
 
 [ext_resource type="Script" path="res://Scripts/UIs/main_menu.gd" id="1_6q5lx"]
 [ext_resource type="Texture2D" uid="uid://bw51r3yrfbhrj" path="res://Assets/Sprites/UI/Unej-Jember.jpg" id="2_or48d"]
 [ext_resource type="FontFile" uid="uid://c5fjgx33wdlaf" path="res://Assets/Sprites/UI/ARCADECLASSIC.TTF" id="3_3rh2e"]
 [ext_resource type="Texture2D" uid="uid://dmn0iqvmwvdv" path="res://Assets/Sprites/UI/Button/btn-start.png" id="4_na08j"]
+[ext_resource type="Texture2D" uid="uid://dsxyekajf6eb1" path="res://Assets/Sprites/UI/Button/btn-settings.png" id="5_3daxc"]
 [ext_resource type="Script" path="res://Scripts/UIs/load.gd" id="5_cms8s"]
 [ext_resource type="Texture2D" uid="uid://dnyrt03q60vww" path="res://Assets/Sprites/UI/Button/btn-exit.png" id="6_8ec4f"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4am6i"]
 line_spacing = 6.0
 font = ExtResource("3_3rh2e")
-font_size = 90
+font_size = 70
 
 [sub_resource type="Animation" id="Animation_r56wi"]
 length = 0.001
@@ -122,20 +123,23 @@ grow_vertical = 2
 
 [node name="Load" type="TouchScreenButton" parent="CanvasLayer2/Control"]
 visible = false
-scale = Vector2(0.665992, 0.369942)
+position = Vector2(-128, 4.76837e-07)
+scale = Vector2(1.29949, 0.709677)
 script = ExtResource("5_cms8s")
 
 [node name="Setting" type="TouchScreenButton" parent="CanvasLayer2/Control"]
-visible = false
+position = Vector2(-128, 88)
+scale = Vector2(0.948148, 0.715447)
+texture_normal = ExtResource("5_3daxc")
 
 [node name="Play" type="TouchScreenButton" parent="CanvasLayer2/Control"]
-position = Vector2(-64, -40)
-scale = Vector2(0.649746, 0.516129)
+position = Vector2(-128, -24)
+scale = Vector2(1.29949, 0.709677)
 texture_normal = ExtResource("4_na08j")
 
 [node name="Quit" type="TouchScreenButton" parent="CanvasLayer2/Control"]
-position = Vector2(-64, 152)
-scale = Vector2(0.603774, 0.516129)
+position = Vector2(-128, 192)
+scale = Vector2(1.20755, 0.709677)
 texture_normal = ExtResource("6_8ec4f")
 
 [node name="Label" type="Label" parent="CanvasLayer2"]
@@ -145,13 +149,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -576.0
-offset_top = -304.0
+offset_top = -320.0
 offset_right = 576.0
-offset_bottom = -114.0
+offset_bottom = -130.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-text = "Game   Pengenalan    Lingkungan   Kampus "
+text = "Game   Pengenalan    Lingkungan
+Kampus"
 label_settings = SubResource("LabelSettings_4am6i")
 horizontal_alignment = 1
 vertical_alignment = 1

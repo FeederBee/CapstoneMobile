@@ -28,12 +28,13 @@ func process(_delta: float) -> void:
 func _on_play_pressed() -> void:
 	play = true
 	Global.is_joystick = true
+	Global.player_stop = false
 	Global.spawn_position = Vector2.ZERO
 	Global.change_scene_to(Entrance_map, transition_path)
 
 func _on_load_pressed() -> void:
-	#GameManager.load_game()  # Memuat game dari posisi terakhir
-	pass
+	Global.is_joystick = true
+	Global.player_stop = false
 
 
 func _on_setting_pressed() -> void:
@@ -55,7 +56,7 @@ func _on_quit_released() -> void:
 	pass # Replace with function body.
 
 #Animasi screen
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	if play: 
 		pass
 	else : 

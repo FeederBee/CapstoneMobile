@@ -1,0 +1,6 @@
+join npc1 left [animation="Instant In"]
+npc1: Hello and welcome to fasilkom!!
+npc1: mknoibbjlnk
+npc1: jbkhbjbjk
+npc1: lknbiyutcycvj
+[signal arg="activate_something"]
