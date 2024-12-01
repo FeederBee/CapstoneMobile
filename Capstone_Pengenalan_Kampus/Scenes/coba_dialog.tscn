@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqwuox3ln20ie"]
+
+[ext_resource type="PackedScene" uid="uid://db5ao624oyl2w" path="res://Scenes/NPCs/NPC_fasilkom.tscn" id="1_7jto6"]
+[ext_resource type="PackedScene" uid="uid://b3x8rw66ja1e0" path="res://Scenes/Player/Player.tscn" id="2_v7f8s"]
+
+[node name="Coba_dialog" type="Node2D"]
+
+[node name="NPC_fasilkom" parent="." instance=ExtResource("1_7jto6")]
+position = Vector2(794, 339)
+
+[node name="Player" parent="." instance=ExtResource("2_v7f8s")]
+position = Vector2(736, 372)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(4, 4)

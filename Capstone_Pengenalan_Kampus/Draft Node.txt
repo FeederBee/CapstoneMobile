@@ -1,0 +1,54 @@
+Main Node : 
+Main (Node2D) - [Main.gd]
+├── World (Node2D)
+│   ├── Map (TileMap)
+│   │   ├── GroundLayer (TileMap)
+│   │   ├── ObjectLayer (TileMap)
+│   │   └── CollisionLayer (TileMap)
+│   ├── PlayerInstance (CharacterBody2D - Instance of Player.tscn)
+│   ├── NPCs (Node2D)
+│   │   ├── NPC_1_Instance (CharacterBody2D - Instance of NPC.tscn)
+│   │   ├── NPC_2_Instance (CharacterBody2D - Instance of NPC.tscn)
+│   │   └── ...
+│   └── Collectibles (Node2D)
+│       ├── Collectible_1_Instance (Area2D - Instance of Collectible.tscn)
+│       └── Collectible_2_Instance (Area2D - Instance of Collectible.tscn)
+├── UI (CanvasLayer) - [UIManager.gd]
+│   ├── HealthBar (TextureProgressBar)
+│   ├── MiniMap (TextureRect)
+│   ├── DialogueBox (Panel)
+│   │   ├── NameLabel (Label)
+│   │   └── TextLabel (RichTextLabel)
+│   └── ControlButtons (Control)
+│       ├── ButtonUp (TextureButton)
+│       ├── ButtonDown (TextureButton)
+│       ├── ButtonLeft (TextureButton)
+│       └── ButtonRight (TextureButton)
+├── Audio (Node) - [AudioManager.gd]
+│   ├── BGM (AudioStreamPlayer)
+│   └── SFX (AudioStreamPlayer)
+└── GameManager (Node) - [GameManager.gd]
+
+Player Node : 
+Player (CharacterBody2D) - [Player.gd]
+├── AnimatedSprite2D (AnimatedSprite2D)
+├── CollisionShape2D (CollisionShape2D)
+├── Area2D 
+│   └── CollisionShape2D
+├── CanvasLayer 
+│   └── VirtualJoystick
+└── Camera (Camera2D)
+
+NPC Node: 
+NPC (CharacterBody2D) - [NPC.gd]
+├── AnimatedSprite2D (AnimatedSprite2D)
+├── CollisionShape2D (CollisionShape2D)
+├── Area2D 
+│   └── CollisionShape2D
+└── Dialogue (Label or RichTextLabel)
+
+
+Collectible: 
+Collectible (Area2D) - [Collectible.gd]
+├── Sprite (Sprite2D)
+└── CollisionShape2D (CollisionShape2D)

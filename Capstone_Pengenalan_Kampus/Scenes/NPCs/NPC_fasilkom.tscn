@@ -1,0 +1,120 @@
+[gd_scene load_steps=17 format=3 uid="uid://db5ao624oyl2w"]
+
+[ext_resource type="Script" path="res://Scripts/NPCs/npc_1.gd" id="1_1qu47"]
+[ext_resource type="Texture2D" uid="uid://cjmrhgwnx0qsh" path="res://Assets/Sprites/Player/idleD.png" id="1_y3rfc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vssup"]
+atlas = ExtResource("1_y3rfc")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gijns"]
+atlas = ExtResource("1_y3rfc")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4qrm"]
+atlas = ExtResource("1_y3rfc")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6xmw"]
+atlas = ExtResource("1_y3rfc")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fa62e"]
+atlas = ExtResource("1_y3rfc")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stv2m"]
+atlas = ExtResource("1_y3rfc")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mf84g"]
+atlas = ExtResource("1_y3rfc")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ic7w7"]
+atlas = ExtResource("1_y3rfc")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48snk"]
+atlas = ExtResource("1_y3rfc")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7n2wl"]
+atlas = ExtResource("1_y3rfc")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwv3k"]
+atlas = ExtResource("1_y3rfc")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bid61"]
+atlas = ExtResource("1_y3rfc")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qnj1a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vssup")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gijns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4qrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6xmw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fa62e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stv2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mf84g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ic7w7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48snk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7n2wl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwv3k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bid61")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4qmw6"]
+radius = 6.08276
+
+[node name="NPC_fasilkom" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_1qu47")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qnj1a")
+animation = &"idle"
+offset = Vector2(0.565, -5.825)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4qmw6")
+
+[node name="dialog" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="dialog"]
+polygon = PackedVector2Array(0, 0, -6, 19, 6, 19)
+
+[connection signal="area_entered" from="dialog" to="." method="_on_dialog_area_entered"]
+[connection signal="body_entered" from="dialog" to="." method="_on_dialog_body_entered"]

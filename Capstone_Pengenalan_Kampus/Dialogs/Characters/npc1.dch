@@ -1,0 +1,32 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+"_translation_id": "",
+"color": Color(1, 1, 1, 1),
+"custom_info": {
+"prefix": "",
+"sound_mood_default": "",
+"sound_moods": {},
+"style": "dialog_styles",
+"suffix": ""
+},
+"default_portrait": "npc1",
+"description": "",
+"display_name": "Astod",
+"mirror": false,
+"nicknames": ["Bujang"],
+"offset": Vector2(0, 0),
+"portraits": {
+"npc1": {
+"export_overrides": {
+"image": "\"res://Assets/Pictures/MC (1).png\""
+},
+"ignore_char_scale": false,
+"mirror": false,
+"offset": Vector2(-200, 0),
+"scale": 0.9,
+"scene": ""
+}
+},
+"scale": 1.0
+}

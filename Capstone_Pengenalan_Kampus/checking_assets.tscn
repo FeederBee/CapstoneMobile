@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://hsbs5tjp46ww"]
+
+[ext_resource type="Texture2D" uid="uid://bthdrx7hgx1ym" path="res://Assets/Map/Objects/CP_V1.0.4.png" id="1_2l6os"]
+
+[node name="CheckingAssets" type="Node2D"]
+
+[node name="CpV1_0_4" type="Sprite2D" parent="."]
+position = Vector2(-105, 651)
+scale = Vector2(0.367188, 0.384766)
+texture = ExtResource("1_2l6os")
