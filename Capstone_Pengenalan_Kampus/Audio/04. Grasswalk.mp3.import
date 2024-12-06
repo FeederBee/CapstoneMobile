@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/04. Grasswalk.mp3-4e84806013a0429fba0de2f95de
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

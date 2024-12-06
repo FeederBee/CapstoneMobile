@@ -1,7 +1,7 @@
 extends Control
 
-@onready var transition = $pause_menu/Transition/AnimationPlayer
-var transition_path = "pause_menu/Transition/AnimationPlayer"
+#@onready var transition = $pause_menu/Transition/AnimationPlayer
+#var transition_path = "pause_menu/Transition/AnimationPlayer"
 #$PauseMenu
 
 # Called when the node enters the scene tree for the first time.

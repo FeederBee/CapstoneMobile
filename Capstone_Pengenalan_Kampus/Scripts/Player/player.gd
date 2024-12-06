@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+
+#@export currentpo = position.x
+
 #@export var mov_speed = Global.global_speed
 @export var run_speed = 300
 @export var recovery_rate = 5
@@ -39,7 +42,7 @@ func _physics_process(_delta: float) -> void:
 		
 		move_and_slide()
 		
-		print(Global.global_speed + state_run.run_speed)
+		#print(Global.global_speed + state_run.run_speed)
 
 		# Atur kecepatan animasi berdasarkan kecepatan player
 		var velocity_length = velocity.length()/150

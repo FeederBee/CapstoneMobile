@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/2. Crazy Dave Intro.mp3-a8e9eb8d85f528bef4399
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

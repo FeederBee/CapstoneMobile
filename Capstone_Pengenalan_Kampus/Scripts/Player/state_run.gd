@@ -46,8 +46,8 @@ func _process(_delta: float) -> void:
 			await get_tree().create_timer(3).timeout
 			bg_stamina.hide()
 		
-	print('deplented_rate: ', depelented_rate)
-	print('ngetroll: ', nge_troll.cheat)
+	#print('deplented_rate: ', depelented_rate)
+	#print('ngetroll: ', nge_troll.cheat)
 	
 	depelented_rate = 0 if nge_troll.cheat else player.depelented_rate
 

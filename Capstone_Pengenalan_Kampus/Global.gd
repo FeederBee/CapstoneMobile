@@ -4,7 +4,8 @@ extends Node
 #Player Variable
 var player_stop:bool = false #player diizinkan bergerak atau tidak
 var spawn_position : Vector2 = Vector2.ZERO #koordinat titik spawn player
-var blur: bool =false
+#var blur: bool =false
+
 var global_speed : float = 100  # Kecepatan default player
 var buff_duration : float = 5.0  # Durasi buff dalam detik
 var is_buffed : bool = false #player dibuff atau tidak

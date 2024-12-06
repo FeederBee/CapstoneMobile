@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bxoccq6qins32"]
 
-[ext_resource type="Script" path="res://Scripts/AudioManager.gd" id="1_lu0si"]
+[ext_resource type="Script" path="res://AudioManager.gd" id="1_lu0si"]
 
 [sub_resource type="Animation" id="Animation_ecap4"]
 length = 0.001
@@ -42,7 +42,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"transitions": PackedFloat32Array(1, 1.46409),
 "update": 0,
 "values": [0.0, -80.0]
 }
