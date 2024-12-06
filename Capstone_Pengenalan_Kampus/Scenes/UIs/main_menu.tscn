@@ -1,19 +1,22 @@
-[gd_scene load_steps=13 format=3 uid="uid://cymw13qsausvp"]
+[gd_scene load_steps=16 format=3 uid="uid://cymw13qsausvp"]
 
 [ext_resource type="Script" path="res://Scripts/UIs/main_menu.gd" id="1_6q5lx"]
 [ext_resource type="Texture2D" uid="uid://bw51r3yrfbhrj" path="res://Assets/Sprites/UI/Unej-Jember.jpg" id="2_or48d"]
 [ext_resource type="FontFile" uid="uid://c5fjgx33wdlaf" path="res://Assets/Sprites/UI/ARCADECLASSIC.TTF" id="3_3rh2e"]
-[ext_resource type="Texture2D" uid="uid://dmn0iqvmwvdv" path="res://Assets/Sprites/UI/Button/btn-start.png" id="4_na08j"]
-[ext_resource type="Texture2D" uid="uid://dsxyekajf6eb1" path="res://Assets/Sprites/UI/Button/btn-settings.png" id="5_3daxc"]
+[ext_resource type="Texture2D" uid="uid://bx0h7xqgetnk4" path="res://Assets/Sprites/UI/Button/btn_pink.png" id="3_san5n"]
+[ext_resource type="LabelSettings" uid="uid://dn3nilvhdaih5" path="res://Assets/font_game_menu.tres" id="4_tanus"]
 [ext_resource type="Script" path="res://Scripts/UIs/load.gd" id="5_cms8s"]
-[ext_resource type="Texture2D" uid="uid://dnyrt03q60vww" path="res://Assets/Sprites/UI/Button/btn-exit.png" id="6_8ec4f"]
+[ext_resource type="Texture2D" uid="uid://d1pi0pp4c7p2p" path="res://Assets/Sprites/UI/Button/btn_blue.png" id="5_p4btd"]
+[ext_resource type="Texture2D" uid="uid://b1474w4ylyi0i" path="res://Assets/Sprites/UI/Button/btn_green.png" id="7_a7s1y"]
+[ext_resource type="Texture2D" uid="uid://vh6igc0a4d8l" path="res://Assets/Sprites/UI/Button/btn_gray.png" id="8_upqqc"]
+[ext_resource type="PackedScene" uid="uid://8w1nlnlr5rh7" path="res://Scenes/UIs/setting_menu.tscn" id="10_dvjjs"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4am6i"]
 line_spacing = 6.0
 font = ExtResource("3_3rh2e")
 font_size = 70
 
-[sub_resource type="Animation" id="Animation_r56wi"]
+[sub_resource type="Animation" id="Animation_yid4l"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -25,11 +28,11 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0, 0, 0, 1)]
+"values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_tdu6x"]
-resource_name = "screen_fade_in"
+[sub_resource type="Animation" id="Animation_fbb0b"]
+resource_name = "gedung_fade_in"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -40,23 +43,11 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer/ColorRect:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.0235294)]
 }
 
-[sub_resource type="Animation" id="Animation_4fmia"]
-resource_name = "screen_fade_out"
+[sub_resource type="Animation" id="Animation_7w8n5"]
+resource_name = "fade_out"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -64,54 +55,20 @@ tracks/0/path = NodePath("AnimationPlayer/ColorRect:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.966667),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer/ColorRect:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_sv73r"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j724w"]
 _data = {
-"RESET": SubResource("Animation_r56wi"),
-"screen_fade_in": SubResource("Animation_tdu6x"),
-"screen_fade_out": SubResource("Animation_4fmia")
+"RESET": SubResource("Animation_yid4l"),
+"screen_fade_in": SubResource("Animation_fbb0b"),
+"screen_fade_out": SubResource("Animation_7w8n5")
 }
 
-[node name="MainMenu" type="Node2D"]
-script = ExtResource("1_6q5lx")
-metadata/_edit_use_anchors_ = true
-
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
-
-[node name="Background" type="TextureRect" parent="CanvasLayer2"]
-modulate = Color(0.252028, 0.252028, 0.252028, 1)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -968.0
-offset_top = -466.0
-offset_right = 968.0
-offset_bottom = 480.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-texture = ExtResource("2_or48d")
-
-[node name="Control" type="Control" parent="CanvasLayer2"]
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -120,38 +77,36 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_6q5lx")
 
-[node name="Load" type="TouchScreenButton" parent="CanvasLayer2/Control"]
-visible = false
-position = Vector2(-128, 4.76837e-07)
-scale = Vector2(1.29949, 0.709677)
-script = ExtResource("5_cms8s")
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.252028, 0.252028, 0.252028, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -968.0
+offset_top = -473.0
+offset_right = 968.0
+offset_bottom = 473.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_or48d")
 
-[node name="Setting" type="TouchScreenButton" parent="CanvasLayer2/Control"]
-position = Vector2(-128, 88)
-scale = Vector2(0.948148, 0.715447)
-texture_normal = ExtResource("5_3daxc")
-
-[node name="Play" type="TouchScreenButton" parent="CanvasLayer2/Control"]
-position = Vector2(-128, -24)
-scale = Vector2(1.29949, 0.709677)
-texture_normal = ExtResource("4_na08j")
-
-[node name="Quit" type="TouchScreenButton" parent="CanvasLayer2/Control"]
-position = Vector2(-128, 192)
-scale = Vector2(1.20755, 0.709677)
-texture_normal = ExtResource("6_8ec4f")
-
-[node name="Label" type="Label" parent="CanvasLayer2"]
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -576.0
-offset_top = -320.0
+offset_top = -325.0
 offset_right = 576.0
-offset_bottom = -130.0
+offset_bottom = -135.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -162,28 +117,115 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer2"]
-libraries = {
-"": SubResource("AnimationLibrary_sv73r")
-}
-speed_scale = 1.5
+[node name="ButtonComponent" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer2/AnimationPlayer"]
-self_modulate = Color(0, 0, 0, 1)
+[node name="Play" type="TouchScreenButton" parent="ButtonComponent"]
+position = Vector2(-128, -34)
+scale = Vector2(0.948148, 0.709677)
+texture_normal = ExtResource("3_san5n")
+
+[node name="Label" type="Label" parent="ButtonComponent/Play"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0547
+offset_top = -31.5455
+offset_right = 51.9453
+offset_bottom = 17.4545
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLAY"
+label_settings = ExtResource("4_tanus")
+
+[node name="Load" type="TouchScreenButton" parent="ButtonComponent"]
+position = Vector2(-128, 49)
+scale = Vector2(0.948148, 0.709677)
+texture_normal = ExtResource("5_p4btd")
+script = ExtResource("5_cms8s")
+
+[node name="Label" type="Label" parent="ButtonComponent/Load"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -31.5454
+offset_right = 53.0
+offset_bottom = 17.4546
+grow_horizontal = 2
+grow_vertical = 2
+text = "LOAD"
+label_settings = ExtResource("4_tanus")
+
+[node name="Setting" type="TouchScreenButton" parent="ButtonComponent"]
+position = Vector2(-128, 132)
+scale = Vector2(0.948148, 0.715447)
+texture_normal = ExtResource("7_a7s1y")
+
+[node name="Label" type="Label" parent="ButtonComponent/Setting"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.5
+offset_top = -31.4887
+offset_right = 105.5
+offset_bottom = 17.5113
+grow_horizontal = 2
+grow_vertical = 2
+text = "Settings"
+label_settings = ExtResource("4_tanus")
+
+[node name="Quit" type="TouchScreenButton" parent="ButtonComponent"]
+position = Vector2(-128, 216)
+scale = Vector2(0.941176, 0.709677)
+texture_normal = ExtResource("8_upqqc")
+
+[node name="Label" type="Label" parent="ButtonComponent/Quit"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -31.5454
+offset_right = 53.0
+offset_bottom = 17.4546
+grow_horizontal = 2
+grow_vertical = 2
+text = "EXIT"
+label_settings = ExtResource("4_tanus")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j724w")
+}
+
+[node name="ColorRect" type="ColorRect" parent="AnimationPlayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
-metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="CanvasLayer2/Control/Load" to="." method="_on_load_pressed"]
-[connection signal="released" from="CanvasLayer2/Control/Load" to="." method="_on_load_released"]
-[connection signal="pressed" from="CanvasLayer2/Control/Setting" to="." method="_on_setting_pressed"]
-[connection signal="released" from="CanvasLayer2/Control/Setting" to="." method="_on_setting_released"]
-[connection signal="pressed" from="CanvasLayer2/Control/Play" to="." method="_on_play_pressed"]
-[connection signal="released" from="CanvasLayer2/Control/Play" to="." method="_on_play_released"]
-[connection signal="pressed" from="CanvasLayer2/Control/Quit" to="." method="_on_quit_pressed"]
-[connection signal="released" from="CanvasLayer2/Control/Quit" to="." method="_on_quit_released"]
-[connection signal="animation_finished" from="CanvasLayer2/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="setting_menu" parent="CanvasLayer" instance=ExtResource("10_dvjjs")]
+
+[connection signal="pressed" from="ButtonComponent/Play" to="." method="_on_play_pressed"]
+[connection signal="released" from="ButtonComponent/Play" to="." method="_on_play_released"]
+[connection signal="pressed" from="ButtonComponent/Setting" to="." method="_on_setting_pressed"]
+[connection signal="pressed" from="ButtonComponent/Quit" to="." method="_on_quit_pressed"]

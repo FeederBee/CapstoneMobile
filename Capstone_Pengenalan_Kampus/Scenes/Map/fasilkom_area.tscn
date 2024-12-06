@@ -244,7 +244,7 @@ position = Vector2(2350, 2239)
 up_direction = Vector2(0.707107, -0.707107)
 
 [node name="Kucing" parent="Y_sort/Karakter" instance=ExtResource("17_p1m2e")]
-position = Vector2(1489, 417)
+position = Vector2(2254, 1414)
 
 [node name="Player" parent="Y_sort/Karakter" instance=ExtResource("3_upaks")]
 position = Vector2(10, 1508)
@@ -355,7 +355,7 @@ polygon = PackedVector2Array(2946, 1629, 2946, 2610, 2960, 2610, 2960, 2687, 294
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(10, 1508)
-zoom = Vector2(3, 3)
+zoom = Vector2(3.5, 3.5)
 limit_left = -44
 limit_top = 45
 limit_right = 2946

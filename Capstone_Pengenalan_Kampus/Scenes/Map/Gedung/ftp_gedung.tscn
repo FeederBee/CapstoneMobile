@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=3 uid="uid://cq5llty23j5f"]
+
+[ext_resource type="Texture2D" uid="uid://ci1gg0d4vv676" path="res://Assets/Map/Gedung/FTP-mergeNew.png" id="1_vq5dj"]
+[ext_resource type="Script" path="res://Scripts/Map/Gedung/state_animation_fakultas.gd" id="2_ymm1k"]
+
+[sub_resource type="Animation" id="Animation_bqcmy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ftp-mergeNew:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ebndd"]
+resource_name = "gedung_fadein"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ftp-mergeNew:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.470588), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_135sj"]
+resource_name = "gedung_fadeout"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ftp-mergeNew:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.470588)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v5j0n"]
+_data = {
+"RESET": SubResource("Animation_bqcmy"),
+"gedung_fadein": SubResource("Animation_ebndd"),
+"gedung_fadeout": SubResource("Animation_135sj")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c3oqu"]
+size = Vector2(496, 339)
+
+[node name="ftp_gedung" type="Node2D"]
+
+[node name="Ftp-mergeNew" type="Sprite2D" parent="."]
+texture = ExtResource("1_vq5dj")
+offset = Vector2(0, -130)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_v5j0n")
+}
+
+[node name="visibility" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="visibility"]
+position = Vector2(0, -169.5)
+shape = SubResource("RectangleShape2D_c3oqu")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="visibility"]
+polygon = PackedVector2Array(1, -418, -128, -339, -1, -318, 129, -340)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(63, 0, 248, 0, 248, 30, 254, 30, 254, 62, 64, 62, 64, 71, 59, 71, 59, 87, 48, 87, 48, 105, 40, 105, 40, 87, -40, 87, -40, 105, -48, 105, -48, 87, -59, 87, -59, 71, -64, 71, -64, 63, -98, 63, -98, 62, -254, 62, -254, 30, -248, 30, -248, 0)
+
+[node name="state_animation_fakultas" type="Node" parent="."]
+script = ExtResource("2_ymm1k")
+
+[connection signal="body_entered" from="visibility" to="state_animation_fakultas" method="_on_visibility_body_entered"]
+[connection signal="body_exited" from="visibility" to="state_animation_fakultas" method="_on_visibility_body_exited"]

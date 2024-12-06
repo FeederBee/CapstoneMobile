@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqwuox3ln20ie"]
+
+[ext_resource type="PackedScene" uid="uid://db5ao624oyl2w" path="res://Scenes/NPCs/NPC_fasilkom.tscn" id="1_7jto6"]
+[ext_resource type="PackedScene" uid="uid://b3x8rw66ja1e0" path="res://Scenes/Player/Player.tscn" id="2_v7f8s"]
+[ext_resource type="PackedScene" uid="uid://bklq78ahnwv4v" path="res://Scenes/Buff/buff_speed.tscn" id="3_kdb1x"]
+[ext_resource type="PackedScene" uid="uid://cq5llty23j5f" path="res://Scenes/Map/Gedung/ftp_gedung.tscn" id="4_cbhpa"]
+
+[node name="Coba" type="Node2D"]
+
+[node name="NPC_fasilkom" parent="." instance=ExtResource("1_7jto6")]
+position = Vector2(794, 339)
+
+[node name="Player" parent="." instance=ExtResource("2_v7f8s")]
+position = Vector2(736, 372)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(4, 4)
+
+[node name="buff_speed" parent="." instance=ExtResource("3_kdb1x")]
+position = Vector2(659, 386)
+
+[node name="ftp_gedung" parent="." instance=ExtResource("4_cbhpa")]
+position = Vector2(720, 260)

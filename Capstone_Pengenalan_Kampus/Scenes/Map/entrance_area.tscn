@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://bxr4xrnk238qd"]
+[gd_scene load_steps=25 format=4 uid="uid://bxr4xrnk238qd"]
 
 [ext_resource type="Script" path="res://Scripts/Map/entrance_area.gd" id="1_omukd"]
 [ext_resource type="Texture2D" uid="uid://dbos6g8eyweqh" path="res://Assets/Map/entrance_area.jpg" id="1_oxpo6"]
@@ -12,8 +12,11 @@
 [ext_resource type="TileSet" uid="uid://cw8lse4vxdb8o" path="res://Assets/trees.tres" id="8_vpgwo"]
 [ext_resource type="Texture2D" uid="uid://dgqucdvintfyv" path="res://Assets/Map/Gedung/masjid.png" id="9_rbygt"]
 [ext_resource type="Texture2D" uid="uid://bllenf7wy4yxd" path="res://Assets/Map/Gedung/gedung2.png" id="10_ccoib"]
+[ext_resource type="PackedScene" uid="uid://bklq78ahnwv4v" path="res://Scenes/Buff/buff_speed.tscn" id="13_ph0rx"]
 [ext_resource type="Texture2D" uid="uid://bopfxklqss87u" path="res://Assets/Sprites/UI/Button/button_nextmap.png" id="13_ut41c"]
 [ext_resource type="PackedScene" uid="uid://85745yt6h7dj" path="res://Scenes/UIs/pause_menu.tscn" id="14_71mk7"]
+[ext_resource type="Texture2D" uid="uid://dkd1veohbggti" path="res://Assets/Sprites/UI/Button/btnkcl_gray.png" id="15_yeqio"]
+[ext_resource type="FontFile" uid="uid://c5fjgx33wdlaf" path="res://Assets/Sprites/UI/ARCADECLASSIC.TTF" id="16_x8ngf"]
 
 [sub_resource type="Animation" id="Animation_wlbwy"]
 length = 0.001
@@ -96,6 +99,10 @@ size = Vector2(72, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lmq8g"]
 size = Vector2(72, 10)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lp2ce"]
+font = ExtResource("16_x8ngf")
+font_size = 40
 
 [node name="entrance_area" type="Node2D"]
 script = ExtResource("1_omukd")
@@ -205,12 +212,17 @@ y_sort_enabled = true
 position = Vector2(1929, 2384)
 
 [node name="Camera2D" type="Camera2D" parent="Y_sort/Karakter/Player"]
-zoom = Vector2(5, 5)
+zoom = Vector2(3.5, 3.5)
 limit_left = 65
 limit_top = 35
 limit_right = 3140
 limit_bottom = 2500
 editor_draw_limits = true
+
+[node name="Buff" type="Node2D" parent="Y_sort"]
+
+[node name="buff_speed" parent="Y_sort/Buff" instance=ExtResource("13_ph0rx")]
+position = Vector2(1952, 2272)
 
 [node name="Change_map" type="Node2D" parent="."]
 
@@ -249,14 +261,34 @@ grow_vertical = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="fasilkom_l_btn" type="TouchScreenButton" parent="ControlLayer/ChangeMap_btn"]
-position = Vector2(-300, -160)
+position = Vector2(-448, -341)
+scale = Vector2(1.9375, 0.68)
+texture_normal = ExtResource("15_yeqio")
+
+[node name="Label" type="Label" parent="ControlLayer/ChangeMap_btn/fasilkom_l_btn"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -30.0
+offset_right = 49.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "next"
+label_settings = SubResource("LabelSettings_lp2ce")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="fasilkom_r_btn" type="TouchScreenButton" parent="ControlLayer/ChangeMap_btn"]
+visible = false
+position = Vector2(-383, -328)
 scale = Vector2(4, 4)
 texture_normal = ExtResource("13_ut41c")
 
-[node name="fasilkom_r_btn" type="TouchScreenButton" parent="ControlLayer/ChangeMap_btn"]
-position = Vector2(-300, -160)
-scale = Vector2(4, 4)
-texture_normal = ExtResource("13_ut41c")
+[node name="AudioComponent" type="Node" parent="."]
 
 [connection signal="body_entered" from="Change_map/to_fasilkom_R" to="." method="_on_to_fasilkom_r_body_entered"]
 [connection signal="body_exited" from="Change_map/to_fasilkom_R" to="." method="_on_to_fasilkom_r_body_exited"]

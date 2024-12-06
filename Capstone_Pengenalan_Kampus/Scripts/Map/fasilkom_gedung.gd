@@ -6,8 +6,6 @@ extends Node2D
 @onready var anim_player = $AnimationPlayer
 @export var transparency_value: float = 0.5  # Nilai transparansi untuk bagian atas gedung (0 - 1)
 
-
-
 func _ready():
 	if anim_player:
 		print("AnimationPlayer found!")

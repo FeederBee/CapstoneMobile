@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 var play 
 var loadgame
@@ -8,18 +8,24 @@ var setting
 var Entrance_map = "res://Scenes/Map/entrance_area.tscn"
 
 #transisi
-var transition_path = "MainMenu/CanvasLayer2/AnimationPlayer"
-@onready var transition = get_node("CanvasLayer2/AnimationPlayer")
+var transition_path = "MainMenu/AnimationPlayer"
+@onready var transition = $AnimationPlayer
+@onready var setting_menu: Control =$CanvasLayer/setting_menu
+@onready var button_component: Control = $ButtonComponent
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#MapManager.preload_maps()
+	setting_menu.hide()
 	transition.play("screen_fade_in")
+	AudioManager.play_bgm("main_menu")
 	
 	play = false
 	loadgame = false
 	setting = false
+	
+	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func process(_delta: float) -> void:
@@ -38,7 +44,8 @@ func _on_load_pressed() -> void:
 
 
 func _on_setting_pressed() -> void:
-	pass # Replace with function body.
+	button_component.hide()
+	setting_menu.show()
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
@@ -50,7 +57,7 @@ func _on_load_released() -> void:
 	pass # Replace with function body.
 
 func _on_setting_released() -> void:
-	pass # Replace with function body.
+	pass
 
 func _on_quit_released() -> void:
 	pass # Replace with function body.

@@ -1,9 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3x8rw66ja1e0"]
+[gd_scene load_steps=17 format=3 uid="uid://b3x8rw66ja1e0"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_y8avl"]
 [ext_resource type="SpriteFrames" uid="uid://cnkuktouiyvgk" path="res://Scenes/Player/Player_draft0.tres" id="2_2pjk2"]
 [ext_resource type="Texture2D" uid="uid://b44kt5w12f2of" path="res://Assets/Sprites/Player/shadow.png" id="3_6bu36"]
+[ext_resource type="Texture2D" uid="uid://8hvflgbhjs3t" path="res://Assets/Sprites/UI/Button/Sprint_btn.png" id="5_vemkn"]
+[ext_resource type="Script" path="res://Scripts/Player/state_run.gd" id="6_kfyr0"]
+[ext_resource type="Script" path="res://Scripts/Player/bg_stamina.gd" id="8_7ailk"]
+[ext_resource type="LabelSettings" uid="uid://dn3nilvhdaih5" path="res://Assets/font_game_menu.tres" id="8_fgcky"]
+[ext_resource type="Script" path="res://nge_troll(hapus kalau sudah jadi).gd" id="8_qtw70"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://Scenes/Player/virtual_joystick.tscn" id="10_0s18b"]
+[ext_resource type="Texture2D" uid="uid://cv3kk5f7ms5fh" path="res://Assets/Sprites/UI/Button/templatebg_btn.png" id="10_64p2g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cy00h"]
 radius = 6.40291
@@ -11,55 +17,218 @@ radius = 6.40291
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e4yp5"]
 radius = 15.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4lll2"]
+bg_color = Color(0, 0, 0, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gxx76"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ka5v8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_03vv5"]
+bg_color = Color(0.255118, 0.606664, 1, 1)
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 126
 script = ExtResource("1_y8avl")
-speed = 200.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.4, 0.4)
 sprite_frames = ExtResource("2_2pjk2")
-animation = &"walkD"
-frame_progress = 0.812957
+animation = &"walkU"
 offset = Vector2(0, -13)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Shadows" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(-0.25, 6)
 scale = Vector2(0.7, 0.718)
 texture = ExtResource("3_6bu36")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.95, 0.95)
+shape = SubResource("CircleShape2D_cy00h")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Virtual Joystick" parent="CanvasLayer" instance=ExtResource("10_0s18b")]
-anchors_preset = 2
-anchor_left = 0.0
-anchor_top = 1.0
-anchor_right = 0.0
-anchor_bottom = 1.0
-offset_left = 90.0
-offset_top = -330.0
-offset_right = 367.0
-offset_bottom = -47.0
-grow_horizontal = 1
-grow_vertical = 0
+modulate = Color(1, 1, 1, 0.627451)
+offset_right = 569.0
+offset_bottom = 52.0
 scale = Vector2(0.9, 0.9)
 size_flags_horizontal = 0
 mouse_filter = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-scale = Vector2(0.95, 0.95)
-shape = SubResource("CircleShape2D_cy00h")
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Run_btn" type="TouchScreenButton" parent="CanvasLayer/Control"]
+self_modulate = Color(1, 1, 1, 0.627451)
+position = Vector2(-274, -225.286)
+scale = Vector2(1.28571, 1.2551)
+texture_normal = ExtResource("5_vemkn")
 
 [node name="Player_detection" type="Area2D" parent="."]
-visible = false
 collision_mask = 62
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_detection"]
 position = Vector2(0, -3)
 shape = SubResource("CapsuleShape2D_e4yp5")
 
+[node name="BgStamina" type="ProgressBar" parent="."]
+offset_left = -10.0
+offset_top = -17.0
+offset_right = 10.0
+offset_bottom = -15.0
+theme_override_styles/background = SubResource("StyleBoxFlat_4lll2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gxx76")
+value = 100.0
+show_percentage = false
+script = ExtResource("8_7ailk")
+
+[node name="BarStamina" type="ProgressBar" parent="BgStamina"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_ka5v8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_03vv5")
+value = 100.0
+show_percentage = false
+
+[node name="recover_timer" type="Timer" parent="BgStamina/BarStamina"]
+one_shot = true
+
+[node name="deplented_timer" type="Timer" parent="BgStamina/BarStamina"]
+
+[node name="bg_timer" type="Timer" parent="BgStamina"]
+one_shot = true
+
+[node name="state_run" type="Node" parent="."]
+script = ExtResource("6_kfyr0")
+
+[node name="NgeTroll" type="CanvasLayer" parent="."]
+layer = 0
+script = ExtResource("8_qtw70")
+
+[node name="Label" type="Label" parent="NgeTroll"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -63.5
+offset_top = 126.0
+offset_right = 63.5
+offset_bottom = 149.0
+grow_horizontal = 2
+text = "Entering  Game  Master  Mode"
+label_settings = ExtResource("8_fgcky")
+
+[node name="SuperSpeed" type="Label" parent="NgeTroll"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -89.0
+offset_top = 126.0
+offset_right = 89.0
+offset_bottom = 149.0
+grow_horizontal = 2
+text = "Unlimited  Stamina  Activated!"
+label_settings = ExtResource("8_fgcky")
+
+[node name="Timer" type="Timer" parent="NgeTroll"]
+
+[node name="Control" type="Control" parent="NgeTroll"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="active" type="TouchScreenButton" parent="NgeTroll/Control"]
+position = Vector2(-144, -312)
+scale = Vector2(1.0625, 0.6875)
+texture_normal = ExtResource("10_64p2g")
+
+[node name="GM" type="Label" parent="NgeTroll/Control/active"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -24.5
+offset_right = 26.5
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "GM"
+label_settings = ExtResource("8_fgcky")
+
+[node name="deactive" type="TouchScreenButton" parent="NgeTroll/Control"]
+position = Vector2(-144, -312)
+scale = Vector2(1.0625, 0.669643)
+texture_normal = ExtResource("10_64p2g")
+
+[node name="Label" type="Label" parent="NgeTroll/Control/deactive"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -24.5
+offset_right = 20.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "X"
+label_settings = ExtResource("8_fgcky")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="noob" type="Label" parent="NgeTroll"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -217.5
+offset_top = 127.0
+offset_right = 217.5
+offset_bottom = 176.0
+grow_horizontal = 2
+text = "Entering Noob Mode"
+label_settings = ExtResource("8_fgcky")
+
+[connection signal="pressed" from="CanvasLayer/Control/Run_btn" to="BgStamina" method="_on_run_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Run_btn" to="state_run" method="_on_run_btn_pressed"]
+[connection signal="released" from="CanvasLayer/Control/Run_btn" to="BgStamina" method="_on_run_btn_released"]
+[connection signal="released" from="CanvasLayer/Control/Run_btn" to="state_run" method="_on_run_btn_released"]
 [connection signal="area_entered" from="Player_detection" to="." method="_on_player_detection_area_entered"]
 [connection signal="area_exited" from="Player_detection" to="." method="_on_player_detection_area_exited"]
 [connection signal="body_entered" from="Player_detection" to="." method="_on_player_detection_body_entered"]
+[connection signal="timeout" from="BgStamina/BarStamina/recover_timer" to="BgStamina" method="_on_recover_timer_timeout"]
+[connection signal="timeout" from="BgStamina/BarStamina/recover_timer" to="BgStamina" method="_on_timer_timeout"]
+[connection signal="timeout" from="BgStamina/BarStamina/recover_timer" to="state_run" method="_on_recover_timer_timeout"]
+[connection signal="timeout" from="BgStamina/BarStamina/deplented_timer" to="BgStamina" method="_on_deplented_timer_timeout"]
+[connection signal="timeout" from="BgStamina/BarStamina/deplented_timer" to="BgStamina" method="_on_bgtimer_timeout"]
+[connection signal="timeout" from="BgStamina/BarStamina/deplented_timer" to="state_run" method="_on_deplented_timer_timeout"]
+[connection signal="timeout" from="BgStamina/bg_timer" to="state_run" method="_on_bg_timer_timeout"]
+[connection signal="timeout" from="NgeTroll/Timer" to="NgeTroll" method="_on_timer_timeout"]
+[connection signal="pressed" from="NgeTroll/Control/active" to="NgeTroll" method="_on_touch_screen_button_pressed"]
+[connection signal="pressed" from="NgeTroll/Control/deactive" to="NgeTroll" method="_on_deactive_pressed"]

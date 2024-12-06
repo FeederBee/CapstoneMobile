@@ -22,6 +22,7 @@ GameManager="*res://GameManager.gd"
 Global="*res://Global.gd"
 MapManager="*res://MapManager.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+AudioManager="*res://Scenes/AudioManager.tscn"
 
 [dialogic]
 

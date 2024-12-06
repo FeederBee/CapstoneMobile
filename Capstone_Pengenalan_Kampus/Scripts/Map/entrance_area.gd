@@ -16,6 +16,7 @@ var transition_path = "entrance_area/Transition/AnimationPlayer"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	transition.play("screen_fade_in")
+	AudioManager.play_bgm('entrance_area')
 	
 	if Global.spawn_position == Vector2.ZERO :
 		player_instance.global_position = Vector2(1940, 2460)
