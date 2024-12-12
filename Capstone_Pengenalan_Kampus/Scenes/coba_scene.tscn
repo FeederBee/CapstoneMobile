@@ -1,16 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqwuox3ln20ie"]
+[gd_scene load_steps=8 format=3 uid="uid://cqwuox3ln20ie"]
 
 [ext_resource type="PackedScene" uid="uid://db5ao624oyl2w" path="res://Scenes/NPCs/NPC_fasilkom.tscn" id="1_7jto6"]
 [ext_resource type="PackedScene" uid="uid://b3x8rw66ja1e0" path="res://Scenes/Player/Player.tscn" id="2_v7f8s"]
 [ext_resource type="PackedScene" uid="uid://bklq78ahnwv4v" path="res://Scenes/Buff/buff_speed.tscn" id="3_kdb1x"]
 [ext_resource type="PackedScene" uid="uid://cq5llty23j5f" path="res://Scenes/Map/Gedung/ftp_gedung.tscn" id="4_cbhpa"]
+[ext_resource type="PackedScene" uid="uid://bumypsmb4tj4y" path="res://Scenes/NPCs/npc_fmipa.tscn" id="5_ggf07"]
+[ext_resource type="PackedScene" uid="uid://chj3ccq1t78cg" path="res://Scenes/Map/Gedung/fkip_gedung.tscn" id="6_vb6nx"]
+[ext_resource type="PackedScene" uid="uid://coyrf3s55x4y2" path="res://Scenes/Map/Gedung/fasilkom_gedung.tscn" id="7_wfynw"]
 
 [node name="Coba" type="Node2D"]
+y_sort_enabled = true
 
 [node name="NPC_fasilkom" parent="." instance=ExtResource("1_7jto6")]
 position = Vector2(794, 339)
 
+[node name="NPCFMIPA" parent="." instance=ExtResource("5_ggf07")]
+position = Vector2(833, 345)
+
 [node name="Player" parent="." instance=ExtResource("2_v7f8s")]
+y_sort_enabled = true
 position = Vector2(736, 372)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -21,3 +29,10 @@ position = Vector2(659, 386)
 
 [node name="ftp_gedung" parent="." instance=ExtResource("4_cbhpa")]
 position = Vector2(720, 260)
+
+[node name="FKIPGedung" parent="." instance=ExtResource("6_vb6nx")]
+y_sort_enabled = true
+position = Vector2(1427, 228)
+
+[node name="Fasilkom_gedung" parent="." instance=ExtResource("7_wfynw")]
+position = Vector2(1990, 282)

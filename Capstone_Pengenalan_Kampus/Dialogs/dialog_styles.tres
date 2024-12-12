@@ -40,6 +40,7 @@ scene = ExtResource("5_lbks5")
 overrides = {
 "box_animation_in": "1",
 "box_animation_out": "1",
+"box_color_custom": "Color(1, 0, 0, 1)",
 "box_size": "Vector2(950, 150)"
 }
 
@@ -84,4 +85,4 @@ layer_info = {
 }
 base_overrides = {}
 layers = Array[ExtResource("1_g1y61")]([])
-metadata/_latest_layer = ""
+metadata/_latest_layer = "13"

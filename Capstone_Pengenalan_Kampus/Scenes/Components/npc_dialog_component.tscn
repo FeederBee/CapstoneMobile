@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://4khffy12qyi0"]
+
+[ext_resource type="Script" path="res://Scripts/Components/npc_dialog_component.gd" id="1_8qqdu"]
+[ext_resource type="Texture2D" uid="uid://cv3kk5f7ms5fh" path="res://Assets/Sprites/UI/Button/templatebg_btn.png" id="2_7hl1l"]
+[ext_resource type="LabelSettings" uid="uid://dn3nilvhdaih5" path="res://Assets/font_game_menu.tres" id="3_ly8rb"]
+
+[node name="NPCDialogComponent" type="Node"]
+script = ExtResource("1_8qqdu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="dialog_btn" type="TouchScreenButton" parent="CanvasLayer/Control"]
+position = Vector2(-360, -376)
+scale = Vector2(0.92, 0.92)
+texture_normal = ExtResource("2_7hl1l")
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/dialog_btn"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "D"
+label_settings = ExtResource("3_ly8rb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/Control/dialog_btn" to="." method="_on_dialog_btn_pressed"]

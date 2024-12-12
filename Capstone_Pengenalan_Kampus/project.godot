@@ -14,19 +14,19 @@ config/name="Capstone_Pengenalan_Kampus"
 config/version="0.1"
 run/main_scene="res://Scenes/UIs/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://Icon.png"
 
 [autoload]
 
-GameManager="*res://GameManager.gd"
 Global="*res://Global.gd"
-MapManager="*res://MapManager.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 AudioManager="*res://Scenes/AudioManager.tscn"
+SaveManager="*res://SaveManager.gd"
 
 [dialogic]
 
 directories/dch_directory={
+"Player": "res://Dialogs/Characters/Player.dch",
 "npc1": "res://Dialogs/Characters/npc1.dch"
 }
 directories/dtl_directory={
@@ -37,7 +37,7 @@ layout/default_style="res://Dialogs/dialog_styles.tres"
 glossary/default_case_sensitive=true
 variables={}
 extensions_folder="res://addons/dialogic_additions"
-text/letter_speed=0.01
+text/letter_speed=0.05
 text/initial_text_reveal_skippable=true
 text/text_reveal_skip_delay=0.1
 text/advance_delay=0.1
@@ -56,6 +56,7 @@ choices/reveal_by_input=false
 save/autosave_delay=60.0
 save/encryption_on_exports_only=true
 text/autopauses={}
+audio/type_sound_bus="sfx"
 
 [display]
 

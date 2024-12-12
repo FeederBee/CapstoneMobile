@@ -15,6 +15,7 @@ func process(_delta: float) -> void:
 
 # Fungsi untuk melanjutkan permainan
 func _on_pause_pressed():
+	AudioManager.play_sfx("button_click")
 	Global.player_stop = true
 	Global.is_joystick = false
 	await get_tree().create_timer(0.1).timeout

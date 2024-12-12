@@ -1,7 +1,8 @@
 extends Node2D
 
-
-@onready var player_instance = $Y_sort/Karakter/Player
+@onready var player = $Y_sort/Karakter/Player
+@onready var AutoLoad = $Components/AutoLoadComponent
+@onready var player_spawn_component = $Components/PlayerSpawnComponent
 
 var fasilkom_l_btn
 var fasilkom_r_btn
@@ -13,16 +14,15 @@ var fasilkom = "res://Scenes/Map/fasilkom_area.tscn"
 var transition_path = "entrance_area/Transition/AnimationPlayer"
 @onready var transition = $Transition/AnimationPlayer
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#inisiasi Global Variable/function
+	Global.current_map = Global.path_map.ENTRANCE
+	Global.auto_save_is = true
 	AudioManager.play_bgm('entrance_area')
 	transition.play("screen_fade_in")
 	
+	player_spawn_component.spawn_player()
 	
-	if Global.spawn_position == Vector2.ZERO :
-		player_instance.global_position = Vector2(1940, 2460)
-	else :
-		player_instance.global_position = Global.spawn_position
 	
 	fasilkom_l_btn = get_node("ControlLayer/ChangeMap_btn/fasilkom_l_btn")
 	fasilkom_l_btn.visible = false
@@ -53,9 +53,9 @@ func _on_to_fasilkom_l_body_exited(body: Node2D) -> void:
 	
 #Button Touch Signal
 func _on_fasilkom_l_btn_pressed() -> void:
-	Global.change_scene_to(fasilkom, transition_path)
+	Global.change_map(fasilkom, transition_path)
 	Global.spawn_position = Vector2(1369, 2808)
 
 func _on_fasilkom_r_btn_pressed() -> void:
-	Global.change_scene_to(fasilkom, transition_path)
+	Global.change_map(fasilkom, transition_path)
 	Global.spawn_position = Vector2(2393, 2811)

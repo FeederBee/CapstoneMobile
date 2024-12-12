@@ -1,15 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://b3x8rw66ja1e0"]
+[gd_scene load_steps=18 format=3 uid="uid://b3x8rw66ja1e0"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_y8avl"]
 [ext_resource type="SpriteFrames" uid="uid://cnkuktouiyvgk" path="res://Scenes/Player/Player_draft0.tres" id="2_2pjk2"]
 [ext_resource type="Texture2D" uid="uid://b44kt5w12f2of" path="res://Assets/Sprites/Player/shadow.png" id="3_6bu36"]
 [ext_resource type="Texture2D" uid="uid://8hvflgbhjs3t" path="res://Assets/Sprites/UI/Button/Sprint_btn.png" id="5_vemkn"]
 [ext_resource type="Script" path="res://Scripts/Player/state_run.gd" id="6_kfyr0"]
-[ext_resource type="Script" path="res://Scripts/Player/bg_stamina.gd" id="8_7ailk"]
 [ext_resource type="LabelSettings" uid="uid://dn3nilvhdaih5" path="res://Assets/font_game_menu.tres" id="8_fgcky"]
 [ext_resource type="Script" path="res://nge_troll(hapus kalau sudah jadi).gd" id="8_qtw70"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://Scenes/Player/virtual_joystick.tscn" id="10_0s18b"]
 [ext_resource type="Texture2D" uid="uid://cv3kk5f7ms5fh" path="res://Assets/Sprites/UI/Button/templatebg_btn.png" id="10_64p2g"]
+[ext_resource type="PackedScene" uid="uid://d3jsyushci4ja" path="res://Scenes/Components/player_dialog_component.tscn" id="10_k87g2"]
+[ext_resource type="Script" path="res://Scripts/Components/player_dialog_component.gd" id="11_b77nd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cy00h"]
 radius = 6.40291
@@ -39,11 +40,11 @@ script = ExtResource("1_y8avl")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.4, 0.4)
 sprite_frames = ExtResource("2_2pjk2")
-animation = &"walkU"
+animation = &"walkD"
+frame_progress = 0.966115
 offset = Vector2(0, -13)
 
 [node name="Shadows" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(-0.25, 6)
 scale = Vector2(0.7, 0.718)
 texture = ExtResource("3_6bu36")
@@ -62,7 +63,7 @@ scale = Vector2(0.9, 0.9)
 size_flags_horizontal = 0
 mouse_filter = 2
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="ActionButton" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 3
 anchor_left = 1.0
@@ -72,7 +73,7 @@ anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="Run_btn" type="TouchScreenButton" parent="CanvasLayer/Control"]
+[node name="Run_btn" type="TouchScreenButton" parent="CanvasLayer/ActionButton"]
 self_modulate = Color(1, 1, 1, 0.627451)
 position = Vector2(-274, -225.286)
 scale = Vector2(1.28571, 1.2551)
@@ -94,7 +95,6 @@ theme_override_styles/background = SubResource("StyleBoxFlat_4lll2")
 theme_override_styles/fill = SubResource("StyleBoxFlat_gxx76")
 value = 100.0
 show_percentage = false
-script = ExtResource("8_7ailk")
 
 [node name="BarStamina" type="ProgressBar" parent="BgStamina"]
 layout_mode = 1
@@ -215,20 +215,26 @@ grow_horizontal = 2
 text = "Entering Noob Mode"
 label_settings = ExtResource("8_fgcky")
 
-[connection signal="pressed" from="CanvasLayer/Control/Run_btn" to="BgStamina" method="_on_run_btn_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/Run_btn" to="state_run" method="_on_run_btn_pressed"]
-[connection signal="released" from="CanvasLayer/Control/Run_btn" to="BgStamina" method="_on_run_btn_released"]
-[connection signal="released" from="CanvasLayer/Control/Run_btn" to="state_run" method="_on_run_btn_released"]
+[node name="walk_sfx" type="Timer" parent="."]
+
+[node name="PlayerDialogComponent" parent="." instance=ExtResource("10_k87g2")]
+script = ExtResource("11_b77nd")
+
+[connection signal="pressed" from="CanvasLayer/ActionButton/Run_btn" to="BgStamina" method="_on_run_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/ActionButton/Run_btn" to="state_run" method="_on_run_btn_pressed"]
+[connection signal="released" from="CanvasLayer/ActionButton/Run_btn" to="BgStamina" method="_on_run_btn_released"]
+[connection signal="released" from="CanvasLayer/ActionButton/Run_btn" to="state_run" method="_on_run_btn_released"]
 [connection signal="area_entered" from="Player_detection" to="." method="_on_player_detection_area_entered"]
 [connection signal="area_exited" from="Player_detection" to="." method="_on_player_detection_area_exited"]
 [connection signal="body_entered" from="Player_detection" to="." method="_on_player_detection_body_entered"]
-[connection signal="timeout" from="BgStamina/BarStamina/recover_timer" to="BgStamina" method="_on_recover_timer_timeout"]
 [connection signal="timeout" from="BgStamina/BarStamina/recover_timer" to="BgStamina" method="_on_timer_timeout"]
+[connection signal="timeout" from="BgStamina/BarStamina/recover_timer" to="BgStamina" method="_on_recover_timer_timeout"]
 [connection signal="timeout" from="BgStamina/BarStamina/recover_timer" to="state_run" method="_on_recover_timer_timeout"]
-[connection signal="timeout" from="BgStamina/BarStamina/deplented_timer" to="BgStamina" method="_on_deplented_timer_timeout"]
 [connection signal="timeout" from="BgStamina/BarStamina/deplented_timer" to="BgStamina" method="_on_bgtimer_timeout"]
+[connection signal="timeout" from="BgStamina/BarStamina/deplented_timer" to="BgStamina" method="_on_deplented_timer_timeout"]
 [connection signal="timeout" from="BgStamina/BarStamina/deplented_timer" to="state_run" method="_on_deplented_timer_timeout"]
 [connection signal="timeout" from="BgStamina/bg_timer" to="state_run" method="_on_bg_timer_timeout"]
 [connection signal="timeout" from="NgeTroll/Timer" to="NgeTroll" method="_on_timer_timeout"]
 [connection signal="pressed" from="NgeTroll/Control/active" to="NgeTroll" method="_on_touch_screen_button_pressed"]
 [connection signal="pressed" from="NgeTroll/Control/deactive" to="NgeTroll" method="_on_deactive_pressed"]
+[connection signal="timeout" from="walk_sfx" to="." method="_on_walk_sfx_timeout"]

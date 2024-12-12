@@ -1,9 +1,8 @@
 extends Node2D
 
 @onready var transition = $Transition/AnimationPlayer
-
-@export var spawnx: float = 2544
-@export var spawny: float = 1219
+@onready var player = $Y_sort/Karakter/Player
+@onready var player_spawn_component: Node = $Components/PlayerSpawnComponent
 
 var fasilkom_up
 var fasilkom_mid
@@ -11,17 +10,15 @@ var fasilkom_down
 
 #Path
 var transition_path = "fkip_area/Transition/AnimationPlayer"
-var fasilkom_path = "res://Scenes/Map/fasilkom_area.tscn"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Global.current_map = Global.path_map.FKIP
+	Global.auto_save_is = true
+	AudioManager.play_bgm('entrance_area')
 	transition.play('screen_fade_in')
 	
-	var player_instance = get_node("Y_sort/Karakter/Player")	
-	if Global.spawn_position == Vector2.ZERO :
-		player_instance.global_position = Vector2(spawnx, spawny)
-	else :
-		player_instance.global_position = Global.spawn_position
+	player_spawn_component.spawn_player()
 	
 	fasilkom_up = get_node("ControlLayer/ChangeMap_btn/fasilkom_atas_btn")
 	fasilkom_mid = get_node("ControlLayer/ChangeMap_btn/fasilkom_bwh_btn")
@@ -35,6 +32,17 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
+
+func spawn_player():
+	if SaveManager.load('current_map') == Global.current_map:
+		var x = SaveManager.load("player_x_position") 
+		var y = SaveManager.load("player_y_position") 
+		player.global_position = Vector2(x, y)
+
+	#if Global.spawn_position == Vector2.ZERO :
+		#player_instance.global_position = Vector2(spawnx, spawny)
+	#else :
+		#player_instance.global_position = Global.spawn_position
 
 #Area2D signal
 func _on_to_fasilkom_up_body_entered(body: Node2D) -> void:
@@ -66,11 +74,11 @@ func _on_to_fasilkom_bwh_body_exited(body: Node2D) -> void:
 #TouchButton signal
 #Fasilkom
 func _on_fasilkom_atas_btn_pressed() -> void:
-	Global.change_scene_to(fasilkom_path, transition_path)
+	Global.change_map(Global.path_map.FASILKOM, transition_path)
 	Global.spawn_position = Vector2(2930, 984)
 func _on_fasilkom_bwh_btn_pressed() -> void:
-	Global.change_scene_to(fasilkom_path, transition_path)
+	Global.change_map(Global.path_map.FASILKOM, transition_path)
 	Global.spawn_position = Vector2(2930, 1594)
 func _on_fasilkom_mid_btn_pressed() -> void:
-	Global.change_scene_to(fasilkom_path, transition_path)
+	Global.change_map(Global.path_map.FASILKOM, transition_path)
 	Global.spawn_position = Vector2(2930, 2650)

@@ -1,6 +1,14 @@
-join npc1 left [animation="Instant In"]
+[signal arg="entering_dialog"]
+join npc1 center [animation="Instant In"]
 npc1: Hello and welcome to fasilkom!!
+leave npc1 [animation="Instant Out" wait="true"]
+join Player center
+Player: Hai Kak KONT--.... [pause=0.2] EHEM.. kak astod
+Player: fsfrg4wgetehygwgregsdfwe q fwe  fwef qq f eqf
+leave Player [animation="Instant Out" wait="true"]
+[sound volume="0.0"]
+join npc1 center
 npc1: mknoibbjlnk
 npc1: jbkhbjbjk
 npc1: lknbiyutcycvj
-[signal arg="activate_something"]
+[signal arg="dialog_finished"]

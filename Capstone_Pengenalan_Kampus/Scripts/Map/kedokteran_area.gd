@@ -1,24 +1,23 @@
 extends Node2D
 
-@onready var player = $Y_sort/Player
+@onready var player = $Y_sort/Karakter/Player
 @onready var transition = $Transition/AnimationPlayer
+@onready var player_spawn_component = $Components/PlayerSpawnComponent
 
 var ftp_r_btn
 var ftp_l_btn
 
 #Path variable
 var transition_path = "fkg_area/Transition/AnimationPlayer"
-var ftp_path = "res://Scenes/Map/ftp_area.tscn"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Global.current_map = Global.path_map.FKG
+	Global.auto_save_is = true
+	AudioManager.play_bgm('entrance_area')
 	transition.play("screen_fade_in")
 	
-	var player_instance = get_node("Y_sort/Karakter/Player")
-	if Global.spawn_position == Vector2.ZERO :
-		player_instance.global_position = Vector2(2558, 1032)
-	else :
-		player_instance.global_position = Global.spawn_position
+	player_spawn_component.spawn_player()
 	
 	ftp_r_btn = get_node("ControlLayer/ChangeMap_btn/ftp_r_btn")
 	ftp_r_btn.visible = false
@@ -49,11 +48,11 @@ func _on_ftp_l_body_exited(body: Node2D) -> void:
 
 #Button Touch Signal
 func _on_ftp_r_button_pressed() -> void:
-	Global.change_scene_to(ftp_path, transition_path)
+	Global.change_map(Global.path_map.FTP, transition_path)
 	Global.spawn_position = Vector2(3864, 3605)
 
 func _on_ftp_l_btn_pressed() -> void:
-	Global.change_scene_to(ftp_path, transition_path)
+	Global.change_map(Global.path_map.FTP, transition_path)
 	Global.spawn_position = Vector2(1766, 3604)
 
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cq5llty23j5f"]
 
 [ext_resource type="Texture2D" uid="uid://ci1gg0d4vv676" path="res://Assets/Map/Gedung/FTP-mergeNew.png" id="1_vq5dj"]
-[ext_resource type="Script" path="res://Scripts/Map/Gedung/state_animation_fakultas.gd" id="2_ymm1k"]
+[ext_resource type="PackedScene" uid="uid://c5htc6bu2mpi5" path="res://Scenes/Components/state_animation_fakultas.tscn" id="2_u0go8"]
 
 [sub_resource type="Animation" id="Animation_bqcmy"]
 length = 0.001
@@ -30,7 +30,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0.470588), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0.392157), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_135sj"]
@@ -45,7 +45,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.470588)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.392157)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v5j0n"]
@@ -85,8 +85,4 @@ collision_layer = 16
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(63, 0, 248, 0, 248, 30, 254, 30, 254, 62, 64, 62, 64, 71, 59, 71, 59, 87, 48, 87, 48, 105, 40, 105, 40, 87, -40, 87, -40, 105, -48, 105, -48, 87, -59, 87, -59, 71, -64, 71, -64, 63, -98, 63, -98, 62, -254, 62, -254, 30, -248, 30, -248, 0)
 
-[node name="state_animation_fakultas" type="Node" parent="."]
-script = ExtResource("2_ymm1k")
-
-[connection signal="body_entered" from="visibility" to="state_animation_fakultas" method="_on_visibility_body_entered"]
-[connection signal="body_exited" from="visibility" to="state_animation_fakultas" method="_on_visibility_body_exited"]
+[node name="state_animation_fakultas" parent="." instance=ExtResource("2_u0go8")]

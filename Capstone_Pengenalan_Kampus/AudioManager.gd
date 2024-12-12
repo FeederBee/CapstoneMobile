@@ -7,7 +7,11 @@ extends Node
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 #Volume
-var music_volume: float = 0.5
+var music_volume: float = 0.5 #default music volume
+var sfx_volume:float = 0.5 #default sfx volume
+
+var sfx_is_playing:bool
+var playing_position:float
 
 @export var bgm_files : Dictionary = {
 	"main_menu" : "res://Audio/2. Crazy Dave Intro.mp3",
@@ -16,18 +20,14 @@ var music_volume: float = 0.5
 	"ftp_area": "res://Audio/2. Crazy Dave Intro.mp3"
 	}
 
-@export var sfx_files : Dictionary
+@export var sfx_files : Dictionary = {
+	"walk" : "res://Audio/walking-sound-effect-272246.mp3",
+	"button_click" : "res://Audio/4. Click.mp3"
+}
 
 # Contoh pengisian file audio
 func _ready():
-
 	print("AudioManager ready!")
-
-	#sfx_files = {
-		#"button": "res://Audio/SFX/button_pressed.ogg",
-		#"movement": "res://Audio/SFX/footsteps.ogg",
-		#"interaction": "res://Audio/SFX/interaction.ogg"
-	#}
 
 func play_bgm(map_name: String) -> void:
 	var bgm_path = bgm_files.get(map_name, "")
@@ -44,9 +44,31 @@ func stop_bgm() -> void:
 	await animation_player.animation_finished
 	bgm_player.stop()
 
-func play_sfx(sfx_type: String) -> void:
-	var sfx_path = sfx_files.get(sfx_type, "")
+func play_sfx(sfx_name: String) -> void:
+	var sfx_path = sfx_files.get(sfx_name, "")
 	if sfx_path != "":
-		var player = get_node("SFXPlayer_" + sfx_type.capitalize())
-		player.stream = load(sfx_path)
-		player.play()
+		sfx_player_movement.stream = load(sfx_path)
+		sfx_player_movement.play(playing_position)
+	sfx_is_playing = true
+	
+#func set_sfx_v
+	
+func set_sfx_pitch(pitch_scale:float=1):
+	sfx_player_movement.pitch_scale = pitch_scale
+
+func stop_sfx() -> void:
+	if sfx_files["walk"]: 
+		sfx_player_movement.stop()
+		#print(audio_is_playing)
+	sfx_is_playing = false
+
+func get_sfx_duration(sfx_name:String):
+	var sfx_path = sfx_files.get(sfx_name, "")
+	if sfx_path != "":
+		sfx_player_movement.stream = load(sfx_path)
+		var sfx_duration = sfx_player_movement.stream.get_length()
+		return sfx_duration
+
+func _on_sfx_player_movement_finished() -> void:
+	sfx_is_playing = false
+	

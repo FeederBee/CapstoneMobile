@@ -8,7 +8,7 @@ extends Node
 #Progresbar (stamina) Node
 @onready var bg_stamina: ProgressBar = $"../BgStamina"
 @onready var bar_stamina: ProgressBar = $"../BgStamina/BarStamina"
-@onready var run_btn: TouchScreenButton = $"../CanvasLayer/Control/Run_btn"
+@onready var run_btn: TouchScreenButton = $"../CanvasLayer/ActionButton/Run_btn"
 #Timer Node
 @onready var recover_timer: Timer = $"../BgStamina/BarStamina/recover_timer"
 @onready var deplented_timer: Timer = $"../BgStamina/BarStamina/deplented_timer"
@@ -21,12 +21,20 @@ extends Node
 @onready var deplented_delay = player.deplented_delay 
 @onready var bg_delay = player.bg_stamina_delay
 
-var stamina = 100
+var maxValue:float
+var stamina:float
+
 var is_running = false
 var is_recovering = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	if SaveManager.load_data("player_stamina"):
+		maxValue = SaveManager.load_data("player_stamina")
+	else : 
+		maxValue = 100
+	stamina = maxValue
 	bg_stamina.value = stamina
 	bar_stamina.value = stamina
 	bg_stamina.hide()
@@ -64,8 +72,10 @@ func _on_run_btn_pressed() -> void:
 	if bg_timer.is_stopped(): 
 		bg_timer.start(bg_delay)
 	bg_stamina.show()
+	player.player_stamina = stamina
 
 func _on_run_btn_released() -> void:
+
 	is_running = false
 	is_recovering = true
 
@@ -105,3 +115,8 @@ func _on_bg_timer_timeout() -> void:
 		bg_timer.stop()
 	else:
 		bg_timer.start(bg_delay)
+
+#func save_stamina_data(stamina_value):
+	#SaveManager.save({ 
+		#"Stamina": stamina_value
+	#})

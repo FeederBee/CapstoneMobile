@@ -1,9 +1,8 @@
 extends Node2D
 
 @onready var transition = $Transition/AnimationPlayer
-
-@export var spawnx: float = 2544
-@export var spawny: float = 1219
+@onready var player: CharacterBody2D = $Y_sort/Karakter/Player
+@onready var player_spawn_component: Node = $Components/PlayerSpawnComponent
 
 var ftp_btn
 var fkip_btn_up
@@ -14,18 +13,16 @@ var entrance_r_btn
 
 #Path
 var transition_path = "fasilkom_area/Transition/AnimationPlayer"
-var ftp_path = "res://Scenes/Map/ftp_area.tscn"
-var fkip_path = "res://Scenes/Map/fkip_area.tscn"
-var entrance_path = "res://Scenes/Map/entrance_area.tscn"
 
 func _ready() -> void:
+	#Data yang akan di save
+	Global.current_map = Global.path_map.FASILKOM #Map saat ini di fasilkom
+	Global.auto_save_is = true
+	AudioManager.play_bgm('entrance_area')
 	transition.play("screen_fade_in")
 	
-	var player_instance = get_node("Y_sort/Karakter/Player")	
-	if Global.spawn_position == Vector2.ZERO :
-		player_instance.global_position = Vector2(spawnx, spawny)
-	else :
-		player_instance.global_position = Global.spawn_position
+	player_spawn_component.spawn_player()
+	
 
 	ftp_btn = get_node("ControlLayer/ChangeMap_btn/ftp_btn")
 	fkip_btn_up = get_node("ControlLayer/ChangeMap_btn/fkip_btn_up")
@@ -92,23 +89,23 @@ func _on_entrance_r_body_exited(body: Node2D) -> void:
 
 #Touch Button Signal
 func _on_ftp_button_pressed() -> void:
-	Global.change_scene_to(ftp_path, transition_path)
+	Global.change_map(Global.path_map.FTP, transition_path)
 	Global.spawn_position = Vector2(4149, 2649)
 
 #FKIP
 func _on_fkip_btn_up_pressed() -> void:
-	Global.change_scene_to(fkip_path, transition_path)
+	Global.change_map(Global.path_map.FKIP, transition_path)
 	Global.spawn_position = Vector2(121, 1161)
 func _on_fkip_btn_mid_pressed() -> void:
-	Global.change_scene_to(fkip_path, transition_path)
+	Global.change_map(Global.path_map.FKIP, transition_path)
 	Global.spawn_position = Vector2(117, 2058)
 func _on_fkip_btn_down_pressed() -> void:
-	Global.change_scene_to(fkip_path, transition_path)
+	Global.change_map(Global.path_map.FKIP, transition_path)
 	Global.spawn_position = Vector2(118, 3355)
 
 func _on_entrance_l_btn_pressed() -> void:
-	Global.change_scene_to(entrance_path, transition_path)
+	Global.change_map(Global.path_map.ENTRANCE, transition_path)
 	Global.spawn_position = Vector2(1097, 50)
 func _on_entrance_r_btn_pressed() -> void:
-	Global.change_scene_to(entrance_path, transition_path)
+	Global.change_map(Global.path_map.ENTRANCE, transition_path)
 	Global.spawn_position = Vector2(2921, 51)

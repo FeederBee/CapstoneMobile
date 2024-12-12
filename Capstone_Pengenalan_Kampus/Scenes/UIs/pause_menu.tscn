@@ -119,17 +119,17 @@ label_settings = ExtResource("4_wdk18")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="PauseMenu/Control"]
+[node name="Volume2" type="Label" parent="PauseMenu/Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -280.0
-offset_top = -136.0
-offset_right = -122.0
-offset_bottom = -87.0
+offset_left = -288.0
+offset_top = -168.0
+offset_right = -130.0
+offset_bottom = -119.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "VOLUME"
@@ -137,17 +137,17 @@ label_settings = ExtResource("4_wdk18")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="PauseMenu/Control"]
+[node name="Music" type="Label" parent="PauseMenu/Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -216.0
-offset_top = -72.0
-offset_right = -84.0
-offset_bottom = -23.0
+offset_left = -232.0
+offset_top = -104.0
+offset_right = -100.0
+offset_bottom = -55.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.8, 0.8)
@@ -156,7 +156,7 @@ label_settings = ExtResource("4_wdk18")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="volume_slider" parent="PauseMenu/Control" instance=ExtResource("7_dpqkm")]
+[node name="music_volume" parent="PauseMenu/Control" instance=ExtResource("7_dpqkm")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -164,12 +164,44 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -64.0
-offset_top = -64.0
+offset_top = -104.0
 offset_right = 184.0
-offset_bottom = -40.0
+offset_bottom = -80.0
+step = 0.01
 bus_name = "music"
+max_volume = 4.0
+
+[node name="SFX" type="Label" parent="PauseMenu/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -40.0
+offset_right = -129.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SFX"
+label_settings = ExtResource("4_wdk18")
+
+[node name="sfx_volume" parent="PauseMenu/Control" instance=ExtResource("7_dpqkm")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -40.0
+offset_right = 192.0
+offset_bottom = -16.0
+bus_name = "sfx"
+max_volume = 1.0
 
 [connection signal="pressed" from="Pause" to="." method="_on_pause_pressed"]
 [connection signal="pressed" from="PauseMenu/Control/Resume" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/Control/Main-Menu" to="PauseMenu" method="_on_main_menu_pressed"]
-[connection signal="changed" from="PauseMenu/Control/volume_slider" to="PauseMenu" method="_on_music_volume_changed"]
+[connection signal="changed" from="PauseMenu/Control/music_volume" to="PauseMenu" method="_on_music_volume_changed"]

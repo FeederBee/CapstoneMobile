@@ -15,12 +15,22 @@ extends CharacterBody2D
 @onready var animated_sprite := $AnimatedSprite2D
 @onready var detection_area := $Player_detection # Area2D yang mendeteksi collision
 @onready var virtual_joystick: VirtualJoystick = $"CanvasLayer/Virtual Joystick"
+@onready var walk_sfx_timer: Timer = $walk_sfx
 
 @onready var state_run: Node = $state_run
+@onready var stamina = state_run.stamina
+
+var player_stamina:float = 100
 
 #Gerakan
 var move_vector := Vector2.ZERO
 var last_direction := Vector2.DOWN
+var is_walking:bool
+var walk_sfx_speed:float
+
+func _ready() -> void:
+	#walk_sfx_timer.start()
+	pass	
 
 func _physics_process(_delta: float) -> void:
 	move_vector = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -33,28 +43,55 @@ func _physics_process(_delta: float) -> void:
 		else: 
 			_play_idle_animation()
 			virtual_joystick.show()
+		
+		is_walking = false
 	else:
 		# kecepatan
 		if state_run.is_running:
 			velocity = move_vector * (Global.global_speed + state_run.run_speed)
+			
 		else:
 			velocity = move_vector * Global.global_speed
-		
+
 		move_and_slide()
 		
 		#print(Global.global_speed + state_run.run_speed)
 
 		# Atur kecepatan animasi berdasarkan kecepatan player
-		var velocity_length = velocity.length()/150
-		var animation_speed = 0.5 if velocity_length < 0.5 else velocity_length
+		var velocity_length = velocity.length()/100
+		var animation_speed = 0.0
+		if velocity_length < 0.6:
+			animation_speed = 0.6
+			walk_sfx_speed = 1
+		else :
+			animation_speed = velocity_length
+			walk_sfx_speed = max(animation_speed,1.55)
+		#print(walk_sfx_speed)
 
-		#print(animation_speed)
-		
+		print(animation_speed)
 		animated_sprite.speed_scale = animation_speed
 		
 		_play_walk_animation(move_vector)
+		is_walking = true
 		last_direction = move_vector
-		# Hanya masuk ke idle jika tidak ada input pergerakan	
+		
+	stamina = state_run.stamina
+	walk_sfx()
+	#_walking()
+	#print('stamina child node : ',stamina)
+	#print('stamina player : ',player_stamina)
+		# Hanya masuk ke idle jika tidak ada input pergerakan
+
+func walk_sfx():
+	if is_walking:
+		AudioManager.set_sfx_pitch(walk_sfx_speed)
+		if AudioManager.sfx_is_playing:
+			pass
+		else : 
+			print("play ulang SFX")
+			AudioManager.play_sfx("walk")
+	else : 
+		AudioManager.stop_sfx()
 
 func _play_walk_animation(direction: Vector2):
 	if abs(direction.x) > abs(direction.y):
@@ -95,3 +132,12 @@ func _on_player_detection_area_exited(area: Area2D) -> void:
 func _on_player_detection_body_entered(body: Node2D) -> void:
 	if body.has_method('tree'):
 		Global.blur = true
+
+
+func _on_walk_sfx_timeout() -> void:
+	if walk_sfx:
+		walk_sfx_timer.wait_time = AudioManager.get_sfx_duration("walk")
+		AudioManager.play_sfx("walk")
+	else: 
+		AudioManager.stop_sfx()
+		walk_sfx_timer.wait_time = 0

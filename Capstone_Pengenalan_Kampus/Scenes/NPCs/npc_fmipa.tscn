@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://bumypsmb4tj4y"]
+
+[ext_resource type="Texture2D" uid="uid://dumw4f8yo4f43" path="res://Assets/Sprites/NPC/animation/FMIPA.png" id="1_clhik"]
+[ext_resource type="Script" path="res://Scripts/NPCs/npc_1.gd" id="1_pqqx8"]
+[ext_resource type="PackedScene" uid="uid://4khffy12qyi0" path="res://Scenes/Components/npc_dialog_component.tscn" id="3_pupdk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aobw8"]
+atlas = ExtResource("1_clhik")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s1qvy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aobw8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rkflx"]
+radius = 8.0
+height = 16.0
+
+[node name="NPCFMIPA" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_pqqx8")
+dialog_timeline_name = "fasilkom"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_s1qvy")
+offset = Vector2(0.495, -5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_rkflx")
+
+[node name="DialogArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DialogArea"]
+polygon = PackedVector2Array(0, 0, 8, 16, -8, 16)
+
+[node name="NPCDialogComponent" parent="." instance=ExtResource("3_pupdk")]
+
+[connection signal="body_entered" from="DialogArea" to="NPCDialogComponent" method="_on_dialog_area_body_entered"]
+[connection signal="body_exited" from="DialogArea" to="NPCDialogComponent" method="_on_dialog_area_body_exited"]

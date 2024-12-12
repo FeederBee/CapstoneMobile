@@ -1,0 +1,142 @@
+[gd_scene load_steps=10 format=3 uid="uid://chj3ccq1t78cg"]
+
+[ext_resource type="Texture2D" uid="uid://c3qgujouaijne" path="res://Assets/Map/Gedung/FKIP_building.png" id="1_pxos1"]
+[ext_resource type="Texture2D" uid="uid://caww5u3fcmjuh" path="res://Assets/Map/Gedung/FKIP_front.png" id="2_k1lus"]
+[ext_resource type="PackedScene" uid="uid://c5htc6bu2mpi5" path="res://Scenes/Components/state_animation_fakultas.tscn" id="2_n48he"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yfst5"]
+size = Vector2(14, 16)
+
+[sub_resource type="Animation" id="Animation_vtrqe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FkipBuilding:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FkipFront:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pam3t"]
+resource_name = "gedung_fadein"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FkipBuilding:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.392157), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FkipFront:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.392157), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_r6jab"]
+resource_name = "gedung_fadeout"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FkipBuilding:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.392157)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FkipFront:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.392157)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ws166"]
+_data = {
+"RESET": SubResource("Animation_vtrqe"),
+"gedung_fadein": SubResource("Animation_pam3t"),
+"gedung_fadeout": SubResource("Animation_r6jab")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3iqsn"]
+size = Vector2(688, 375)
+
+[node name="FKIPGedung" type="Node2D"]
+
+[node name="FkipBuilding" type="Sprite2D" parent="."]
+position = Vector2(0, -10)
+texture = ExtResource("1_pxos1")
+offset = Vector2(0, -80)
+
+[node name="FkipFront" type="Sprite2D" parent="."]
+position = Vector2(0, 110)
+texture = ExtResource("2_k1lus")
+offset = Vector2(0, -200)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-95, 118)
+shape = SubResource("RectangleShape2D_yfst5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(95, 118)
+shape = SubResource("RectangleShape2D_yfst5")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-332, -103, -332, 57, -325, 57, -325, 55, -259, 55, -250, 55, -220, 55, -211, 55, -146, 55, -139, 55, -139, -13, 127, -13, 139, -13, 139, -3, 139, 55, 146, 55, 211, 55, 220, 55, 250, 55, 259, 55, 325, 55, 325, 57, 332, 57, 332, -103)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ws166")
+}
+
+[node name="visibility" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="visibility"]
+position = Vector2(0, -268.5)
+shape = SubResource("RectangleShape2D_3iqsn")
+
+[node name="state_animation_fakultas" parent="." instance=ExtResource("2_n48he")]
+
+[connection signal="body_entered" from="visibility" to="state_animation_fakultas" method="_on_visibility_body_entered"]
+[connection signal="body_exited" from="visibility" to="state_animation_fakultas" method="_on_visibility_body_exited"]
