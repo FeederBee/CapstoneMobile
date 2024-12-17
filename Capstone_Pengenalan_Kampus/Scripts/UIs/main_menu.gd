@@ -1,10 +1,10 @@
 extends Control
 
 @onready var transition = $AnimationPlayer
-@onready var setting_menu: Control =$CanvasLayer/setting_menu
-@onready var button_component: Control = $ButtonComponent
-@onready var lanjut_btn: TouchScreenButton = $ButtonComponent/Lanjut
-@onready var start_btn: TouchScreenButton = $ButtonComponent/Start
+@onready var setting_menu: Control =$CanvasLayer/SettingMenu
+@onready var button: Control = $Button
+@onready var lanjut_btn: TouchScreenButton = $Button/Lanjut
+@onready var start_btn: TouchScreenButton = $Button/Start
 
 #Path Scene
 var Entrance_map = "res://Scenes/Map/entrance_area.tscn"
@@ -17,7 +17,6 @@ var transition_path = "MainMenu/AnimationPlayer"
 func _ready() -> void:
 	setting_menu.hide()
 	if player_data != null:
-		#if player_data != Entrance_map:
 		lanjut_btn.show()
 		start_btn.hide()
 	else:
@@ -61,7 +60,7 @@ func _on_load_pressed() -> void:
 
 func _on_setting_pressed() -> void:
 	AudioManager.play_sfx("button_click")
-	button_component.hide()
+	button.hide()
 	setting_menu.show()
 
 func _on_quit_pressed() -> void:

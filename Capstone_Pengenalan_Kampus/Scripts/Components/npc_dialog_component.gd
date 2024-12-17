@@ -3,7 +3,7 @@ extends Node
 @onready var animated: AnimatedSprite2D = $"../AnimatedSprite2D"
 @onready var dialog_timeline_name = get_parent().dialog_timeline_name
 
-@onready var dialog_btn: TouchScreenButton = $CanvasLayer/Control/dialog_btn
+@onready var dialog_btn: TouchScreenButton = $CanvasLayer/Control/dialogBtn
 
 func _ready():
 	dialog_btn.hide()
@@ -12,10 +12,6 @@ func _ready():
 
 func _physics_process(_delta: float) -> void:
 	pass
-	
-#func _on_interact():
-	#Global.player_stop = true
-	#run_dialog(dialog_timeline_name)
 
 func run_dialog(dialog_string):
 	Global.is_dialog = true

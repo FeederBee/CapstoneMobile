@@ -1,0 +1,165 @@
+[gd_scene load_steps=6 format=3 uid="uid://8w1nlnlr5rh7"]
+
+[ext_resource type="Script" path="res://Scripts/UIs/setting_menu.gd" id="1_u0kv2"]
+[ext_resource type="LabelSettings" uid="uid://dn3nilvhdaih5" path="res://Assets/font_game_menu.tres" id="1_wd0ay"]
+[ext_resource type="Texture2D" uid="uid://byuqhog0hu2w5" path="res://Assets/Sprites/UI/textbox_revisi.png" id="1_wuj0d"]
+[ext_resource type="PackedScene" uid="uid://ncfei78i0o8m" path="res://Scenes/Audio/VolumeSlider.tscn" id="3_gyqv7"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_cpwhq"]
+
+[node name="setting_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u0kv2")
+
+[node name="BoxContainer" type="Sprite2D" parent="."]
+position = Vector2(0, 120)
+scale = Vector2(0.982, 1.28)
+texture = ExtResource("1_wuj0d")
+
+[node name="Audio" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = -24.5
+offset_right = 134.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Control" type="Control" parent="Audio"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Volume" type="Label" parent="Audio/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -16.0
+offset_right = -162.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "VOLUME"
+label_settings = ExtResource("1_wd0ay")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Music" type="Label" parent="Audio/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = 56.0
+offset_right = -148.0
+offset_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+text = "MUSIC"
+label_settings = ExtResource("1_wd0ay")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicVolumeSlider" parent="Audio/Control" instance=ExtResource("3_gyqv7")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = 64.0
+offset_right = 192.0
+offset_bottom = 88.0
+bus_name = "music"
+max_volume = 4.0
+
+[node name="SFX" type="Label" parent="Audio/Control"]
+layout_mode = 0
+offset_left = -260.0
+offset_top = 140.0
+offset_right = -181.0
+offset_bottom = 189.0
+scale = Vector2(0.8, 0.8)
+text = "SFX"
+label_settings = ExtResource("1_wd0ay")
+
+[node name="SFXVolumeSlider" parent="Audio/Control" instance=ExtResource("3_gyqv7")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = 128.0
+offset_right = 192.0
+offset_bottom = 152.0
+bus_name = "sfx"
+min_volume = -50.0
+
+[node name="Button" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackBtn" type="TouchScreenButton" parent="Button"]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(-96, 208)
+scale = Vector2(192, 48)
+texture_normal = SubResource("CanvasTexture_cpwhq")
+
+[node name="Label" type="Label" parent="Button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = 208.0
+offset_right = 97.0
+offset_bottom = 257.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "KEMBALI"
+label_settings = ExtResource("1_wd0ay")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Button/BackBtn" to="." method="_on_back_btn_pressed"]

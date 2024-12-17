@@ -15,13 +15,6 @@ func spawn_player():
 		var y = SaveManager.load_data("player_y_position") 
 		parent.player.global_position = Vector2(x, y)
 
-	else :
-		if Global.spawn_position == Vector2.ZERO :
-			parent.player.global_position = Vector2(default_spawnx, default_spawny)
-		else:
-			parent.player.global_position = Global.spawn_position
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass

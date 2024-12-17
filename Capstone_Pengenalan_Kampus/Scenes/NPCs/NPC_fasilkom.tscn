@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://db5ao624oyl2w"]
 
-[ext_resource type="Script" path="res://Scripts/NPCs/npc_1.gd" id="1_1qu47"]
+[ext_resource type="Script" path="res://Scripts/NPCs/npc.gd" id="1_1qu47"]
 [ext_resource type="Texture2D" uid="uid://clawfc0qe4kvy" path="res://Assets/Sprites/NPC/animation/npc_fasilkom.png" id="2_t7rv4"]
-[ext_resource type="PackedScene" uid="uid://4khffy12qyi0" path="res://Scenes/Components/npc_dialog_component.tscn" id="5_ord5o"]
+[ext_resource type="PackedScene" uid="uid://4khffy12qyi0" path="res://Scenes/Components/NPCDialogComponent.tscn" id="5_ord5o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ifitb"]
 atlas = ExtResource("2_t7rv4")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5htc6bu2mpi5"]
+
+[ext_resource type="Script" path="res://Scripts/Components/fakultas_animation_component.gd" id="1_0kjjr"]
+
+[node name="FakultasAnimationComponent" type="Node"]
+script = ExtResource("1_0kjjr")

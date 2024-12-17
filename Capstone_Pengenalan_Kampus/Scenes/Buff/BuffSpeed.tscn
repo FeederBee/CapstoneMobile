@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://bklq78ahnwv4v"]
+
+[ext_resource type="Texture2D" uid="uid://nwkq4ola38bj" path="res://Assets/Sprites/Objects/spr_coin_ama.png" id="1_g1ufv"]
+[ext_resource type="PackedScene" uid="uid://c2hkvgykqlgtt" path="res://Scenes/Components/PickBuffComponent.tscn" id="2_x7j53"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1063"]
+atlas = ExtResource("1_g1ufv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jcxt"]
+atlas = ExtResource("1_g1ufv")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mke6n"]
+atlas = ExtResource("1_g1ufv")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yrjs"]
+atlas = ExtResource("1_g1ufv")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_te46u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q1063")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jcxt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mke6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6yrjs")
+}],
+"loop": true,
+"name": &"spin",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3126m"]
+radius = 9.0
+
+[node name="BuffSpeed" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_te46u")
+animation = &"spin"
+frame_progress = 0.826538
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="PickArea" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickArea"]
+shape = SubResource("CircleShape2D_3126m")
+
+[node name="PickBuffComponent" parent="." instance=ExtResource("2_x7j53")]
+
+[connection signal="body_entered" from="PickArea" to="PickBuffComponent" method="_on_pick_area_body_entered"]

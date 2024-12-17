@@ -1,7 +1,6 @@
 extends Node
 
-@onready var change_map: Node2D = $"../../ChangeMap"
-@onready var action_button = $"../CanvasLayer/ActionButton"
+@onready var action_button = $"../../CanvasLayer/ActionButton"
 
 
 # Called when the node enters the scene tree for the first time.

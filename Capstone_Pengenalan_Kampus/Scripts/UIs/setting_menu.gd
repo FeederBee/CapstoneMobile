@@ -15,5 +15,5 @@ func _process(_delta: float) -> void:
 func _on_back_btn_pressed() -> void:
 	AudioManager.play_sfx("button_click")
 	print('pressed')
-	parent.button_component.show()
+	parent.button.show()
 	hide()

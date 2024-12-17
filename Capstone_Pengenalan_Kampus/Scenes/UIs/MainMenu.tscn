@@ -1,0 +1,230 @@
+[gd_scene load_steps=15 format=3 uid="uid://cymw13qsausvp"]
+
+[ext_resource type="Script" path="res://Scripts/UIs/main_menu.gd" id="1_x6v5i"]
+[ext_resource type="Texture2D" uid="uid://bw51r3yrfbhrj" path="res://Assets/Sprites/UI/Unej-Jember.jpg" id="2_n05rp"]
+[ext_resource type="FontFile" uid="uid://c5fjgx33wdlaf" path="res://Assets/Sprites/UI/ARCADECLASSIC.TTF" id="3_sg51f"]
+[ext_resource type="Texture2D" uid="uid://bx0h7xqgetnk4" path="res://Assets/Sprites/UI/Button/btn_pink.png" id="4_okwr4"]
+[ext_resource type="LabelSettings" uid="uid://dn3nilvhdaih5" path="res://Assets/font_game_menu.tres" id="5_rpo0d"]
+[ext_resource type="Texture2D" uid="uid://brbsvyf17aml6" path="res://Assets/Sprites/UI/Button/btn_orange.png" id="6_1qsa5"]
+[ext_resource type="Texture2D" uid="uid://b1474w4ylyi0i" path="res://Assets/Sprites/UI/Button/btn_green.png" id="7_7p3b0"]
+[ext_resource type="Texture2D" uid="uid://vh6igc0a4d8l" path="res://Assets/Sprites/UI/Button/btn_gray.png" id="8_jx8k8"]
+[ext_resource type="PackedScene" uid="uid://8w1nlnlr5rh7" path="res://Scenes/UIs/SettingMenu.tscn" id="9_ph0b8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4am6i"]
+line_spacing = 6.0
+font = ExtResource("3_sg51f")
+font_size = 70
+
+[sub_resource type="Animation" id="Animation_yid4l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fbb0b"]
+resource_name = "gedung_fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.0235294)]
+}
+
+[sub_resource type="Animation" id="Animation_7w8n5"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j724w"]
+_data = {
+"RESET": SubResource("Animation_yid4l"),
+"screen_fade_in": SubResource("Animation_fbb0b"),
+"screen_fade_out": SubResource("Animation_7w8n5")
+}
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x6v5i")
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.252028, 0.252028, 0.252028, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -968.0
+offset_top = -473.0
+offset_right = 968.0
+offset_bottom = 473.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_n05rp")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -325.0
+offset_right = 576.0
+offset_bottom = -135.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "Game   Pengenalan    Lingkungan
+Kampus"
+label_settings = SubResource("LabelSettings_4am6i")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Button" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="TouchScreenButton" parent="Button"]
+position = Vector2(-128, -34)
+scale = Vector2(0.941177, 0.709677)
+texture_normal = ExtResource("4_okwr4")
+
+[node name="Label" type="Label" parent="Button/Start"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0547
+offset_top = -31.5455
+offset_right = 51.9453
+offset_bottom = 17.4545
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLAY"
+label_settings = ExtResource("5_rpo0d")
+
+[node name="Lanjut" type="TouchScreenButton" parent="Button"]
+position = Vector2(-128, -32)
+scale = Vector2(0.941176, 0.716)
+texture_normal = ExtResource("6_1qsa5")
+
+[node name="Label" type="Label" parent="Button/Lanjut"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -15.6899
+offset_right = 20.0
+offset_bottom = 7.31006
+grow_horizontal = 2
+grow_vertical = 2
+text = "Lanjut"
+label_settings = ExtResource("5_rpo0d")
+
+[node name="Setting" type="TouchScreenButton" parent="Button"]
+position = Vector2(-128, 132)
+scale = Vector2(0.941177, 0.715447)
+texture_normal = ExtResource("7_7p3b0")
+
+[node name="Label" type="Label" parent="Button/Setting"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.5
+offset_top = -31.4887
+offset_right = 105.5
+offset_bottom = 17.5113
+grow_horizontal = 2
+grow_vertical = 2
+text = "Settings"
+label_settings = ExtResource("5_rpo0d")
+
+[node name="Quit" type="TouchScreenButton" parent="Button"]
+position = Vector2(-128, 216)
+scale = Vector2(0.941176, 0.709677)
+texture_normal = ExtResource("8_jx8k8")
+
+[node name="Label" type="Label" parent="Button/Quit"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -31.5454
+offset_right = 53.0
+offset_bottom = 17.4546
+grow_horizontal = 2
+grow_vertical = 2
+text = "EXIT"
+label_settings = ExtResource("5_rpo0d")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j724w")
+}
+
+[node name="ColorRect" type="ColorRect" parent="AnimationPlayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SettingMenu" parent="CanvasLayer" instance=ExtResource("9_ph0b8")]
+
+[connection signal="pressed" from="Button/Start" to="." method="_on_play_pressed"]
+[connection signal="released" from="Button/Start" to="." method="_on_play_released"]
+[connection signal="pressed" from="Button/Lanjut" to="." method="_on_lanjut_pressed"]
+[connection signal="pressed" from="Button/Setting" to="." method="_on_setting_pressed"]
+[connection signal="pressed" from="Button/Quit" to="." method="_on_quit_pressed"]

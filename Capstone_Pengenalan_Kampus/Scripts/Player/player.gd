@@ -1,9 +1,5 @@
 extends CharacterBody2D
 
-
-#@export currentpo = position.x
-
-#@export var mov_speed = Global.global_speed
 @export var run_speed = 300
 @export var recovery_rate = 5
 @export var recovery_delay = 2
@@ -11,13 +7,11 @@ extends CharacterBody2D
 @export var deplented_delay = 0.4 
 @export var bg_stamina_delay:float = 0.0
 
-#@onready var ray_cast: RayCast2D = $RayCast2D
 @onready var animated_sprite := $AnimatedSprite2D
 @onready var detection_area := $Player_detection # Area2D yang mendeteksi collision
 @onready var virtual_joystick: VirtualJoystick = $"CanvasLayer/Virtual Joystick"
-@onready var walk_sfx_timer: Timer = $walk_sfx
 
-@onready var state_run: Node = $state_run
+@onready var state_run: Node = $Components/PlayerRunComponent
 @onready var stamina = state_run.stamina
 
 var player_stamina:float = 100
@@ -29,7 +23,6 @@ var is_walking:bool
 var walk_sfx_speed:float
 
 func _ready() -> void:
-	#walk_sfx_timer.start()
 	pass	
 
 func _physics_process(_delta: float) -> void:
@@ -55,8 +48,6 @@ func _physics_process(_delta: float) -> void:
 
 		move_and_slide()
 		
-		#print(Global.global_speed + state_run.run_speed)
-
 		# Atur kecepatan animasi berdasarkan kecepatan player
 		var velocity_length = velocity.length()/100
 		var animation_speed = 0.0
@@ -66,9 +57,6 @@ func _physics_process(_delta: float) -> void:
 		else :
 			animation_speed = velocity_length
 			walk_sfx_speed = max(animation_speed,1.55)
-		#print(walk_sfx_speed)
-
-		print(animation_speed)
 		animated_sprite.speed_scale = animation_speed
 		
 		_play_walk_animation(move_vector)
@@ -77,10 +65,6 @@ func _physics_process(_delta: float) -> void:
 		
 	stamina = state_run.stamina
 	walk_sfx()
-	#_walking()
-	#print('stamina child node : ',stamina)
-	#print('stamina player : ',player_stamina)
-		# Hanya masuk ke idle jika tidak ada input pergerakan
 
 func walk_sfx():
 	if is_walking:
@@ -132,12 +116,3 @@ func _on_player_detection_area_exited(area: Area2D) -> void:
 func _on_player_detection_body_entered(body: Node2D) -> void:
 	if body.has_method('tree'):
 		Global.blur = true
-
-
-func _on_walk_sfx_timeout() -> void:
-	if walk_sfx:
-		walk_sfx_timer.wait_time = AudioManager.get_sfx_duration("walk")
-		AudioManager.play_sfx("walk")
-	else: 
-		AudioManager.stop_sfx()
-		walk_sfx_timer.wait_time = 0

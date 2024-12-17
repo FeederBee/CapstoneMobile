@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5htc6bu2mpi5"]
-
-[ext_resource type="Script" path="res://Scripts/Map/Gedung/state_animation_fakultas.gd" id="1_afr07"]
-
-[node name="state_animation_fakultas" type="Node"]
-script = ExtResource("1_afr07")

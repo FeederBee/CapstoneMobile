@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2hkvgykqlgtt"]
+
+[ext_resource type="Script" path="res://Scripts/Components/pick_buff_component.gd" id="1_mdma1"]
+
+[node name="PickBuffComponent" type="Node"]
+script = ExtResource("1_mdma1")

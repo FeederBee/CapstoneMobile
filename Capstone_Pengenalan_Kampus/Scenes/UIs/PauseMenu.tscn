@@ -1,0 +1,191 @@
+[gd_scene load_steps=9 format=3 uid="uid://85745yt6h7dj"]
+
+[ext_resource type="Script" path="res://Scripts/UIs/pause_control.gd" id="1_vmydb"]
+[ext_resource type="Texture2D" uid="uid://c3knwmpgfww4f" path="res://Assets/Sprites/UI/Button/pause_btn.png" id="2_d0plr"]
+[ext_resource type="Script" path="res://Scripts/UIs/pause_menu.gd" id="3_ouqv8"]
+[ext_resource type="Texture2D" uid="uid://d1pi0pp4c7p2p" path="res://Assets/Sprites/UI/Button/btn_blue.png" id="4_ciuds"]
+[ext_resource type="Texture2D" uid="uid://byuqhog0hu2w5" path="res://Assets/Sprites/UI/textbox_revisi.png" id="4_kqnuj"]
+[ext_resource type="LabelSettings" uid="uid://dn3nilvhdaih5" path="res://Assets/font_game_menu.tres" id="4_wdk18"]
+[ext_resource type="Texture2D" uid="uid://bx0h7xqgetnk4" path="res://Assets/Sprites/UI/Button/btn_pink.png" id="5_b3jix"]
+[ext_resource type="PackedScene" uid="uid://ncfei78i0o8m" path="res://Scenes/Audio/VolumeSlider.tscn" id="7_dpqkm"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+script = ExtResource("1_vmydb")
+metadata/_edit_use_anchors_ = true
+
+[node name="Pause" type="TouchScreenButton" parent="."]
+position = Vector2(-148, 34)
+scale = Vector2(0.475, 0.475)
+texture_normal = ExtResource("2_d0plr")
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+process_mode = 2
+layer = 3
+script = ExtResource("3_ouqv8")
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
+self_modulate = Color(1, 1, 1, 0.576471)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" parent="PauseMenu"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BoxContainer" type="Sprite2D" parent="PauseMenu/Control"]
+position = Vector2(22.0001, 6.99994)
+scale = Vector2(0.888, 1.624)
+texture = ExtResource("4_kqnuj")
+
+[node name="Resume" type="TouchScreenButton" parent="PauseMenu/Control"]
+position = Vector2(-268, 76)
+texture_normal = ExtResource("4_ciuds")
+
+[node name="Label" type="Label" parent="PauseMenu/Control/Resume"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.5
+offset_top = -45.5
+offset_right = 109.5
+offset_bottom = 31.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_stretch_ratio = 0.0
+theme_override_font_sizes/font_size = 56
+text = "Resume"
+label_settings = ExtResource("4_wdk18")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Volume" type="TouchScreenButton" parent="PauseMenu/Control"]
+
+[node name="MainMenu" type="TouchScreenButton" parent="PauseMenu/Control"]
+position = Vector2(36, 76)
+texture_normal = ExtResource("5_b3jix")
+
+[node name="Label" type="Label" parent="PauseMenu/Control/MainMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -38.5
+offset_right = 112.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Main menu"
+label_settings = ExtResource("4_wdk18")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VolumeSlide" type="Label" parent="PauseMenu/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -168.0
+offset_right = -130.0
+offset_bottom = -119.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "VOLUME"
+label_settings = ExtResource("4_wdk18")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Music" type="Label" parent="PauseMenu/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -232.0
+offset_top = -104.0
+offset_right = -100.0
+offset_bottom = -55.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+text = "MUSIC"
+label_settings = ExtResource("4_wdk18")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicVolumeSlider" parent="PauseMenu/Control" instance=ExtResource("7_dpqkm")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -104.0
+offset_right = 184.0
+offset_bottom = -80.0
+step = 0.01
+bus_name = "music"
+max_volume = 4.0
+
+[node name="SFX" type="Label" parent="PauseMenu/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -40.0
+offset_right = -129.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SFX"
+label_settings = ExtResource("4_wdk18")
+
+[node name="SFXVolumeSlider" parent="PauseMenu/Control" instance=ExtResource("7_dpqkm")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -40.0
+offset_right = 192.0
+offset_bottom = -16.0
+bus_name = "sfx"
+max_volume = 1.0
+
+[connection signal="pressed" from="Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="PauseMenu/Control/Resume" to="PauseMenu" method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/Control/MainMenu" to="PauseMenu" method="_on_main_menu_pressed"]
+[connection signal="changed" from="PauseMenu/Control/MusicVolumeSlider" to="PauseMenu" method="_on_music_volume_changed"]

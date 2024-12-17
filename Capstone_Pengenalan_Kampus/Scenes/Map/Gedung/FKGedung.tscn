@@ -1,0 +1,95 @@
+[gd_scene load_steps=9 format=3 uid="uid://p10ldd42xv8b"]
+
+[ext_resource type="Texture2D" uid="uid://clw8p7ttbs4b3" path="res://Assets/Map/Gedung/FK.png" id="1_boyxa"]
+[ext_resource type="PackedScene" uid="uid://c5htc6bu2mpi5" path="res://Scenes/Components/FakultasAnimationComponent.tscn" id="2_jrtni"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ru3fl"]
+size = Vector2(832, 152)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sgnos"]
+size = Vector2(832, 256)
+
+[sub_resource type="Animation" id="Animation_q6sbu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FKBuilding:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_uwiby"]
+resource_name = "gedung_fadein"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FKBuilding:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.392157), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xxgha"]
+resource_name = "gedung_fadeout"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FKBuilding:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.392157)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tm2tp"]
+_data = {
+"RESET": SubResource("Animation_q6sbu"),
+"gedung_fadein": SubResource("Animation_uwiby"),
+"gedung_fadeout": SubResource("Animation_xxgha")
+}
+
+[node name="FKGedung" type="Node2D"]
+
+[node name="FKBuilding" type="Sprite2D" parent="."]
+position = Vector2(0, 124)
+texture = ExtResource("1_boyxa")
+offset = Vector2(0, -156)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(24, 84)
+shape = SubResource("RectangleShape2D_ru3fl")
+
+[node name="CollisionShape2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(23, 171)
+polygon = PackedVector2Array(-65, -13, -65, 3, -59, 3, -59, 30, -50, 30, -50, 8, 51, 8, 51, 30, 60, 30, 60, 3, 66, 3, 66, -13)
+
+[node name="Visibility" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visibility"]
+position = Vector2(24, -120)
+shape = SubResource("RectangleShape2D_sgnos")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tm2tp")
+}
+
+[node name="FakultasAnimationComponent" parent="." instance=ExtResource("2_jrtni")]

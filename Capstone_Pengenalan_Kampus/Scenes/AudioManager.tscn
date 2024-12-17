@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bxoccq6qins32"]
 
-[ext_resource type="Script" path="res://AudioManager.gd" id="1_lu0si"]
+[ext_resource type="Script" path="res://Scripts/AudioManager.gd" id="1_lu0si"]
 
 [sub_resource type="Animation" id="Animation_ecap4"]
 length = 0.001

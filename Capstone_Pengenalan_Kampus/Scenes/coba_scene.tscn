@@ -1,12 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqwuox3ln20ie"]
+[gd_scene load_steps=11 format=3 uid="uid://cqwuox3ln20ie"]
 
 [ext_resource type="PackedScene" uid="uid://db5ao624oyl2w" path="res://Scenes/NPCs/NPC_fasilkom.tscn" id="1_7jto6"]
 [ext_resource type="PackedScene" uid="uid://b3x8rw66ja1e0" path="res://Scenes/Player/Player.tscn" id="2_v7f8s"]
-[ext_resource type="PackedScene" uid="uid://bklq78ahnwv4v" path="res://Scenes/Buff/buff_speed.tscn" id="3_kdb1x"]
-[ext_resource type="PackedScene" uid="uid://cq5llty23j5f" path="res://Scenes/Map/Gedung/ftp_gedung.tscn" id="4_cbhpa"]
+[ext_resource type="PackedScene" uid="uid://bklq78ahnwv4v" path="res://Scenes/Buff/BuffSpeed.tscn" id="3_kdb1x"]
+[ext_resource type="PackedScene" uid="uid://cq5llty23j5f" path="res://Scenes/Map/Gedung/FTPGedung.tscn" id="4_cbhpa"]
 [ext_resource type="PackedScene" uid="uid://bumypsmb4tj4y" path="res://Scenes/NPCs/npc_fmipa.tscn" id="5_ggf07"]
-[ext_resource type="PackedScene" uid="uid://chj3ccq1t78cg" path="res://Scenes/Map/Gedung/fkip_gedung.tscn" id="6_vb6nx"]
-[ext_resource type="PackedScene" uid="uid://coyrf3s55x4y2" path="res://Scenes/Map/Gedung/fasilkom_gedung.tscn" id="7_wfynw"]
+[ext_resource type="PackedScene" uid="uid://chj3ccq1t78cg" path="res://Scenes/Map/Gedung/FKIPGedung.tscn" id="6_vb6nx"]
+[ext_resource type="PackedScene" uid="uid://coyrf3s55x4y2" path="res://Scenes/Map/Gedung/FasilkomGedung.tscn" id="7_wfynw"]
+[ext_resource type="PackedScene" uid="uid://ktm32teasldf" path="res://Scenes/Map/Gedung/FKMGedung.tscn" id="8_i8pih"]
+[ext_resource type="PackedScene" uid="uid://p10ldd42xv8b" path="res://Scenes/Map/Gedung/FKGedung.tscn" id="9_eirb4"]
+[ext_resource type="PackedScene" uid="uid://b4v14fgdwwhkq" path="res://Scenes/Map/Gedung/FapertaGedung.tscn" id="10_1serm"]
 
 [node name="Coba" type="Node2D"]
 y_sort_enabled = true
@@ -36,3 +39,15 @@ position = Vector2(1427, 228)
 
 [node name="Fasilkom_gedung" parent="." instance=ExtResource("7_wfynw")]
 position = Vector2(1990, 282)
+
+[node name="fkm_gedung" parent="." instance=ExtResource("8_i8pih")]
+y_sort_enabled = true
+position = Vector2(196, 310)
+
+[node name="fk_gedung" parent="." instance=ExtResource("9_eirb4")]
+y_sort_enabled = true
+position = Vector2(1572, 675)
+
+[node name="faperta_gedung" parent="." instance=ExtResource("10_1serm")]
+y_sort_enabled = true
+position = Vector2(431, 863)

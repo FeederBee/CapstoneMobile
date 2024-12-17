@@ -1,54 +1,420 @@
-Main Node : 
-Main (Node2D) - [Main.gd]
-├── World (Node2D)
-│   ├── Map (TileMap)
-│   │   ├── GroundLayer (TileMap)
-│   │   ├── ObjectLayer (TileMap)
-│   │   └── CollisionLayer (TileMap)
-│   ├── PlayerInstance (CharacterBody2D - Instance of Player.tscn)
-│   ├── NPCs (Node2D)
-│   │   ├── NPC_1_Instance (CharacterBody2D - Instance of NPC.tscn)
-│   │   ├── NPC_2_Instance (CharacterBody2D - Instance of NPC.tscn)
-│   │   └── ...
-│   └── Collectibles (Node2D)
-│       ├── Collectible_1_Instance (Area2D - Instance of Collectible.tscn)
-│       └── Collectible_2_Instance (Area2D - Instance of Collectible.tscn)
-├── UI (CanvasLayer) - [UIManager.gd]
-│   ├── HealthBar (TextureProgressBar)
-│   ├── MiniMap (TextureRect)
-│   ├── DialogueBox (Panel)
-│   │   ├── NameLabel (Label)
-│   │   └── TextLabel (RichTextLabel)
-│   └── ControlButtons (Control)
-│       ├── ButtonUp (TextureButton)
-│       ├── ButtonDown (TextureButton)
-│       ├── ButtonLeft (TextureButton)
-│       └── ButtonRight (TextureButton)
-├── Audio (Node) - [AudioManager.gd]
-│   ├── BGM (AudioStreamPlayer)
-│   └── SFX (AudioStreamPlayer)
-└── GameManager (Node) - [GameManager.gd]
+Global Node and Scripts: 
+Global (Global.gd)
 
-Player Node : 
-Player (CharacterBody2D) - [Player.gd]
-├── AnimatedSprite2D (AnimatedSprite2D)
-├── CollisionShape2D (CollisionShape2D)
-├── Area2D 
+Dialogic (Plugin)
+
+AudioManager (AudioManager.tscn) - [AudioManager.gd]
+├── BGMPlayer
+├── SFXPlayer_Button
+├── SFXPlayer_Movement
+├── SFXPlayer_Interaction
+└── AnimationPlayer
+
+SaveManager (SaveManager.gd)
+	
+	
+Map Scenes :
+EntranceAreaMap (Node2D) - [entrance_area_map.gd]
+├── Components (Node)
+│   ├── AutoSaveComponent (Node - Instance of AutoSaveComponent.tscn) - [auto_save_component.gd]
+│   ├── PlayerSpawnComponent (Node - Instance of PlayerSpawnComponent.tscn) - [player_spawn_component.gd]
+├── Y_sort (Node2D)
+│   ├── Ground (TileMap)
+│   │   ├── Base (TileMaplayer)
+│   │   ├── BaseMask (TileMapLayer)
+│   │   ├── Rumput (TileMaplayer)
+│   │   ├── Selokan (TileMapLayer)
+│   │   ├── Trotoar (TileMaplayer)
+│   │   └── Jalan (TileMapLayer)
+│   ├── Objects (TileMap)
+│   │   ├── Objek (TileMapLayer)
+│   │   ├── Pohon (TileMapLayer)
+│   │   └── Kendaraan (TileMapLayer)
+│   ├── Karakter (Node2D)
+│   │   ├── Player (CharacterBody2D - Instance of Player.tscn)
+│   │   │   └──  Camera2D
+│   │   └── Kucing (CharacterBody2D - Instance of Kucing.tscn)
+│   ├── Buff (Node2D)
+│   │   └── BuffSpeed (StaticBody2D - Instance of BuffSpeed.tscn)
+├── ChangeMap (Node2D)
+│   ├── Fasilkom_R (Area2D)
+│   └── Fasilkom_L (Area2D)
+├── Boundary (StaticBody2D)
+│   └── CollisionPolygon2D
+├── Transition (CanvasLayer)
+│   ├── ColorRect
+│   ├── ColorRect2
+│	└── AnimationPlayer
+├── ControlLayer (CanvasLayer)
+│   ├── PauseMenu (Control - Instance of PauseMenu.tscn)
+│	├── ChangeMapBtn
+│   │   ├── FasilkomBtn_R (TouchScreenButton)
+│   │	└── FasilkomBtn_L (TouchScreenButton)
+└── PrologCutscene (Node - Instance of PrologCutscene.tscn) - [prolog_cutscenes.gd]
+
+
+FasilkomAreaMap (Node2D) - [fasilkom_area_map.gd]
+├── Components (Node)
+│   ├── AutoSaveComponent (Node - Instance of AutoSaveComponent.tscn)
+│   ├── PlayerSpawnComponent (Node - Instance of PlayerSpawnComponent.tscn)
+├── Y_sort (Node2D)
+│   ├── Ground (TileMap)
+│   │   ├── Base (TileMaplayer)
+│   │   ├── BaseMask (TileMapLayer)
+│   │   ├── Rumput (TileMaplayer)
+│   │   ├── Selokan (TileMapLayer)
+│   │   ├── Trotoar (TileMaplayer)
+│   │   └── Jalan (TileMapLayer)
+│   ├── Objects (TileMap)
+│   │   ├── Objek (TileMapLayer)
+│   │   ├── Pohon (TileMapLayer)
+│   │   └── Kendaraan (TileMapLayer)
+│   ├── Fakultas (Node2D)
+│   │   ├── FasilkomGedung (Node2D - Instance of FasilkomGedung.tscn)
+│   │   └── FapertaGedung (Node2D - Instance of FasilkomGedung.tscn)
+│   ├── Karakter (Node2D)
+│   │   ├── Player (CharacterBody2D - Instance of Player.tscn)
+│   │   │   └──  Camera2D
+│   │   ├── NPCFasilkom (CharacterBody2D - Instance of NPCFasilkom.tscn)
+│   │   └── Kucing (CharacterBody2D - Instance of Kucing.tscn)
+├── ChangeMap (Node2D)
+│   ├── FKIP_Up (Area2D)
+│   ├── FKIP_Mid (Area2D)
+│   ├── FKIP_Down (Area2D)
+│   ├── FTP (Area2D)
+│   ├── Entrance_R (Area2D)
+│   └── Entrance_L (Area2D)
+├── Boundary (StaticBody2D)
+│   └── CollisionPolygon2D
+├── ControlLayer (CanvasLayer)
+│   ├── PauseMenu (Control - Instance of PauseMenu.tscn)
+│	├── ChangeMapBtn
+│   │   ├── FKIPBtn_Up (TouchScreenButton)
+│   │   ├── FKIPBtn_Mid (TouchScreenButton)
+│   │   ├── FKIPBtn_Down (TouchScreenButton)
+│   │   ├── FTPBtn (TouchScreenButton)
+│   │   ├── EntranceBtn_R (TouchScreenButton)
+│   │	└── EntranceBtn_L (TouchScreenButton)
+├── Transition (CanvasLayer)
+│   ├── ColorRect
+│   ├── ColorRect2
+└──	└── AnimationPlayer
+
+
+FKIPAreaMap (Node2D) - [fkip_area_map.gd]
+├── Components (Node)
+│   ├── AutoSaveComponent (Node - Instance of AutoSaveComponent.tscn)
+│   ├── PlayerSpawnComponent (Node - Instance of PlayerSpawnComponent.tscn)
+├── Y_sort (Node2D)
+│   ├── Ground (TileMap)
+│   │   ├── Base (TileMaplayer)
+│   │   ├── BaseMask (TileMapLayer)
+│   │   ├── Rumput (TileMaplayer)
+│   │   ├── Selokan (TileMapLayer)
+│   │   ├── Trotoar (TileMaplayer)
+│   │   └── Jalan (TileMapLayer)
+│   ├── Objects (TileMap)
+│   │   ├── Objek (TileMapLayer)
+│   │   ├── Pohon (TileMapLayer)
+│   │   └── Kendaraan (TileMapLayer)
+│   ├── Fakultas (Node2D)
+│   │   └── FKIPGedung (Node2D - Instance of FKIPGedung.tscn)
+│   ├── Karakter (Node2D)
+│   │   ├── Player (CharacterBody2D - Instance of Player.tscn)
+│   │   │   └──  Camera2D
+│   │   └── Kucing (CharacterBody2D - Instance of Kucing.tscn)
+├── ChangeMap (Node2D)
+│   ├── Fasilkom_Up (Area2D)
+│   ├── Fasilkom_Mid (Area2D)
+│   └── Fasilkom_Down (Area2D)
+├── Boundary (StaticBody2D)
+│   └── CollisionPolygon2D
+├── ControlLayer (CanvasLayer)
+│   ├── PauseMenu (Control - Instance of PauseMenu.tscn)
+│	├── ChangeMapBtn
+│   │   ├── FasilkomBtn_Up (TouchScreenButton)
+│   │   ├── FasilkomBtn_Mid (TouchScreenButton)
+│   │   └── FasilkomBtn_Down (TouchScreenButton)
+├── Transition (CanvasLayer)
+│   ├── ColorRect
+│   ├── ColorRect2
+└──	└── AnimationPlayer
+
+
+FTPAreaMap (Node2D) - [ftp_area_map.gd]
+├── Components (Node)
+│   ├── AutoSaveComponent (Node - Instance of AutoSaveComponent.tscn)
+│   └── PlayerSpawnComponent (Node - Instance of PlayerSpawnComponent.tscn)
+├── Y_sort (Node2D)
+│   ├── Ground (TileMap)
+│   │   ├── Base (TileMaplayer)
+│   │   ├── BaseMask (TileMapLayer)
+│   │   ├── Rumput (TileMaplayer)
+│   │   ├── Selokan (TileMapLayer)
+│   │   ├── Trotoar (TileMaplayer)
+│   │   └── Jalan (TileMapLayer)
+│   ├── Objects (TileMap)
+│   │   ├── Objek (TileMapLayer)
+│   │   ├── Pohon (TileMapLayer)
+│   │   └── Kendaraan (TileMapLayer)
+│   ├── Fakultas (Node2D)
+│   │   ├── FKGedung (Node2D - Instance of FKGedung.tscn)
+│   │   └── FTPGedung (Node2D - Instance of FTPGedung.tscn)
+│   ├── Karakter (Node2D)
+│   │   ├── Player (CharacterBody2D - Instance of Player.tscn)
+│   │   │   └──  Camera2D
+│   │   └── Kucing (CharacterBody2D - Instance of Kucing.tscn)
+├── ChangeMap (Node2D)
+│   ├── Fasilkom (Area2D)
+│   ├── FKG_R (Area2D)
+│   └── FKG_L (Area2D)
+├── Boundary (StaticBody2D)
+│   └── CollisionPolygon2D
+├── ControlLayer (CanvasLayer)
+│   ├── PauseMenu (Control - Instance of PauseMenu.tscn)
+│	├── ChangeMapBtn
+│   │   ├── FasilkomBtn (TouchScreenButton)
+│   │   ├── FKGBtn_R (TouchScreenButton)
+│   │	└── FKGBtn_L (TouchScreenButton)
+├── Transition (CanvasLayer)
+│   ├── ColorRect
+│   ├── ColorRect2
+└──	└── AnimationPlayer
+
+
+FKGAreaMap (Node2D) - [fkg_area_map.gd]
+├── Components (Node)
+│   ├── AutoSaveComponent (Node - Instance of AutoSaveComponent.tscn)
+│   ├── PlayerSpawnComponent (Node - Instance of PlayerSpawnComponent.tscn)
+├── Y_sort (Node2D)
+│   ├── Ground (TileMap)
+│   │   ├── Base (TileMaplayer)
+│   │   ├── BaseMask (TileMapLayer)
+│   │   ├── Rumput (TileMaplayer)
+│   │   ├── Selokan (TileMapLayer)
+│   │   ├── Trotoar (TileMaplayer)
+│   │   └── Jalan (TileMapLayer)
+│   ├── Objects (TileMap)
+│   │   ├── Objek (TileMapLayer)
+│   │   ├── Pohon (TileMapLayer)
+│   │   └── Kendaraan (TileMapLayer)
+│   ├── Fakultas (Node2D)
+│   │   └── FKMGedung (Node2D - Instance of FKMGedung.tscn)
+│   ├── Karakter (Node2D)
+│   │   ├── Player (CharacterBody2D - Instance of Player.tscn)
+│   │   │   └──  Camera2D
+│   │   └── Kucing (CharacterBody2D - Instance of Kucing.tscn)
+├── ChangeMap (Node2D)
+│   ├── FTP_R (Area2D)
+│   └── FTP_L (Area2D)
+├── Boundary (StaticBody2D)
+│   └── CollisionPolygon2D
+├── ControlLayer (CanvasLayer)
+│   ├── PauseMenu (Control - Instance of PauseMenu.tscn)
+│	├── ChangeMapBtn
+│   │   ├── FTPBtn_R (TouchScreenButton)
+│   │	└── FTPBtn_L (TouchScreenButton)
+├── Transition (CanvasLayer)
+│   ├── ColorRect
+│   ├── ColorRect2
+└──	└── AnimationPlayer
+
+UIs and Menus Scenes tscn:
+PauseMenu (Control) - [pause_menu.gd]
+├── Pause (TouchScreenButton)
+├── Paused (CanvasLayer) - [paused.gd]
+│   ├── ColorRect
+│   ├── Control
+│   │   ├── BoxContainer (Sprite2D)
+│   │   ├── Resume (TouchScreenButton)
+│   │   │ 	└── Label
+│   │   ├── Volume (TouchScreenButton)
+│   │   ├── MainMenu (TouchScreenButton)
+│   │  	└──	└──  Label
+│   ├── VolumeSlide (label)
+│   ├── Music (label)
+│   ├── MusicVolumeSlider (HSlider - Instance of VolumeSlider.tscn) - [volume_slider.gd]
+│   ├── SFX (label)
+└──	└── SFXVolumeSlider (HSlider - Instance of VolumeSlider.tscn) - [volume_slider.gd]
+
+SettingMenu
+├── BoxContainer (Sprite2D)
+├── Audio (Control)
+│   ├── Control
+│   │   ├── Volume (label)
+│   │   ├── Music (label)
+│   │   ├── MusicVolumeSlider (HSlider - Instance of VolumeSlider.tscn) - [volume_slider.gd]
+│   │   ├── SFX (label)
+│   └──	└── SFXVolumeSlider (HSlider - Instance of VolumeSlider.tscn) - [volume_slider.gd]
+├── Button (Control)
+│   ├── BackBtn (TouchScreenButton)
+└── └── Label
+
+MainMenu -- Main
+├── Background (TextureRect)
+├── Label
+├── Button (Control)
+│   ├── Start (TouchScreenButton)
+│   │ 	└── Label
+│   ├── Lanjut (TouchScreenButton)
+│   │ 	└── Label
+│   ├── Setting (TouchScreenButton)
+│   │ 	└── Label
+│   ├── Quit (TouchScre
+│   ├── Control
+│   │   ├── Volume (label)
+│   │   ├── Music (label)
+│   │   ├── MusicVolumeSlider (HSlider - Instance of VolumeSlider.tscn) - [volume_slider.gd]
+│   │   ├── SFX (label)
+│   └──	└── SFXVolumeSlider (HSlider - Instance of VolumeSlider.tscn) - [volume_slider.gd]
+├── AnimationPlayer
+│   └── ColorRect
+├── CanvasLayer
+└── └── SettingMenu  (Control - Instance of SettingMenu.tscn) - [setting_menu.gd]
+
+Gedung Scenes:
+FapertaGedung (Node2D)
+├── FapertaBuilding (Sprite2D)
+├── FapertaFront (Sprite2D)
+├── StaticBody2D 
+│   ├── CollisionShape2D
+│   └── CollisionShape2D2
+├── Visibility (Area2D)
 │   └── CollisionShape2D
+├── Animationplayer
+└── FakultasAnimationComponent (Node - Instance of FakultasAnimationComponent.tscn)
+
+FasilkomGedung (Node2D) - [fasilkom_gedung.gd]
+├── FasilkomBuilding (Sprite2D)
+├── FasilkomTulisan (Sprite2D)
+├── StaticBody2D 
+│   ├── CollisionShape2D
+│   ├── CollisionShape2D2
+│   └── CollisionPolygon2D
+├── GedungVisibility (Area2D)
+│   └── CollisionShape2D
+├── TulisanVisibility (Area2D)
+│   └── CollisionShape2D
+└── Animationplayer (Node - Instance of FakultasAnimationComponent.tscn)
+
+FKIPGedung (Node2D)
+├── FKIPBuilding (Sprite2D)
+├── FKIPFront (Sprite2D)
+├── StaticBody2D 
+│   ├── CollisionShape2D
+│   └── CollisionShape2D2
+├── Visibility (Area2D)
+│   └── CollisionShape2D
+├── Animationplayer
+└── FakultasAnimationComponent (Node - Instance of FakultasAnimationComponent.tscn)
+
+FKMGedung (Node2D)
+├── FKMBuilding (Sprite2D)
+├── FKMFront (Sprite2D)
+├── StaticBody2D 
+│   ├── CollisionShape2D
+│   ├── CollisionShape2D2
+│   └── CollisionPolygon2D
+├── Visibility (Area2D)
+│   └── CollisionPolygon2D
+├── Animationplayer
+└── FakultasAnimationComponent (Node - Instance of FakultasAnimationComponent.tscn)
+
+FKGedung (Node2D)
+├── FKBuilding (Sprite2D)
+├── StaticBody2D 
+│   ├── CollisionShape2D
+│   └── CollisionShape2D2
+├── Visibility (Area2D)
+│   └── CollisionShape2D
+├── Animationplayer
+└── FakultasAnimationComponent (Node - Instance of FakultasAnimationComponent.tscn)
+
+FTPGedung (Node2D)
+├── FTPBuilding (Sprite2D)
+├── StaticBody2D 
+│   ├── CollisionShape2D
+│   └── CollisionShape2D2
+├── Visibility (Area2D)
+│   └── CollisionPolygon2D
+├── Animationplayer
+└── FakultasAnimationComponent (Node - Instance of FakultasAnimationComponent.tscn)
+
+Cutscenes Scenes: 
+PrologCutscene (Node2D) - [prolog_cutscene.gd]
+├── CanvasLayer
+│   ├── ColorRect
+│   ├── ColorRect2
+│   ├── ColorRect3
+├── AnimationPlayer
+├── PlayerPath2D (Path2D)
+│   ├── PathFollow2D
+│   │   ├── PlayerAnimated (AnimatedSprite2D)
+│   │	└── Camera2D
+├── PanitiaPath2D (Path2D)
+│   ├── PathFollow2D
+└── └── └── AnimatedSprite2D
+
+Player Scenes : 
+Player (CharacterBody2D) - [player.gd]
+├── AnimatedSprite2D (AnimatedSprite2D)
+├── Shadow (Sprite2D)
+├── CollisionShape2D 
+├── Detection (Area2D)
+│   └── CollisionShape2D
+├── BgStamina (ProgressBar)
+│	├── BarStamina (ProgressBar)
+│   │   ├── RecoverTimer (Timer)
+│   │   └── DeplentedTimer (Timer)
+│   └── BgTimer (Timer)
+├── Components (Node)
+│	├── PlayerDialogComponent (Node - Instance of PlayerDialogComponent ) - [player_dialog_component.gd]
+│   └── PlayerRunComponent (Node) - [player_run_component.gd]
 ├── CanvasLayer 
-│   └── VirtualJoystick
+│	├── ActionButton (Control)
+│	│	└── RunBtn (TouchScreenButton)
+│   └── VirtualJoystick (Control - Instance of VirtualJoystick.tscn)
 └── Camera (Camera2D)
 
-NPC Node: 
-NPC (CharacterBody2D) - [NPC.gd]
+NPC Scenes: 
+NPCFasilkom (CharacterBody2D) - [npc_fasilkom.gd]
 ├── AnimatedSprite2D (AnimatedSprite2D)
 ├── CollisionShape2D (CollisionShape2D)
-├── Area2D 
+├── DialogArea (Area2D)
+│   └── CollisionPolygon2D
+└── NPCDialogComponent ( Node - Instance of NPCDialogComponent.tscn)
+
+Buffs Scenes: 
+BuffSpeed (StaticBody2D)
+├── AnimatedSprite2D (AnimatedSprite2D)
+├── CollisionShape2D (CollisionShape2D)
+├── PickArea (Area2D)
 │   └── CollisionShape2D
-└── Dialogue (Label or RichTextLabel)
+└── PickBuffComponent ( Node - Instance of PickBuffComponent.tscn)
+
+Components Scenes :
+AutoSaveComponent (Node) - [auto_save_component.gd]
+├── CanvasLayer
+│	└── Info (Label)
+├── AutoSaveTimer (Timer)
+└── InfoTimer (Timer)
+
+FakultasAnimationComponent (Node) - [fakultas_animation_component.gd]
+
+NPCDialogComponent (Node) - [npc_dialog_component.gd]
+├── CanvasLayer
+│	├── Control
+│	├──	├── DialogBtn (TouchScreenButton)
+└──	└──	└──	└── Label
+
+PickBuffComponent (Node) - [pick_buff_component.gd]
+
+PlayerDialogComponent (Node) - [player_dialog_component.gd]
+
+PlayerPositionComponent (Node) - [player_position_component.gd]
+
+PlayerSpawnComponent (Node) - [player_spawn_component.gd]
 
 
-Collectible: 
-Collectible (Area2D) - [Collectible.gd]
-├── Sprite (Sprite2D)
-└── CollisionShape2D (CollisionShape2D)
+Audio Scenes:
+VolumeSlider (HSlider) - [volume_slider.gd]
