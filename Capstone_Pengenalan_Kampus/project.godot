@@ -31,17 +31,20 @@ SaveManager="*res://Scripts/SaveManager.gd"
 
 directories/dch_directory={
 "NPC_Entrance": "res://Dialogs/Characters/NPC_Entrance.dch",
-"Player": "res://Dialogs/Characters/Player.dch",
-"npc1": "res://Dialogs/Characters/npc1.dch"
+"NPC_Fasilkom": "res://Dialogs/Characters/NPC_Fasilkom.dch",
+"Player": "res://Dialogs/Characters/Player.dch"
 }
 directories/dtl_directory={
 "Prolog": "res://Dialogs/Timelines/Prolog.dtl",
+"Prolog_Entrance": "res://Dialogs/Timelines/Prolog_Entrance.dtl",
 "fasilkom": "res://Dialogs/Timelines/fasilkom.dtl"
 }
-layout/style_list=["res://Dialogs/dialog_styles.tres"]
-layout/default_style="res://Dialogs/dialog_styles.tres"
+layout/style_list=["res://Dialogs/LeftSpeechDialogStyle.tres", "res://Dialogs/RightSpeechDialogStyle.tres"]
+layout/default_style="res://Dialogs/LeftSpeechDialogStyle.tres"
 glossary/default_case_sensitive=true
 variables={
+"JawabanQuiz": 0,
+"QuizBenarsalah": false,
 "TurnDialog": false,
 "TurnDialogCharacter": "",
 "WalkAway": true

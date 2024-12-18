@@ -1,14 +1,40 @@
 [signal arg="entering_dialog"]
-join npc1 center [animation="Instant In"]
-npc1: Hello and welcome to fasilkom!!
-leave npc1 [animation="Instant Out" wait="true"]
 join Player center
-Player: Hai Kak KONT--.... [pause=0.2] EHEM.. kak astod
-Player: fsfrg4wgetehygwgregsdfwe q fwe  fwef qq f eqf
-leave Player [animation="Instant Out" wait="true"]
-[sound volume="0.0"]
-join npc1 center
-npc1: mknoibbjlnk
-npc1: jbkhbjbjk
-npc1: lknbiyutcycvj
+Player: Hallo kak!
+join NPC_Fasilkom center [animation="Instant In"]
+NPC_Fasilkom: Hallo, kamu siapa?
+Player: Oh iya.. sebelumnya perkenalkan aku Yoto mahasiswa baru di Fakultas Ilmu Komputer. Sekarang aku sedang berjalan - jalan di Universitas Jember dan ingin mencari tahu setiap fakultas yang ada di Universitas Jember
+NPC_Fasilkom: Oh hai Yoto, senang berkenalan dengan mu. Aku Ghilang yang kebetulan mahasiswa semester 7 Fakultas Ilmu Komputer.
+Player: Senang juga bisa berkenalan dengan Kak Ghilang. Disini aku kan emang niatnya mau berjalan - jalan ke tiap - tiap fakultas yang ada di UNEJ. Tapi aku juga ingin masuk dan mengenal lebih jauh tentang fakultas ku sendiri dari sudut pandang kakak tingkat. Bisa dijelaskan mungkin kak?
+NPC_Fasilkom: Tentu, selamat datang di Fakultas Ilmu Komputer! Fasilkom di Universitas Jember ini memang fokus pada pengembangan ilmu komputer, terutama yang berkaitan dengan teknologi dan perancangan sistem.
+NPC_Fasilkom: Di sini, kami punya tiga program studi\: Sistem Informasi, Teknologi Informasi, dan Informatika.
+Player: Wah, menarik! Apa visi dari fakultas ini?
+NPC_Fasilkom: Visi dari fasilkom sendiri cukup spesifik. Fasilkom berusaha untuk unggul dalam pengembangan ilmu komputer yang dapat menunjang pertanian industri. Jadi, selain teknologi, ada fokus khusus di pengembangan agroindustri di sini.
+Player: Jadi, mahasiswa disini nggak cuma belajar tentang komputer ya, tapi juga bagaimana teknologi bisa diterapkan di sektor lain?
+NPC_Fasilkom: Tepat sekali! Fasilkom juga memiliki misi untuk menyelenggarakan pendidikan program sarjana yang profesional di bidang ilmu komputer. Kami ingin menyiapkan sumber daya manusia yang benar-benar kompeten, terutama di bidang pengembangan teknologi untuk sektor pertanian industri
+Player: Menarik sekali! Terus, apa saja tujuan dari fakultas ini?
+NPC_Fasilkom: Tujuan utama nya adalah menghasilkan sarjana bidang ilmu komputer yang profesional, yang mampu mengembangkan dan memanfaatkan teknologi informasi dan komunikasi dalam pekerjaan mereka.
+Player: Sepertinya banyak peluang di sini untuk berkontribusi di masyarakat ya. Ada juga kolaborasi dengan pihak luar?
+NPC_Fasilkom: Betul! Disini juga berusaha menjalin kerjasama dengan berbagai pemangku kepentingan atau stakeholders dalam bidang ilmu komputer. Harapannya, dengan kolaborasi tersebut, kita bisa terus mengembangkan ilmu dan teknologi yang relevan dengan kebutuhan zaman.
+Player: Wow, aku semakin semangat nih untuk mulai kuliah di sini! Terima kasih atas penjelasannya!
+NPC_Fasilkom: Sama-sama! Semoga kamu betah dan sukses di sini. Jangan ragu untuk bertanya kapan saja, ya! Sebelum kamu pergi aku akan berikan pertanyaan untuk kamu.
+Player: Baik kak!
+NPC_Fasilkom: Pilih salah satu yang merupakan bahasa pemrograman!
+- JAVA
+	set {JawabanQuiz} += 1
+- Razer
+- GitHub
+- UI/UX
+NPC_Fasilkom: Manakah diantara 4 pilihan berikut yang bukan merupakan tools text editor ?
+- Notepad ++ | [=""]
+- Microsoft Word
+	set {JawabanQuiz} += 1
+- Visual Studio Code
+- Vim
+if {JawabanQuiz} == 2:
+	NPC_Fasilkom: Wah hebat banget kamu, kamu memang cocok menjadi mahasiswa FASILKOM
+elif {JawabanQuiz} == 1:
+	NPC_Fasilkom: Hahaha, kok bisa mahasiswa FASILKOM cuma bisa jawab satu pertanyaan yang masih berkaitan dengan FASILKOM. Belajar lagi ya!
+else:
+	NPC_Fasilkom: Hahaha, kok bisa mahasiswa FASILKOM salah menjawab pertanyaan yang masih berkaitan dengan FASILKOM. Belajar lagi ya!
 [signal arg="dialog_finished"]

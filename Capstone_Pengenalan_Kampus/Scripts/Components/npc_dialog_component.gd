@@ -3,7 +3,7 @@ extends Node
 @onready var animated: AnimatedSprite2D = $"../AnimatedSprite2D"
 @onready var dialog_timeline_name = get_parent().dialog_timeline_name
 
-@onready var dialog_btn: TouchScreenButton = $CanvasLayer/Control/dialogBtn
+@onready var dialog_btn: TouchScreenButton = $CanvasLayer/Control/DialogBtn
 
 func _ready():
 	dialog_btn.hide()

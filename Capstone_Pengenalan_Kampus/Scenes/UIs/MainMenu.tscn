@@ -127,7 +127,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Start" type="TouchScreenButton" parent="Button"]
-position = Vector2(-128, -34)
+position = Vector2(-128, 40)
 scale = Vector2(0.941177, 0.709677)
 texture_normal = ExtResource("4_okwr4")
 
@@ -143,11 +143,11 @@ offset_right = 51.9453
 offset_bottom = 17.4545
 grow_horizontal = 2
 grow_vertical = 2
-text = "PLAY"
+text = "NEW GAME"
 label_settings = ExtResource("5_rpo0d")
 
 [node name="Lanjut" type="TouchScreenButton" parent="Button"]
-position = Vector2(-128, -32)
+position = Vector2(-128, 40)
 scale = Vector2(0.941176, 0.716)
 texture_normal = ExtResource("6_1qsa5")
 

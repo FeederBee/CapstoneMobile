@@ -7,26 +7,17 @@
 "prefix": "",
 "sound_mood_default": "",
 "sound_moods": {},
-"style": "dialog_styles",
+"style": "RightSpeechDialogStyle",
 "suffix": ""
 },
-"default_portrait": "npc1",
+"default_portrait": "NPCFasilkom",
 "description": "",
-"display_name": "Astanto",
+"display_name": "Ghilang",
 "mirror": false,
 "nicknames": ["Bujangina"],
 "offset": Vector2(0, 0),
 "portraits": {
-"New portrait": {
-"export_overrides": {
-"image": ""
-},
-"mirror": false,
-"offset": Vector2(0, 0),
-"scale": 1.0,
-"scene": ""
-},
-"npc1": {
+"NPCFasilkom": {
 "export_overrides": {
 "image": "\"res://Assets/Sprites/NPC/Potret/Fasilkom (1).png\""
 },

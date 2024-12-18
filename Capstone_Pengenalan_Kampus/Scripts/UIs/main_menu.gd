@@ -7,7 +7,7 @@ extends Control
 @onready var start_btn: TouchScreenButton = $Button/Start
 
 #Path Scene
-var Entrance_map = "res://Scenes/Map/entrance_area.tscn"
+var Entrance_map = "res://Scenes/Map/EntranceAreaMap.tscn"
 
 #transisi
 var transition_path = "MainMenu/AnimationPlayer"
@@ -24,7 +24,6 @@ func _ready() -> void:
 		lanjut_btn.hide()
 
 	#Global
-	#MapManager.preload_maps()
 	Global.current_map = Global.path_map.MAINMENU
 	Global.auto_save_is = false
 	
@@ -34,7 +33,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if player_data != null:
-		#if player_data != Entrance_map:
 		lanjut_btn.show()
 		start_btn.hide()
 	else:
@@ -43,10 +41,10 @@ func _process(_delta: float) -> void:
 		#pass
 
 func _on_play_pressed() -> void:
+	print(transition_path)
 	AudioManager.play_sfx("button_click")
 	Global.is_joystick = true
 	Global.player_stop = false
-	Global.spawn_position = Vector2.ZERO
 	Global.change_map(Global.path_map.ENTRANCE, transition_path)
 
 func _on_load_pressed() -> void:
@@ -66,7 +64,6 @@ func _on_setting_pressed() -> void:
 func _on_quit_pressed() -> void:
 	AudioManager.play_sfx("button_click")
 	get_tree().quit()
-
 
 func _on_lanjut_pressed() -> void:
 	AudioManager.play_sfx("button_click")

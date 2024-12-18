@@ -58,7 +58,7 @@ tracks/0/path = NodePath("ColorRect:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 0.966667),
+"times": PackedFloat32Array(0.1, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
@@ -85,7 +85,7 @@ tracks/0/path = NodePath("ColorRect:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.966667),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
@@ -102,7 +102,7 @@ _data = {
 font = ExtResource("13_pyl5t")
 font_size = 40
 
-[node name="EntranceMap" type="Node2D"]
+[node name="EntranceAreaMap" type="Node2D"]
 script = ExtResource("1_7om15")
 
 [node name="Components" type="Node" parent="."]
@@ -203,6 +203,8 @@ collision_mask = 3
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Boundary"]
 polygon = PackedVector2Array(3187, 3, 3192, 2531, 65, 2533, 65, 35, 204, 35, 203, 2500, 3140, 2500, 3140, 35, 2958, 35, 2958, 25, 2882, 25, 2882, 35, 1134, 35, 1134, 22, 1058, 22, 1058, 35, 204, 35, 10, 0)
 
+[node name="PrologCutscene" parent="." instance=ExtResource("15_oj105")]
+
 [node name="Transition" type="CanvasLayer" parent="."]
 layer = 2
 
@@ -271,8 +273,6 @@ vertical_alignment = 1
 position = Vector2(-383, -328)
 scale = Vector2(4, 4)
 texture_normal = ExtResource("14_16mau")
-
-[node name="PrologCutscene" parent="." instance=ExtResource("15_oj105")]
 
 [connection signal="body_entered" from="ChangeMap/Fasilkom_R" to="." method="_on_to_fasilkom_r_body_entered"]
 [connection signal="body_exited" from="ChangeMap/Fasilkom_R" to="." method="_on_to_fasilkom_r_body_exited"]

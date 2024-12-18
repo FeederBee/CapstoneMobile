@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cqwuox3ln20ie"]
+[gd_scene load_steps=12 format=3 uid="uid://cqwuox3ln20ie"]
 
 [ext_resource type="PackedScene" uid="uid://db5ao624oyl2w" path="res://Scenes/NPCs/NPC_fasilkom.tscn" id="1_7jto6"]
 [ext_resource type="PackedScene" uid="uid://b3x8rw66ja1e0" path="res://Scenes/Player/Player.tscn" id="2_v7f8s"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ktm32teasldf" path="res://Scenes/Map/Gedung/FKMGedung.tscn" id="8_i8pih"]
 [ext_resource type="PackedScene" uid="uid://p10ldd42xv8b" path="res://Scenes/Map/Gedung/FKGedung.tscn" id="9_eirb4"]
 [ext_resource type="PackedScene" uid="uid://b4v14fgdwwhkq" path="res://Scenes/Map/Gedung/FapertaGedung.tscn" id="10_1serm"]
+[ext_resource type="PackedScene" uid="uid://del5ixarttrkg" path="res://Scenes/Cutscenes/PrologCutscene.tscn" id="11_p0q14"]
 
 [node name="Coba" type="Node2D"]
 y_sort_enabled = true
@@ -51,3 +52,5 @@ position = Vector2(1572, 675)
 [node name="faperta_gedung" parent="." instance=ExtResource("10_1serm")]
 y_sort_enabled = true
 position = Vector2(431, 863)
+
+[node name="PrologCutscene" parent="." instance=ExtResource("11_p0q14")]

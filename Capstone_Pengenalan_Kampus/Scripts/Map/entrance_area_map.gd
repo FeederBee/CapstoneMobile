@@ -8,10 +8,10 @@ var fasilkom_l_btn
 var fasilkom_r_btn
 
 #Path scene 
-var fasilkom = "res://Scenes/Map/fasilkom_area.tscn"
+var fasilkom = "res://Scenes/Map/FasilkomAreaMap.tscn"
 
 #Transisi
-var transition_path = "entrance_area/Transition/AnimationPlayer"
+var transition_path = "EntranceAreaMap/Transition/AnimationPlayer"
 @onready var transition = $Transition/AnimationPlayer
 
 func _ready() -> void:
@@ -19,8 +19,11 @@ func _ready() -> void:
 	Global.current_map = Global.path_map.ENTRANCE
 	Global.auto_save_is = true
 	AudioManager.play_bgm('entrance_area')
-	transition.play("screen_fade_in")
 	
+	if SaveManager.load_data('timestamp') == null:
+		$Transition.visible = false
+	else:
+		transition.play("screen_fade_in")
 	player_spawn_component.spawn_player()
 	
 	
@@ -29,6 +32,9 @@ func _ready() -> void:
 	
 	fasilkom_r_btn =get_node("ControlLayer/ChangeMapBtn/FasilkomBtn_R")
 	fasilkom_r_btn.visible = false
+	
+	
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
