@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://b1gpoccrqh3p7"]
+[gd_scene load_steps=19 format=4 uid="uid://b1gpoccrqh3p7"]
 
 [ext_resource type="Script" path="res://Scripts/Map/fkip_area_map.gd" id="1_s7mvh"]
 [ext_resource type="PackedScene" uid="uid://4vfw8g5c0mgb" path="res://Scenes/Components/AutoSaveComponent.tscn" id="2_giyyl"]
@@ -7,6 +7,7 @@
 [ext_resource type="TileSet" uid="uid://cl3gjln3h1vhr" path="res://Assets/objects.tres" id="5_t2gal"]
 [ext_resource type="PackedScene" uid="uid://chj3ccq1t78cg" path="res://Scenes/Map/Gedung/FKIPGedung.tscn" id="7_od1nc"]
 [ext_resource type="Texture2D" uid="uid://bpbhfbhetcm8i" path="res://Assets/Map/Gedung/kwu.png" id="8_0c36v"]
+[ext_resource type="PackedScene" uid="uid://ck13er1s7hude" path="res://Scenes/NPCs/NPC_FKIP.tscn" id="9_mwo3o"]
 [ext_resource type="PackedScene" uid="uid://b3x8rw66ja1e0" path="res://Scenes/Player/Player.tscn" id="9_xsegt"]
 [ext_resource type="Texture2D" uid="uid://dciln2shyf313" path="res://Assets/Sprites/UI/Button/change_map_btn.png" id="10_p23xq"]
 [ext_resource type="PackedScene" uid="uid://85745yt6h7dj" path="res://Scenes/UIs/PauseMenu.tscn" id="11_0ba5a"]
@@ -204,6 +205,9 @@ position = Vector2(1414, 2056)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Y_sort/Karakter/Player"]
 remote_path = NodePath("../../../../Camera2D")
+
+[node name="NPC_FKIP" parent="Y_sort" instance=ExtResource("9_mwo3o")]
+position = Vector2(680, 2832)
 
 [node name="ChangeMap" type="Node2D" parent="."]
 

@@ -31,10 +31,12 @@ SaveManager="*res://Scripts/SaveManager.gd"
 
 directories/dch_directory={
 "NPC_Entrance": "res://Dialogs/Characters/NPC_Entrance.dch",
+"NPC_Faperta": "res://Dialogs/Characters/NPC_Faperta.dch",
 "NPC_Fasilkom": "res://Dialogs/Characters/NPC_Fasilkom.dch",
 "Player": "res://Dialogs/Characters/Player.dch"
 }
 directories/dtl_directory={
+"Faperta": "res://Dialogs/Timelines/Faperta.dtl",
 "Prolog": "res://Dialogs/Timelines/Prolog.dtl",
 "Prolog_Entrance": "res://Dialogs/Timelines/Prolog_Entrance.dtl",
 "fasilkom": "res://Dialogs/Timelines/fasilkom.dtl"
@@ -47,7 +49,7 @@ variables={
 "QuizBenarsalah": false,
 "TurnDialog": false,
 "TurnDialogCharacter": "",
-"WalkAway": true
+"WalkAway": false
 }
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.05

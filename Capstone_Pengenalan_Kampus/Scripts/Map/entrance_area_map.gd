@@ -3,6 +3,7 @@ extends Node2D
 @onready var player = $Y_sort/Karakter/Player
 @onready var AutoLoad = $Components/AutoLoadComponent
 @onready var player_spawn_component = $Components/PlayerSpawnComponent
+@onready var prolog_node = $PrologCutscene
 
 var fasilkom_l_btn
 var fasilkom_r_btn
@@ -24,7 +25,9 @@ func _ready() -> void:
 		$Transition.visible = false
 	else:
 		transition.play("screen_fade_in")
-	player_spawn_component.spawn_player()
+		
+	if !prolog_node:
+		player_spawn_component.spawn_player()
 	
 	
 	fasilkom_l_btn = get_node("ControlLayer/ChangeMapBtn/FasilkomBtn_L")

@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://sipe3c6yj5y5"]
+
+[ext_resource type="Script" path="res://Scripts/NPCs/npc.gd" id="1_ux1cm"]
+[ext_resource type="Texture2D" uid="uid://2avk40ay1kf7" path="res://Assets/Sprites/NPC/animation/FTP.png" id="2_pn2fw"]
+[ext_resource type="PackedScene" uid="uid://4khffy12qyi0" path="res://Scenes/Components/NPCDialogComponent.tscn" id="3_wfdlb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7rht"]
+atlas = ExtResource("2_pn2fw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sjgc4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7rht")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_71ngr"]
+radius = 8.0
+
+[node name="NPC_FTP" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_ux1cm")
+dialog_timeline_name = "FTP"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_sjgc4")
+animation = &"idle"
+offset = Vector2(0.535, -4.545)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_71ngr")
+
+[node name="DialogArea" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DialogArea"]
+polygon = PackedVector2Array(0, 0, -8, 16, 8, 16)
+
+[node name="NPCDialogComponent" parent="." instance=ExtResource("3_wfdlb")]
+
+[connection signal="body_entered" from="DialogArea" to="NPCDialogComponent" method="_on_dialog_area_body_entered"]
+[connection signal="body_exited" from="DialogArea" to="NPCDialogComponent" method="_on_dialog_area_body_exited"]

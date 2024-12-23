@@ -1,15 +1,15 @@
 [signal arg="entering_dialog"]
+set {WalkAway} = false
 join Player center
 Player: Ah... [pause=0.5] akhirnya istirahat yang cukup! Sekarang waktunya lanjut [pause =1]. Hmm . [pause=0.5]. [pause=0.5].   [pause=0.5]. Ah iya.. kalau tidak salah... petualangan!!
 Player: Katanya aku harus keliling ke semua fakultas buat tugas terakhir hari ini.  Wah, aku jadi nggak sabar!
-set {TurnDialog} = true
 Player: Hmm. . .
-[wait time="1.0" hide_text="false"]
-Player: Hmm. . ?
-[wait time="4.0" hide_text="false"]
+set {WalkAway} = true
+[wait time="0.5" hide_text="false"]
+set {WalkAway} = false
 if {TurnDialogCharacter} == "NPC_Entrance":
 	Player: Oh halo kakak Astanto
 	join NPC_Entrance center
 	NPC_Entrance: Oh Halo . . .
-	set {WalkAway} = false
+	set {WalkAway} = true
 	[signal arg="dialog_finished"]

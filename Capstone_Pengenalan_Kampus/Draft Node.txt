@@ -355,43 +355,6 @@ PrologCutscene (Node2D) - [prolog_cutscene.gd]
 │   ├── PathFollow2D
 └── └── └── AnimatedSprite2D
 
-Player Scenes : 
-Player (CharacterBody2D) - [player.gd]
-├── AnimatedSprite2D (AnimatedSprite2D)
-├── Shadow (Sprite2D)
-├── CollisionShape2D 
-├── Detection (Area2D)
-│   └── CollisionShape2D
-├── BgStamina (ProgressBar)
-│	├── BarStamina (ProgressBar)
-│   │   ├── RecoverTimer (Timer)
-│   │   └── DeplentedTimer (Timer)
-│   └── BgTimer (Timer)
-├── Components (Node)
-│	├── PlayerDialogComponent (Node - Instance of PlayerDialogComponent ) - [player_dialog_component.gd]
-│   └── PlayerRunComponent (Node) - [player_run_component.gd]
-├── CanvasLayer 
-│	├── ActionButton (Control)
-│	│	└── RunBtn (TouchScreenButton)
-│   └── VirtualJoystick (Control - Instance of VirtualJoystick.tscn)
-└── Camera (Camera2D)
-
-NPC Scenes: 
-NPCFasilkom (CharacterBody2D) - [npc_fasilkom.gd]
-├── AnimatedSprite2D (AnimatedSprite2D)
-├── CollisionShape2D (CollisionShape2D)
-├── DialogArea (Area2D)
-│   └── CollisionPolygon2D
-└── NPCDialogComponent ( Node - Instance of NPCDialogComponent.tscn)
-
-Buffs Scenes: 
-BuffSpeed (StaticBody2D)
-├── AnimatedSprite2D (AnimatedSprite2D)
-├── CollisionShape2D (CollisionShape2D)
-├── PickArea (Area2D)
-│   └── CollisionShape2D
-└── PickBuffComponent ( Node - Instance of PickBuffComponent.tscn)
-
 Components Scenes :
 AutoSaveComponent (Node) - [auto_save_component.gd]
 ├── CanvasLayer
@@ -418,3 +381,87 @@ PlayerSpawnComponent (Node) - [player_spawn_component.gd]
 
 Audio Scenes:
 VolumeSlider (HSlider) - [volume_slider.gd]
+
+Player Scenes : 
+Player (CharacterBody2D) - [player.gd]
+├── AnimatedSprite2D (AnimatedSprite2D)
+├── Shadow (Sprite2D)
+├── CollisionShape2D 
+├── Detection (Area2D)
+│   └── CollisionShape2D
+├── BgStamina (ProgressBar)
+│	├── BarStamina (ProgressBar)
+│   │   ├── RecoverTimer (Timer)
+│   │   └── DeplentedTimer (Timer)
+│   └── BgTimer (Timer)
+├── Components (Node)
+│	├── PlayerDialogComponent (Node - Instance of PlayerDialogComponent ) - [player_dialog_component.gd]
+│   └── PlayerRunComponent (Node) - [player_run_component.gd]
+├── CanvasLayer 
+│	├── ActionButton (Control)
+│	│	└── RunBtn (TouchScreenButton)
+│   └── VirtualJoystick (Control - Instance of VirtualJoystick.tscn)
+└── Camera (Camera2D)
+
+Buffs Scenes: 
+BuffSpeed (StaticBody2D)
+├── AnimatedSprite2D (AnimatedSprite2D)
+├── CollisionShape2D (CollisionShape2D)
+├── PickArea (Area2D)
+│   └── CollisionShape2D
+└── PickBuffComponent ( Node - Instance of PickBuffComponent.tscn)
+
+NPC Scenes: 
+###
+	Notes :
+	() --> untuk jenis Nodenya
+	[] --> Sctipt yang dipasang di node itu
+	{} --> catatan tambahan
+	
+		1. Struktur standar Node:
+			Nama_NPC (CharacterBody2D) - [Script = npc.gd] -- {Script path di res://Scripts/NPCs/npc.gd}
+			├── AnimatedSprite2D (AnimatedSprite2D) -- {penamaan animasi: idle.}
+			├── CollisionShape2D (CollisionShape2D) -- {bentuk lingkaran/sesuaikan}
+			├── DialogArea (Area2D) -- {Pastikan penamaan sama sebelun sintal dihubungkan ke node NPCDialogComponent}
+			│   └── CollisionPolygon2D -- {bentuk segitiga}
+			└── NPCDialogComponent (Node - Instance of NPCDialogComponent.tscn)
+		2. Collision :
+			- Character2D (root node) = layer 2 (NPC) mask 1 (Player)
+			- Area2D (DialogArea node) = layer 2 (NPC) mas 1 (Player)
+		3. Area2D(untuk listener dialog) : 
+			Pastikan nama Node adalah DialogArea dan connect sinyal ke NPCDialogComponent
+		4. Instance NPCDialogComponent bisa di temukan di : res://Scenes/Components
+		
+###
+
+NPC_Prolog (CharacterBody2D) - [npc.gd]
+├── AnimatedSprite2D (AnimatedSprite2D)
+└── CollisionShape2D (CollisionShape2D)
+
+NPC_Fasilkom (CharacterBody2D) - [npc.gd]
+├── AnimatedSprite2D (AnimatedSprite2D)
+├── CollisionShape2D (CollisionShape2D)
+├── DialogArea (Area2D)
+│   └── CollisionPolygon2D
+└── NPCDialogComponent ( Node - Instance of NPCDialogComponent.tscn)
+
+NPC_Faperta (CharacterBody2D) - [npc.gd]
+├── AnimatedSprite2D (AnimatedSprite2D)
+├── CollisionShape2D (CollisionShape2D)
+├── DialogArea (Area2D)
+│   └── CollisionPolygon2D
+└── NPCDialogComponent ( Node - Instance of NPCDialogComponent.tscn) 
+
+NPC_FMIPA (CharacterBody2D) - [npc.gd]
+├── AnimatedSprite2D (AnimatedSprite2D)
+├── CollisionShape2D (CollisionShape2D)
+├── DialogArea (Area2D)
+│   └── CollisionPolygon2D
+└── NPCDialogComponent ( Node - Instance of NPCDialogComponent.tscn)
+
+NPC_FKIP (CharacterBody2D) - [npc.gd]
+├── AnimatedSprite2D (AnimatedSprite2D)
+├── CollisionShape2D (CollisionShape2D)
+├── DialogArea (Area2D)
+│   └── CollisionPolygon2D
+└── NPCDialogComponent ( Node - Instance of NPCDialogComponent.tscn) 

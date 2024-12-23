@@ -141,3 +141,6 @@ libraries = {
 }
 
 [node name="FakultasAnimationComponent" parent="." instance=ExtResource("2_aqx4g")]
+
+[connection signal="body_entered" from="Visibility" to="FakultasAnimationComponent" method="_on_visibility_body_entered"]
+[connection signal="body_exited" from="Visibility" to="FakultasAnimationComponent" method="_on_visibility_body_exited"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://bxr4xrnk238qd"]
+[gd_scene load_steps=24 format=3 uid="uid://bxr4xrnk238qd"]
 
 [ext_resource type="Script" path="res://Scripts/Map/entrance_area_map.gd" id="1_7om15"]
 [ext_resource type="PackedScene" uid="uid://4vfw8g5c0mgb" path="res://Scenes/Components/AutoSaveComponent.tscn" id="2_y7nue"]
 [ext_resource type="PackedScene" uid="uid://2eurf41ktj6j" path="res://Scenes/Components/PlayerSpawnComponent.tscn" id="3_sr82j"]
 [ext_resource type="TileSet" uid="uid://dahe2tbct5vha" path="res://Assets/trotoar&Jalan.tres" id="4_3hujb"]
+[ext_resource type="Script" path="res://Scripts/Components/prolog_cutscene_component.gd" id="4_8hn4r"]
 [ext_resource type="TileSet" uid="uid://cl3gjln3h1vhr" path="res://Assets/objects.tres" id="5_r0v4t"]
 [ext_resource type="Texture2D" uid="uid://bpbhfbhetcm8i" path="res://Assets/Map/Gedung/kwu.png" id="6_f4g6a"]
 [ext_resource type="Texture2D" uid="uid://dgqucdvintfyv" path="res://Assets/Map/Gedung/masjid.png" id="7_y43wy"]
@@ -109,6 +110,9 @@ script = ExtResource("1_7om15")
 
 [node name="AutoLoadComponent" parent="Components" instance=ExtResource("2_y7nue")]
 
+[node name="PrologCutsceneComponent" type="Node" parent="Components"]
+script = ExtResource("4_8hn4r")
+
 [node name="PlayerSpawnComponent" parent="Components" instance=ExtResource("3_sr82j")]
 default_spawnx = 1920.0
 default_spawny = 704.0
@@ -166,7 +170,7 @@ y_sort_enabled = true
 
 [node name="Player" parent="Y_sort/Karakter" instance=ExtResource("9_v0m3s")]
 y_sort_enabled = true
-position = Vector2(1816, 2264)
+position = Vector2(1800, 2264)
 
 [node name="Camera2D" type="Camera2D" parent="Y_sort/Karakter/Player"]
 rotation = 1.5708

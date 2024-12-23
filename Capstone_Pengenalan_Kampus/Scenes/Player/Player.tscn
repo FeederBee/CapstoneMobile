@@ -40,7 +40,8 @@ script = ExtResource("1_y8avl")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.4, 0.4)
 sprite_frames = ExtResource("2_2pjk2")
-animation = &"walkU"
+animation = &"idleR"
+frame_progress = 0.525145
 offset = Vector2(0, -13)
 
 [node name="Shadows" type="Sprite2D" parent="."]

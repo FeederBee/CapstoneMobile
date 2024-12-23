@@ -1,0 +1,40 @@
+[signal arg="entering_dialog"]
+join Player center
+Player: Hai, Kakkk!
+join NPC_Faperta center
+NPC_Faperta: Iya, ada apa?
+Player: Aku Yoto, mahasiswa baru Fakultas Ilmu Komputer. Lagi jalan-jalan keliling kampus, eh ketemu fakultas ini, Fakultas Pertanian, ya? Kalian belajar apa aja sih di sini?
+NPC_Faperta: Iya, betul! Di Fakultas Pertanian, kita belajar banyak tentang cara meningkatkan hasil pertanian, mengurangi kerugian panen, dan juga pengembangan strategi pertanian yang lebih efisien. Ada banyak hal menarik di sini, deh
+Player: Wah, keren juga! Terus program studi yang ada di sini apa aja?
+NPC_Faperta: Ada empat program studi utama, yaitu Budidaya Pertanian, Sosial Ekonomi Pertanian, Tanah, dan Hama serta Penyakit Tanaman. Jadi, kalau kamu tertarik dengan dunia pertanian, banyak pilihan studi yang bisa kamu pilih.
+Player: Wah, banyak juga ya. Terus, visi dan misi fakultas ini kayak gimana?
+NPC_Faperta: Visinya sih, ingin jadi fakultas yang unggul di bidang sains, teknologi, dan bisnis pertanian yang tetap berwawasan lingkungan. Jadi, nggak cuma fokus sama hasil pertanian, tapi juga peduli sama kelestarian lingkungan.
+Player: Oh, berarti kalian nggak cuma mikirin produktivitas, tapi juga bagaimana pertanian bisa lebih ramah lingkungan, ya?
+NPC_Faperta: Iya, bener banget! Misinya, kami menyelenggarakan pendidikan, penelitian, dan pengabdian masyarakat yang terintegrasi dan inovatif, yang semua itu berfokus ke pengembangan pertanian industrial yang ramah lingkungan.
+Player: Wah, berarti kalau tertarik dengan pertanian atau bahkan bisnis di bidang pertanian, fakultas ini pas banget ya?
+NPC_Faperta: Betul! Karena aku suka dengan dunia pertanian, teknologi, dan bahkan pengelolaan bisnisnya, makanya aku pilih Fakultas Pertanian.
+Player: Makasih ya infonya! Jadi penasaran untuk belajar lebih lanjut.
+NPC_Faperta: Sama-sama! Kalau ada waktu, boleh banget datang ke Fakultas Pertanian dan lihat langsung kegiatan yang ada di sini.
+Player: Baik kak, terimakasih. Oh iya, kakak bisa berikan soal kepada ku tentang secara garis besar, apa aja yang dipelajari disini? Untuk menambah wawasan belajar aku kak.
+NPC_Faperta: Oh tentu boleh. Jawab dengan benar ya.
+# Quest begin!
+NPC_Faperta: Apa nama metode bercocok tanam tanpa menggunakan tanah, tetapi menggunakan media air yang diperkaya nutrisi?
+- Hidroponik
+- Aquaponik
+- Kultur Jaringan
+- Agroforesti
+NPC_Faperta: Tanaman apa yang dikenal sebagai "tanaman penyubur tanah" karena kemampuannya mengikat nitrogen?
+- Padi
+- Kacang-kacangan
+- Tebu
+- Jagung
+# Quest end!
+# Response
+# Benar semua
+if :
+	NPC_Faperta: Sangat mudah bukan. Ya, seperti itu lah secara garis besar materi yang dipelajari disini.
+# Benar satu
+# Salah semua
+if :
+	NPC_Faperta: Apakah terlalu sulit pertanyaan yang aku berikan? Sepertinya tidak, mungkin kamu kurang fokus aja. Coba jawab lagi dengan benar, pastikan kamu fokus kali ini.
+[signal arg="dialog_finished"]

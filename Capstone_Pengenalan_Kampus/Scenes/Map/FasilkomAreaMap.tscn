@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dwj1njkqv3grr"]
+[gd_scene load_steps=32 format=3 uid="uid://dwj1njkqv3grr"]
 
 [ext_resource type="Script" path="res://Scripts/Map/fasilkom_area_map.gd" id="1_c070w"]
 [ext_resource type="PackedScene" uid="uid://4vfw8g5c0mgb" path="res://Scenes/Components/AutoSaveComponent.tscn" id="2_y1jl1"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://b3x8rw66ja1e0" path="res://Scenes/Player/Player.tscn" id="14_d8r2x"]
 [ext_resource type="PackedScene" uid="uid://db5ao624oyl2w" path="res://Scenes/NPCs/NPC_fasilkom.tscn" id="15_54jw3"]
 [ext_resource type="Texture2D" uid="uid://dciln2shyf313" path="res://Assets/Sprites/UI/Button/change_map_btn.png" id="16_i2tpv"]
+[ext_resource type="PackedScene" uid="uid://cm8xcuryjl2p7" path="res://Scenes/NPCs/NPC_Faperta.tscn" id="16_ullx0"]
 [ext_resource type="PackedScene" uid="uid://85745yt6h7dj" path="res://Scenes/UIs/PauseMenu.tscn" id="17_xb4hd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oh8jl"]
@@ -286,8 +287,12 @@ limit_right = 2946
 limit_bottom = 2816
 editor_draw_limits = true
 
-[node name="NPC_fasilkom" parent="Y_sort/Karakter" instance=ExtResource("15_54jw3")]
-position = Vector2(2397, 1465)
+[node name="NPC_Fasilkom" parent="Y_sort/Karakter" instance=ExtResource("15_54jw3")]
+position = Vector2(2400, 1456)
+
+[node name="NPC_Faperta" parent="Y_sort/Karakter" instance=ExtResource("16_ullx0")]
+y_sort_enabled = true
+position = Vector2(352, 2152)
 
 [node name="ChangeMap" type="Node2D" parent="."]
 

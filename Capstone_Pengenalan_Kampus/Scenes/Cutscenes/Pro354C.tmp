@@ -172,7 +172,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_uu8mu")
 }],
 "loop": true,
-"name": &"idleD",
+"name": &"idleU",
 "speed": 5.0
 }]
 
@@ -232,17 +232,23 @@ rotates = false
 cubic_interp = false
 loop = false
 
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(1832, 2512)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PanitiaPath2D/PathFollow2D"]
+rotation = -1.55225
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_hkox2")
+animation = &"idleU"
 
-[node name="PlayerAnimated" type="AnimatedSprite2D" parent="Player"]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(1832, 2472)
+
+[node name="PlayerAnimated" type="AnimatedSprite2D" parent="CharacterBody2D"]
+rotation = -0.0029099
 scale = Vector2(0.4, 0.4)
 sprite_frames = ExtResource("2_huts2")
-animation = &"idleR"
-frame_progress = 0.817962
+animation = &"walkL"
 offset = Vector2(0, -13)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 zoom = Vector2(3.5, 3.5)
 limit_left = 65
 limit_top = 35
@@ -250,10 +256,4 @@ limit_right = 3140
 limit_bottom = 2500
 editor_draw_limits = true
 
-[node name="NPC_Prolog" type="CharacterBody2D" parent="."]
-position = Vector2(1832, 2232)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NPC_Prolog"]
-scale = Vector2(0.8, 0.8)
-sprite_frames = SubResource("SpriteFrames_hkox2")
-animation = &"idleD"
+[node name="Node" type="Node" parent="."]

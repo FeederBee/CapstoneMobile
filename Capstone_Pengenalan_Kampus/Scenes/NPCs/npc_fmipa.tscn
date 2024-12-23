@@ -23,12 +23,13 @@ animations = [{
 radius = 8.0
 height = 16.0
 
-[node name="NPCFMIPA" type="CharacterBody2D"]
+[node name="NPC_FMIPA" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_pqqx8")
 dialog_timeline_name = "fasilkom"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_s1qvy")
 offset = Vector2(0.495, -5)
 
@@ -36,6 +37,7 @@ offset = Vector2(0.495, -5)
 shape = SubResource("CapsuleShape2D_rkflx")
 
 [node name="DialogArea" type="Area2D" parent="."]
+collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DialogArea"]
 polygon = PackedVector2Array(0, 0, 8, 16, -8, 16)
