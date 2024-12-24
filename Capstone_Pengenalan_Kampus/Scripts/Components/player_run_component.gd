@@ -6,13 +6,13 @@ extends Node
 #parent Node
 @onready var player: CharacterBody2D = get_parent().get_parent()
 #Progresbar (stamina) Node
-@onready var bg_stamina: ProgressBar = $"../../BgStamina"
-@onready var bar_stamina: ProgressBar = $"../../BgStamina/BarStamina"
+@onready var bg_stamina: TextureProgressBar = $"../../CanvasLayer/BgStamina" 
+@onready var bar_stamina: TextureProgressBar = $"../../CanvasLayer/BgStamina/BarStamina"
 @onready var run_btn: TouchScreenButton = $"../../CanvasLayer/ActionButton/Run_btn"
 #Timer Node
-@onready var recover_timer: Timer = $"../../BgStamina/BarStamina/recover_timer"
-@onready var deplented_timer: Timer = $"../../BgStamina/BarStamina/deplented_timer"
-@onready var bg_timer: Timer = $"../../BgStamina/bg_timer"
+@onready var recover_timer: Timer = $"../../CanvasLayer/BgStamina/BarStamina/recover_timer"
+@onready var deplented_timer: Timer = $"../../CanvasLayer/BgStamina/BarStamina/deplented_timer"
+@onready var bg_timer: Timer = $"../../CanvasLayer/BgStamina/bg_timer"
 
 @onready var run_speed = player.run_speed
 @onready var recovery_rate = player.recovery_rate
@@ -37,7 +37,6 @@ func _ready() -> void:
 	stamina = maxValue
 	bg_stamina.value = stamina
 	bar_stamina.value = stamina
-	bg_stamina.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -52,7 +51,6 @@ func _process(_delta: float) -> void:
 		if stamina >= 100:
 			is_recovering = false
 			await get_tree().create_timer(3).timeout
-			bg_stamina.hide()
 	
 	depelented_rate = 0 if nge_troll.cheat else player.depelented_rate
 
@@ -68,7 +66,6 @@ func _on_run_btn_pressed() -> void:
 	
 	if bg_timer.is_stopped(): 
 		bg_timer.start(bg_delay)
-	bg_stamina.show()
 	player.player_stamina = stamina
 
 func _on_run_btn_released() -> void:

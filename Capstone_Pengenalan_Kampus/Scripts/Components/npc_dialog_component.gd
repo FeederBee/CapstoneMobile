@@ -1,6 +1,7 @@
 extends Node
 
 @onready var animated: AnimatedSprite2D = $"../AnimatedSprite2D"
+@onready var dialog_timeline_quest_name = get_parent().dialog_timeline_quest_name
 @onready var dialog_timeline_name = get_parent().dialog_timeline_name
 
 @onready var dialog_btn: TouchScreenButton = $CanvasLayer/Control/DialogBtn
@@ -16,12 +17,27 @@ func _physics_process(_delta: float) -> void:
 func run_dialog(dialog_string):
 	Global.is_dialog = true
 	Dialogic.start(dialog_string)
+	
+func check_quiz_progress(quest_name: String = dialog_timeline_quest_name):
+	var quiz_progress = SaveManager.load_data("quiz_progress")
+	# Periksa apakah quiz_progress tidak null
+	if quiz_progress != null:
+		# Iterasi semua map dalam quest_progress
+		for map_name in quiz_progress.keys():
+			# Ambil data quest untuk map tersebut
+			var map_quests = quiz_progress.get(map_name, {})
+			# Cek apakah quest_name ada di map_quests dan apakah statusnya "completed"
+			if map_quests.has(quest_name) and map_quests[quest_name] == "completed":
+				return true  # Quest ditemukan selesai di salah satu map
+		
+	return false  # Quest tidak ditemukan atau belum selesai
 
 func _on_dialogic_signal(argument:String):
 	if argument == "entering_dialog":
 		dialog_btn.hide()
 	elif argument == "dialog_finished":
-		dialog_btn.show()
+		if dialog_timeline_quest_name == Dialogic.VAR.TimelineName:
+			dialog_btn.show()
 		Global.is_joystick= true
 		Global.is_dialog = false
 		Global.player_stop = false
@@ -38,4 +54,7 @@ func _on_dialog_btn_pressed() -> void:
 	Global.player_stop = true
 	Global.is_joystick= false
 	print('dialog')
-	run_dialog(dialog_timeline_name)
+	
+	if check_quiz_progress():
+		run_dialog(dialog_timeline_name)
+	else: run_dialog(dialog_timeline_quest_name)

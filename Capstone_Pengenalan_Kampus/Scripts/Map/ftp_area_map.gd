@@ -52,14 +52,3 @@ func _on_to_fkg_2_body_exited(body: Node2D) -> void:
 	fkg2_btn.visible = false
 	
 #Button Touch Signal
-func _on_fasilkom_btn_pressed() -> void:
-	Global.change_map(Global.path_map.FKG, transition_path)
-	Global.spawn_position = Vector2(10, 1508)
-
-func _on_fkg_btn_pressed() -> void:
-	Global.change_map(Global.path_map.FKG, transition_path)
-	Global.spawn_position = Vector2(2634, 58)
-
-func _on_fkg_2_btn_pressed() -> void:
-	Global.change_map(Global.path_map.FKG, transition_path)
-	Global.spawn_position = Vector2(1497, 58)

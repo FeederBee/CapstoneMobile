@@ -1,4 +1,6 @@
 [signal arg="entering_dialog"]
+set {JawabanQuiz} = 0
+set {TimelineName} = "Faperta"
 join Player center
 Player: Hai, Kakkk!
 join NPC_Faperta center
@@ -20,21 +22,28 @@ NPC_Faperta: Oh tentu boleh. Jawab dengan benar ya.
 # Quest begin!
 NPC_Faperta: Apa nama metode bercocok tanam tanpa menggunakan tanah, tetapi menggunakan media air yang diperkaya nutrisi?
 - Hidroponik
+	set {JawabanQuiz} += 1
 - Aquaponik
 - Kultur Jaringan
 - Agroforesti
 NPC_Faperta: Tanaman apa yang dikenal sebagai "tanaman penyubur tanah" karena kemampuannya mengikat nitrogen?
 - Padi
 - Kacang-kacangan
+	set {JawabanQuiz} += 1
 - Tebu
 - Jagung
 # Quest end!
 # Response
 # Benar semua
-if :
+if {JawabanQuiz} == 2:
+	set {QuizResult} = "completed"
 	NPC_Faperta: Sangat mudah bukan. Ya, seperti itu lah secara garis besar materi yang dipelajari disini.
 # Benar satu
-# Salah semua
-if :
+elif {JawabanQuiz} == 1:
+	set {QuizResult} = "incomplete"
+	set {QuizResult} = "incomplete"
+	NPC_Faperta: sadaefawsdc
 	NPC_Faperta: Apakah terlalu sulit pertanyaan yang aku berikan? Sepertinya tidak, mungkin kamu kurang fokus aja. Coba jawab lagi dengan benar, pastikan kamu fokus kali ini.
+# Salah semua
+[signal arg="quiz_result_save"]
 [signal arg="dialog_finished"]

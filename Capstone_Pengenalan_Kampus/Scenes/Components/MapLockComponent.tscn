@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjgkqdird7iji"]
+
+[ext_resource type="Script" path="res://Scripts/Components/map_lock_component.gd" id="1_d7mrx"]
+
+[node name="MapLockComponent" type="Node"]
+script = ExtResource("1_d7mrx")

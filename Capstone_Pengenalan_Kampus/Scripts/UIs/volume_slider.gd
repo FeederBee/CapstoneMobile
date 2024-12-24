@@ -13,7 +13,7 @@ func _ready() -> void:
 	
 	bus_index = AudioServer.get_bus_index(bus_name)
 	if bus_name == 'music':
-		if music_vol_data:
+		if music_vol_data!=null:
 			AudioServer.set_bus_volume_db(bus_index, linear_to_db(music_vol_data))
 		else:
 			AudioServer.set_bus_volume_db(bus_index, linear_to_db(AudioManager.music_volume))
@@ -22,7 +22,7 @@ func _ready() -> void:
 			AudioServer.set_bus_volume_db(bus_index, linear_to_db(sfx_vol_data))
 		else:
 			AudioServer.set_bus_volume_db(bus_index, linear_to_db(AudioManager.sfx_volume))
-	value_changed.connect(_on_value_changed)
+	#value_changed.connect(_on_value_changed)
 	value = db_to_linear(AudioServer.get_bus_volume_db(bus_index))
 
 

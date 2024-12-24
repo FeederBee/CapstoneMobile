@@ -3,12 +3,16 @@
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_y8avl"]
 [ext_resource type="SpriteFrames" uid="uid://cnkuktouiyvgk" path="res://Scenes/Player/Player_draft0.tres" id="2_2pjk2"]
 [ext_resource type="Texture2D" uid="uid://b44kt5w12f2of" path="res://Assets/Sprites/Player/shadow.png" id="3_6bu36"]
+[ext_resource type="PackedScene" uid="uid://drgnh0amldu6q" path="res://Scenes/UIs/PlayerProfile.tscn" id="4_ya35o"]
+[ext_resource type="Texture2D" uid="uid://cj5r0ous2pynd" path="res://Assets/Sprites/UI/StaminaBar.png" id="5_trykw"]
 [ext_resource type="Texture2D" uid="uid://8hvflgbhjs3t" path="res://Assets/Sprites/UI/Button/Sprint_btn.png" id="5_vemkn"]
+[ext_resource type="Texture2D" uid="uid://d26aoisge3hgy" path="res://Assets/Sprites/UI/StaminaProgressBar.png" id="6_7rsty"]
 [ext_resource type="Script" path="res://Scripts/Components/player_run_component.gd" id="6_kfyr0"]
 [ext_resource type="LabelSettings" uid="uid://dn3nilvhdaih5" path="res://Assets/font_game_menu.tres" id="8_fgcky"]
 [ext_resource type="Script" path="res://Scripts/nge_troll(hapus kalau sudah jadi).gd" id="8_qtw70"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://Scenes/Player/VirtualJoystick.tscn" id="10_0s18b"]
 [ext_resource type="Texture2D" uid="uid://cv3kk5f7ms5fh" path="res://Assets/Sprites/UI/Button/templatebg_btn.png" id="10_64p2g"]
+[ext_resource type="Texture2D" uid="uid://bx0b42gxlkp7v" path="res://Assets/Sprites/UI/StaminaProgressBarBG.png" id="10_575t8"]
 [ext_resource type="PackedScene" uid="uid://d3jsyushci4ja" path="res://Scenes/Components/PlayerDialogComponent.tscn" id="10_k87g2"]
 [ext_resource type="Script" path="res://Scripts/Components/player_dialog_component.gd" id="11_b77nd"]
 
@@ -17,21 +21,6 @@ radius = 6.40291
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e4yp5"]
 radius = 15.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4lll2"]
-bg_color = Color(0, 0, 0, 1)
-expand_margin_left = 1.0
-expand_margin_top = 1.0
-expand_margin_right = 1.0
-expand_margin_bottom = 1.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gxx76"]
-bg_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ka5v8"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_03vv5"]
-bg_color = Color(0.255118, 0.606664, 1, 1)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 126
@@ -62,36 +51,6 @@ collision_mask = 62
 position = Vector2(0, -3)
 shape = SubResource("CapsuleShape2D_e4yp5")
 
-[node name="BgStamina" type="ProgressBar" parent="."]
-offset_left = -10.0
-offset_top = -17.0
-offset_right = 10.0
-offset_bottom = -15.0
-theme_override_styles/background = SubResource("StyleBoxFlat_4lll2")
-theme_override_styles/fill = SubResource("StyleBoxFlat_gxx76")
-value = 100.0
-show_percentage = false
-
-[node name="BarStamina" type="ProgressBar" parent="BgStamina"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/background = SubResource("StyleBoxEmpty_ka5v8")
-theme_override_styles/fill = SubResource("StyleBoxFlat_03vv5")
-value = 100.0
-show_percentage = false
-
-[node name="recover_timer" type="Timer" parent="BgStamina/BarStamina"]
-one_shot = true
-
-[node name="deplented_timer" type="Timer" parent="BgStamina/BarStamina"]
-
-[node name="bg_timer" type="Timer" parent="BgStamina"]
-one_shot = true
-
 [node name="Components" type="Node" parent="."]
 
 [node name="PlayerRunComponent" type="Node" parent="Components"]
@@ -101,6 +60,41 @@ script = ExtResource("6_kfyr0")
 script = ExtResource("11_b77nd")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PlayerProfile" parent="CanvasLayer" instance=ExtResource("4_ya35o")]
+
+[node name="BgStamina" type="TextureProgressBar" parent="CanvasLayer"]
+offset_left = 157.0
+offset_top = 118.0
+offset_right = 366.0
+offset_bottom = 150.0
+scale = Vector2(0.7, 0.7)
+texture_over = ExtResource("5_trykw")
+texture_progress = ExtResource("10_575t8")
+
+[node name="BarStamina" type="TextureProgressBar" parent="CanvasLayer/BgStamina"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -16.0
+offset_right = 104.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 100.0
+texture_progress = ExtResource("6_7rsty")
+
+[node name="recover_timer" type="Timer" parent="CanvasLayer/BgStamina/BarStamina"]
+one_shot = true
+
+[node name="deplented_timer" type="Timer" parent="CanvasLayer/BgStamina/BarStamina"]
+
+[node name="bg_timer" type="Timer" parent="CanvasLayer/BgStamina"]
+one_shot = true
 
 [node name="Virtual Joystick" parent="CanvasLayer" instance=ExtResource("10_0s18b")]
 modulate = Color(1, 1, 1, 0.627451)
@@ -225,17 +219,17 @@ label_settings = ExtResource("8_fgcky")
 [connection signal="area_entered" from="Player_detection" to="." method="_on_player_detection_area_entered"]
 [connection signal="area_exited" from="Player_detection" to="." method="_on_player_detection_area_exited"]
 [connection signal="body_entered" from="Player_detection" to="." method="_on_player_detection_body_entered"]
-[connection signal="timeout" from="BgStamina/BarStamina/recover_timer" to="BgStamina" method="_on_recover_timer_timeout"]
-[connection signal="timeout" from="BgStamina/BarStamina/recover_timer" to="BgStamina" method="_on_timer_timeout"]
-[connection signal="timeout" from="BgStamina/BarStamina/recover_timer" to="Components/PlayerRunComponent" method="_on_recover_timer_timeout"]
-[connection signal="timeout" from="BgStamina/BarStamina/deplented_timer" to="BgStamina" method="_on_deplented_timer_timeout"]
-[connection signal="timeout" from="BgStamina/BarStamina/deplented_timer" to="BgStamina" method="_on_bgtimer_timeout"]
-[connection signal="timeout" from="BgStamina/BarStamina/deplented_timer" to="Components/PlayerRunComponent" method="_on_deplented_timer_timeout"]
-[connection signal="timeout" from="BgStamina/bg_timer" to="Components/PlayerRunComponent" method="_on_bg_timer_timeout"]
-[connection signal="pressed" from="CanvasLayer/ActionButton/Run_btn" to="BgStamina" method="_on_run_btn_pressed"]
+[connection signal="timeout" from="CanvasLayer/BgStamina/BarStamina/recover_timer" to="Components/PlayerRunComponent" method="_on_recover_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/BgStamina/BarStamina/recover_timer" to="CanvasLayer/BgStamina" method="_on_recover_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/BgStamina/BarStamina/recover_timer" to="CanvasLayer/BgStamina" method="_on_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/BgStamina/BarStamina/deplented_timer" to="Components/PlayerRunComponent" method="_on_deplented_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/BgStamina/BarStamina/deplented_timer" to="CanvasLayer/BgStamina" method="_on_deplented_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/BgStamina/BarStamina/deplented_timer" to="CanvasLayer/BgStamina" method="_on_bgtimer_timeout"]
+[connection signal="timeout" from="CanvasLayer/BgStamina/bg_timer" to="Components/PlayerRunComponent" method="_on_bg_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/ActionButton/Run_btn" to="Components/PlayerRunComponent" method="_on_run_btn_pressed"]
-[connection signal="released" from="CanvasLayer/ActionButton/Run_btn" to="BgStamina" method="_on_run_btn_released"]
+[connection signal="pressed" from="CanvasLayer/ActionButton/Run_btn" to="CanvasLayer/BgStamina" method="_on_run_btn_pressed"]
 [connection signal="released" from="CanvasLayer/ActionButton/Run_btn" to="Components/PlayerRunComponent" method="_on_run_btn_released"]
+[connection signal="released" from="CanvasLayer/ActionButton/Run_btn" to="CanvasLayer/BgStamina" method="_on_run_btn_released"]
 [connection signal="timeout" from="NgeTroll/Timer" to="NgeTroll" method="_on_timer_timeout"]
 [connection signal="pressed" from="NgeTroll/Control/active" to="NgeTroll" method="_on_touch_screen_button_pressed"]
 [connection signal="pressed" from="NgeTroll/Control/deactive" to="NgeTroll" method="_on_deactive_pressed"]

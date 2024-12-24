@@ -65,15 +65,3 @@ func _on_to_fasilkom_bwh_body_entered(body: Node2D) -> void:
 func _on_to_fasilkom_bwh_body_exited(body: Node2D) -> void:
 	if body.has_method("player"):
 		fasilkom_down.visible = false
-
-#TouchButton signal
-#Fasilkom
-func _on_fasilkom_atas_btn_pressed() -> void:
-	Global.change_map(Global.path_map.FASILKOM, transition_path)
-	Global.spawn_position = Vector2(2930, 984)
-func _on_fasilkom_bwh_btn_pressed() -> void:
-	Global.change_map(Global.path_map.FASILKOM, transition_path)
-	Global.spawn_position = Vector2(2930, 1594)
-func _on_fasilkom_mid_btn_pressed() -> void:
-	Global.change_map(Global.path_map.FASILKOM, transition_path)
-	Global.spawn_position = Vector2(2930, 2650)

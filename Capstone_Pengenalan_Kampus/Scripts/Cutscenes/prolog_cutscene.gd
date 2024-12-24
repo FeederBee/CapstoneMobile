@@ -12,6 +12,7 @@ extends Node2D
 @onready var npc_animated: AnimatedSprite2D = $NPC_Prolog/AnimatedSprite2D
 
 #Parent Node
+#Player
 @onready var camera = $"../Y_sort/Karakter/Player/Camera2D"
 @onready var player: CharacterBody2D = $"../Y_sort/Karakter/Player"
 @onready var parent_animation_player: AnimationPlayer = $"../Transition/AnimationPlayer"
@@ -127,4 +128,5 @@ func _on_dialogic_signal(argument:String):
 			player_spawn_component.spawn_player()
 			camera.enabled = true
 			player.show()
+		Global.is_joystick= true
 		queue_free()

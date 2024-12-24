@@ -8,7 +8,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	print(SaveManager.load_data('music_volume'))
 
 
 func _on_resume_pressed():

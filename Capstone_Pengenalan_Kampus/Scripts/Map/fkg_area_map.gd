@@ -45,17 +45,6 @@ func _on_ftp_l_body_exited(body: Node2D) -> void:
 	if body.has_method('player'):
 		ftp_l_btn.visible = false
 
-
-#Button Touch Signal
-func _on_ftp_r_button_pressed() -> void:
-	Global.change_map(Global.path_map.FTP, transition_path)
-	Global.spawn_position = Vector2(3864, 3605)
-
-func _on_ftp_l_btn_pressed() -> void:
-	Global.change_map(Global.path_map.FTP, transition_path)
-	Global.spawn_position = Vector2(1766, 3604)
-
-
 func _on_ftp_l__body_entered(body: Node2D) -> void:
 	pass # Replace with function body.
 

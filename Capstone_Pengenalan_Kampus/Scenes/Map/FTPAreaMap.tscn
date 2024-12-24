@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://c1n0deyab55tu"]
+[gd_scene load_steps=21 format=3 uid="uid://c1n0deyab55tu"]
 
 [ext_resource type="Script" path="res://Scripts/Map/ftp_area_map.gd" id="1_rnknv"]
 [ext_resource type="PackedScene" uid="uid://4vfw8g5c0mgb" path="res://Scenes/Components/AutoSaveComponent.tscn" id="2_2857j"]
 [ext_resource type="PackedScene" uid="uid://2eurf41ktj6j" path="res://Scenes/Components/PlayerSpawnComponent.tscn" id="3_4cifc"]
+[ext_resource type="PackedScene" uid="uid://bjgkqdird7iji" path="res://Scenes/Components/MapLockComponent.tscn" id="4_7nn0e"]
 [ext_resource type="TileSet" uid="uid://dahe2tbct5vha" path="res://Assets/trotoar&Jalan.tres" id="4_dqsxp"]
 [ext_resource type="TileSet" uid="uid://cl3gjln3h1vhr" path="res://Assets/objects.tres" id="5_6476f"]
 [ext_resource type="PackedScene" uid="uid://p10ldd42xv8b" path="res://Scenes/Map/Gedung/FKGedung.tscn" id="6_hyevl"]
@@ -108,6 +109,8 @@ script = ExtResource("1_rnknv")
 [node name="PlayerSpawnComponent" parent="Components" instance=ExtResource("3_4cifc")]
 default_spawnx = 1678.0
 default_spawny = 2249.0
+
+[node name="MapLockComponent" parent="Components" instance=ExtResource("4_7nn0e")]
 
 [node name="Y_sort" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -276,6 +279,6 @@ editor_draw_limits = true
 [connection signal="body_exited" from="ChangeMap/FKG_R" to="." method="_on_to_fkg_body_exited"]
 [connection signal="body_entered" from="ChangeMap/FKG_L" to="." method="_on_to_fkg_2_body_entered"]
 [connection signal="body_exited" from="ChangeMap/FKG_L" to="." method="_on_to_fkg_2_body_exited"]
-[connection signal="pressed" from="ControlLayer/ChangeMapBtn/FasilkomBtn" to="." method="_on_fasilkom_btn_pressed"]
-[connection signal="pressed" from="ControlLayer/ChangeMapBtn/FKGBtn_R" to="." method="_on_fkg_btn_pressed"]
-[connection signal="pressed" from="ControlLayer/ChangeMapBtn/FKGBtn_L" to="." method="_on_fkg_2_btn_pressed"]
+[connection signal="pressed" from="ControlLayer/ChangeMapBtn/FasilkomBtn" to="Components/MapLockComponent" method="_on_fasilkom_btn_pressed"]
+[connection signal="pressed" from="ControlLayer/ChangeMapBtn/FKGBtn_R" to="Components/MapLockComponent" method="_on_fkg_btn_r_pressed"]
+[connection signal="pressed" from="ControlLayer/ChangeMapBtn/FKGBtn_L" to="Components/MapLockComponent" method="_on_fkg_btn_l_pressed"]

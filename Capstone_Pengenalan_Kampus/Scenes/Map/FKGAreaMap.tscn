@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://y08jbm5nux2s"]
+[gd_scene load_steps=20 format=3 uid="uid://y08jbm5nux2s"]
 
 [ext_resource type="Script" path="res://Scripts/Map/fkg_area_map.gd" id="1_mj4rf"]
 [ext_resource type="PackedScene" uid="uid://4vfw8g5c0mgb" path="res://Scenes/Components/AutoSaveComponent.tscn" id="2_jcje0"]
 [ext_resource type="PackedScene" uid="uid://2eurf41ktj6j" path="res://Scenes/Components/PlayerSpawnComponent.tscn" id="3_xkc7p"]
 [ext_resource type="TileSet" uid="uid://dahe2tbct5vha" path="res://Assets/trotoar&Jalan.tres" id="4_pchwy"]
+[ext_resource type="PackedScene" uid="uid://bjgkqdird7iji" path="res://Scenes/Components/MapLockComponent.tscn" id="4_wjhhk"]
 [ext_resource type="TileSet" uid="uid://cl3gjln3h1vhr" path="res://Assets/objects.tres" id="5_yv4nb"]
 [ext_resource type="Texture2D" uid="uid://br22sl84dju47" path="res://Assets/Map/Gedung/hospital1.png" id="6_ulu4o"]
 [ext_resource type="Texture2D" uid="uid://clw8p7ttbs4b3" path="res://Assets/Map/Gedung/FK.png" id="7_orjqi"]
@@ -106,6 +107,8 @@ script = ExtResource("1_mj4rf")
 default_spawnx = 2630.0
 default_spawny = 1219.0
 
+[node name="MapLockComponent" parent="Components" instance=ExtResource("4_wjhhk")]
+
 [node name="Y_sort" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -161,11 +164,6 @@ texture = ExtResource("8_g6kx8")
 
 [node name="Farmasi" type="Sprite2D" parent="Y_sort/Fakultas"]
 position = Vector2(2975, 1647)
-scale = Vector2(5, 5)
-texture = ExtResource("8_g6kx8")
-
-[node name="Kesmas" type="Sprite2D" parent="Y_sort/Fakultas"]
-position = Vector2(2231, 2051)
 scale = Vector2(5, 5)
 texture = ExtResource("8_g6kx8")
 
@@ -265,5 +263,5 @@ editor_draw_limits = true
 [connection signal="body_exited" from="ChangeMap/FTP_R" to="." method="_on_ftp_r_body_exited"]
 [connection signal="body_entered" from="ChangeMap/FTP_L" to="." method="_on_ftp_l_body_entered"]
 [connection signal="body_exited" from="ChangeMap/FTP_L" to="." method="_on_ftp_l_body_exited"]
-[connection signal="pressed" from="ControlLayer/ChangeMapBtn/FTPBtn_R" to="." method="_on_ftp_r_button_pressed"]
-[connection signal="pressed" from="ControlLayer/ChangeMapBtn/FTPBtn_L" to="." method="_on_ftp_l_btn_pressed"]
+[connection signal="pressed" from="ControlLayer/ChangeMapBtn/FTPBtn_R" to="Components/MapLockComponent" method="_on_ftp_btn_r_pressed"]
+[connection signal="pressed" from="ControlLayer/ChangeMapBtn/FTPBtn_L" to="Components/MapLockComponent" method="_on_ftp_btn_l_pressed"]

@@ -24,6 +24,12 @@ func spawn_player():
 	if prolog_node:
 		#print('spawn = ', prolog_node.get_player_position())
 		player.global_position = prolog_node.get_player_position()
+		return
+	
+	if Global.spawn_position == Vector2.ZERO:
+		return
+	
+	parent.player.global_position = Global.spawn_position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

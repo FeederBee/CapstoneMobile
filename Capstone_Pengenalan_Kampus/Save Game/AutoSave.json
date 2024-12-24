@@ -1,2 +1,14 @@
 {
+	"current_map": "res://Scenes/Map/FasilkomAreaMap.tscn",
+	"music_volume": 0,
+	"player_stamina": 100,
+	"player_x_position": 354.094635009766,
+	"player_y_position": 2166.04052734375,
+	"quiz_progress": {
+		"FasilkomAreaMap": {
+			"Faperta": "completed",
+			"fasilkom": "completed"
+		}
+	},
+	"timestamp": "2024-12-24T15:13:17"
 }

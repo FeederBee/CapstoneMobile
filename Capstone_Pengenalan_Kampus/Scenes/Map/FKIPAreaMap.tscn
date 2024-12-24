@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=4 uid="uid://b1gpoccrqh3p7"]
+[gd_scene load_steps=20 format=4 uid="uid://b1gpoccrqh3p7"]
 
 [ext_resource type="Script" path="res://Scripts/Map/fkip_area_map.gd" id="1_s7mvh"]
 [ext_resource type="PackedScene" uid="uid://4vfw8g5c0mgb" path="res://Scenes/Components/AutoSaveComponent.tscn" id="2_giyyl"]
 [ext_resource type="PackedScene" uid="uid://2eurf41ktj6j" path="res://Scenes/Components/PlayerSpawnComponent.tscn" id="3_p3026"]
+[ext_resource type="PackedScene" uid="uid://bjgkqdird7iji" path="res://Scenes/Components/MapLockComponent.tscn" id="4_akqo2"]
 [ext_resource type="TileSet" uid="uid://dahe2tbct5vha" path="res://Assets/trotoar&Jalan.tres" id="4_iw47v"]
 [ext_resource type="TileSet" uid="uid://cl3gjln3h1vhr" path="res://Assets/objects.tres" id="5_t2gal"]
 [ext_resource type="PackedScene" uid="uid://chj3ccq1t78cg" path="res://Scenes/Map/Gedung/FKIPGedung.tscn" id="7_od1nc"]
@@ -107,6 +108,8 @@ script = ExtResource("1_s7mvh")
 [node name="PlayerSpawnComponent" parent="Components" instance=ExtResource("3_p3026")]
 default_spawnx = 1414.0
 default_spawny = 2054.0
+
+[node name="MapLockComponent" parent="Components" instance=ExtResource("4_akqo2")]
 
 [node name="Y_sort" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -305,6 +308,6 @@ color = Color(0, 0, 0, 1)
 [connection signal="body_exited" from="ChangeMap/Fasilkom_Mid" to="." method="_on_to_fasilkom_mid_body_exited"]
 [connection signal="body_entered" from="ChangeMap/Fasilkom_Down" to="." method="_on_to_fasilkom_bwh_body_entered"]
 [connection signal="body_exited" from="ChangeMap/Fasilkom_Down" to="." method="_on_to_fasilkom_bwh_body_exited"]
-[connection signal="pressed" from="ControlLayer/ChangeMapBtn/FasilkomBtn_Up" to="." method="_on_fasilkom_atas_btn_pressed"]
-[connection signal="pressed" from="ControlLayer/ChangeMapBtn/FasilkomBtn_Mid" to="." method="_on_fasilkom_mid_btn_pressed"]
-[connection signal="pressed" from="ControlLayer/ChangeMapBtn/FasilkomBtn_Down" to="." method="_on_fasilkom_bwh_btn_pressed"]
+[connection signal="pressed" from="ControlLayer/ChangeMapBtn/FasilkomBtn_Up" to="Components/MapLockComponent" method="_on_fasilkom_btn_up_pressed"]
+[connection signal="pressed" from="ControlLayer/ChangeMapBtn/FasilkomBtn_Mid" to="Components/MapLockComponent" method="_on_fasilkom_btn_mid_pressed"]
+[connection signal="pressed" from="ControlLayer/ChangeMapBtn/FasilkomBtn_Down" to="Components/MapLockComponent" method="_on_fasilkom_btn_down_pressed"]

@@ -85,27 +85,3 @@ func _on_entrance_r_body_entered(body: Node2D) -> void:
 func _on_entrance_r_body_exited(body: Node2D) -> void:
 	if body.has_method('player'):
 		entrance_r_btn.visible = false
-
-
-#Touch Button Signal
-func _on_ftp_button_pressed() -> void:
-	Global.change_map(Global.path_map.FTP, transition_path)
-	Global.spawn_position = Vector2(4149, 2649)
-
-#FKIP
-func _on_fkip_btn_up_pressed() -> void:
-	Global.change_map(Global.path_map.FKIP, transition_path)
-	Global.spawn_position = Vector2(121, 1161)
-func _on_fkip_btn_mid_pressed() -> void:
-	Global.change_map(Global.path_map.FKIP, transition_path)
-	Global.spawn_position = Vector2(117, 2058)
-func _on_fkip_btn_down_pressed() -> void:
-	Global.change_map(Global.path_map.FKIP, transition_path)
-	Global.spawn_position = Vector2(118, 3355)
-
-func _on_entrance_l_btn_pressed() -> void:
-	Global.change_map(Global.path_map.ENTRANCE, transition_path)
-	Global.spawn_position = Vector2(1097, 50)
-func _on_entrance_r_btn_pressed() -> void:
-	Global.change_map(Global.path_map.ENTRANCE, transition_path)
-	Global.spawn_position = Vector2(2921, 51)

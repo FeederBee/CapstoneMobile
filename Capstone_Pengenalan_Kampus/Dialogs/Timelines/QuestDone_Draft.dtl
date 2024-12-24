@@ -1,0 +1,11 @@
+[signal arg="entering_dialog"]
+set {TimelineName} = "QuestDone_Draft"
+join Player center
+Player: deqdasxwqdsadwq
+Player: deqdasxwqdsadwq
+Player: deqdasxwqdsadwq
+Player: deqdasxwqdsadwq
+Player: deqdasxwqdsadwq
+Player: deqdasxwqdsadwq
+[signal arg="dialog_finished"]
+[clear time="1.0"]

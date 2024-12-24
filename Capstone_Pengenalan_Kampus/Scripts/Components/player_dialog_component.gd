@@ -1,6 +1,8 @@
 extends Node
 
 @onready var action_button = $"../../CanvasLayer/ActionButton"
+@onready var bg_stamina: TextureProgressBar = $"../../CanvasLayer/BgStamina"
+@onready var player_profile: Control = $"../../CanvasLayer/PlayerProfile"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -10,7 +12,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	if Global.is_dialog == true:
+		bg_stamina.hide()
+		player_profile.visible = false
+		return
+		
+	bg_stamina.show()
+	player_profile.visible = true
 
 func _on_dialogic_signal(argument:String):
 	if argument == "entering_dialog":

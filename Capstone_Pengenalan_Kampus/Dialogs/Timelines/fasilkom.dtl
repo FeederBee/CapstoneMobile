@@ -1,4 +1,5 @@
 [signal arg="entering_dialog"]
+set {TimelineName} = "fasilkom"
 join Player center
 Player: Hallo kak!
 join NPC_Fasilkom center [animation="Instant In"]
@@ -32,9 +33,14 @@ NPC_Fasilkom: Manakah diantara 4 pilihan berikut yang bukan merupakan tools text
 - Visual Studio Code
 - Vim
 if {JawabanQuiz} == 2:
+	set {QuizResult} = "completed"
 	NPC_Fasilkom: Wah hebat banget kamu, kamu memang cocok menjadi mahasiswa FASILKOM
 elif {JawabanQuiz} == 1:
+	set {QuizResult} = "incomplete"
 	NPC_Fasilkom: Hahaha, kok bisa mahasiswa FASILKOM cuma bisa jawab satu pertanyaan yang masih berkaitan dengan FASILKOM. Belajar lagi ya!
 else:
+	set {QuizResult} = "incomplete"
 	NPC_Fasilkom: Hahaha, kok bisa mahasiswa FASILKOM salah menjawab pertanyaan yang masih berkaitan dengan FASILKOM. Belajar lagi ya!
+set {JawabanQuiz} = 0
+[signal arg="quiz_result_save"]
 [signal arg="dialog_finished"]

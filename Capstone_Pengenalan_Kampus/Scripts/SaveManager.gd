@@ -13,7 +13,7 @@ const ALLOWED_KEYS: Array = [
 	"current_map",
 	"music_volume", 
 	"sfx_volume", 
-	"quest_progress"]
+	"quiz_progress"]
 
 func _ready() -> void:
 	# Muat data jika ada file save
@@ -31,11 +31,16 @@ func save(properties: Dictionary) -> void:
 	Menyimpan properti ke file save.
 	:param properties: Dictionary berisi properti yang ingin disimpan.
 	"""
+	
+	# Iterasi melalui setiap key dalam dictionary
 	for key in properties.keys():
+		# Periksa apakah key diizinkan untuk disimpan
 		if key in ALLOWED_KEYS:
-			save_data[key] = properties[key]
+			save_data[key] = properties[key] # Tambahkan/Perbarui data dalam save_data
 		else:
 			print("Key '{}' tidak diizinkan untuk disimpan.".format(key))
+
+	# Tulis data yang telah diperbarui ke file save
 	_write_save_file(save_data)
 
 
@@ -46,9 +51,13 @@ func load_data(key: String) -> Variant:
 	:param key: Nama properti yang ingin dimuat.
 	:return: Nilai properti yang disimpan, atau null jika tidak ada.
 	"""
+	
+	# Periksa apakah save_data memiliki key yang diminta
 	if save_data.has(key):
-		return save_data[key]
-	return null
+		return save_data[key]  # Kembalikan nilai dari key yang diminta
+	else:
+		print("Key '{}' tidak ditemukan dalam save_data.")
+	return null # Jika tidak ditemukan, kembalikan null
 
 # Fungsi privat untuk menulis ke file
 func _write_save_file(data: Dictionary) -> void:
@@ -70,17 +79,24 @@ func _load_save_file() -> Dictionary:
 	Membaca file save dan mengembalikan data sebagai Dictionary.
 	:return: Dictionary berisi data yang disimpan.
 	"""
-	var file = FileAccess.open(AUTO_SAVE_FILE_PATH, FileAccess.READ)
+	var file := FileAccess.open(AUTO_SAVE_FILE_PATH, FileAccess.READ)
 	if file:
-		var content = file.get_as_text()
+		var content := file.get_as_text()
 		file.close()
-		#
+		if content != "":
+			var data = JSON.parse_string(content)
+			if data:
+				return data# Ubah ke Dictionary
+			else:
+				printerr("Failed to parse JSON: %s" % data.error_string)
+		else:
+			printerr("File is empty.")
 		#var parsed_data = JSON.parse_string(content)
 		#return parsed_data # Ubah ke Dictionary
 	#return {}
 	#var content = file.get_as_text()
 	#file.close()
 		
-		var parsed_data = JSON.parse_string(content)
-		return parsed_data # Ubah ke Dictionary
+		#var parsed_data = JSON.parse_string(content)
+		#return parsed_data # Ubah ke Dictionary
 	return {}

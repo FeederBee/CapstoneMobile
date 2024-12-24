@@ -25,7 +25,8 @@ radius = 8.0
 [node name="NPC_Faperta" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_vhckg")
-dialog_timeline_name = "Faperta"
+dialog_timeline_quest_name = "Faperta"
+dialog_timeline_name = "QuestDone_Draft"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.8, 0.8)

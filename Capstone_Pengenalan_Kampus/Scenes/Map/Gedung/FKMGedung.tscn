@@ -99,8 +99,9 @@ _data = {
 
 [node name="FKMBuilding" type="Sprite2D" parent="."]
 y_sort_enabled = true
+position = Vector2(0, -3)
 texture = ExtResource("1_5rwqv")
-offset = Vector2(0, -74.65)
+offset = Vector2(0, -72)
 
 [node name="FKMFront" type="Sprite2D" parent="."]
 y_sort_enabled = true
@@ -136,3 +137,6 @@ libraries = {
 }
 
 [node name="FakultasAnimationComponent" parent="." instance=ExtResource("3_0v87f")]
+
+[connection signal="body_entered" from="Visibility" to="FakultasAnimationComponent" method="_on_visibility_body_entered"]
+[connection signal="body_exited" from="Visibility" to="FakultasAnimationComponent" method="_on_visibility_body_exited"]

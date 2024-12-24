@@ -12,7 +12,7 @@ var fasilkom_r_btn
 var fasilkom = "res://Scenes/Map/FasilkomAreaMap.tscn"
 
 #Transisi
-var transition_path = "EntranceAreaMap/Transition/AnimationPlayer"
+@export var transition_path = "EntranceAreaMap/Transition/AnimationPlayer"
 @onready var transition = $Transition/AnimationPlayer
 
 func _ready() -> void:
@@ -42,6 +42,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
+	
 
 #Area2D Signal
 func _on_to_fasilkom_r_body_entered(body: Node2D) -> void:
@@ -59,12 +60,3 @@ func _on_to_fasilkom_l_body_entered(body: Node2D) -> void:
 func _on_to_fasilkom_l_body_exited(body: Node2D) -> void:
 	if body.has_method('player'):
 		fasilkom_l_btn.visible = false
-	
-#Button Touch Signal
-func _on_fasilkom_l_btn_pressed() -> void:
-	Global.change_map(fasilkom, transition_path)
-	Global.spawn_position = Vector2(1369, 2808)
-
-func _on_fasilkom_r_btn_pressed() -> void:
-	Global.change_map(fasilkom, transition_path)
-	Global.spawn_position = Vector2(2393, 2811)
