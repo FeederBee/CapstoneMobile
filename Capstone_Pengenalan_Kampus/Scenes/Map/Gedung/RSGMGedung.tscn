@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=3 uid="uid://cbtk2cditfj4h"]
+
+[ext_resource type="Texture2D" uid="uid://br22sl84dju47" path="res://Assets/Map/Gedung/hospital1.png" id="1_knu1h"]
+[ext_resource type="PackedScene" uid="uid://c5htc6bu2mpi5" path="res://Scenes/Components/FakultasAnimationComponent.tscn" id="2_u7yrh"]
+
+[sub_resource type="Animation" id="Animation_5ndq2"]
+resource_name = "gedung_fadeout"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RSGM:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.392157)]
+}
+
+[sub_resource type="Animation" id="Animation_4e8vc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RSGM:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_20ps5"]
+resource_name = "gedung_fadein"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RSGM:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.392157), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w6yio"]
+_data = {
+"RESET": SubResource("Animation_4e8vc"),
+"gedung_fadein": SubResource("Animation_20ps5"),
+"gedung_fadeout": SubResource("Animation_5ndq2")
+}
+
+[node name="RSGM" type="Node2D"]
+
+[node name="RSGM" type="Sprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_knu1h")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+y_sort_enabled = true
+collision_layer = 16
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-1011, -327)
+polygon = PackedVector2Array(857, 289, 1161, 289, 1161, 431, 1131, 431, 1131, 454, 1130, 455, 1127, 455, 1127, 466, 1124, 469, 1091, 469, 1088, 466, 1088, 455, 1085, 455, 1083, 453, 1083, 431, 859, 431)
+
+[node name="Visibility" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Visibility"]
+polygon = PackedVector2Array(-154, -27, -154, -90, -150, -93, -151, -126, 48, -126, 48, -88, 146, -88, 146, -27)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w6yio")
+}
+
+[node name="FakultasAnimationComponent" parent="." instance=ExtResource("2_u7yrh")]
+
+[connection signal="body_entered" from="Visibility" to="FakultasAnimationComponent" method="_on_visibility_body_entered"]
+[connection signal="body_exited" from="Visibility" to="FakultasAnimationComponent" method="_on_visibility_body_exited"]

@@ -1,6 +1,6 @@
 extends Node
 
-@export var map_name:String
+@export var current_map_name:String
 
 @export var tickets_count:int = 0 ## jumlah minimal tiket yang harus di dapatkan oleh player untuk bisa next map
 
@@ -9,32 +9,31 @@ var tickets_obtained:int
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Dialogic.signal_event.connect(_on_dialogic_signal)
-	inisiation_tickets()
 	tickets_obtained = get_ticket_obtained()
+	inisiation_tickets()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	show_tickets_obtain()
+	#print(SaveManager.load_data("cutscene").values())
 
 func data_ticket_obtained():
 	var quest_progress = SaveManager.load_data("quiz_progress")
-	if quest_progress == null:
-		printerr("Quest progress data not found!")
+	if quest_progress == null :
+		printerr("Progress data not found!")
 		return null
 	
-	if quest_progress.has(map_name):
-		var quests = quest_progress[map_name]
+	var completed_count = 0
+	if quest_progress.has(current_map_name):
+		var quests = quest_progress[current_map_name]
 		# Menghitung jumlah quest dengan status "completed"
-		var completed_count = 0
 		for quest_status in quests.values():
 			if quest_status == "completed":
 				completed_count += 1
-			else : 
-				completed_count -= 1 if completed_count > 0 else 0
 		tickets_obtained = completed_count
 		return tickets_obtained
 	else: 
-		printerr(map_name, " not found in quest progress data!")
+		printerr(current_map_name, " not found in quest progress data!")
 		
 # Fungsi utama untuk mendapatkan jumlah tiket yang diperoleh
 func get_ticket_obtained():
@@ -48,17 +47,19 @@ func checking_data_quest_progress():
 	# Periksa apakah quiz_progress tidak null
 	if quiz_progress != null:
 		# Periksa apakah key "FasilkomAreaMap" ada
-		if quiz_progress.has(map_name):
-			var map_name = quiz_progress[map_name]
+		if quiz_progress.has(current_map_name):
+			var map_name = quiz_progress[current_map_name]
 			# Periksa apakah key "fasilkom" ada di FasilkomAreaMap
 			if map_name.has(Dialogic.VAR.TimelineName):
-				#print(map_name.has(Dialogic.VAR.TimelineName))
 				# Periksa apakah value dari "fasilkom" adalah "completed"
 				if map_name[Dialogic.VAR.TimelineName] == "completed":
 					return true
 		return false
 
-func inisiation_tickets():
+func inisiation_tickets(valid=true):
+	if valid == false:
+		return
+
 	if tickets_count == 1:
 		$CanvasLayer/Control/TicketsKosong1.visible = true
 	elif tickets_count == 2:
@@ -90,8 +91,16 @@ func inisiation_tickets():
 		$CanvasLayer/Control/TicketsKosong4.visible = false
 		$CanvasLayer/Control/TicketsKosong5.visible = false
 
+func hide_tickets_in_dialog():
+	if Global.is_dialog:
+		$CanvasLayer/Control.visible = false
+		return
+	$CanvasLayer/Control.visible = true
+
 func show_tickets_obtain():
-	tickets_obtained = data_ticket_obtained()
+	tickets_obtained = get_ticket_obtained() if get_ticket_obtained()!=null else 0
+	hide_tickets_in_dialog()
+
 	#print("Quest yang selesai di FasilkomAreaMap:", completed_count)
 	if tickets_obtained == 1:
 		$CanvasLayer/Control/Tickets1.visible = true
@@ -128,19 +137,28 @@ func save_quiz_progress():
 	var data = SaveManager.load_data('quiz_progress')
 	var new_data = {Dialogic.VAR.TimelineName : Dialogic.VAR.QuizResult}
 	
-	if data != null:
-		if data.has(map_name):
+	if data == null:
+		SaveManager.save({
+					"quiz_progress": {current_map_name : new_data}
+				})
+	elif data != null and not data.has(current_map_name):
+		SaveManager.save({
+					"quiz_progress": data.merged({current_map_name : new_data})
+				})
+	else: 
+		if data.has(current_map_name):
 			if checking_data_quest_progress() and new_data == {"":""}:
 				return
 			
-			if data[map_name].has(Dialogic.VAR.TimelineName):
-				data[map_name][Dialogic.VAR.TimelineName] = Dialogic.VAR.QuizResult
+			if data[current_map_name].has(Dialogic.VAR.TimelineName) and !checking_data_quest_progress():
+				data[current_map_name][Dialogic.VAR.TimelineName] = Dialogic.VAR.QuizResult
 
-			data[map_name] = data[map_name].merged(new_data)
+			data[current_map_name] = data[current_map_name].merged(new_data)
+
 		SaveManager.save({
 				"quiz_progress": data
 			})
-	
+
 func _on_dialogic_signal(argument):
-	if argument == 'quiz_result_save':
+	if argument == 'quiz_result_save' and current_map_name != 'EntranceAreaMap':
 		save_quiz_progress()

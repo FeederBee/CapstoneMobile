@@ -1,0 +1,50 @@
+# Preparing Dialog
+[signal arg="entering_dialog"]
+set {TimelineName} = "FIB"
+# Dialog Start
+join Player center
+Player: Hai Kak.
+join NPC_FIB center
+NPC_FIB: Iya, ada apa?
+Player: Kenalin aku Yoto. Saat ini aku sedang menjadi peserta PKKMB. Tugas PKKMB kali ini dari Kak Wildan, disuruh untuk cari panitia di depan gedung masing – masing fakultas. Apa kakak panitia yang ditugaskan disini?
+NPC_FIB: Oh, halo! Aku panitia PKKMB yang ditugaskan di Fakultas Ilmu Budaya.
+Player: Wahh, sipp beruntung banget hari ini. Kalo boleh tau nama kakak siapa?
+NPC_FIB: Selamat Datang di Fakultas Ilmu Budaya Universitas Jember. Nama ku adalah Umi. Baik, aku mulai jelaskan. Tolong dengarkan dengan baik.
+NPC_FIB: Di FIB kita banyak belajar tentang seni, budaya, dan sejarah. Ada program studi kayak Sastra Inggris, Sastra Indonesia, Sejarah, Televisi dan Film. Kalo kamu suka seni dan budaya, mungkin bakal tertarik sama fakultas ini.
+NPC_FIB: Di sini kita nggak cuma belajar teori aja, tapi juga banyak riset yang diakui di tingkat nasional dan internasional.
+NPC_FIB: Jadi, selain ilmu, kita juga bisa berkontribusi langsung ke masyarakat lewat budaya.
+NPC_FIB: Kita juga aktif dalam pengabdian masyarakat, jadi bukan cuma belajar, tapi juga memberikan dampak positif lewat seni dan budaya.
+Player: Wah, jadi kalau aku tertarik sama dunia sastra atau seni, bisa banget masuk FIB ya?
+NPC_FIB: Iya, bener! FIB itu pas banget buat kamu yang suka budaya dan pengen belajar lebih dalam tentang dunia humaniora.
+Player: Terima kasih banyak ya udah sharing! Aku jadi tertarik buat cari tahu lebih lanjut.
+NPC_FIB: Sama-sama! Kalau ada waktu, coba deh datang langsung ke FIB, pasti banyak hal seru yang bisa kamu lihat!
+NPC_FIB: Sekarang aku ada oleh - oleh buat kamu.
+Player: Wihh dapet oleh - oleh?
+# Entering Quiz
+NPC_FIB: Apa istilah untuk studi tentang asal-usul kata dalam bahasa tertentu?
+- Semantik
+- Etnolinguistik
+- Etimologi
+	set {JawabanQuiz} += 1
+- Filologi
+NPC_FIB: Apa karya sastra Indonesia yang dianggap sebagai roman modern pertama?
+- Siti Nurbaya
+- Layar Terkembang
+- Salah Asuhan
+- Azab dan Sengsara
+	set {JawabanQuiz} += 1
+# Quiz End
+# Response
+if {JawabanQuiz} == 2:
+	set {QuizResult} = "completed"
+	NPC_FIB: Masya Allah. Kamu hebat sekali. Apakah kamu suka tentang ilmu sastra dan sejarah? Kalo iya, mungkin nanti kita bisa bertemu kembali untuk diskusi lebih lanjut.
+elif {JawabanQuiz} == 1:
+	set {QuizResult} = "incomplete"
+	NPC_FIB: Nyaris banget kamu bisa menjawab semua dengan benar. Tapi sayang banget kamu masih salah menjawab di salah satu pertanyaan. Tenang, kamu bisa coba lagi kok.
+elif {JawabanQuiz} == 0:
+	set {QuizResult} = "incomplete"
+	NPC_FIB: Yahh, pertanyaan ini cukup susah ya buat kamu? No problem, kamu bisa coba jawab lagi, sampai jawaban kamu benar.
+# Dialog End
+set {JawabanQuiz} = 0
+[signal arg="quiz_result_save"]
+[signal arg="dialog_finished"]

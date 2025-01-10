@@ -1,6 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjgkqdird7iji"]
+[gd_scene load_steps=3 format=3 uid="uid://bjgkqdird7iji"]
 
 [ext_resource type="Script" path="res://Scripts/Components/map_lock_component.gd" id="1_d7mrx"]
+[ext_resource type="LabelSettings" uid="uid://dn3nilvhdaih5" path="res://Assets/font_game_menu.tres" id="2_aj2ej"]
 
-[node name="MapLockComponent" type="Node"]
+[node name="ChangeMapComponent" type="Node"]
 script = ExtResource("1_d7mrx")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -211.5
+offset_top = 214.0
+offset_right = 211.5
+offset_bottom = 263.0
+grow_horizontal = 2
+text = "wwwwwwwwwwwwwww"
+label_settings = ExtResource("2_aj2ej")

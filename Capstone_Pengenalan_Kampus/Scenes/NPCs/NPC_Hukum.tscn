@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://q1gc6o3dew8j"]
+
+[ext_resource type="Script" path="res://Scripts/NPCs/npc.gd" id="1_tule6"]
+[ext_resource type="Texture2D" uid="uid://ddkcbusosm628" path="res://Assets/Sprites/NPC/animation/Hukum.png" id="2_nuqlh"]
+[ext_resource type="PackedScene" uid="uid://4khffy12qyi0" path="res://Scenes/Components/NPCDialogComponent.tscn" id="3_axpys"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsmtn"]
+atlas = ExtResource("2_nuqlh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnkyw"]
+atlas = ExtResource("2_nuqlh")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tod5j"]
+atlas = ExtResource("2_nuqlh")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5pqo"]
+atlas = ExtResource("2_nuqlh")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_egy3u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsmtn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xnkyw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tod5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5pqo")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jlbdr"]
+radius = 8.0
+
+[node name="NPC_Hukum" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_tule6")
+dialog_timeline_quest_name = "Hukum"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_egy3u")
+animation = &"idle"
+frame_progress = 0.204007
+offset = Vector2(0.59, -4.73)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jlbdr")
+
+[node name="DialogArea" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DialogArea"]
+polygon = PackedVector2Array(0, 0, -8, 16, 8, 16)
+
+[node name="NPCDialogComponent" parent="." instance=ExtResource("3_axpys")]
+
+[connection signal="body_entered" from="DialogArea" to="NPCDialogComponent" method="_on_dialog_area_body_entered"]
+[connection signal="body_exited" from="DialogArea" to="NPCDialogComponent" method="_on_dialog_area_body_exited"]

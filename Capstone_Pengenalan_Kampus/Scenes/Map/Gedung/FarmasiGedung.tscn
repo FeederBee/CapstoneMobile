@@ -1,0 +1,97 @@
+[gd_scene load_steps=9 format=3 uid="uid://cvocnjwiga5yk"]
+
+[ext_resource type="Texture2D" uid="uid://d1rnyevnh4r1g" path="res://Assets/Map/Gedung/Farmasi.png" id="1_r4fqu"]
+[ext_resource type="PackedScene" uid="uid://c5htc6bu2mpi5" path="res://Scenes/Components/FakultasAnimationComponent.tscn" id="2_12g5b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7e56g"]
+size = Vector2(397, 484.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6iywe"]
+size = Vector2(144.5, 22)
+
+[sub_resource type="Animation" id="Animation_0ud2d"]
+resource_name = "gedung_fadein"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Farmasi:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.392157), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ejysj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Farmasi:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_g3ali"]
+resource_name = "gedung_fadeout"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Farmasi:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.392157)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_txowk"]
+_data = {
+"RESET": SubResource("Animation_ejysj"),
+"gedung_fadein": SubResource("Animation_0ud2d"),
+"gedung_fadeout": SubResource("Animation_g3ali")
+}
+
+[node name="FarmasiGedung" type="Node2D"]
+
+[node name="Farmasi" type="Sprite2D" parent="."]
+texture = ExtResource("1_r4fqu")
+offset = Vector2(0, -180)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -224)
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0.5, 0.75)
+shape = SubResource("RectangleShape2D_7e56g")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(39.75, 252)
+shape = SubResource("RectangleShape2D_6iywe")
+
+[node name="Visibility" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Visibility"]
+position = Vector2(-192, -146)
+polygon = PackedVector2Array(-10, -321, -10, -343, 128, -402, 192, -465, 257, -401, 390, -344, 390, -320)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_txowk")
+}
+
+[node name="FakultasAnimationComponent" parent="." instance=ExtResource("2_12g5b")]
+
+[connection signal="body_entered" from="Visibility" to="FakultasAnimationComponent" method="_on_visibility_body_entered"]
+[connection signal="body_exited" from="Visibility" to="FakultasAnimationComponent" method="_on_visibility_body_exited"]

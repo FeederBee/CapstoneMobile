@@ -1,7 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://cymw13qsausvp"]
+[gd_scene load_steps=21 format=3 uid="uid://cymw13qsausvp"]
 
 [ext_resource type="Script" path="res://Scripts/UIs/main_menu.gd" id="1_x6v5i"]
-[ext_resource type="Texture2D" uid="uid://bw51r3yrfbhrj" path="res://Assets/Sprites/UI/Unej-Jember.jpg" id="2_n05rp"]
+[ext_resource type="Texture2D" uid="uid://ndo75dk50v4n" path="res://Assets/Sprites/UI/UNEJ.jpg" id="2_6h8es"]
 [ext_resource type="FontFile" uid="uid://c5fjgx33wdlaf" path="res://Assets/Sprites/UI/ARCADECLASSIC.TTF" id="3_sg51f"]
 [ext_resource type="Texture2D" uid="uid://bx0h7xqgetnk4" path="res://Assets/Sprites/UI/Button/btn_pink.png" id="4_okwr4"]
 [ext_resource type="LabelSettings" uid="uid://dn3nilvhdaih5" path="res://Assets/font_game_menu.tres" id="5_rpo0d"]
@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://b1474w4ylyi0i" path="res://Assets/Sprites/UI/Button/btn_green.png" id="7_7p3b0"]
 [ext_resource type="Texture2D" uid="uid://vh6igc0a4d8l" path="res://Assets/Sprites/UI/Button/btn_gray.png" id="8_jx8k8"]
 [ext_resource type="PackedScene" uid="uid://8w1nlnlr5rh7" path="res://Scenes/UIs/SettingMenu.tscn" id="9_ph0b8"]
+[ext_resource type="Texture2D" uid="uid://byuqhog0hu2w5" path="res://Assets/Sprites/UI/textbox_revisi.png" id="10_ai01a"]
+[ext_resource type="LabelSettings" uid="uid://3koj6qpnkhgk" path="res://Assets/credit_font.tres" id="11_hnqe7"]
+[ext_resource type="Texture2D" uid="uid://drbh8885bo0bq" path="res://Assets/Sprites/UI/Button/Cross.png" id="12_wnl1b"]
+[ext_resource type="Texture2D" uid="uid://dfglyyy6s8e4p" path="res://Assets/Sprites/UI/Button/btnkcl_blue.png" id="13_ylx30"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4am6i"]
 line_spacing = 6.0
@@ -67,33 +71,36 @@ _data = {
 "screen_fade_out": SubResource("Animation_7w8n5")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_rf8p2"]
+font = ExtResource("3_sg51f")
+
+[sub_resource type="LabelSettings" id="LabelSettings_o87lu"]
+font = ExtResource("3_sg51f")
+font_size = 55
+
 [node name="MainMenu" type="Control"]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_x6v5i")
 
 [node name="Background" type="TextureRect" parent="."]
-modulate = Color(0.252028, 0.252028, 0.252028, 1)
+modulate = Color(0.886262, 0.886261, 0.886262, 1)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -968.0
-offset_top = -473.0
-offset_right = 968.0
-offset_bottom = 473.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -136.0
+offset_right = 160.0
+offset_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-texture = ExtResource("2_n05rp")
+texture = ExtResource("2_6h8es")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -127,8 +134,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Start" type="TouchScreenButton" parent="Button"]
-position = Vector2(-128, 40)
-scale = Vector2(0.941177, 0.709677)
+position = Vector2(-136, 152)
 texture_normal = ExtResource("4_okwr4")
 
 [node name="Label" type="Label" parent="Button/Start"]
@@ -147,8 +153,7 @@ text = "NEW GAME"
 label_settings = ExtResource("5_rpo0d")
 
 [node name="Lanjut" type="TouchScreenButton" parent="Button"]
-position = Vector2(-128, 40)
-scale = Vector2(0.941176, 0.716)
+position = Vector2(-136, 152)
 texture_normal = ExtResource("6_1qsa5")
 
 [node name="Label" type="Label" parent="Button/Lanjut"]
@@ -167,8 +172,7 @@ text = "Lanjut"
 label_settings = ExtResource("5_rpo0d")
 
 [node name="Setting" type="TouchScreenButton" parent="Button"]
-position = Vector2(-128, 132)
-scale = Vector2(0.941177, 0.715447)
+position = Vector2(-512, 152)
 texture_normal = ExtResource("7_7p3b0")
 
 [node name="Label" type="Label" parent="Button/Setting"]
@@ -187,8 +191,7 @@ text = "Settings"
 label_settings = ExtResource("5_rpo0d")
 
 [node name="Quit" type="TouchScreenButton" parent="Button"]
-position = Vector2(-128, 216)
-scale = Vector2(0.941176, 0.709677)
+position = Vector2(240, 152)
 texture_normal = ExtResource("8_jx8k8")
 
 [node name="Label" type="Label" parent="Button/Quit"]
@@ -222,9 +225,493 @@ color = Color(0, 0, 0, 1)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="SettingMenu" parent="CanvasLayer" instance=ExtResource("9_ph0b8")]
+offset_top = -72.0
+offset_bottom = -72.0
+
+[node name="Credits" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Credits"]
+
+[node name="Control" type="Control" parent="Credits/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Credit" type="TextureRect" parent="Credits/CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -536.0
+offset_top = -292.0
+offset_right = 536.0
+offset_bottom = 292.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_ai01a")
+metadata/_edit_use_anchors_ = true
+
+[node name="Credits" type="Label" parent="Credits/CanvasLayer/Control/Credit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = -168.0
+offset_right = 93.0
+offset_bottom = -119.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Credits"
+label_settings = ExtResource("5_rpo0d")
+metadata/_edit_use_anchors_ = true
+
+[node name="PM" type="Label" parent="Credits/CanvasLayer/Control/Credit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -136.0
+offset_right = -204.0
+offset_bottom = -87.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Project Manager"
+label_settings = ExtResource("11_hnqe7")
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Credits/CanvasLayer/Control/Credit/PM"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -98.0
+offset_top = -9.0
+offset_right = 203.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.8, 0.8)
+text = "Wildan    Ilhafa    Alamsyah"
+label_settings = ExtResource("11_hnqe7")
+vertical_alignment = 1
+
+[node name="GarisBawah" type="Label" parent="Credits/CanvasLayer/Control/Credit/PM"]
+layout_mode = 0
+offset_top = 3.0
+offset_right = 197.0
+offset_bottom = 37.0
+text = "___________________"
+label_settings = ExtResource("11_hnqe7")
+
+[node name="Art" type="Label" parent="Credits/CanvasLayer/Control/Credit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.5
+offset_top = -60.5
+offset_right = -246.5
+offset_bottom = -34.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Art Designer"
+label_settings = ExtResource("11_hnqe7")
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Credits/CanvasLayer/Control/Credit/Art"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.5
+offset_top = 15.5
+offset_right = 265.5
+offset_bottom = 128.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+text = "Ahmad    Syarif    Hidayatullah 
+Wildan    Ilhafa    Alamsyah
+Farrell   Bimo   Seno"
+label_settings = ExtResource("11_hnqe7")
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="GarisBawah" type="Label" parent="Credits/CanvasLayer/Control/Credit/Art"]
+layout_mode = 0
+offset_top = -8.0
+offset_right = 156.0
+offset_bottom = 26.0
+text = "_______________"
+label_settings = ExtResource("11_hnqe7")
+metadata/_edit_use_anchors_ = true
+
+[node name="UI" type="Label" parent="Credits/CanvasLayer/Control/Credit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = 72.0
+offset_right = -208.0
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "UI/UX Desaigner"
+label_settings = ExtResource("11_hnqe7")
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Credits/CanvasLayer/Control/Credit/UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = 15.0
+offset_right = 188.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+text = "Farrell   Bimo   Seno
+Ghilang   Surya    Manuril"
+label_settings = ExtResource("11_hnqe7")
+vertical_alignment = 1
+
+[node name="GarisBawah" type="Label" parent="Credits/CanvasLayer/Control/Credit/UI"]
+layout_mode = 0
+offset_top = -2.0
+offset_right = 197.0
+offset_bottom = 32.0
+text = "___________________"
+label_settings = ExtResource("11_hnqe7")
+
+[node name="MusicDirector" type="Label" parent="Credits/CanvasLayer/Control/Credit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 192.0
+offset_top = -128.0
+offset_right = 384.0
+offset_bottom = -102.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Music Director"
+label_settings = ExtResource("11_hnqe7")
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Credits/CanvasLayer/Control/Credit/MusicDirector"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = 11.0
+offset_right = 145.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+text = "Tegar   Wahyu    Akbar"
+label_settings = ExtResource("11_hnqe7")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="GarisBawah" type="Label" parent="Credits/CanvasLayer/Control/Credit/MusicDirector"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -187.0
+offset_top = -8.0
+offset_bottom = 26.0
+grow_horizontal = 0
+text = "__________________"
+label_settings = ExtResource("11_hnqe7")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Writer" type="Label" parent="Credits/CanvasLayer/Control/Credit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 192.0
+offset_top = -72.0
+offset_right = 384.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Story Writer"
+label_settings = ExtResource("11_hnqe7")
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Credits/CanvasLayer/Control/Credit/Writer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = 11.0
+offset_right = 141.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+text = "Tegar   Wahyu    Akbar"
+label_settings = ExtResource("11_hnqe7")
+vertical_alignment = 1
+
+[node name="GarisBawah" type="Label" parent="Credits/CanvasLayer/Control/Credit/Writer"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -156.0
+offset_top = -8.0
+offset_bottom = 26.0
+grow_horizontal = 0
+text = "_______________"
+label_settings = ExtResource("11_hnqe7")
+horizontal_alignment = 2
+
+[node name="Programer" type="Label" parent="Credits/CanvasLayer/Control/Credit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 200.0
+offset_top = -8.0
+offset_right = 385.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Programmer"
+label_settings = ExtResource("11_hnqe7")
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="GarisBawah" type="Label" parent="Credits/CanvasLayer/Control/Credit/Programer"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -156.0
+offset_top = -8.0
+offset_bottom = 26.0
+grow_horizontal = 0
+text = "_______________"
+label_settings = ExtResource("11_hnqe7")
+
+[node name="Label" type="Label" parent="Credits/CanvasLayer/Control/Credit/Programer"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -232.0
+offset_top = 26.0
+offset_right = 58.0
+offset_bottom = 52.0
+grow_horizontal = 0
+scale = Vector2(0.8, 0.8)
+text = "Ghilang    Surya    Manuril"
+label_settings = ExtResource("11_hnqe7")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Tester" type="Label" parent="Credits/CanvasLayer/Control/Credit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 200.0
+offset_top = 64.0
+offset_right = 384.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Tester"
+label_settings = ExtResource("11_hnqe7")
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Credits/CanvasLayer/Control/Credit/Tester"]
+layout_mode = 0
+offset_left = -72.0
+offset_top = 24.0
+offset_right = 248.0
+offset_bottom = 79.0
+scale = Vector2(0.8, 0.8)
+text = "Wildan    Ilhafa    Alamsyah
+Ghilang    Surya    Manuril"
+label_settings = ExtResource("11_hnqe7")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="GarisBawah" type="Label" parent="Credits/CanvasLayer/Control/Credit/Tester"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -166.0
+offset_top = -8.0
+offset_bottom = 26.0
+grow_horizontal = 0
+text = "________________"
+label_settings = ExtResource("11_hnqe7")
+
+[node name="Sponsored" type="Label" parent="Credits/CanvasLayer/Control/Credit"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -136.0
+offset_right = 59.0
+offset_bottom = -110.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+text = "Sponsored"
+label_settings = ExtResource("11_hnqe7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GarisBawah" type="Label" parent="Credits/CanvasLayer/Control/Credit/Sponsored"]
+layout_mode = 0
+offset_left = 32.0
+offset_right = 139.0
+offset_bottom = 23.0
+text = "________________"
+label_settings = ExtResource("11_hnqe7")
+
+[node name="Label" type="Label" parent="Credits/CanvasLayer/Control/Credit/Sponsored"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.1667
+offset_top = 9.66667
+offset_right = 93.8333
+offset_bottom = 46.6667
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.8, 0.8)
+text = "Universitas    Jember
+Team    Capstone"
+label_settings = ExtResource("11_hnqe7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Credits/CanvasLayer/Control/Credit"]
+layout_mode = 0
+offset_left = 712.0
+offset_top = 468.0
+offset_right = 956.0
+offset_bottom = 491.0
+text = "@CapstoneProject: Game 2024"
+label_settings = SubResource("LabelSettings_rf8p2")
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Line2D" type="Line2D" parent="Credits/CanvasLayer/Control/Credit"]
+position = Vector2(88, 204)
+points = PackedVector2Array(432, -16, 432, 240)
+width = 2.0
+
+[node name="CloseButton" type="TouchScreenButton" parent="Credits/CanvasLayer/Control/Credit"]
+position = Vector2(968, 36)
+texture_normal = ExtResource("12_wnl1b")
+
+[node name="Button" type="Control" parent="Credits/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="CreditButton" type="TouchScreenButton" parent="Credits/CanvasLayer/Button"]
+position = Vector2(-80, -64)
+scale = Vector2(0.4375, 0.357143)
+texture_normal = ExtResource("13_ylx30")
+
+[node name="Label" type="Label" parent="Credits/CanvasLayer/Button/CreditButton"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.8
+offset_top = -49.0
+offset_right = 41.2
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "@"
+label_settings = SubResource("LabelSettings_o87lu")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Button/Start" to="." method="_on_play_pressed"]
 [connection signal="released" from="Button/Start" to="." method="_on_play_released"]
 [connection signal="pressed" from="Button/Lanjut" to="." method="_on_lanjut_pressed"]
 [connection signal="pressed" from="Button/Setting" to="." method="_on_setting_pressed"]
 [connection signal="pressed" from="Button/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Credits/CanvasLayer/Control/Credit/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="Credits/CanvasLayer/Button/CreditButton" to="." method="_on_credit_button_pressed"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://cqwuox3ln20ie"]
+[gd_scene load_steps=29 format=3 uid="uid://cqwuox3ln20ie"]
 
 [ext_resource type="PackedScene" uid="uid://db5ao624oyl2w" path="res://Scenes/NPCs/NPC_fasilkom.tscn" id="1_7jto6"]
+[ext_resource type="LabelSettings" uid="uid://dn3nilvhdaih5" path="res://Assets/font_game_menu.tres" id="1_72h3f"]
 [ext_resource type="PackedScene" uid="uid://b3x8rw66ja1e0" path="res://Scenes/Player/Player.tscn" id="2_v7f8s"]
 [ext_resource type="PackedScene" uid="uid://bumypsmb4tj4y" path="res://Scenes/NPCs/NPC_FMIPA.tscn" id="5_ggf07"]
 [ext_resource type="PackedScene" uid="uid://cbvcwvslpkid5" path="res://Scenes/NPCs/NPC_FEB.tscn" id="6_vxmeq"]
@@ -8,42 +9,134 @@
 [ext_resource type="PackedScene" uid="uid://bn5pnw6a5pimq" path="res://Scenes/NPCs/NPC_FK.tscn" id="8_xxhyw"]
 [ext_resource type="PackedScene" uid="uid://sipe3c6yj5y5" path="res://Scenes/NPCs/NPC_FTP.tscn" id="9_sg0m3"]
 [ext_resource type="PackedScene" uid="uid://dc00pwvdwmili" path="res://Scenes/NPCs/NPC_Keperawatan.tscn" id="10_w666u"]
+[ext_resource type="PackedScene" uid="uid://cbtk2cditfj4h" path="res://Scenes/Map/Gedung/RSGMGedung.tscn" id="11_6mrfo"]
+[ext_resource type="PackedScene" uid="uid://cfef615nbv8ru" path="res://Scenes/NPCs/NPC_Farmasi.tscn" id="12_i5piw"]
 [ext_resource type="PackedScene" uid="uid://ck13er1s7hude" path="res://Scenes/NPCs/NPC_FKIP.tscn" id="12_r723r"]
 [ext_resource type="PackedScene" uid="uid://cm8xcuryjl2p7" path="res://Scenes/NPCs/NPC_Faperta.tscn" id="12_updtn"]
+[ext_resource type="PackedScene" uid="uid://2iupbp4fev7q" path="res://Scenes/NPCs/NPC_Prolog.tscn" id="13_gsk1t"]
+[ext_resource type="PackedScene" uid="uid://cx2nnvrfr7rdw" path="res://Scenes/NPCs/NPC_FIB.tscn" id="13_qbijq"]
+[ext_resource type="PackedScene" uid="uid://c0bw8e8vlp740" path="res://Scenes/NPCs/NPC_FKG.tscn" id="14_ve2e6"]
+[ext_resource type="PackedScene" uid="uid://cyo5jrnqhsnog" path="res://Scenes/NPCs/NPC_FKM.tscn" id="15_lroo0"]
+[ext_resource type="PackedScene" uid="uid://q1gc6o3dew8j" path="res://Scenes/NPCs/NPC_Hukum.tscn" id="16_m03q7"]
+[ext_resource type="PackedScene" uid="uid://j56hkpyspwrk" path="res://Scenes/NPCs/NPC_Teknik.tscn" id="17_lxfon"]
+[ext_resource type="PackedScene" uid="uid://b4v14fgdwwhkq" path="res://Scenes/Map/Gedung/FapertaGedung.tscn" id="18_qx6k3"]
+[ext_resource type="PackedScene" uid="uid://coyrf3s55x4y2" path="res://Scenes/Map/Gedung/FasilkomGedung.tscn" id="19_a0xtt"]
+[ext_resource type="PackedScene" uid="uid://p10ldd42xv8b" path="res://Scenes/Map/Gedung/FKGedung.tscn" id="20_gql2q"]
+[ext_resource type="PackedScene" uid="uid://chj3ccq1t78cg" path="res://Scenes/Map/Gedung/FKIPGedung.tscn" id="21_2bfvh"]
+[ext_resource type="PackedScene" uid="uid://ktm32teasldf" path="res://Scenes/Map/Gedung/FKMGedung.tscn" id="22_fugrf"]
+[ext_resource type="PackedScene" uid="uid://cq5llty23j5f" path="res://Scenes/Map/Gedung/FTPGedung.tscn" id="23_eyu1e"]
+[ext_resource type="PackedScene" uid="uid://ylteedr1nm3e" path="res://Scenes/Map/Gedung/HukumGedung.tscn" id="26_4a8mx"]
+[ext_resource type="PackedScene" uid="uid://b8bb1ubpn4g1u" path="res://Scenes/Map/Gedung/KeperawatanGedung.tscn" id="27_v6v6u"]
+[ext_resource type="PackedScene" uid="uid://cvocnjwiga5yk" path="res://Scenes/Map/Gedung/FarmasiGedung.tscn" id="28_twy7s"]
 
 [node name="Coba" type="Node2D"]
 y_sort_enabled = true
 
-[node name="Player" parent="." instance=ExtResource("2_v7f8s")]
+[node name="Karakter" type="Node2D" parent="."]
 y_sort_enabled = true
-position = Vector2(86, 224)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Wes Mari" type="Label" parent="Karakter"]
+offset_left = 6.0
+offset_top = 172.0
+offset_right = 197.0
+offset_bottom = 221.0
+text = "Wes Mari"
+label_settings = ExtResource("1_72h3f")
+
+[node name="Player" parent="Karakter" instance=ExtResource("2_v7f8s")]
+y_sort_enabled = true
+position = Vector2(16, 240)
+
+[node name="Camera2D" type="Camera2D" parent="Karakter/Player"]
 zoom = Vector2(4, 4)
 
-[node name="NPC_fasilkom" parent="." instance=ExtResource("1_7jto6")]
-position = Vector2(487, 320)
+[node name="NPC_fasilkom" parent="Karakter" instance=ExtResource("1_7jto6")]
+position = Vector2(64, 240)
 
-[node name="NPCFMIPA" parent="." instance=ExtResource("5_ggf07")]
-position = Vector2(348, 330)
+[node name="NPCFMIPA" parent="Karakter" instance=ExtResource("5_ggf07")]
+position = Vector2(120, 240)
 
-[node name="NPC_Faperta" parent="." instance=ExtResource("12_updtn")]
-position = Vector2(194, 337)
+[node name="NPC_Faperta" parent="Karakter" instance=ExtResource("12_updtn")]
+position = Vector2(176, 240)
 
-[node name="NPC_FKIP" parent="." instance=ExtResource("12_r723r")]
-position = Vector2(703, 146)
+[node name="NPC_FKIP" parent="Karakter" instance=ExtResource("12_r723r")]
+position = Vector2(232, 240)
 
-[node name="NPC_FEB" parent="." instance=ExtResource("6_vxmeq")]
-position = Vector2(612, 140)
+[node name="NPC_FEB" parent="Karakter" instance=ExtResource("6_vxmeq")]
+position = Vector2(176, 320)
 
-[node name="NPC_FISIP" parent="." instance=ExtResource("7_bfghy")]
-position = Vector2(500, 142)
+[node name="NPC_FISIP" parent="Karakter" instance=ExtResource("7_bfghy")]
+position = Vector2(232, 320)
 
-[node name="NPC_FK" parent="." instance=ExtResource("8_xxhyw")]
-position = Vector2(369, 159)
+[node name="NPC_FK" parent="Karakter" instance=ExtResource("8_xxhyw")]
+position = Vector2(16, 320)
 
-[node name="NPC_FTP" parent="." instance=ExtResource("9_sg0m3")]
-position = Vector2(265, 159)
+[node name="NPC_FTP" parent="Karakter" instance=ExtResource("9_sg0m3")]
+position = Vector2(64, 320)
 
-[node name="NPC_Keperawatan" parent="." instance=ExtResource("10_w666u")]
-position = Vector2(163, 165)
+[node name="NPC_Keperawatan" parent="Karakter" instance=ExtResource("10_w666u")]
+position = Vector2(120, 320)
+
+[node name="NPC_FKG" parent="Karakter" instance=ExtResource("14_ve2e6")]
+position = Vector2(16, 376)
+
+[node name="NPC_Prolog" parent="Karakter" instance=ExtResource("13_gsk1t")]
+position = Vector2(64, 376)
+
+[node name="NPC_Farmasi" parent="Karakter" instance=ExtResource("12_i5piw")]
+position = Vector2(120, 376)
+
+[node name="NPC_Hukum" parent="Karakter" instance=ExtResource("16_m03q7")]
+position = Vector2(176, 376)
+
+[node name="Durung Mari" type="Node2D" parent="Karakter"]
+
+[node name="Label" type="Label" parent="Karakter/Durung Mari"]
+offset_left = 384.0
+offset_top = 192.0
+offset_right = 665.0
+offset_bottom = 257.0
+text = "Durung Mari'"
+label_settings = ExtResource("1_72h3f")
+
+[node name="NPC_Teknik" parent="Karakter/Durung Mari" instance=ExtResource("17_lxfon")]
+position = Vector2(464, 280)
+
+[node name="NPC_FKM" parent="Karakter/Durung Mari" instance=ExtResource("15_lroo0")]
+position = Vector2(528, 280)
+
+[node name="NPC_FIB" parent="Karakter/Durung Mari" instance=ExtResource("13_qbijq")]
+position = Vector2(656, 280)
+
+[node name="Building" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="FapertaGedung" parent="Building" instance=ExtResource("18_qx6k3")]
+position = Vector2(2640, 665)
+
+[node name="FasilkomGedung" parent="Building" instance=ExtResource("19_a0xtt")]
+position = Vector2(3157, -63)
+
+[node name="FKGedung" parent="Building" instance=ExtResource("20_gql2q")]
+position = Vector2(1670, 534)
+
+[node name="FKIPGedung" parent="Building" instance=ExtResource("21_2bfvh")]
+position = Vector2(1576, -85)
+
+[node name="FKMGedung" parent="Building" instance=ExtResource("22_fugrf")]
+position = Vector2(2187, -17)
+
+[node name="FTPGedung" parent="Building" instance=ExtResource("23_eyu1e")]
+position = Vector2(2721, -47)
+
+[node name="RSGM" parent="Building" instance=ExtResource("11_6mrfo")]
+position = Vector2(3457, -102)
+
+[node name="HukumGedung" parent="Building" instance=ExtResource("26_4a8mx")]
+position = Vector2(-488, 8)
+
+[node name="KeperawatanGedung" parent="Building" instance=ExtResource("27_v6v6u")]
+position = Vector2(440, -72)
+
+[node name="FarmasiGedung" parent="Building" instance=ExtResource("28_twy7s")]
+position = Vector2(-488, 776)

@@ -1,0 +1,50 @@
+# Preparing Dialog
+[signal arg="entering_dialog"]
+set {TimelineName} = "FK"
+# Dialog Start
+join Player center
+Player: Permisi kak, kakak lagi sakit? Mau aku antar periksa?
+join NPC_FK center
+NPC_FK: Sakit gundul mu, aku adalah mahasiswa Fakultas Kedokteran yang kebetulan hari ini mau ke lab, makanya pakai masker dan jas lab. Kamu siapa?
+Player: eh eh… maaf kak. Aku tidak tau.
+Player: Aku Yoto, mahasiswa baru di Fakultas Ilmu Komputer yang kebetulan hari ini sedang menjalankan tugas PKKMB dari Kak Wildan untuk menemui panitia PKKMB yang ada di depan gedung fakultas.
+NPC_FK: Ohh begitu. Aku Tegar mahasiswa semester 3 Fakultas Kedokteran. Kebetulan aku adalah panitia PKKMB yang ditugaskan untuk berada di gedung fakultas kedokteran
+Player:  Ah kebetulan banget. Jadi, informasi apa yang bisa saya dapatkan disini kak?
+NPC_FK: Oke langsung aja! Selamat datang di Fakultas Kedokteran Universitas Jember. Di Fakultas Kedokteran ini kita belajar tentang ilmu-ilmu kedokteran. Di UNEJ sendiri ada dua program studi, yaitu Pendidikan Dokter Tahap Akademik dan Pendidikan Dokter Tahap Profesi.
+NPC_FK: Visi dari FK itu ingin menjadi lembaga pendidikan yang unggul di bidang agromedis di Asia Tenggara tahun 2025.
+NPC_FK: Kita juga memiliki beberapa prestasi unggulan seperti pada Tahun 2022, fakultas ini mendapatkan akreditasi Unggul dari LAM PT-Kes. Terus, tahun 2023, udah diakui internasional juga sama ASIIN.
+Player: Wah, gila keren banget! Tapi selain visi, pasti ada misi dan tujuan yang lebih detail kan?
+NPC_FK: Iya, misinya itu antara lain bikin pendidikan yang kualitasnya oke dan dikenal sampai internasional, terus ngembangin sains dan teknologi, terutama yang berhubungan sama agromedis. Selain itu, pengelolaan fakultasnya juga dibikin transparan dan kerja sama dengan berbagai pihak.
+NPC_FK: Kalo tujuannya intinya pengen bikin lulusan yang pintar, kompetitif, dan bisa bersaing di Asia Tenggara. Terus, ingin menghasilkan karya-karya yang bermanfaat buat masyarakat, ramah lingkungan, dan mengangkat kearifan lokal...
+NPC_FK:  Selain itu, juga pengen bangun budaya kerja yang efektif pakai teknologi, dan pastinya jadi fakultas yang dikenal luas di Asia.
+Player: Wah, mantap banget sih. Jadi makin kagum sama Fakultas Kedokteran UNEJ!
+NPC_FK: Hehe, iya dong. Kalau penasaran, kamu bisa cari tahu lebih banyak. Banyak hal seru yang bisa dieksplor di sini!
+NPC_FK: Mungkin sudah cukup. Sebelum kamu pergi, aku ada quest untuk kamu, jawab dengan benar!
+# Entering Quiz
+NPC_FK: Organ manusia mana yang berfungsi untuk menyaring racun dalam darah?
+- Hati
+	set {JawabanQuiz} += 1
+- Paru-paru
+- Jantung
+- Ginjal
+NPC_FK: Apa nama hormon yang dihasilkan oleh pankreas untuk mengontrol kadar gula darah?
+- Insulin
+	set {JawabanQuiz} += 1
+- Adrenalin
+- Estrogen
+- Dopamin
+# Quiz End
+# Response
+if {JawabanQuiz} == 2:
+	set {QuizResult} = "completed"
+	NPC_FK: Pengetahuan mu sangat baik sekali. Mampir lagi ya kapan - kapan.
+elif {JawabanQuiz} == 1:
+	set {QuizResult} = "incomplete"
+	NPC_FK: Kereen, satu jawaban dari kamu sudah benar. Tapi sayang satu jawaban lainnya kamu menjawab dengan salah. Baik sekarang aku akan berikan ulang pertanyaan nya. Pastikan kamu menjawab dengan benar.
+elif {JawabanQuiz} == 0:
+	set {QuizResult} = "incomplete"
+	NPC_FK: Sepertinya aku memberi pertanyaan terlalu sulit untuk anak fasilkom. But it’s okay, kamu bisa mencoba nya lagi. Pastikan kamu benar - benar menjawabnya.
+# Dialog End
+set {JawabanQuiz} = 0
+[signal arg="quiz_result_save"]
+[signal arg="dialog_finished"]

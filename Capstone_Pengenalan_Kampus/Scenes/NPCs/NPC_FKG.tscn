@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=3 uid="uid://c0bw8e8vlp740"]
+
+[ext_resource type="Script" path="res://Scripts/NPCs/npc.gd" id="1_nxyt8"]
+[ext_resource type="Texture2D" uid="uid://bwh0pahjq7j57" path="res://Assets/Sprites/NPC/animation/FKG.png" id="2_o4o4p"]
+[ext_resource type="PackedScene" uid="uid://4khffy12qyi0" path="res://Scenes/Components/NPCDialogComponent.tscn" id="3_hmcq0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4m8u"]
+atlas = ExtResource("2_o4o4p")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccep7"]
+atlas = ExtResource("2_o4o4p")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klgv7"]
+atlas = ExtResource("2_o4o4p")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kg0fi"]
+atlas = ExtResource("2_o4o4p")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ia1vx"]
+atlas = ExtResource("2_o4o4p")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4sa06"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4m8u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccep7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klgv7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kg0fi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ia1vx")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jqrh6"]
+radius = 8.0
+
+[node name="NPC_FKG" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_nxyt8")
+dialog_timeline_quest_name = "FKG"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_4sa06")
+animation = &"idle"
+frame_progress = 0.840508
+offset = Vector2(0.48, -4.975)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jqrh6")
+
+[node name="DialogArea" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DialogArea"]
+polygon = PackedVector2Array(0, 0, -8, 16, 8, 16)
+
+[node name="NPCDialogComponent" parent="." instance=ExtResource("3_hmcq0")]
+
+[connection signal="body_entered" from="DialogArea" to="NPCDialogComponent" method="_on_dialog_area_body_entered"]
+[connection signal="body_exited" from="DialogArea" to="NPCDialogComponent" method="_on_dialog_area_body_exited"]

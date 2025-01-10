@@ -8,7 +8,8 @@ var path_map = {
 	'FASILKOM'	: "res://Scenes/Map/FasilkomAreaMap.tscn",
 	'FKIP'		: "res://Scenes/Map/FKIPAreaMap.tscn",
 	'FKG' 		: "res://Scenes/Map/FKGAreaMap.tscn",
-	'FTP'		: "res://Scenes/Map/FTPAreaMap.tscn"
+	'FTP'		: "res://Scenes/Map/FTPAreaMap.tscn",
+	'ENDINGCUTSCENE' : "res://Scenes/Cutscenes/EndingCutscene.tscn"
 }
 
 #Variable
@@ -34,6 +35,10 @@ var scene_transition: String
 
 #Save Variable
 var auto_save_is:bool  #apakah sebuah scene bisa autosave atau tidak
+
+
+func _process(delta: float) -> void:
+	game_over()
 
 #Function
 #Player Function
@@ -64,3 +69,37 @@ func change_map(path_scene:String, animation_node_path: String) -> void:
 	is_change_map = false
 	# Ganti scene ke path yang ditentukan
 	get_tree().change_scene_to_file(path_scene)
+
+func cutscene_status(cutscene_name:String):
+	var cutscene_data = SaveManager.load_data('cutscene')
+	if cutscene_data == null:
+		pass
+	
+	if cutscene_data != null and cutscene_data.has(cutscene_name):
+		if cutscene_data[cutscene_name] == 'completed':
+			return true
+	
+	return false
+	
+
+func get_all_quiz_completed():
+	var quiz_progress = SaveManager.load_data("quiz_progress")
+	var quiz_completed = 0
+	if quiz_progress!=null:
+		for map_name in quiz_progress.keys():
+			var map_progress = quiz_progress[map_name]
+			for quiz_name in map_progress.keys():
+				if map_progress[quiz_name] == "completed":
+					quiz_completed +=1
+	return quiz_completed
+
+func game_over():
+	if get_all_quiz_completed() == 15:
+		is_change_map = true
+		AudioManager.stop_bgm()
+		await get_tree().create_timer(0.3).timeout
+		is_change_map = false
+		# Ganti scene ke path yang ditentukan
+		get_tree().change_scene_to_file("res://Scenes/Cutscenes/EndingCutscene.tscn")
+	else :
+		pass

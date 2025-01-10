@@ -1,0 +1,61 @@
+# Preparing Dialog
+[signal arg="entering_dialog"]
+set {TimelineName} = "Keperawatan"
+# Dialog Start
+join Player center
+Player: Halo kak, mohon maaf kakak kuliah disini?
+join NPC_Keperawatan center
+NPC_Keperawatan: Iya, saya kuliah disini. Ada keperluan apa ya, sepertinya kamu asing disini.
+Player:  Kebetulan banget, maaf kak. Aku Yoto mahasiswa baru di Fakultas Ilmu Komputer. Tujuanku kesini untuk menjalankan tugas PKKMB dari Kak Wildan.
+Player: Tugasnya itu menemui panitia PKKMB yang ada di depan kampus. Tapi dari tadi aku liat disekitaran sini tidak ada mahasiswa lain selain kakak.
+Player: Apakah kakak adalah panitia PKKMB yang ditugaskan disini?
+NPC_Keperawatan: Oh maba ya. Kamu bener sekali, aku panitia yang ditugaskan disini. Langsung aja ya. Aku Silvy mahasiswa sebagai panitia PKKMB yang ditugaskan di Fakultas Keperawatan.
+NPC_Keperawatan: Disini adalah Fakultas Keperawatan. Fakultas Keperawatan sendiri berfokus menyiapkan kita untuk jadi perawat yang nggak cuma handal dalam merawat, tapi juga paham tentang teknologi kesehatan dan cara merawat fisik serta mental pasien, termasuk penyandang disabilitas.
+Player: Wah, jadi bukan cuma sekadar merawat ya? Bisa juga bantu perawatan mental?
+NPC_Keperawatan: Iya, betul! Keperawatan itu luas, nggak cuma soal ngasih obat dan perawatan fisik. Tapi juga tentang memahami kondisi .mental pasien. Kami di sini juga belajar tentang teknologi kesehatan yang bisa membantu proses penyembuhan, baik di rumah sakit maupun di komunitas.
+Player: Wah keren. Alat yang di leher kakak itu namanya apa?
+NPC_Keperawatan: Ini tuh stetoskop. Berfungsi untuk mendengarkan detak jantung pasien. Kamu mau aku periksa?
+Player:  Ngga kak, kebetulan hari ini aku sedang baik - baik saja... [pause = 0.3] Hehe..
+NPC_Keperawatan: Oke, aku lanjut. FKEP UNEJ punya beberapa program studi, ada S1 Ilmu Keperawatan, Profesi Ners, Magister Keperawatan, dan juga D3 Keperawatan yang ada di kampus Lumajang dan Pasuruan. Jadi, banyak pilihan tergantung yang kamu minati.
+NPC_Keperawatan: Visi FKEP UNEJ itu, “Menjadi Fakultas Keperawatan yang unggul dalam pengembangan sains, teknologi dan seni keperawatan berwawasan agronursing.” Jadi, kita nggak cuma belajar keperawatan, tapi juga menggabungkan konsep keperawatan dengan pemahaman agrikultur dan lingkungan.
+Player: Agro Nursing? Apa itu?
+NPC_Keperawatan: Agronursing itu adalah pendekatan keperawatan yang berfokus pada kesehatan masyarakat di daerah agraris. Jadi, kami nggak hanya belajar perawatan di rumah sakit, tapi juga di lingkungan yang berhubungan dengan pertanian atau daerah pedesaan. Misalnya, perawatan untuk petani atau penyandang disabilitas yang tinggal di daerah pertanian.
+Player: Oh, jadi ini bukan cuma soal keperawatan biasa ya?
+NPC_Keperawatan: Iya, tapi kamu bisa diam dulu ga? Aku lagi jelasin.
+Player: Eh maaf kak. Silahkan bisa dilanjutin
+Player: [i]  Cantik cantik galak banget...
+NPC_Keperawatan: Ok, Misinya ada beberapa, antara lain menyelenggarakan pendidikan yang berkualitas dan berwawasan agronursing, serta mengembangkan sains dan teknologi keperawatan yang kreatif dan inovatif. 
+NPC_Keperawatan: Kami juga fokus pada pengabdian kepada masyarakat dengan menerapkan hasil penelitian yang bisa membantu komunitas, serta mengembangkan tata kelola fakultas yang transparan dan berbasis teknologi.
+NPC_Keperawatan: Banyak kegiatan pengabdian masyarakat di mana kami bisa mengaplikasikan apa yang dipelajari untuk meningkatkan kesehatan masyarakat di tingkat lokal maupun nasional. Misalnya, program pemberdayaan kesehatan untuk warga desa.
+Player: Keren banget, Kak! Jadi lulusan FKEP itu nggak cuma paham keperawatan, tapi juga bisa berperan aktif di masyarakat, ya?
+NPC_Keperawatan: Tepat sekali! Kami dilatih untuk jadi perawat yang punya kualitas, profesional, dan siap menghadapi tantangan di dunia kesehatan. Bahkan, kami juga dipersiapkan untuk berkompetisi di tatanan nasional dan internasional.
+Player: Wah, semakin tertarik deh! Terima kasih banget, Kak, atas penjelasannya. Semoga bisa dapat banyak ilmu disini juga.
+NPC_Keperawatan: Sama-sama! Semoga perjalanan kuliahmu di UNEJ lancar, dan kalau ada apa-apa, jangan ragu untuk bertanya ya! Untuk menambah ilmu kamu, aku akan memberi kamu pertanyaan tentang gambaran umum yang dipelajari di FKEP UNEJ. Jawab dengan benar ya!
+# Entering Quiz
+NPC_Keperawatan: Apa nama prosedur untuk menilai tanda vital pasien?
+- Resusitasi
+- Triase
+- Monitoring
+- Inspeksi
+	set {JawabanQuiz} += 1
+NPC_Keperawatan:   Apa tujuan utama dari tindakan [b]aseptik dalam keperawatan[/b] ?
+- Patient Comfort
+- Infection Control
+	set {JawabanQuiz} += 1
+- Kompres
+- Increases blood pressure
+# Quiz End
+# Response
+if {JawabanQuiz} == 2:
+	set {QuizResult} = "completed"
+	NPC_Keperawatan: Yoto, aku ga nyangka banget. Mahasiswa baru fasilkom bisa mengerjakan soal general dari FKEP
+elif {JawabanQuiz} == 1:
+	set {QuizResult} = "incomplete"
+	NPC_Keperawatan: Satu dari jawaban kamu sudah benar, tetapi satu dari jawaban kamu juga salah. Aku berikan pertanyaan nya lagi ke kamu. Pastikan kamu dapat menjawab semua pertanyaan dengan benar ya.
+elif {JawabanQuiz} == 0:
+	set {QuizResult} = "incomplete"
+	NPC_Keperawatan: Yoto yoto, aku yakin kamu sudah berusaha semaksimal mungkin. coba lagi lain kali, belajar lagi!
+# Dialog End
+set {JawabanQuiz} = 0
+[signal arg="quiz_result_save"]
+[signal arg="dialog_finished"]

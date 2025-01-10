@@ -7,21 +7,23 @@ extends Node
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 #Volume
-var music_volume: float = 0.5 #default music volume
-var sfx_volume:float = 0.5 #default sfx volume
+var music_volume: float = 2 #default music volume
+var sfx_volume:float = 4 #default sfx volume
 
 var sfx_is_playing:bool
 var playing_position:float
 
 @export var bgm_files : Dictionary = {
-	"main_menu" : "res://Audio/2. Crazy Dave Intro.mp3",
-	"entrance_area": "res://Audio/04. Grasswalk.mp3",
-	"fasilkom_area": "res://Audio/2. Crazy Dave Intro.mp3",
-	"ftp_area": "res://Audio/2. Crazy Dave Intro.mp3"
+	"main_menu" : "res://Audio/Main Menu.mp3",
+	"entrance_area": "res://Audio/IN Game.mp3",
+	"fasilkom_area": "res://Audio/IN Game.mp3",
+	"ftp_area": "res://Audio/IN Game.mp3",
+	"fkg_area": "res://Audio/IN Game.mp3",
+	"credit": "res://Audio/Credit.mp3"
 	}
 
 @export var sfx_files : Dictionary = {
-	"walk" : "res://Audio/walking-sound-effect-272246.mp3",
+	"walk" : "res://Audio/walking.mp3",
 	"button_click" : "res://Audio/4. Click.mp3"
 }
 
@@ -46,9 +48,12 @@ func stop_bgm() -> void:
 
 func play_sfx(sfx_name: String) -> void:
 	var sfx_path = sfx_files.get(sfx_name, "")
-	if sfx_path != "":
+	if sfx_path != "" and sfx_name == "walk":
 		sfx_player_movement.stream = load(sfx_path)
 		sfx_player_movement.play(playing_position)
+	elif sfx_path != "" and sfx_name == "button_click":
+		sfx_player_button.stream = load(sfx_path)
+		sfx_player_button.play(playing_position)
 	sfx_is_playing = true
 	
 func set_sfx_pitch(pitch_scale:float=1):
@@ -68,4 +73,6 @@ func get_sfx_duration(sfx_name:String):
 
 func _on_sfx_player_movement_finished() -> void:
 	sfx_is_playing = false
-	
+
+func _on_sfx_player_button_finished() -> void:
+	sfx_is_playing = false

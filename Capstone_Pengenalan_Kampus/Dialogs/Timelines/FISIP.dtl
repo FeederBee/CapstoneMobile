@@ -1,0 +1,53 @@
+# Preparing Dialog
+[signal arg="entering_dialog"]
+set {TimelineName} = "FISIP"
+# Dialog Start
+join Player center
+Player: Permisi, Kak. Sorry mungkin aku ganggu. Boleh minta waktunya sebentar?
+join NPC_FISIP center
+NPC_FISIP: Oh, tentu. Ada yang bisa aku bantu?
+Player: Sebelumnya perkenalkan aku Yoto mahasiswa baru, dari Fakultas Ilmu Komputer. Sekarang aku sedang menjalankan tugas PKKMB dari Kak Wildan untuk menemui panitia yang ada di depan gedung fakultas.
+Player: Apakah kakak panitia PKKMB?
+NPC_FISIP: Betul, Nama ku Dandi, kebetulan aku panitia PKKMB yang ditugaskan di depan gedung FISIP disini.
+NPC_FISIP: Aku coba jelaskan sedikit ya, FISIP itu singkatan dari Fakultas Ilmu Sosial dan Politik. Di sini kita belajar banyak soal masyarakat, sosial, dan politik, tapi nggak cuma teori doang. Fokusnya juga ke gimana cara kita bisa bener-bener berkontribusi buat masyarakat.
+NPC_FISIP:  Kita sering praktek juga, entah lewat penelitian, pengabdian masyarakat, atau kolaborasi dengan organisasi. Serunya lagi, FISIP di UNEJ ini punya lima program studi yang semuanya relevan banget sama kehidupan nyata.
+Player: Lima program studi? Apa aja tuh?
+NPC_FISIP: Ada Hubungan Internasional, Administrasi Negara, Administrasi Bisnis, Kesejahteraan Sosial, dan Sosiologi. Semua prodi ini saling melengkapi buat ngasih perspektif luas tentang dunia sosial dan politik.
+NPC_FISIP: Visinya adalah “FISIP unggul dalam pengembangan sains yang berwawasan lingkungan dan bisnis dalam perspektif sosial humaniora.” Intinya, kita nggak cuma belajar soal masyarakat, tapi juga gimana cara jadi solusi buat masalah lingkungan dan bisnis.
+NPC_FISIP: Banyak! Salah satunya adalah ngembangin pendidikan yang nggak cuma berkualitas tapi juga bisa bersaing di level global. Kita juga fokus ke penelitian yang inovatif dan bermanfaat buat masyarakat, terus banyak kolaborasi sama stakeholder, baik di dalam maupun luar negeri.
+Player: Wah, jadi mahasiswa FISIP kayaknya seru banget. Tapi berat nggak sih kuliahnya?
+NPC_FISIP: Beratnya sih relatif, tapi kalau kamu suka belajar tentang manusia, masyarakat, atau politik, pasti enjoy kok. Apalagi, kita diajarin buat berpikir kritis dan kreatif, jadi banyak skill yang bisa langsung dipakai di dunia kerja.
+Player: Kalau aku anak Ilmu Komputer, kira-kira ada irisan yang bisa aku pelajari dari FISIP nggak ya?
+NPC_FISIP: Ada dong! Misalnya, kamu bisa belajar soal dampak sosial dari teknologi yang kamu kembangkan. Kalau kolaborasi sama mahasiswa FISIP, kita bisa bantu kasih insight soal kebijakan, masyarakat, atau cara teknologi bisa bener-bener memecahkan masalah sosial.
+Player: Wah, itu menarik banget! Aku jadi makin penasaran sama FISIP.
+NPC_FISIP: <Empty Text Event>
+Player: Wah siap, Kak. Makasih banyak infonya, aku jadi semangat buat eksplor lebih banyak tentang fakultas ini.
+NPC_FISIP: Eitss, kamu bilang eksplor lebih banyak? Baik, aku akan berikan pertanyaan untuk kamu seputar FISIP, yang pastinya ini akan berguna untuk menambah wawasan kamu tentang fakultas ini.
+# Entering Quiz
+Apa bentuk sistem pemerintahan di mana rakyat secara langsung memilih kepala negara? 
+- Monarki
+- Oligarki
+- Demokrasi Presidensial
+	set {JawabanQuiz} += 1
+- Demokrasi Parlementer
+Apa yang dimaksud dengan konsep "Trias Politica"?
+- Tiga pilar utama pendidikan
+- Pemisahan kekuasaan legislatif, eksekutif, dan yudikatif
+	set {JawabanQuiz} += 1
+- Sistem pengawasan ekonomi global
+- Prinsip persatuan dalam politik lokal
+# Quiz End
+# Response
+if {JawabanQuiz} == 2:
+	set {QuizResult} = "completed"
+	NPC_FISIP: Gokil, kamu dapat menjawab semua pertanyaan dengan benar.
+elif {JawabanQuiz} == 1:
+	set {QuizResult} = "incomplete"
+	NPC_FISIP: Pastikan dengan benar lagi jawaban kamu. Salah satu jawaban kamu salah. Tapi jangan patah semangat karena kamu bisa mempelajarinya dengan mudah. Sampai Jumpa!
+elif {JawabanQuiz} == 0:
+	set {QuizResult} = "incomplete"
+	NPC_FISIP: Apa yang ada di pikiran kamu? Bisa - bisanya kamu salah menjawab semua soal. Coba lagi!
+# Dialog End
+set {JawabanQuiz} = 0
+[signal arg="quiz_result_save"]
+[signal arg="dialog_finished"]

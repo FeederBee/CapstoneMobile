@@ -32,6 +32,10 @@ func _ready() -> void:
 	
 	if SaveManager.load_data("player_stamina"):
 		maxValue = SaveManager.load_data("player_stamina")
+		if maxValue!=100:
+			is_recovering = true
+			bg_timer.start(bg_delay)
+			recover_timer.start(recovery_delay)
 	else : 
 		maxValue = 100
 	stamina = maxValue

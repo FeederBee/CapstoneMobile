@@ -2,7 +2,7 @@ extends Node
 
 @onready var animated: AnimatedSprite2D = $"../AnimatedSprite2D"
 @onready var dialog_timeline_quest_name = get_parent().dialog_timeline_quest_name
-@onready var dialog_timeline_name = get_parent().dialog_timeline_name
+@onready var dialog_timeline_name = get_parent().dialog_timeline_done_name
 
 @onready var dialog_btn: TouchScreenButton = $CanvasLayer/Control/DialogBtn
 
@@ -57,4 +57,7 @@ func _on_dialog_btn_pressed() -> void:
 	
 	if check_quiz_progress():
 		run_dialog(dialog_timeline_name)
-	else: run_dialog(dialog_timeline_quest_name)
+		print (dialog_timeline_name)
+	else: 
+		run_dialog(dialog_timeline_quest_name)
+		print (dialog_timeline_quest_name)

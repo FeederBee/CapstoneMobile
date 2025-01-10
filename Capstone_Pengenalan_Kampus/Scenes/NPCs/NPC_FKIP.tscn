@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ck13er1s7hude"]
+[gd_scene load_steps=11 format=3 uid="uid://ck13er1s7hude"]
 
 [ext_resource type="Script" path="res://Scripts/NPCs/npc.gd" id="1_jgeix"]
 [ext_resource type="Texture2D" uid="uid://b74f6ta13ofjt" path="res://Assets/Sprites/NPC/animation/FKIP.png" id="2_43jqm"]
@@ -8,11 +8,39 @@
 atlas = ExtResource("2_43jqm")
 region = Rect2(0, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8twg8"]
+atlas = ExtResource("2_43jqm")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocyn8"]
+atlas = ExtResource("2_43jqm")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_agm8o"]
+atlas = ExtResource("2_43jqm")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aso14"]
+atlas = ExtResource("2_43jqm")
+region = Rect2(96, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_jg1f4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cm8uh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8twg8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocyn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_agm8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aso14")
 }],
 "loop": true,
 "name": &"idle",
@@ -25,12 +53,13 @@ radius = 8.0
 [node name="NPC_FKIP" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_jgeix")
-dialog_timeline_name = "FKIP"
+dialog_timeline_quest_name = "FKIP"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_jg1f4")
 animation = &"idle"
+frame_progress = 0.0488006
 offset = Vector2(0.445, -4.95)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

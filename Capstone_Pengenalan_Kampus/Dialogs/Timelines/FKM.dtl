@@ -1,0 +1,38 @@
+# Preparing Dialog
+[signal arg="entering_dialog"]
+set {TimelineName} = "FKM"
+# Dialog Start
+join Player center
+Player: Permisi, Kak. Lagi sibuk, ya?
+join NPC_FKM center
+NPC_FKM: Oh, nggak kok. Cuma lagi beresin brosur acara fakultas. Ada yang bisa dibantu?
+NPC_FKM: Ini dialognya masih belum selesai. Penulisnya lelet bet.
+Player: Errm...
+# Entering Quiz
+NPC_FKM: Apa nama pendekatan utama dalam promosi kesehatan masyarakat?
+- Preventif
+	set {JawabanQuiz} += 1
+- Kuratif
+- Rehabilitatif
+- Restoratif
+NPC_FKM: Apa yang dimaksud dengan *herd immunity?*
+- Sistem imun individu
+- Kekebalan kelompok terhadap penyakit menular
+	set {JawabanQuiz} += 1
+- Vaksinasi ulang pada individu tertentu
+- Efek obat terhadap penyakit kronis
+# Quiz End
+# Response
+if {JawabanQuiz} == 2:
+	set {QuizResult} = "completed"
+	NPC_FKM: Lorem benar
+elif {JawabanQuiz} == 1:
+	set {QuizResult} = "incomplete"
+	NPC_FKM: Lorem salah 1
+elif {JawabanQuiz} == 0:
+	set {QuizResult} = "incomplete"
+	NPC_FKM: Lorem 0
+# Dialog End
+set {JawabanQuiz} = 0
+[signal arg="quiz_result_save"]
+[signal arg="dialog_finished"]

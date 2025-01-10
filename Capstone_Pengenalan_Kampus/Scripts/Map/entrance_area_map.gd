@@ -3,7 +3,6 @@ extends Node2D
 @onready var player = $Y_sort/Karakter/Player
 @onready var AutoLoad = $Components/AutoLoadComponent
 @onready var player_spawn_component = $Components/PlayerSpawnComponent
-@onready var prolog_node = $PrologCutscene
 
 var fasilkom_l_btn
 var fasilkom_r_btn
@@ -25,8 +24,8 @@ func _ready() -> void:
 		$Transition.visible = false
 	else:
 		transition.play("screen_fade_in")
-		
-	if !prolog_node:
+	
+	if Global.cutscene_status('Prolog'):
 		player_spawn_component.spawn_player()
 	
 	
@@ -35,9 +34,7 @@ func _ready() -> void:
 	
 	fasilkom_r_btn =get_node("ControlLayer/ChangeMapBtn/FasilkomBtn_R")
 	fasilkom_r_btn.visible = false
-	
-	
-		
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

@@ -1,0 +1,10 @@
+[wait time="3.0"]
+join Player center
+Player: asdfadcwacascwa
+Player: scbthteghe
+Player: rgwrgwrtefcwef
+[signal arg="npc_masuk"]
+[wait time="1.0" hide_text="false"]
+join NPC_Entrance center
+NPC_Entrance: adascqCVFBHYKJRTEH
+[signal arg="dialog_finished"]

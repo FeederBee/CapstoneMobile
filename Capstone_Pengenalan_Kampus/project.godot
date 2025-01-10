@@ -12,9 +12,12 @@ config_version=5
 
 config/name="Capstone_Pengenalan_Kampus"
 config/version="0.1"
-run/main_scene="res://Scenes/UIs/MainMenu.tscn"
+run/main_scene="res://Scenes/BootSplash.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
 config/icon="res://Icon.png"
+boot_splash/minimum_display_time=2
 
 [audio]
 
@@ -31,18 +34,43 @@ SaveManager="*res://Scripts/SaveManager.gd"
 
 directories/dch_directory={
 "NPC_Entrance": "res://Dialogs/Characters/NPC_Entrance.dch",
+"NPC_FEB": "res://Dialogs/Characters/NPC_FEB.dch",
+"NPC_FIB": "res://Dialogs/Characters/NPC_FIB.dch",
+"NPC_FISIP": "res://Dialogs/Characters/NPC_FISIP.dch",
+"NPC_FK": "res://Dialogs/Characters/NPC_FK.dch",
+"NPC_FKG": "res://Dialogs/Characters/NPC_FKG.dch",
+"NPC_FKIP": "res://Dialogs/Characters/NPC_FKIP.dch",
+"NPC_FKM": "res://Dialogs/Characters/NPC_FKM.dch",
 "NPC_FMIPA": "res://Dialogs/Characters/NPC_FMIPA.dch",
+"NPC_FTP": "res://Dialogs/Characters/NPC_FTP.dch",
 "NPC_Faperta": "res://Dialogs/Characters/NPC_Faperta.dch",
+"NPC_Farmasi": "res://Dialogs/Characters/NPC_Farmasi.dch",
 "NPC_Fasilkom": "res://Dialogs/Characters/NPC_Fasilkom.dch",
+"NPC_Hukum": "res://Dialogs/Characters/NPC_Hukum.dch",
+"NPC_Keperawatan": "res://Dialogs/Characters/NPC_Keperawatan.dch",
+"NPC_Teknik": "res://Dialogs/Characters/NPC_Teknik.dch",
 "Player": "res://Dialogs/Characters/Player.dch"
 }
 directories/dtl_directory={
+"Ending": "res://Dialogs/Timelines/Ending.dtl",
+"FEB": "res://Dialogs/Timelines/FEB.dtl",
+"FIB": "res://Dialogs/Timelines/FIB.dtl",
+"FISIP": "res://Dialogs/Timelines/FISIP.dtl",
+"FK": "res://Dialogs/Timelines/FK.dtl",
+"FKG": "res://Dialogs/Timelines/FKG.dtl",
+"FKIP": "res://Dialogs/Timelines/FKIP.dtl",
+"FKM": "res://Dialogs/Timelines/FKM.dtl",
 "FMIPA": "res://Dialogs/Timelines/FMIPA.dtl",
+"FTP": "res://Dialogs/Timelines/FTP.dtl",
 "Faperta": "res://Dialogs/Timelines/Faperta.dtl",
+"Farmasi": "res://Dialogs/Timelines/Farmasi.dtl",
+"Fasilkom": "res://Dialogs/Timelines/Fasilkom.dtl",
+"Hukum": "res://Dialogs/Timelines/Hukum.dtl",
+"Keperawatan": "res://Dialogs/Timelines/Keperawatan.dtl",
 "Prolog": "res://Dialogs/Timelines/Prolog.dtl",
 "Prolog_Entrance": "res://Dialogs/Timelines/Prolog_Entrance.dtl",
 "QuestDone_Draft": "res://Dialogs/Timelines/QuestDone_Draft.dtl",
-"fasilkom": "res://Dialogs/Timelines/fasilkom.dtl"
+"Teknik": "res://Dialogs/Timelines/Teknik.dtl"
 }
 layout/style_list=["res://Dialogs/LeftSpeechDialogStyle.tres", "res://Dialogs/RightSpeechDialogStyle.tres"]
 layout/default_style="res://Dialogs/LeftSpeechDialogStyle.tres"

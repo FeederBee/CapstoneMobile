@@ -1,15 +1,33 @@
 [signal arg="entering_dialog"]
+set {TimelineName} = "Prolog"
 set {WalkAway} = false
 join Player center
-Player: Ah... [pause=0.5] akhirnya istirahat yang cukup! Sekarang waktunya lanjut [pause =1]. Hmm . [pause=0.5]. [pause=0.5].   [pause=0.5]. Ah iya.. kalau tidak salah... petualangan!!
-Player: Katanya aku harus keliling ke semua fakultas buat tugas terakhir hari ini.  Wah, aku jadi nggak sabar!
-Player: Hmm. . .
+Player: Huftt. ... [pause=1] Aku harus berangkat ke kampus lagi.
+Player: Sepertinya kemarin aku harus menemui Kak Wildan sebagai panitia PKKMB, yang mana Kak Wildan ya...
+Player: Hmm. . . [pause=1] ?
+Player: Eh ada panitia PKKMB di depan tuh, coba aku tanya dia deh, siapa tau dia tau Kak Wildan
 set {WalkAway} = true
 [wait time="0.5" hide_text="false"]
 set {WalkAway} = false
 if {TurnDialogCharacter} == "NPC_Entrance":
-	Player: Oh halo kakak Astanto
+	Player: Halo kak, Saya Yoto peserta PKKMB dari Fakultas Ilmu Komputer.
 	join NPC_Entrance center
-	NPC_Entrance: Oh Halo . . .
+	NPC_Entrance: Iya, ada apa Yoto?
+	Player: Jadi gini kak, kemarin sebelum pulang PKKMB katanya pada PKKMB hari ini, aku harus menemui Kak Wildan untuk menerima tugas PPKMB berikutnya, apakah kakak tau Kak Wildan
+	NPC_Entrance: Wildan? Saya sendiri
+	Player: Oh, Kak Wildan sendiri ya. Beruntung banget.
+	NPC_Entrance: Jadi tugas PKKMB pada hari ini apa ya kak?
+	Player: Tugas nya itu kamu harus keliling UNEJ.
+	Player: Keliling unej?  Maksud nya?
+	NPC_Entrance: Kamu keliling kampus dan datengi 15 fakultas yang ada disini. Di depan fakultas sudah terdapat panitia yang akan mengarahkan kamu.
+	NPC_Entrance: Panitia nantinya akan memberi tahu kamu tentang apa aja yang ada pada fakultas tersebut dan nantinya kamu akan diberi quest.
+	NPC_Entrance: Jika kamu berhasil menyelesaikan quest yang diberikan, kamu akan diberikan kunci. [pause=1] Se simpel itu…
+	Player: Terdengar mudah... [pause=1] Semoga emang beneran mudah.
+	NPC_Entrance: Gampang kok. Cukup simak, kerjakan dan terima.
+	NPC_Entrance: Sudah, sekarang kamu berangkat di gedung - gedung fakultas dan temui panitia yang ada di depan gedung tersebut.
+	Player: Baik kak terima kasih ya. Izin lanjut dulu.
+	NPC_Entrance: Iya, hati - hati di jalan ya! Aku mau lanjut dulu.
 	set {WalkAway} = true
+	set {QuizResult} = "completed"
+	[signal arg="quiz_result_save"]
 	[signal arg="dialog_finished"]

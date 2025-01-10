@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cm8xcuryjl2p7"]
+[gd_scene load_steps=11 format=3 uid="uid://cm8xcuryjl2p7"]
 
 [ext_resource type="Script" path="res://Scripts/NPCs/npc.gd" id="1_vhckg"]
 [ext_resource type="Texture2D" uid="uid://w0p5cx0ro6go" path="res://Assets/Sprites/NPC/animation/FAPERTA.png" id="2_uwlrv"]
@@ -8,14 +8,42 @@
 atlas = ExtResource("2_uwlrv")
 region = Rect2(0, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jdsg"]
+atlas = ExtResource("2_uwlrv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynbs1"]
+atlas = ExtResource("2_uwlrv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fr60i"]
+atlas = ExtResource("2_uwlrv")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hund"]
+atlas = ExtResource("2_uwlrv")
+region = Rect2(96, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_epltf"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i3it0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jdsg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynbs1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fr60i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hund")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 5.0
 }]
 
@@ -26,11 +54,12 @@ radius = 8.0
 collision_layer = 2
 script = ExtResource("1_vhckg")
 dialog_timeline_quest_name = "Faperta"
-dialog_timeline_name = "QuestDone_Draft"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_epltf")
+animation = &"idle"
+frame_progress = 0.203106
 offset = Vector2(0.425, -5.07)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

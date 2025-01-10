@@ -29,8 +29,8 @@ script = ExtResource("1_y8avl")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.4, 0.4)
 sprite_frames = ExtResource("2_2pjk2")
-animation = &"idleR"
-frame_progress = 0.525145
+animation = &"walkD"
+frame_progress = 0.484712
 offset = Vector2(0, -13)
 
 [node name="Shadows" type="Sprite2D" parent="."]
@@ -66,11 +66,12 @@ script = ExtResource("11_b77nd")
 [node name="BgStamina" type="TextureProgressBar" parent="CanvasLayer"]
 offset_left = 157.0
 offset_top = 118.0
-offset_right = 366.0
+offset_right = 367.0
 offset_bottom = 150.0
 scale = Vector2(0.7, 0.7)
-texture_over = ExtResource("5_trykw")
+texture_under = ExtResource("5_trykw")
 texture_progress = ExtResource("10_575t8")
+texture_progress_offset = Vector2(16, 0)
 
 [node name="BarStamina" type="TextureProgressBar" parent="CanvasLayer/BgStamina"]
 layout_mode = 1
@@ -79,13 +80,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -104.0
+offset_left = -89.0
 offset_top = -16.0
 offset_right = 104.0
 offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
-value = 100.0
+value = 10.0
 texture_progress = ExtResource("6_7rsty")
 
 [node name="recover_timer" type="Timer" parent="CanvasLayer/BgStamina/BarStamina"]
@@ -220,8 +221,8 @@ label_settings = ExtResource("8_fgcky")
 [connection signal="area_exited" from="Player_detection" to="." method="_on_player_detection_area_exited"]
 [connection signal="body_entered" from="Player_detection" to="." method="_on_player_detection_body_entered"]
 [connection signal="timeout" from="CanvasLayer/BgStamina/BarStamina/recover_timer" to="Components/PlayerRunComponent" method="_on_recover_timer_timeout"]
-[connection signal="timeout" from="CanvasLayer/BgStamina/BarStamina/recover_timer" to="CanvasLayer/BgStamina" method="_on_recover_timer_timeout"]
 [connection signal="timeout" from="CanvasLayer/BgStamina/BarStamina/recover_timer" to="CanvasLayer/BgStamina" method="_on_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/BgStamina/BarStamina/recover_timer" to="CanvasLayer/BgStamina" method="_on_recover_timer_timeout"]
 [connection signal="timeout" from="CanvasLayer/BgStamina/BarStamina/deplented_timer" to="Components/PlayerRunComponent" method="_on_deplented_timer_timeout"]
 [connection signal="timeout" from="CanvasLayer/BgStamina/BarStamina/deplented_timer" to="CanvasLayer/BgStamina" method="_on_deplented_timer_timeout"]
 [connection signal="timeout" from="CanvasLayer/BgStamina/BarStamina/deplented_timer" to="CanvasLayer/BgStamina" method="_on_bgtimer_timeout"]

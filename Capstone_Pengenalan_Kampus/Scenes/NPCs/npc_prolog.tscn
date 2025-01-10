@@ -1,42 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://2iupbp4fev7q"]
+[gd_scene load_steps=3 format=3 uid="uid://2iupbp4fev7q"]
 
-[ext_resource type="Texture2D" uid="uid://clawfc0qe4kvy" path="res://Assets/Sprites/NPC/animation/npc_fasilkom.png" id="1_iy6s0"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k2f3i"]
-atlas = ExtResource("1_iy6s0")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1436i"]
-atlas = ExtResource("1_iy6s0")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5ldaq"]
-atlas = ExtResource("1_iy6s0")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c1cj7"]
-atlas = ExtResource("1_iy6s0")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_tutpv"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k2f3i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1436i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5ldaq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c1cj7")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="SpriteFrames" uid="uid://cfayr5tt304id" path="res://Assets/Sprites/NPC/NPC_Prolog.tres" id="1_xm16u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fd7ow"]
 radius = 8.0
@@ -46,9 +10,11 @@ collision_layer = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.8, 0.8)
-sprite_frames = SubResource("SpriteFrames_tutpv")
-frame_progress = 0.506459
-offset = Vector2(0.455, -2.885)
+sprite_frames = ExtResource("1_xm16u")
+animation = &"idleD"
+frame = 3
+frame_progress = 0.68361
+offset = Vector2(-0.07, -14.98)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)

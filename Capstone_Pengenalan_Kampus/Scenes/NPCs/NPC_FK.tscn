@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bn5pnw6a5pimq"]
+[gd_scene load_steps=11 format=3 uid="uid://bn5pnw6a5pimq"]
 
 [ext_resource type="Script" path="res://Scripts/NPCs/npc.gd" id="1_ist43"]
 [ext_resource type="Texture2D" uid="uid://bmi4h2iiacben" path="res://Assets/Sprites/NPC/animation/FK.png" id="2_w0ejf"]
@@ -8,11 +8,39 @@
 atlas = ExtResource("2_w0ejf")
 region = Rect2(0, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_k54nc"]
+atlas = ExtResource("2_w0ejf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_an3rk"]
+atlas = ExtResource("2_w0ejf")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3sjx"]
+atlas = ExtResource("2_w0ejf")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bw3in"]
+atlas = ExtResource("2_w0ejf")
+region = Rect2(96, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_t8fdn"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xca4a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k54nc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_an3rk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3sjx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bw3in")
 }],
 "loop": true,
 "name": &"idle",
@@ -25,12 +53,13 @@ radius = 8.0
 [node name="NPC_FK" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_ist43")
-dialog_timeline_name = "FK"
+dialog_timeline_quest_name = "FK"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_t8fdn")
 animation = &"idle"
+frame_progress = 0.821157
 offset = Vector2(0.42, -5.065)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

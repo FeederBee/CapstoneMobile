@@ -1,6 +1,6 @@
 extends Node
 
-@export var buff_speed : float = 400  # Kecepatan buff
+@export var buff_speed : float = 200  # Kecepatan buff
 
 @onready var animated_sprite = $"../AnimatedSprite2D"
 
@@ -14,7 +14,7 @@ func _process(_delta: float) -> void:
 
 func _on_pick_area_body_entered(body: Node2D) -> void:
 	if body.name == "Player" :# Pastikan hanya player yang mendapat buff
-		if $"..".name == "buff_speed": #buff speed
+		if $"..".name == "BuffSpeed": #buff speed
 			$"../AnimatedSprite2D".hide()
 			Global.apply_speed_buff(buff_speed, 10)
 			queue_free()  # Hapus buff setelah diambil

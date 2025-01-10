@@ -1,5 +1,5 @@
 [signal arg="entering_dialog"]
-set {TimelineName} = "fasilkom"
+set {TimelineName} = "Fasilkom"
 join Player center
 Player: Hallo kak!
 join NPC_Fasilkom center [animation="Instant In"]
@@ -38,7 +38,7 @@ if {JawabanQuiz} == 2:
 elif {JawabanQuiz} == 1:
 	set {QuizResult} = "incomplete"
 	NPC_Fasilkom: Hahaha, kok bisa mahasiswa FASILKOM cuma bisa jawab satu pertanyaan yang masih berkaitan dengan FASILKOM. Belajar lagi ya!
-else:
+elif {JawabanQuiz} == 0:
 	set {QuizResult} = "incomplete"
 	NPC_Fasilkom: Hahaha, kok bisa mahasiswa FASILKOM salah menjawab pertanyaan yang masih berkaitan dengan FASILKOM. Belajar lagi ya!
 set {JawabanQuiz} = 0

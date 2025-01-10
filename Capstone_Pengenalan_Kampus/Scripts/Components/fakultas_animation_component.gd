@@ -28,3 +28,12 @@ func _on_tulisan_visibility_body_entered(body: Node2D) -> void:
 func _on_tulisan_visibility_body_exited(body: Node2D) -> void:
 	if body.has_method("player"):  # Cek apakah yang memasuki area adalah player
 		anim_player.play("tulisan_fadeIn_fasilkom")
+
+
+func _on_visibility_front_body_entered(body: Node2D) -> void:
+	if body.has_method("player"):  # Cek apakah player
+		anim_player.play("front_fadeout")
+
+func _on_visibility_front_body_exited(body: Node2D) -> void:
+	if body.has_method("player"):  # Cek apakah player
+		anim_player.play("front_fadein")

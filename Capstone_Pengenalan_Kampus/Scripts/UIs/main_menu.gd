@@ -5,6 +5,8 @@ extends Control
 @onready var button: Control = $Button
 @onready var lanjut_btn: TouchScreenButton = $Button/Lanjut
 @onready var start_btn: TouchScreenButton = $Button/Start
+@onready var credit_button: TouchScreenButton = $Credits/CanvasLayer/Button/CreditButton
+@onready var credit: TextureRect = $Credits/CanvasLayer/Control/Credit
 
 #Path Scene
 var Entrance_map = "res://Scenes/Map/EntranceAreaMap.tscn"
@@ -16,6 +18,7 @@ var transition_path = "MainMenu/AnimationPlayer"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	setting_menu.hide()
+	credit.hide()
 	if player_data != null:
 		lanjut_btn.show()
 		start_btn.hide()
@@ -59,6 +62,7 @@ func _on_load_pressed() -> void:
 func _on_setting_pressed() -> void:
 	AudioManager.play_sfx("button_click")
 	button.hide()
+	credit_button.hide()
 	setting_menu.show()
 
 func _on_quit_pressed() -> void:
@@ -70,3 +74,17 @@ func _on_lanjut_pressed() -> void:
 	Global.is_joystick = true
 	Global.player_stop = false
 	Global.change_map(player_data, transition_path)
+
+
+func _on_credit_button_pressed() -> void:
+	AudioManager.play_sfx("button_click")
+	button.hide()
+	credit.show()
+	credit_button.hide()
+
+
+func _on_close_button_pressed() -> void:
+	AudioManager.play_sfx("button_click")
+	button.show()
+	credit.hide()
+	credit_button.show()

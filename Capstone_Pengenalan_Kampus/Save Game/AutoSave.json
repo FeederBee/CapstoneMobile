@@ -1,14 +1,20 @@
 {
 	"current_map": "res://Scenes/Map/FasilkomAreaMap.tscn",
+	"cutscene": {
+		"Prolog": "completed"
+	},
 	"music_volume": 0,
 	"player_stamina": 100,
-	"player_x_position": 354.094635009766,
-	"player_y_position": 2166.04052734375,
+	"player_x_position": 356.592041015625,
+	"player_y_position": 2165.3916015625,
 	"quiz_progress": {
+		"EntranceAreaMap": {
+			"Prolog": "completed"
+		},
 		"FasilkomAreaMap": {
-			"Faperta": "completed",
-			"fasilkom": "completed"
+			"Faperta": "completed"
 		}
 	},
-	"timestamp": "2024-12-24T15:13:17"
+	"sfx_volume": 0,
+	"timestamp": "2025-01-10T12:46:28"
 }

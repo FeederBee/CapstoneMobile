@@ -23,7 +23,7 @@ var is_walking:bool
 var walk_sfx_speed:float
 
 func _ready() -> void:
-	animated_sprite.play("idleU")	
+	animated_sprite.play("idleU")
 
 func _physics_process(_delta: float) -> void:
 	move_vector = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")

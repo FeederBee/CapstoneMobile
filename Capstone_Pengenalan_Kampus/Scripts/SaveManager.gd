@@ -1,7 +1,8 @@
 extends Node
 
 # Nama file save
-const AUTO_SAVE_FILE_PATH: String = "res://Save Game/AutoSave.json"	# File path untuk save
+#const AUTO_SAVE_FILE_PATH: String = "user://SaveGame.save"	# File path untuk save di mobile
+const AUTO_SAVE_FILE_PATH: String = "res://Save Game/AutoSave.json" #path untuk save pc testing
 
 # Data yang akan disimpan
 var save_data: Dictionary = {}
@@ -13,17 +14,13 @@ const ALLOWED_KEYS: Array = [
 	"current_map",
 	"music_volume", 
 	"sfx_volume", 
-	"quiz_progress"]
+	"quiz_progress",
+	"cutscene"]
 
 func _ready() -> void:
-	# Muat data jika ada file save
-	#if FileAccess.file_exists(AUTO_SAVE_FILE_PATH):
-		#save_data = _load_save_file()
-	#else:
-		#save_data = {}
 	save_data = _load_save_file()
-	print(save_data)
-	print(load_data('current_map'))
+	#print(save_data)
+	#print(load_data('current_map'))
 
 # Fungsi untuk menyimpan data spesifik
 func save(properties: Dictionary) -> void:
@@ -38,7 +35,7 @@ func save(properties: Dictionary) -> void:
 		if key in ALLOWED_KEYS:
 			save_data[key] = properties[key] # Tambahkan/Perbarui data dalam save_data
 		else:
-			print("Key '{}' tidak diizinkan untuk disimpan.".format(key))
+			printerr("Key '{}' tidak diizinkan untuk disimpan.")
 
 	# Tulis data yang telah diperbarui ke file save
 	_write_save_file(save_data)
@@ -56,7 +53,7 @@ func load_data(key: String) -> Variant:
 	if save_data.has(key):
 		return save_data[key]  # Kembalikan nilai dari key yang diminta
 	else:
-		print("Key '{}' tidak ditemukan dalam save_data.")
+		printerr("Key '{}' tidak ditemukan dalam save_data.")
 	return null # Jika tidak ditemukan, kembalikan null
 
 # Fungsi privat untuk menulis ke file
@@ -71,7 +68,7 @@ func _write_save_file(data: Dictionary) -> void:
 		file.store_line(json_string) # Simpan sebagai satu baris
 		file.close()
 	else:
-		print("Tidak dapat menyimpan file!")
+		printerr("Tidak dapat menyimpan file!")
 
 # Fungsi privat untuk membaca file save
 func _load_save_file() -> Dictionary:
@@ -88,7 +85,7 @@ func _load_save_file() -> Dictionary:
 			if data:
 				return data# Ubah ke Dictionary
 			else:
-				printerr("Failed to parse JSON: %s" % data.error_string)
+				printerr("Failed to parse JSON: %s")
 		else:
 			printerr("File is empty.")
 		#var parsed_data = JSON.parse_string(content)

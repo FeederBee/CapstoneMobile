@@ -1,0 +1,40 @@
+# Preparing Dialog
+[signal arg="entering_dialog"]
+set {TimelineName} = "Teknik"
+# Dialog Start
+join Player center
+Player: Wah, ini Fakultas Teknik ya?
+join NPC_Teknik center
+NPC_Teknik: Kamu siapa?
+Player: Oh
+NPC_Teknik: Iya, bener banget! Di Fakultas Teknik, kita belajar tentang teknik-teknik untuk merancang benda atau teknologi, baik yang kimiawi maupun non-kimiawi. Intinya, semuanya buat mempermudah kehidupan manusia.
+NPC_Teknik: Ini dialognya masih belum selesai. Penulisnya lelet bet.
+Player: Errm...
+# Entering Quiz
+NPC_Teknik: Apa metode yang digunakan untuk memperkuat struktur bangunan terhadap gempa?
+- Pemasangan peredam seismik
+	set {JawabanQuiz} += 1
+- Penggunaan bahan kayu
+- Memperbanyak kaca dalam desain
+- Membuat bangunan lebih tinggi
+NPC_Teknik: Dalam ilmu teknik, apa fungsi utama dari katrol?
+- Meningkatkan gaya gesek
+- Memindahkan beban berat dengan lebih mudah
+	set {JawabanQuiz} += 1
+- Menambah kecepatan gerak benda
+- Mengurangi kebutuhan energi listrik
+# Quiz End
+# Response
+if {JawabanQuiz} == 2:
+	set {QuizResult} = "completed"
+	NPC_Teknik: lorem benar semua
+elif {JawabanQuiz} == 1:
+	set {QuizResult} = "incomplete"
+	NPC_Teknik: Lorem gagal 1
+elif {JawabanQuiz} == 0:
+	set {QuizResult} = "incomplete"
+	NPC_Teknik: Lorem gagal
+# Dialog End
+set {JawabanQuiz} = 0
+[signal arg="quiz_result_save"]
+[signal arg="dialog_finished"]

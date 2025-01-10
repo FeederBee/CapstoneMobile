@@ -148,9 +148,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -64.0
-offset_top = -104.0
+offset_top = -96.0
 offset_right = 184.0
-offset_bottom = -80.0
+offset_bottom = -72.0
 step = 0.01
 bus_name = "music"
 max_volume = 4.0
@@ -179,11 +179,11 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -64.0
-offset_top = -40.0
+offset_top = -32.0
 offset_right = 192.0
-offset_bottom = -16.0
+offset_bottom = -8.0
 bus_name = "sfx"
-max_volume = 1.0
+max_volume = 5.0
 
 [connection signal="pressed" from="Pause" to="." method="_on_pause_pressed"]
 [connection signal="pressed" from="PauseMenu/Control/Resume" to="PauseMenu" method="_on_resume_pressed"]

@@ -16,6 +16,7 @@ extends Node2D
 @onready var camera = $"../Y_sort/Karakter/Player/Camera2D"
 @onready var player: CharacterBody2D = $"../Y_sort/Karakter/Player"
 @onready var parent_animation_player: AnimationPlayer = $"../Transition/AnimationPlayer"
+@onready var quiz_component: Node = $"../Components/QuizComponent"
 
 ##Set speed untuk Karakter
 @export var speed = 100
@@ -25,29 +26,28 @@ var dialog_finished = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if SaveManager.load_data('timestamp'):
+	if Global.cutscene_status("Prolog"):
 		queue_free()
 		return
 
 	if camera and player:
 		camera.enabled = false
 		player.hide()
+	
 	run_dialog('Prolog')
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#if SaveManager.load_data('timestamp'):
-		#queue_free()
-		#return
-		
+	if Global.cutscene_status("Prolog"):
+		queue_free()
+		return
+
 	move_player()
 	move_npc()
-	print(prolog_player.position)
+	#print(prolog_player.position)
 
-	
 func get_player_position():
-	print(prolog_player.position)
 	return prolog_player.position
 
 func move_npc():
@@ -57,10 +57,10 @@ func move_npc():
 		
 	if dialog_finished:
 		await get_tree().create_timer(1).timeout
-		walk_down(npc_prolog, npc_animated, 'idleD')
+		walk_down(npc_prolog, npc_animated)
 		return
 	
-	walk_down(npc_prolog, npc_animated, 'idleD')
+	walk_down(npc_prolog, npc_animated)
 	#
 	
 func move_player():
@@ -111,22 +111,55 @@ func stop(character_name, animation_name, anim_position:String):
 		character_name.move_and_slide()
 
 func run_dialog(dialog_string:String):
-	Global.is_dialog = true
 	Global.is_joystick= false
 	Dialogic.start(dialog_string)
+	
+func save(cutscene_name:String=Dialogic.VAR.TimelineName):
+	var data = SaveManager.load_data('cutscene')
+	var new_data = {Dialogic.VAR.TimelineName : Dialogic.VAR.QuizResult}
+	
+	if data == null:
+		SaveManager.save({
+					"cutscene": new_data
+				})
+	elif data != null and not data.has(cutscene_name):
+		SaveManager.save({
+					"cutscene": data.merged(new_data)
+				})
+	else: 
+		if data.has(cutscene_name):
+			if new_data == {"":""}:
+				return
+			
+			if data[cutscene_name][Dialogic.VAR.TimelineName] != 'completed':
+				data[cutscene_name][Dialogic.VAR.TimelineName] = Dialogic.VAR.QuizResult
+
+			data = data.merged(new_data)
+
+		SaveManager.save({
+				"cutscene": data
+			})
+
 
 func _on_dialogic_signal(argument:String):
 	if argument == "entering_dialog":
+		Global.is_dialog = true
 		animation_player.play('fadein')
 	elif argument =="dialog_finished":
 		dialog_finished = true
 		await get_tree().create_timer(4).timeout
 		animation_player.play('fadeout')
 		await animation_player.animation_finished
-		Global.is_dialog = false
+		
 		if camera and player:
-			player_spawn_component.spawn_player()
+			player.global_position = get_player_position()
 			camera.enabled = true
 			player.show()
+			
+		if quiz_component:
+			quiz_component.save_quiz_progress()
+		
+		save()
+		Global.is_dialog = false
 		Global.is_joystick= true
 		queue_free()

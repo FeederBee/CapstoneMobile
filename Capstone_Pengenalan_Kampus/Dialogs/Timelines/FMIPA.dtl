@@ -1,40 +1,46 @@
+[signal arg="entering_dialog"]
+set {TimelineName} = "FMIPA"
 join Player center
 Player: Kak, maaf ganggu. Aku Yoto mahasiswa baru dari Fakultas Ilmu Komputer, lagi mengerjakan tugas PKKMB dari Kak Wildan untuk menemui panitia yang ada di depan gedung fakultas.\
-
-Player: Apakah kakak adalah panitia yang dimaksud?
+Player\: Apakah kakak adalah panitia yang dimaksud?
 join NPC_FMIPA center
 NPC_FMIPA: Wah, hai Yoto, kamu benar, aku adalah panitia PKKMB yang dimaksud. Nama ku Syarif!
-NPC_FMIPA:  Langsung saja, selamat datang di UNEJ! FMIPA itu fakultas yang fokus ke ilmu dasar seperti matematika, fisika, biologi, dan kimia. Jadi, semua yang jadi pondasi buat berbagai ilmu terapan biasanya dimulai dari sini.
+NPC_FMIPA: Langsung saja, selamat datang di UNEJ! FMIPA itu fakultas yang fokus ke ilmu dasar seperti matematika, fisika, biologi, dan kimia. Jadi, semua yang jadi pondasi buat berbagai ilmu terapan biasanya dimulai dari sini.
 Player: Jadi kayak lanjutan dari materi SMA gitu, ya?
 NPC_FMIPA: Sebagian iya. Makanya banyak mahasiswa baru yang nggak terlalu kaget sama materinya. Tapi kalau sudah masuk ke tingkat lanjut, kamu bakal ngerasain bedanya.
-NPC_FMIPA:  Visinya adalah “Unggul dalam pengembangan matematika, sains, dan terapannya yang berwawasan lingkungan.” Jadi, kita nggak cuma belajar teorinya aja, tapi juga aplikasinya, terutama yang punya dampak positif ke lingkungan.
-NPC_FMIPA:  Misinya ada beberapa. Salah satunya adalah menghasilkan lulusan yang nggak cuma jago di bidang akademik, tapi juga punya daya saing di Asia Tenggara dan Asia. Kita juga fokus ke penelitian dan pengabdian masyarakat yang inovatif dan ramah lingkungan.
+NPC_FMIPA: Visinya adalah “Unggul dalam pengembangan matematika, sains, dan terapannya yang berwawasan lingkungan.” Jadi, kita nggak cuma belajar teorinya aja, tapi juga aplikasinya, terutama yang punya dampak positif ke lingkungan.
+NPC_FMIPA: Misinya ada beberapa. Salah satunya adalah menghasilkan lulusan yang nggak cuma jago di bidang akademik, tapi juga punya daya saing di Asia Tenggara dan Asia. Kita juga fokus ke penelitian dan pengabdian masyarakat yang inovatif dan ramah lingkungan.
 NPC_FMIPA: Salah satu tujuan utamanya itu menghasilkan karya-karya unggul di bidang sains dan teknologi yang bisa bener-bener membantu menyelesaikan masalah di masyarakat.
 Player: Jadi nggak cuma di kelas doang ya, Kak?
-NPC_FMIPA:  Iya, banyak juga kegiatan di luar kelas. Kalau kamu suka sains atau teknologi, pasti bakal tertarik banget sama proyek-proyek penelitian di sini.
+NPC_FMIPA: Iya, banyak juga kegiatan di luar kelas. Kalau kamu suka sains atau teknologi, pasti bakal tertarik banget sama proyek-proyek penelitian di sini.
 Player: Seru banget! Kalau aku anak Ilmu Komputer, kira-kira bisa kolaborasi sama mahasiswa FMIPA nggak?
 NPC_FMIPA: Bisa banget! Banyak penelitian di FMIPA yang sekarang butuh dukungan teknologi, seperti analisis data atau simulasi. Jadi, bidang kita bisa saling melengkapi.
 Player: Wah, terima kasih banyak, Kak. Aku jadi pengen tahu lebih banyak soal kegiatan di FMIPA.
 NPC_FMIPA: Sama-sama. Kalau penasaran, coba mampir ke acara-acara kami. Biasanya ada seminar atau workshop yang terbuka buat mahasiswa fakultas lain juga.
 Player: Oke, Kak. Noted banget! Makasih ya infonya.
-NPC_FMIPA:  Anytime! Selamat menikmati masa-masa seru di kampus, ya. Kalau ada apa-apa, jangan ragu buat tanya lagi. 
+NPC_FMIPA: Anytime! Selamat menikmati masa-masa seru di kampus, ya. Kalau ada apa-apa, jangan ragu buat tanya lagi.
 NPC_FMIPA: Aku akan kasih kamu 2 pertanyaan untuk menambah pengetahuan kamu tentang apa saja yang dipelajari di FMIPA, tapi ini secara garis besar saja, harusnya kamu sudah bisa mengerti dengan pertanyaan ini.
-NPC_Entrance:  Apa nama teori yang menjelaskan asal-usul alam semesta? 
+NPC_FMIPA: Apa nama teori yang menjelaskan asal-usul alam semesta?
 - Teori Relativitas
 - Teori Evolusi
 - Teori Big Bang
-	set {JawabanQuiz} = 1
+	set {JawabanQuiz} += 1
 - Teori Mekanika Kuantum
-NPC_FMIPA: <Empty Text Event>
+NPC_FMIPA: Dalam matematika, apa nama himpunan bilangan yang terdiri dari angka desimal dan pecahan?
 - Bilangan Bulat
 - Bilangan Rasional
-	set {JawabanQuiz} = 2
+	set {JawabanQuiz} += 1
 - Bilangan Irasional
 - Bilangan Prima
 if {JawabanQuiz} == 2:
+	set {QuizResult} = "completed"
 	NPC_FMIPA: Cukup baik, kamu sangat menguasai bidang ilmu pengetahuan alam.
 elif {JawabanQuiz} == 1:
+	set {QuizResult} = "incomplete"
 	NPC_FMIPA: Seharusnya kamu bisa menjawab pertanyaan ini, karena pertanyaan tersebut sudah pernah dipelajari saat SMA. Kamu bisa mengingat-ingat lagi.
-else:
+elif {JawabanQuiz} == 0:
+	set {QuizResult} = "incomplete"
 	NPC_FMIPA: Jika pertanyaan seperti ini saja kamu ga bisa menyelesaikan nya, sepertinya kamu kurang begitu memperhatikan guru SMAmu.
 set {JawabanQuiz} = 0
+[signal arg="quiz_result_save"]
+[signal arg="dialog_finished"]

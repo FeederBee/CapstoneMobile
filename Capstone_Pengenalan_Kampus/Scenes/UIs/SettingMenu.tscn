@@ -126,7 +126,7 @@ offset_top = 128.0
 offset_right = 192.0
 offset_bottom = 152.0
 bus_name = "sfx"
-min_volume = -50.0
+max_volume = 5.0
 
 [node name="Button" type="Control" parent="."]
 layout_mode = 1

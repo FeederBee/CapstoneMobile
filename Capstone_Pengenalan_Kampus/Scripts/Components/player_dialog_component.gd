@@ -7,21 +7,21 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Dialogic.signal_event.connect(_on_dialogic_signal)
+	#Dialogic.signal_event.connect(_on_dialogic_signal)
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if Global.is_dialog == true:
-		bg_stamina.hide()
-		player_profile.visible = false
+		$"../../CanvasLayer".visible = false
 		return
 		
 	bg_stamina.show()
-	player_profile.visible = true
+	$"../../CanvasLayer".visible = true
 
-func _on_dialogic_signal(argument:String):
-	if argument == "entering_dialog":
-		action_button.hide()
-	elif argument =="dialog_finished":
-		action_button.show()
+#func _on_dialogic_signal(argument:String):
+	#if argument == "entering_dialog":
+		#action_button.hide()
+	#elif argument =="dialog_finished":
+		#action_button.show()

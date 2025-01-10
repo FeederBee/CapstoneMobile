@@ -1,0 +1,36 @@
+--- DIALOGIC PERSON SET ---
+--- NPC : 
+	- path potrait : 
+	- offset :
+		- x = 450 (kanan) 
+		- y = 0
+	- scale = 65%
+	- Style = Right
+		
+
+
+
+--- DIALOGIC TIMELINE SET ---
+#Beritahu bahwa dialog dimulai dan dengan itu singkirkan UI yang tidak diperlukan
+- emit Signal  "entering_dialog" 
+#Set nama timeline untuk di simpan dan digunakan dalam pengecekan save dan load sekaligus progress quiz
+- set variable TimelineName berdasarkan namatimeline (kalimat pertama setiap katanya kapital dan tanpa spasi)
+
+#Masuk dialog
+- person in (Player) : centered
+- text sapaan
+- person in( NPC ) : centered
+- text percakapan
+- Quiz
+	- set variable JawabanQuiz + 1 jika benar
+- Kondisi : 
+	- jika JawabanQuiz == 2 maka set variable QuizResult = "completed"
+	- jika JawabanQuiz > 2 maka set variable QuizResult = "incomplete"
+
+#Dialog selesai
+#Reset variable JawabanQuiz ke 0 
+- set variable JawabanQuiz = 0 
+#save terlebih dahulu progres Quiz sebelum keluar obrolan/dialog
+- emit Signal "quiz_result_save"
+#Beritahu kalau dialog telah selesai
+- emit Signal "dialog_finished"

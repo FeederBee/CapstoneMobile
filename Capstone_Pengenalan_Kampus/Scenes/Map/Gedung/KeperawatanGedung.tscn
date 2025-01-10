@@ -1,0 +1,98 @@
+[gd_scene load_steps=9 format=3 uid="uid://b8bb1ubpn4g1u"]
+
+[ext_resource type="Texture2D" uid="uid://bguov3gnyjyi6" path="res://Assets/Map/Gedung/Keperawatan (2).png" id="1_2yjh7"]
+[ext_resource type="PackedScene" uid="uid://c5htc6bu2mpi5" path="res://Scenes/Components/FakultasAnimationComponent.tscn" id="2_luru7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1a0qn"]
+size = Vector2(402, 483)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ieuq"]
+size = Vector2(145, 22)
+
+[sub_resource type="Animation" id="Animation_ucbcs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Keperawatan:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5ln4g"]
+resource_name = "gedung_fadein"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Keperawatan:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.392157)]
+}
+
+[sub_resource type="Animation" id="Animation_brc1u"]
+resource_name = "gedung_fadeout"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Keperawatan:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.392157), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o3ri7"]
+_data = {
+"RESET": SubResource("Animation_ucbcs"),
+"gedung_fadein": SubResource("Animation_brc1u"),
+"gedung_fadeout": SubResource("Animation_5ln4g")
+}
+
+[node name="KeperawatanGedung" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Keperawatan" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(192, 144)
+texture = ExtResource("1_2yjh7")
+offset = Vector2(0, -180)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(191, -78.5)
+shape = SubResource("RectangleShape2D_1a0qn")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(231.5, 173)
+shape = SubResource("RectangleShape2D_7ieuq")
+
+[node name="Visibility" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Visibility"]
+polygon = PackedVector2Array(-10, -321, -10, -343, 128, -402, 192, -465, 257, -401, 390, -344, 390, -320)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o3ri7")
+}
+
+[node name="FakultasAnimationComponent" parent="." instance=ExtResource("2_luru7")]
+
+[connection signal="body_entered" from="Visibility" to="FakultasAnimationComponent" method="_on_visibility_body_entered"]
+[connection signal="body_exited" from="Visibility" to="FakultasAnimationComponent" method="_on_visibility_body_exited"]

@@ -1,5 +1,4 @@
 [signal arg="entering_dialog"]
-set {JawabanQuiz} = 0
 set {TimelineName} = "Faperta"
 join Player center
 Player: Hai, Kakkk!
@@ -41,9 +40,11 @@ if {JawabanQuiz} == 2:
 # Benar satu
 elif {JawabanQuiz} == 1:
 	set {QuizResult} = "incomplete"
-	set {QuizResult} = "incomplete"
 	NPC_Faperta: sadaefawsdc
-	NPC_Faperta: Apakah terlalu sulit pertanyaan yang aku berikan? Sepertinya tidak, mungkin kamu kurang fokus aja. Coba jawab lagi dengan benar, pastikan kamu fokus kali ini.
 # Salah semua
+elif {JawabanQuiz} == 0:
+	set {QuizResult} = "incomplete"
+	NPC_Faperta: Apakah terlalu sulit pertanyaan yang aku berikan? Sepertinya tidak, mungkin kamu kurang fokus aja. Istirahatlah dulu lalu kita bisa memulai lagi.
+set {JawabanQuiz} = 0
 [signal arg="quiz_result_save"]
 [signal arg="dialog_finished"]

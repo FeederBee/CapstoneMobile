@@ -19,7 +19,7 @@
 "portraits": {
 "NPCFasilkom": {
 "export_overrides": {
-"image": "\"res://Assets/Sprites/NPC/Potret/Fasilkom.png\""
+"image": "\"res://Dialogs/Potret/Fasilkom.png\""
 },
 "ignore_char_scale": false,
 "mirror": false,

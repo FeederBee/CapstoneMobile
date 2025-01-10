@@ -1,8 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://del5ixarttrkg"]
+[gd_scene load_steps=10 format=3 uid="uid://del5ixarttrkg"]
 
 [ext_resource type="Script" path="res://Scripts/Cutscenes/prolog_cutscene.gd" id="1_itvxy"]
 [ext_resource type="SpriteFrames" uid="uid://cnkuktouiyvgk" path="res://Scenes/Player/Player_draft0.tres" id="2_huts2"]
-[ext_resource type="Texture2D" uid="uid://clawfc0qe4kvy" path="res://Assets/Sprites/NPC/animation/npc_fasilkom.png" id="4_ej21e"]
+[ext_resource type="SpriteFrames" uid="uid://cfayr5tt304id" path="res://Assets/Sprites/NPC/NPC_Prolog.tres" id="3_4pxq7"]
 
 [sub_resource type="Animation" id="Animation_v5mvc"]
 length = 0.001
@@ -140,42 +140,6 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b35ij"]
-atlas = ExtResource("4_ej21e")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kiik8"]
-atlas = ExtResource("4_ej21e")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rafn3"]
-atlas = ExtResource("4_ej21e")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uu8mu"]
-atlas = ExtResource("4_ej21e")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_hkox2"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b35ij")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kiik8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rafn3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uu8mu")
-}],
-"loop": true,
-"name": &"idleD",
-"speed": 5.0
-}]
-
 [node name="PrologCutscene" type="Node2D"]
 script = ExtResource("1_itvxy")
 
@@ -183,18 +147,22 @@ script = ExtResource("1_itvxy")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 self_modulate = Color(0, 0, 0, 1)
-anchors_preset = 2
-anchor_top = 1.0
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -80.0
-offset_right = 2496.0
-grow_vertical = 0
+offset_top = 640.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
 self_modulate = Color(0, 0, 0, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_top = -88.0
-offset_right = 2496.0
-offset_bottom = -8.0
+offset_bottom = -728.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ColorRect3" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
@@ -244,8 +212,8 @@ offset = Vector2(0, -13)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3.5, 3.5)
-limit_left = 65
-limit_top = 35
+limit_left = 0
+limit_top = 0
 limit_right = 3140
 limit_bottom = 2500
 editor_draw_limits = true
@@ -254,6 +222,6 @@ editor_draw_limits = true
 position = Vector2(1832, 2232)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NPC_Prolog"]
-scale = Vector2(0.8, 0.8)
-sprite_frames = SubResource("SpriteFrames_hkox2")
-animation = &"idleD"
+scale = Vector2(0.4, 0.4)
+sprite_frames = ExtResource("3_4pxq7")
+animation = &"walkD"

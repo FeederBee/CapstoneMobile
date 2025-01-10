@@ -65,8 +65,7 @@ bus = &"music"
 bus = &"sfx"
 
 [node name="SFXPlayer_Movement" type="AudioStreamPlayer" parent="."]
-volume_db = -30.0
-bus = &"fixed"
+bus = &"sfx"
 
 [node name="SFXPlayer_Interaction" type="AudioStreamPlayer" parent="."]
 
@@ -75,4 +74,5 @@ libraries = {
 "": SubResource("AnimationLibrary_w5ep7")
 }
 
+[connection signal="finished" from="SFXPlayer_Button" to="." method="_on_sfx_player_button_finished"]
 [connection signal="finished" from="SFXPlayer_Movement" to="." method="_on_sfx_player_movement_finished"]

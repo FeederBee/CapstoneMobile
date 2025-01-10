@@ -1,0 +1,54 @@
+# Preparing Dialog
+[signal arg="entering_dialog"]
+set {TimelineName} = "FTP"
+# Dialog Start
+join Player center
+Player: Eh, hallo kak.
+join NPC_FTP center
+NPC_FTP: Hah?
+NPC_FTP: [i]Serem banget[/i] .... kenalin aku Yoto mahasiswa baru di Fakultas Ilmu Komputer. Aku kesini karena sekarang aku lagi menjadi peserta PKKMB dan sekarang aku lagi….”
+NPC_FTP: Udah udah. Aku paham.
+NPC_FTP: Langsung aja ya.
+Player: Iya kak.
+NPC_FTP: Biar aku jelasin, Fakultas Teknologi Pertanian itu fakultas yang fokus banget sama teknologi yang diterapkan di bidang pertanian.
+NPC_FTP: Di sini, mereka belajar gimana caranya memanfaatkan ilmu pengetahuan alam dan matematika untuk mengelola sumber daya pertanian secara ekonomis, tapi tetap jaga kelestarian alam.
+Player: Oh, jadi mereka disini belajar lebih ke teknologi dan lingkungan?
+NPC_FTP: Betul! Disini mempunyai visi jadi fakultas yang unggul dalam sains, teknologi, dan bisnis pertanian yang ramah lingkungan. Jadi, mereka nggak cuma fokus di bidang pertanian, tapi juga di bidang technopreneurship, jadi bisa bikin inovasi yang nggak cuma berguna buat lingkungan, tapi juga buat bisnis pertanian.
+NPC_FTP: Misi disini tuh pengen mengembangkan pendidikan, penelitian, dan pengabdian masyarakat yang mendukung pembangunan pertanian industri. Mereka juga melestarikan inovasi teknologi yang ramah lingkungan, dan mereka sering bekerja sama dengan banyak pihak, baik dalam negeri maupun luar negeri.
+Player: Wah, jadi tujuan mereka menghasilkan lulusan yang nggak cuma pintar di bidang pertanian, tapi juga bisa bersaing di dunia bisnis ya?
+NPC_FTP: He’em! Mereka pengen menghasilkan lulusan yang punya daya saing tinggi, kreatif, dan inovatif di bidang teknologi pertanian. Selain itu, mereka juga ingin jadi pusat unggulan pembelajaran dan riset di bidang pertanian dan perkebunan.
+Player: Keren! Jadi kalau mau kerja di bidang pertanian, Fakultas Teknologi Pertanian bisa jadi pilihan yang pas banget, ya?
+NPC_FTP: Yaiyalah, pake nanya. Fakultas ini cocok buat yang pengen memadukan teknologi dan pertanian dengan prinsip keberlanjutan. 
+NPC_FTP: Jadi, kalau kamu tertarik sama hal-hal yang berkaitan dengan teknologi dan lingkungan, fakultas ini bisa jadi tempat yang tepat buat kamu.
+NPC_FTP: Sekarang saat nya quest.
+Player: Baik kak...
+NPC_FTP: Aku beri kamu pertanyaan secara garis besar hal - hal yang dipelajari disini. Jawab dengan benar!
+Player: [i] Serem banget kakak satu ini [i] [pause=0.5]... Baik kak!
+# Entering Quiz
+NPC_FTP: Teknologi apa yang sering digunakan untuk mengurangi limbah pertanian? 
+- Biokonversi
+	set {JawabanQuiz} += 1
+- Fermentasi Alkohol
+- Hidroponik
+- Irigasi
+NPC_FTP: Apa nama teknik pertanian yang memanfaatkan larutan nutrisi tanpa tanah?
+- Hidroponik
+	set {JawabanQuiz} += 1
+- Aeroponik
+- Agroteknologi
+- Kultur Jaringan
+# Quiz End
+# Response
+if {JawabanQuiz} == 2:
+	set {QuizResult} = "completed"
+	NPC_FTP: Kenapa dulu ga masuk FTP aja kamu? Boleh juga pengetahuan kamu.
+elif {JawabanQuiz} == 1:
+	set {QuizResult} = "incomplete"
+	NPC_FTP: Hmm menarik. Ada satu jawaban kamu yang masih salah. Sekarang aku ulang pertanyaan. Jawab dengan benar. Jangan sampai ada yang salah lagi.
+elif {JawabanQuiz} == 0:
+	set {QuizResult} = "incomplete"
+	NPC_FTP: Salah semua! Sudah kuduga kamu ga bisa jawab dengan benar. Sekarang, coba lagi! Pastikan jawaban yang kamu pilih benar!
+# Dialog End
+set {JawabanQuiz} = 0
+[signal arg="quiz_result_save"]
+[signal arg="dialog_finished"]

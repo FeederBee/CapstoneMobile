@@ -1,0 +1,38 @@
+# Preparing Dialog
+[signal arg="entering_dialog"]
+set {TimelineName} = "Farmasi"
+# Dialog Start
+join Player center
+Player: Eh, Kak, maaf, boleh tanya sebentar?
+join NPC_Farmasi center
+NPC_Farmasi: Oh, tentu. Ada yang bisa saya bantu?
+NPC_Farmasi: Ini dialognya masih belum selesai. Penulisnya lelet bet.
+Player: Errm...
+# Entering Quiz
+NPC_Farmasi: Apa yang dimaksud dengan istilah "farmakokinetik"?
+- Cara obat mempengaruhi tubuh
+- Studi tentang pergerakan obat dalam tubuh
+	set {JawabanQuiz} += 1
+- Proses pembuatan obat
+- Efek samping dari obat
+NPC_Farmasi: Obat apa yang biasa digunakan untuk mengobati infeksi bakteri?
+- Antivirus
+- Antihistamin
+- Antibiotik
+	set {JawabanQuiz} += 1
+- Analgesik
+# Quiz End
+# Response
+if {JawabanQuiz} == 2:
+	set {QuizResult} = "completed"
+	NPC_Farmasi: Lorem Benar Semua
+elif {JawabanQuiz} == 1:
+	set {QuizResult} = "incomplete"
+	NPC_Farmasi: Lorem salah 1
+elif {JawabanQuiz} == 0:
+	set {QuizResult} = "incomplete"
+	NPC_Farmasi: Lorem Salah semua
+# Dialog End
+set {JawabanQuiz} = 0
+[signal arg="quiz_result_save"]
+[signal arg="dialog_finished"]

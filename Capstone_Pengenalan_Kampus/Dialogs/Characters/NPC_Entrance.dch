@@ -12,14 +12,14 @@
 },
 "default_portrait": "default",
 "description": "",
-"display_name": "NPC_Entrance",
+"display_name": "Wildan",
 "mirror": false,
 "nicknames": [""],
 "offset": Vector2(0, 0),
 "portraits": {
 "default": {
 "export_overrides": {
-"image": "\"res://Assets/Sprites/NPC/Potret/Fasilkom (1).png\""
+"image": "\"res://Dialogs/Potret/Fasilkom.png\""
 },
 "mirror": false,
 "offset": Vector2(450, 0),

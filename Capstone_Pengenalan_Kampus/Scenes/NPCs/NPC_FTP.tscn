@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://sipe3c6yj5y5"]
+[gd_scene load_steps=11 format=3 uid="uid://sipe3c6yj5y5"]
 
 [ext_resource type="Script" path="res://Scripts/NPCs/npc.gd" id="1_ux1cm"]
 [ext_resource type="Texture2D" uid="uid://2avk40ay1kf7" path="res://Assets/Sprites/NPC/animation/FTP.png" id="2_pn2fw"]
@@ -8,11 +8,39 @@
 atlas = ExtResource("2_pn2fw")
 region = Rect2(0, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbygv"]
+atlas = ExtResource("2_pn2fw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6vv1"]
+atlas = ExtResource("2_pn2fw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xt43e"]
+atlas = ExtResource("2_pn2fw")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5b4wg"]
+atlas = ExtResource("2_pn2fw")
+region = Rect2(96, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_sjgc4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_b7rht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbygv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6vv1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xt43e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5b4wg")
 }],
 "loop": true,
 "name": &"idle",
@@ -25,12 +53,13 @@ radius = 8.0
 [node name="NPC_FTP" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_ux1cm")
-dialog_timeline_name = "FTP"
+dialog_timeline_quest_name = "FTP"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_sjgc4")
 animation = &"idle"
+frame_progress = 0.549065
 offset = Vector2(0.535, -4.545)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

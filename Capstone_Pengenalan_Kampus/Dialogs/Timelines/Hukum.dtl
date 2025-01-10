@@ -1,0 +1,38 @@
+# Preparing Dialog
+[signal arg="entering_dialog"]
+set {TimelineName} = "Hukum"
+# Dialog Start
+join Player center
+Player: Wah, ini Fakultas Hukum ya? Di sini belajar apa aja sih?
+join NPC_Hukum center
+NPC_Hukum: Iya, bener banget! Di Fakultas Hukum, kita belajar segala macam ilmu hukum yang ada di Indonesia. Serunya, di sini pembelajarannya nggak cuma teori, tapi juga langsung praktek bareng para alumni yang udah jadi hakim, jaksa, advokat, notaris, bahkan pemimpin NGO.
+NPC_Hukum: Ini dialognya masih belum selesai. Penulisnya lelet bet.
+Player: Errm...
+# Entering Quiz
+NPC_Hukum: Apa nama prinsip hukum yang menyatakan bahwa seseorang dianggap tidak bersalah sampai terbukti sebaliknya?
+- Habeas Corpus
+- Presumption of Innocence
+	set {JawabanQuiz} += 1
+- Ultra Vires
+- Due Process
+NPC_Hukum: Apa istilah untuk kesepakatan yang mengikat secara hukum antara dua pihak?
+- Kontrak
+	set {JawabanQuiz} += 1
+- Memorandum
+- Arbitrase
+- Perjanjian Tidak Resmi
+# Quiz End
+# Response
+if {JawabanQuiz} == 2:
+	set {QuizResult} = "completed"
+	NPC_Hukum: Lorem benar semua
+elif {JawabanQuiz} == 1:
+	set {QuizResult} = "incomplete"
+	NPC_Hukum: Lorem salah 1
+elif {JawabanQuiz} == 0:
+	set {QuizResult} = "incomplete"
+	NPC_Hukum: Lorem salah semua
+# Dialog End
+set {JawabanQuiz} = 0
+[signal arg="quiz_result_save"]
+[signal arg="dialog_finished"]

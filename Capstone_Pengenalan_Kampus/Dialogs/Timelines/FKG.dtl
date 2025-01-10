@@ -1,0 +1,37 @@
+# Preparing Dialog
+[signal arg="entering_dialog"]
+set {TimelineName} = "FKG"
+# Dialog Start
+join Player center
+Player: Halo, aku baru pertama kali nih jalan-jalan ke kampus. Bisa kasih tahu tentang Fakultas Kedokteran Gigi di sini?
+join NPC_FKG center
+NPC_FKG: Ini dialognya masih belum selesai. Penulisnya lelet bet.
+Player: Errm...
+# Entering Quiz
+NPC_FKG: 	Apa nama lapisan terluar dari gigi yang melindungi bagian dalam gigi?
+- Dentin
+- Enamel
+	set {JawabanQuiz} += 1
+- Pulpa
+- Sementum
+NPC_FKG: 	Apa istilah medis untuk penyakit gusi yang menyebabkan peradangan dan pembengkakan?
+- Gingivitis
+	set {JawabanQuiz} += 1
+- Periodontitis
+- Karies
+- Abses Gigi
+# Quiz End
+# Response
+if {JawabanQuiz} == 2:
+	set {QuizResult} = "completed"
+	NPC_FKG: Lorem 2
+elif {JawabanQuiz} == 1:
+	set {QuizResult} = "incomplete"
+	NPC_FKG: Lorem 1
+elif {JawabanQuiz} == 0:
+	set {QuizResult} = "incomplete"
+	NPC_FKG: Lorem 0
+# Dialog End
+set {JawabanQuiz} = 0
+[signal arg="quiz_result_save"]
+[signal arg="dialog_finished"]

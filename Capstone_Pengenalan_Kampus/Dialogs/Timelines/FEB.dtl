@@ -1,0 +1,49 @@
+# Preparing Dialog
+[signal arg="entering_dialog"]
+set {TimelineName} = "FEB"
+# Dialog Start
+join Player center
+Player: Halo mas, kenalin aku Yoto mahasiswa baru di Fakultas Ilmu Komputer
+join NPC_FEB center
+NPC_FEB: Hai Yoto, aku Farel. Kamu peserta PKKMB ya?
+Player: iya kak, aku peserta PKKMB. Apakah Kak Farel panitia yang ditugaskan disini?
+NPC_FEB: Iya betul banget, aku panitia yang ditugaskan disini. Langsung saja, dengarkan ini baik baik ya.
+NPC_FEB: FEB itu salah satu fakultas yang keren loh! Mahasiswa disini fokus banget ke ekonomi dan bisnis gitu, jadi kalau kamu mau ngerti gimana sih perputaran ekonomi, pengelolaan bisnis, bahkan sampai yang soal akuntansi, itu ada di sini.
+NPC_FEB: Pilihan prodi disini, kalau dari D3 ada Manajemen Perusahaan, Akuntansi, sama Administrasi Keuangan. Terus ada juga S1-nya kayak Ekonomi Pembangunan, Ekonomi Syariah, bahkan yang Magister dan Doktoral juga ada, kalau pengen ngelanjutin studi lebih lanjut.
+NPC_FEB: Visinya sih pengen jadi fakultas yang unggul gitu, dalam pengembangan ekonomi dan bisnis, tapi tetap memperhatikan lingkungan dan agroindustri juga.
+NPC_FEB: Jadi, nggak cuma fokus ke bisnis doang, tapi juga bagaimana bisnis itu bisa berkelanjutan.
+NPC_FEB: Misi nya adalah untuk ngadain pembelajaran yang nggak cuma soal teori doang, tapi juga praktik yang nyambung sama agroindustri dan teknologi. Jadi mereka juga peduli sama keberlanjutan dan dampaknya ke masyarakat.
+Player: Jadi, bukan cuma soal ekonomi aja ya, tapi mereka juga bener-bener mikirin dampaknya ke lingkungan dan masyarakat?
+NPC_FEB: Betul banget! Mereka pengen hasil riset sama pengabdian mereka tuh bener-bener bermanfaat, nggak cuma buat negara, tapi juga buat dunia internasional. Makanya, kualitas dosen dan kurikulumnya mereka bener-bener diperhatiin.
+Player: Wah, berarti kalo mau belajar ekonomi dengan sudut pandang yang lebih luas, FEB bisa jadi pilihan juga ya?
+NPC_FEB: Iya, kalau kamu punya temen yang tertarik sama ekonomi dan bisnis yang nggak cuma fokus profit aja, tapi juga punya dampak positif buat masyarakat dan lingkungan, FEB UNEJ bisa jadi tempat yang pas banget.
+Player: Terimakasih kak penjelasannya
+NPC_FEB: Sama sama. Baiklah, aku akan memberikan quest untuk kamu. Tujuan quest ini adalah agar kamu tau secara garis besar, apa aja yang dipelajari di FEB
+# Entering Quiz
+NPC_FEB: Apa yang dimaksud dengan "PDB" dalam ekonomi?
+- Pendapatan Domestik Bruto
+	set {JawabanQuiz} += 1
+- Pengeluaran Domestik Bersih
+- Produksi Dagang Bersama
+- Proyeksi Dana Bank
+NPC_FEB: Dalam teori pemasaran, apa arti dari konsep "4P"?
+- Product, Price, Place, Promotion
+	set {JawabanQuiz} += 1
+- Profit, Process, People, Portfolio
+- Plan, Purchase, Payment, Policy
+- Price, Production, Packaging, Payment
+# Quiz End
+# Response
+if {JawabanQuiz} == 2:
+	set {QuizResult} = "completed"
+	NPC_FEB: Wah wah wah, ga nyangka mahasiswa baru dari fakultas lain bisa menjawab dengan benar pertanyaan yang ada pada FEB
+elif {JawabanQuiz} == 1:
+	set {QuizResult} = "incomplete"
+	NPC_FEB: Salah satu jawaban kamu ada yang salah. Jawab ulang ya, pastikan jawaban kamu kali ini tidak ada yang salah.
+elif {JawabanQuiz} == 0:
+	set {QuizResult} = "incomplete"
+	NPC_FEB: Apalah kamu, pertanyaan seperti ini saja gabisa jawab hahaha. Aku ulangi pertanyaan nya, tapi jawab dengan benar ya.
+# Dialog End
+set {JawabanQuiz} = 0
+[signal arg="quiz_result_save"]
+[signal arg="dialog_finished"]
