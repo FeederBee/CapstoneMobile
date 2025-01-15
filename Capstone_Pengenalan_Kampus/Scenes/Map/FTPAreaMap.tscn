@@ -291,6 +291,7 @@ scale = Vector2(0.928571, 0.928571)
 texture_normal = ExtResource("12_4sbwd")
 
 [node name="Transition" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Transition"]
 libraries = {

@@ -6,8 +6,28 @@ join Player center
 Player: Eh, Kak, maaf, boleh tanya sebentar?
 join NPC_Farmasi center
 NPC_Farmasi: Oh, tentu. Ada yang bisa saya bantu?
-NPC_Farmasi: Ini dialognya masih belum selesai. Penulisnya lelet bet.
-Player: Errm...
+Player: Aku mahasiswa baru dari Ilmu Komputer. Sekarang lagi mengerjakan tugas PKKMB. Tugas nya tuh suruh nemuin panitia di depan tiap - tiap fakultas gitu.
+NPC_Farmasi: Oh gitu, kebetulan aku panitia PKKMB yang ditugaskan disini. Nama kamu siapa?
+Player: Nama ku Yoto kak.
+NPC_Farmasi: Hai Yoto, selamat datang di Fakultas Farmasi.
+NPC_Farmasi:  Di Farmasi, kita belajar gimana cara mengenal struktur senyawa obat, cara sintesis nya, sampai jadi produk obat yang aman dan layak dikonsumsi.
+NPC_Farmasi: Tapi nggak cuma itu, kita juga diajarin soal pengembangan teknologi kefarmasian dan dampaknya buat lingkungan dan masyarakat.
+NPC_Farmasi: Untuk menumbuhkan rasa percaya diri, FF UNEJ juga mempunya visi, yang isinya adalah “Menjadi fakultas farmasi yang unggul dalam pengembangan dan implementasi sains dan teknologi kefarmasian yang berwawasan lingkungan, bisnis, dan agrofarmasi.
+Player: Agrofarmasi? Maksudnya apa tuh, kak?
+NPC_Farmasi: Agrofarmasi itu pendekatan farmasi yang mengintegrasikan pengelolaan bahan-bahan alami dari pertanian untuk dijadikan obat atau produk kesehatan. Jadi lebih ramah lingkungan dan memanfaatkan potensi lokal.
+Player: Oh, keren juga ya. Kalau misinya apa aja?
+NPC_Farmasi:  Misinya banyak, salah satunya menyelenggarakan pendidikan farmasi yang nggak cuma unggul, tapi juga kreatif dan inovatif. Kita juga fokus ke penelitian yang relevan sama kebutuhan masyarakat dan bisnis.
+NPC_Farmasi: Disini kita juga diajarkan konsep pharmapreneurship, biar lulusan farmasi nggak cuma jadi tenaga medis, tapi juga bisa bikin usaha sendiri di bidang farmasi.
+NPC_Farmasi: Hal tersebut juga berkaitan dengan tujuan FF UNEJ, salah satunya itu menghasilkan lulusan yang kompetitif dan adaptif, baik di tingkat nasional maupun internasional. Selain itu, kita juga ingin berkontribusi meningkatkan taraf kesehatan masyarakat lewat inovasi yang ramah lingkungan.
+Player: Ohhh begitu. Bagus sih. Sebenernya aku ada pertanyaan kak.
+NPC_Farmasi: Iya, mau nanya apa?
+Player: Kakak sendiri gimana? Kenapa dulu milih Farmasi?
+NPC_Farmasi:  Aku suka banget sama kimia dan pengen kerja di bidang yang bermanfaat langsung bagi masyarakat. Di Farmasi, aku bisa belajar soal itu, sambil punya kesempatan buat berinovasi bikin produk baru.
+Player: Wah, jadi makin penasaran nih. Kira-kira aku boleh main ke laboratorium kalian nggak?
+NPC_Farmasi: Tentu boleh! Kapan-kapan aku ajak kamu ke lab biar lihat langsung proses pengolahan senyawa obat. Siapa tahu kamu jadi dapet ide buat bikin teknologi yang bisa bantu kerja kami di farmasi.
+Player: Wah, seru banget! Makasih banyak ya, Kak. Aku jadi makin kagum sama Fakultas Farmasi.
+NPC_Farmasi: Sama-sama. Selamat menikmati masa-masa awal jadi mahasiswa, dan jangan ragu buat eksplor kampus kita lebih jauh!
+NPC_Farmasi: Aku beri kamu quest ya. Agar kamu mendapatkan tiket dan bisa lanjut ke fakultas berikutnya.
 # Entering Quiz
 NPC_Farmasi: Apa yang dimaksud dengan istilah "farmakokinetik"?
 - Cara obat mempengaruhi tubuh
@@ -25,13 +45,13 @@ NPC_Farmasi: Obat apa yang biasa digunakan untuk mengobati infeksi bakteri?
 # Response
 if {JawabanQuiz} == 2:
 	set {QuizResult} = "completed"
-	NPC_Farmasi: Lorem Benar Semua
+	NPC_Farmasi: Wihh, selamat kamu bisa menjawab benar semua soal. Sekarang aku beri kamu tiket dan kamu bisa lanjut ke fakultas berikutnya.
 elif {JawabanQuiz} == 1:
 	set {QuizResult} = "incomplete"
-	NPC_Farmasi: Lorem salah 1
+	NPC_Farmasi: Hebat, kamu dapat menjawab salah satu jawaban dengan benar. Tapi, sayang banget kamu menjawab salah satunya dengan salah. Kamu coba lagi ya dan pastikan jawaban kamu benar.
 elif {JawabanQuiz} == 0:
 	set {QuizResult} = "incomplete"
-	NPC_Farmasi: Lorem Salah semua
+	NPC_Farmasi: Ternyata cukup susah pertanyaan yang aku berikan. Tapi gapapa, kamu bisa coba lagi menjawab, sampai kamu benar.
 # Dialog End
 set {JawabanQuiz} = 0
 [signal arg="quiz_result_save"]

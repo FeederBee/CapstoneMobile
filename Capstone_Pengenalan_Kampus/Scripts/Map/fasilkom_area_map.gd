@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var transition = $Transition/AnimationPlayer
+#@onready var transition = $Transition/AnimationPlayer
 @onready var player: CharacterBody2D = $Y_sort/Karakter/Player
 @onready var player_spawn_component: Node = $Components/PlayerSpawnComponent
 
@@ -12,14 +12,14 @@ var entrance_l_btn
 var entrance_r_btn
 
 #Path
-var transition_path = "FasilkomAreaMap/Transition/AnimationPlayer"
+#var transition_path = "FasilkomAreaMap/Transition/AnimationPlayer"
 
 func _ready() -> void:
 	#Data yang akan di save
 	Global.current_map = Global.path_map.FASILKOM #Map saat ini di fasilkom
 	Global.auto_save_is = true
 	AudioManager.play_bgm('entrance_area')
-	transition.play("screen_fade_in")
+	Global.transition_animation.play("screen_fade_in")
 	
 	player_spawn_component.spawn_player()
 	
@@ -43,8 +43,8 @@ func _process(_delta: float) -> void:
 	pass
 
 func _transition_fade_out():
-	transition.play("screen_fade_out")
-	await transition.animation_finished
+	Global.transition_animation.play("screen_fade_in")
+	await Global.transition_animation.animation_finished
 
 #Area2D Signal
 func _on_ftp_body_entered(body: Node2D) -> void:

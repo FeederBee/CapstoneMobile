@@ -41,6 +41,12 @@ func _on_dialogic_signal(argument:String):
 		Global.is_joystick= true
 		Global.is_dialog = false
 		Global.player_stop = false
+	elif argument == 'dialog_ended':
+		if dialog_timeline_quest_name == Dialogic.VAR.TimelineName:
+			dialog_btn.show()
+		Global.is_joystick= true
+		Global.is_dialog = false
+		Global.player_stop = false
 
 func _on_dialog_area_body_entered(body: Node2D) -> void:
 	if body.has_method('player'):

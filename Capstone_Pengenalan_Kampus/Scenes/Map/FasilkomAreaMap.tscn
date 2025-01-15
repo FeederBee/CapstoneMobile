@@ -406,6 +406,7 @@ scale = Vector2(0.928571, 0.928571)
 texture_normal = ExtResource("16_i2tpv")
 
 [node name="Transition" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="fade" type="ColorRect" parent="Transition"]
 anchors_preset = 15

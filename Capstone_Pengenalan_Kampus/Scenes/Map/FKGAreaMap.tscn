@@ -292,6 +292,7 @@ scale = Vector2(0.928571, 0.928571)
 texture_normal = ExtResource("11_8hjw3")
 
 [node name="Transition" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Transition"]
 root_node = NodePath("../..")

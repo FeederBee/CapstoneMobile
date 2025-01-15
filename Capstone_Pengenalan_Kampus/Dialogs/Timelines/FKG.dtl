@@ -3,18 +3,36 @@
 set {TimelineName} = "FKG"
 # Dialog Start
 join Player center
-Player: Halo, aku baru pertama kali nih jalan-jalan ke kampus. Bisa kasih tahu tentang Fakultas Kedokteran Gigi di sini?
+Player: Halo, Kak!
 join NPC_FKG center
-NPC_FKG: Ini dialognya masih belum selesai. Penulisnya lelet bet.
-Player: Errm...
+NPC_FKG: Iya, halo. Peserta PKKMB, ya?
+Player: Iya, benar, Kak. Aku peserta PKKMB. Kok Kakak bisa tahu?
+NPC_FKG: Langsung aja, nama kamu siapa?
+Player: Nama aku Yoto, Kak. Dari Fakultas Ilmu Komputer.
+NPC_FKG: Baik, selamat datang di Fakultas Kedokteran Gigi UNEJ. Di sini salah satu yang terkemuka di Indonesia, lho! Kamu bisa belajar tentang kedokteran gigi, dan ada juga program studi pendidikan profesi dokter gigi.
+Player: Oh, jadi ada dua program studi di FKG? Apa aja yang bisa dipelajari di sini?
+NPC_FKG: Iya, betul! Program pertama itu kedokteran gigi, yang fokus ke ilmu pengetahuan, teknologi, dan seni kedokteran gigi. Program kedua itu pendidikan profesi dokter gigi, di mana kamu bisa belajar lebih lanjut untuk jadi profesional di bidang ini.
+Player: Menarik banget! Dengar-dengar FKG UNEJ punya konsep dental agromedis, ya? Itu apa, Kak?
+NPC_FKG: Iya, benar! Konsep dental agromedis itu menggabungkan pengembangan ilmu kedokteran gigi dengan kesehatan gigi dan mulut untuk mendukung agroindustri. Jadi, kamu nggak cuma belajar teori kedokteran gigi, tapi juga belajar cara mengintegrasikan ilmu itu dengan sektor pertanian dan industri lokal.
+Player: Wah, aku baru tahu! Ada visi dan misi khusus untuk fakultas ini, ya?
+NPC_FKG: Iya, visi FKG adalah menjadi institusi pendidikan yang unggul dan berdaya saing internasional di bidang agromedis. Mereka pengin menghasilkan dokter gigi yang ahli dan punya wawasan luas tentang kesehatan masyarakat.
+Player: Keren banget! Terus, apa misinya, Kak?
+NPC_FKG: Misinya ada beberapa. Pertama, menyelenggarakan pendidikan berkualitas dan berdaya saing internasional. Kedua, mengembangkan ilmu kedokteran gigi melalui penelitian dan pengabdian masyarakat. Ketiga, membangun sistem pengelolaan yang transparan dan akuntabel.
+Player: Wah, semuanya terdengar profesional dan terorganisir banget! Terus kalau ada kerjasama sama lembaga lain, gimana?
+NPC_FKG: Iya, mereka aktif banget menjalin kerjasama strategis, baik di dalam negeri maupun luar negeri. Ini salah satu cara mereka buat terus ningkatin kualitas pendidikan dan layanan.
+Player: Keren banget! Bisa jadi pilihan kalau nanti tertarik di bidang kedokteran gigi.
+NPC_FKG: Iya, FKG UNEJ memang tempat yang pas buat yang punya minat di dunia kedokteran gigi. Kalau kamu tertarik, langsung aja cek fakultasnya. Fasilitasnya juga lengkap banget!
+Player: Makasih banyak ya infonya, Kak! Pasti bakal aku pertimbangkan.
+NPC_FKG: Sama-sama, semoga bermanfaat! Semoga perjalanan kamu di kampus UNEJ menyenangkan!
+NPC_FKG: Sekarang aku beri kamu quest. Jawab dengan benar, ya!
 # Entering Quiz
-NPC_FKG: 	Apa nama lapisan terluar dari gigi yang melindungi bagian dalam gigi?
+NPC_FKG: Apa nama lapisan terluar dari gigi yang melindungi bagian dalam gigi?
 - Dentin
 - Enamel
 	set {JawabanQuiz} += 1
 - Pulpa
 - Sementum
-NPC_FKG: 	Apa istilah medis untuk penyakit gusi yang menyebabkan peradangan dan pembengkakan?
+NPC_FKG: Apa istilah medis untuk penyakit gusi yang menyebabkan peradangan dan pembengkakan?
 - Gingivitis
 	set {JawabanQuiz} += 1
 - Periodontitis
@@ -24,13 +42,13 @@ NPC_FKG: 	Apa istilah medis untuk penyakit gusi yang menyebabkan peradangan dan 
 # Response
 if {JawabanQuiz} == 2:
 	set {QuizResult} = "completed"
-	NPC_FKG: Lorem 2
+	NPC_FKG: Sih, kok hebat kamu. Yaudah, sekarang lanjut ke fakultas berikutnya.
 elif {JawabanQuiz} == 1:
 	set {QuizResult} = "incomplete"
-	NPC_FKG: Lorem 1
+	NPC_FKG: Jek mak gitu kamu, satu jawaban salah, satu jawaban benar. Coba sekarang ulangi lagi.
 elif {JawabanQuiz} == 0:
 	set {QuizResult} = "incomplete"
-	NPC_FKG: Lorem 0
+	NPC_FKG: Gapapa, kamu bisa ulangi lagi. Tapi pastikan jawaban kamu benar.
 # Dialog End
 set {JawabanQuiz} = 0
 [signal arg="quiz_result_save"]

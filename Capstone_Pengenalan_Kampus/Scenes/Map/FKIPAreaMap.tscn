@@ -345,6 +345,7 @@ limit_bottom = 3490
 editor_draw_limits = true
 
 [node name="Transition" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Transition"]
 libraries = {

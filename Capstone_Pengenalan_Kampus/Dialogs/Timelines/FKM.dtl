@@ -6,8 +6,29 @@ join Player center
 Player: Permisi, Kak. Lagi sibuk, ya?
 join NPC_FKM center
 NPC_FKM: Oh, nggak kok. Cuma lagi beresin brosur acara fakultas. Ada yang bisa dibantu?
-NPC_FKM: Ini dialognya masih belum selesai. Penulisnya lelet bet.
-Player: Errm...
+Player: Aku Yoto, mahasiswa baru dari Ilmu Komputer. Saat ini lagi keliling kampus buat menyelesaikan tugas PKKMB, nah tugasnya itu…
+NPC_FKM: Cukup! Aku adalah panitia PKKMB disini. Baik langsung aku mulai aja yaa.
+NPC_FKM: Selamat datang di Fakultas Kesehatan Masyarakat (FKM) tempatnya belajar tentang pencegahan dan pengobatan penyakit, tapi lebih fokus ke masyarakat, bukan individu. Jadi kayak gimana cara menjaga kesehatan orang banyak.
+Player:  Izin memotong pembicaraan kak, jadi disini bukan kayak dokter, ya?
+NPC_FKM:  Iya, beda. Kalau dokter itu fokus ke pengobatan per individu, sedangkan di FKM, kita belajar cara meningkatkan kualitas kesehatan masyarakat secara keseluruhan.
+NPC_FKM: Visinya adalah “Menjadi lembaga pendidikan tinggi kesehatan masyarakat yang menghasilkan lulusan berkualitas, profesional berbasis agro-coastal community yang berwawasan lingkungan.
+Player: Izin memotong lagi kak, Agro-coastal community? Itu maksudnya apa, Kak?
+NPC_FKM: Itu pendekatan berbasis masyarakat yang tinggal di daerah agraris dan pesisir. Jadi, kita belajar cara menangani masalah kesehatan yang spesifik di wilayah seperti itu.
+NPC_FKM: Misinya ada beberapa. Misalnya, menyelenggarakan pendidikan yang relevan dengan kebutuhan masyarakat agraris dan pesisir, melakukan penelitian, dan pengabdian yang punya dampak langsung ke masyarakat.
+Player: Oh, jadi nggak cuma belajar teori aja ya, tapi juga langsung praktek?
+NPC_FKM: Benar banget. Kita sering terjun langsung ke masyarakat buat melakukan survei kesehatan, penyuluhan, atau penelitian.
+Player: Seru banget sih. Kalau tujuannya sendiri apa, Kak?
+NPC_FKM:  Salah satu tujuannya itu menghasilkan lulusan dengan kemampuan MIRACLE.
+Player: MIRACLE? Apa itu?
+NPC_FKM: Itu singkatan dari Managerial, Innovator, Researcher, Apprentice, Communitarian, Leader, dan Educator. Intinya, lulusan FKM harus punya banyak kemampuan yang dibutuhkan di bidang kesehatan masyarakat.
+Player: Wah, lulus dari sini pasti siap banget buat langsung kerja ya?
+NPC_FKM:  Iya, apalagi kurikulumnya juga relevan sama kebutuhan industri kesehatan sekarang.
+Player: Kakak sendiri, kenapa dulu milih masuk FKM?
+NPC_FKM: Karena aku suka banget sama konsep pencegahan. Buatku, mencegah itu lebih baik daripada mengobati. Dan di FKM, aku bisa belajar cara memberikan dampak besar ke masyarakat.
+Player: Wah, keren banget. Aku jadi penasaran sama kegiatan di FKM. Kalau mau ikut lihat-lihat, boleh nggak?
+NPC_FKM: Tentu boleh! Kamu bisa cek acara-acara seperti seminar kesehatan atau penyuluhan. Biasanya terbuka buat semua mahasiswa.
+Player: Makasih banyak, Kak. Info ini berguna banget!
+NPC_FKM: Sama-sama. Selamat eksplorasi kampus ya, semoga kamu betah di UNEJ! Oh iya, ini aku ada beberapa pertanyaan umum yang berkaitan dengan FKM, jawab dengan benar ya!
 # Entering Quiz
 NPC_FKM: Apa nama pendekatan utama dalam promosi kesehatan masyarakat?
 - Preventif
@@ -25,13 +46,13 @@ NPC_FKM: Apa yang dimaksud dengan *herd immunity?*
 # Response
 if {JawabanQuiz} == 2:
 	set {QuizResult} = "completed"
-	NPC_FKM: Lorem benar
+	NPC_FKM: Hebat! Kamu dapat menjawab semuanya dengan benar. Selamat ya, sekarang kamu bisa lanjut jalan - jalan ke fakultas berikutnya.
 elif {JawabanQuiz} == 1:
 	set {QuizResult} = "incomplete"
-	NPC_FKM: Lorem salah 1
+	NPC_FKM: Nyaris banget kamu menjawab dengan benar semua pertanyaan. Coba lagi ya, semoga kali ini jawaban kamu benar.
 elif {JawabanQuiz} == 0:
 	set {QuizResult} = "incomplete"
-	NPC_FKM: Lorem 0
+	NPC_FKM: Tidak apa, kamu menjawab semua pertanyaan dengan jawaban yang salah. Kamu bisa mencobanya lagi.
 # Dialog End
 set {JawabanQuiz} = 0
 [signal arg="quiz_result_save"]

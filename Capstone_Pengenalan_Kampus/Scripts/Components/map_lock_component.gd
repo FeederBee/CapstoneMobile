@@ -4,7 +4,7 @@ extends Node
 @onready var quiz_component = $"../QuizComponent"
 @onready var player = $"../../Y_sort/Karakter/Player"
 #@onready var tickets_count = parent.tickets_count
-@onready var transition_path = parent.transition_path
+#@onready var transition_path = parent.transition_path
 @onready var current_map_name = quiz_component.current_map_name
 
 @onready var tickets_obtained:int#quiz_component.tickets_obtained
@@ -66,7 +66,7 @@ func check_data(target_map_name: String) -> bool:
 	return false
 
 
-func change_map(target_map_name:String, map, transition):
+func change_map(target_map_name:String, map):
 	if !check_data(target_map_name):
 		print(check_data(target_map_name))
 		print("Oh tidak bisa")
@@ -75,65 +75,65 @@ func change_map(target_map_name:String, map, transition):
 		$CanvasLayer.visible = false
 		return
 
-	Global.change_map(map, transition)
+	Global.change_map(map)
 
 #Button Touch Signal
 #Entrance
 func _on_entrance_btn_l_pressed() -> void:
 	Global.spawn_position = Vector2(1097, 50)
-	change_map('EntranceAreaMap', Global.path_map.ENTRANCE, transition_path)
+	change_map('EntranceAreaMap', Global.path_map.ENTRANCE )
 	#Global.spawn_position = Vector2(1097, 50)
 func _on_entrance_btn_r_pressed() -> void:
 	Global.spawn_position = Vector2(2921, 51)
-	change_map('EntranceAreaMap', Global.path_map.ENTRANCE, transition_path)
+	change_map('EntranceAreaMap', Global.path_map.ENTRANCE )
 	
 	
 #Fasilkom
 func _on_fasilkom_btn_pressed() -> void:
-	change_map('FasilkomAreaMap', Global.path_map.FASILKOM, transition_path)
+	change_map('FasilkomAreaMap', Global.path_map.FASILKOM )
 	Global.spawn_position = Vector2(10, 1508)
 func _on_fasilkom_btn_l_pressed() -> void:
-	change_map('FasilkomAreaMap', Global.path_map.FASILKOM, transition_path)
+	change_map('FasilkomAreaMap', Global.path_map.FASILKOM )
 	Global.spawn_position = Vector2(1369, 2808)
 func _on_fasilkom_btn_r_pressed() -> void:
-	change_map('FasilkomAreaMap', Global.path_map.FASILKOM, transition_path)
+	change_map('FasilkomAreaMap', Global.path_map.FASILKOM )
 	Global.spawn_position = Vector2(2393, 2811)
 func _on_fasilkom_btn_up_pressed() -> void:
-	change_map('FasilkomAreaMap', Global.path_map.FASILKOM, transition_path)
+	change_map('FasilkomAreaMap', Global.path_map.FASILKOM )
 	Global.spawn_position = Vector2(2930, 984)
 func _on_fasilkom_btn_down_pressed() -> void:
-	change_map('FasilkomAreaMap', Global.path_map.FASILKOM, transition_path)
+	change_map('FasilkomAreaMap', Global.path_map.FASILKOM )
 	Global.spawn_position = Vector2(2930, 1594)
 func _on_fasilkom_btn_mid_pressed() -> void:
-	change_map('FasilkomAreaMap', Global.path_map.FASILKOM, transition_path)
+	change_map('FasilkomAreaMap', Global.path_map.FASILKOM )
 	Global.spawn_position = Vector2(2930, 2650)
 
 #FKIP
 func _on_fkip_btn_up_pressed() -> void:
-	change_map('FKIPAreaMap', Global.path_map.FKIP, transition_path)
+	change_map('FKIPAreaMap', Global.path_map.FKIP )
 	Global.spawn_position = Vector2(121, 1161)
 func _on_fkip_btn_mid_pressed() -> void:
-	change_map('FKIPAreaMap', Global.path_map.FKIP, transition_path)
+	change_map('FKIPAreaMap', Global.path_map.FKIP )
 	Global.spawn_position = Vector2(117, 2058)
 func _on_fkip_btn_down_pressed() -> void:
-	change_map('FKIPAreaMap', Global.path_map.FKIP, transition_path)
+	change_map('FKIPAreaMap', Global.path_map.FKIP )
 	Global.spawn_position = Vector2(118, 3355)
 
 #FTP
 func _on_ftp_btn_pressed() -> void:
-	change_map('FTPAreaMap', Global.path_map.FTP, transition_path)
+	change_map('FTPAreaMap', Global.path_map.FTP )
 	Global.spawn_position = Vector2(4149, 2649)
 func _on_ftp_btn_r_pressed() -> void:
-	change_map('FTPAreaMap', Global.path_map.FTP, transition_path)
+	change_map('FTPAreaMap', Global.path_map.FTP )
 	Global.spawn_position = Vector2(3864, 3605)
 func _on_ftp_btn_l_pressed() -> void:
-	change_map('FTPAreaMap', Global.path_map.FTP, transition_path)
+	change_map('FTPAreaMap', Global.path_map.FTP )
 	Global.spawn_position = Vector2(1766, 3604)
 
 #FKG
 func _on_fkg_btn_r_pressed() -> void:
-	change_map('FKGAreaMap', Global.path_map.FKG, transition_path)
+	change_map('FKGAreaMap', Global.path_map.FKG )
 	Global.spawn_position = Vector2(2634, 58)
 func _on_fkg_btn_l_pressed() -> void:
-	change_map('FKGAreaMap', Global.path_map.FKG, transition_path)
+	change_map('FKGAreaMap', Global.path_map.FKG )
 	Global.spawn_position = Vector2(1497, 58)

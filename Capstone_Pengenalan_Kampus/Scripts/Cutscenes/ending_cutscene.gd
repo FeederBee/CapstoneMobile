@@ -31,7 +31,7 @@ var npc_distance_traveled: float = 0
 var cutscene_done:bool = false
 
 func _ready() -> void:
-	
+	Global.transition_animation.play("screen_fade_in")
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	cinematic()
 	run_dialog('Ending')
@@ -142,7 +142,7 @@ func _on_dialogic_signal(argument):
 func _on_end_timer_timeout() -> void:
 	animation_player.play("fade_out_end")
 	await get_tree().create_timer(1).timeout
-	Global.change_map("res://Scenes/Cutscenes/EndingCredits.tscn", "EndingCutscene/AnimationPlayer")
+	Global.change_map("res://Scenes/Cutscenes/EndingCredits.tscn")
 	#get_tree().change_scene_to_file("res://Scenes/Cutscenes/EndingCredits.tscn")
 	#get_tree().change_scene_to_packed(credits)
 	

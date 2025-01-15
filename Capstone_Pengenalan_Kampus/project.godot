@@ -25,10 +25,10 @@ buses/default_bus_layout="res://Audio/default_bus_layout.tres"
 
 [autoload]
 
-Global="*res://Scripts/Global.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 AudioManager="*res://Scenes/AudioManager.tscn"
 SaveManager="*res://Scripts/SaveManager.gd"
+Global="*res://Scenes/Global.tscn"
 
 [dialogic]
 

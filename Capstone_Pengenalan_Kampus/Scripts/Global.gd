@@ -1,5 +1,7 @@
 extends Node
 
+@onready var transition_animation: AnimationPlayer = $Transition/AnimationPlayer
+
 #Array
 #Dict untuk path map
 var path_map = {
@@ -32,13 +34,22 @@ var is_dialog: bool = false
 var is_change_map: bool = false
 var current_map:String = path_map.MAINMENU
 var scene_transition: String 
+var is_game_done:bool = false
 
 #Save Variable
 var auto_save_is:bool  #apakah sebuah scene bisa autosave atau tidak
 
+# Variabel untuk menghemat process
+var last_check_time : float = 0.0
+var check_interval : float = 1.0 # Waktu jeda antar pengecekan dalam detik
 
 func _process(delta: float) -> void:
-	game_over()
+	# Periksa jika cukup waktu telah berlalu sejak pengecekan terakhir
+	if Time.get_ticks_msec() / 1000.0 - last_check_time >= check_interval:
+		last_check_time = Time.get_ticks_msec() / 1000.0
+		#story_done()
+		pass
+		
 
 #Function
 #Player Function
@@ -55,17 +66,19 @@ func reset_speed():
 
 
 #Scene Function
-func change_map(path_scene:String, animation_node_path: String) -> void:
+func change_map(path_scene:String) -> void:
+	#$Transition/ColorRect.hide()
 	is_change_map = true
-	var transition = get_tree().root.get_node_or_null(animation_node_path)
-	if not transition:
-		print("Error: Transition node not found at", animation_node_path)
+	#var transition =
+	if not transition_animation:
+		print("Error: Transition node not found at", transition_animation)
 		return
 
 	# Memainkan animasi fade out
-	transition.play("screen_fade_out")
+	transition_animation.play("screen_fade_out")
 	AudioManager.stop_bgm()
-	await transition.animation_finished
+	await transition_animation.animation_finished
+	#$Transition/ColorRect.hide()
 	is_change_map = false
 	# Ganti scene ke path yang ditentukan
 	get_tree().change_scene_to_file(path_scene)
@@ -82,24 +95,43 @@ func cutscene_status(cutscene_name:String):
 	return false
 	
 
-func get_all_quiz_completed():
+# Fungsi untuk menghitung semua kuis yang telah selesai
+func get_all_quiz_completed() -> int :
+	# Memuat data progres kuis dari SaveManager
 	var quiz_progress = SaveManager.load_data("quiz_progress")
 	var quiz_completed = 0
-	if quiz_progress!=null:
+	
+	# Pastikan data kuis ada sebelum melanjutkan
+	if quiz_progress != null:
+		# Iterasi melalui setiap map untuk menghitung kuis yang selesai
 		for map_name in quiz_progress.keys():
 			var map_progress = quiz_progress[map_name]
-			for quiz_name in map_progress.keys():
-				if map_progress[quiz_name] == "completed":
-					quiz_completed +=1
+			# Pastikan map_progress adalah dictionary
+			if map_progress is Dictionary:
+				for quiz_name in map_progress.keys():
+					# Periksa apakah status kuis adalah "completed"
+					if map_progress[quiz_name] == "completed":
+						quiz_completed += 1
+			else:
+				printerr("Invalid data format for map_progress: ", map_name)
+	else:
+		printerr("Quiz progress data is null or corrupted.")
+		
 	return quiz_completed
 
-func game_over():
-	if get_all_quiz_completed() == 15:
-		is_change_map = true
-		AudioManager.stop_bgm()
-		await get_tree().create_timer(0.3).timeout
-		is_change_map = false
-		# Ganti scene ke path yang ditentukan
-		get_tree().change_scene_to_file("res://Scenes/Cutscenes/EndingCutscene.tscn")
-	else :
-		pass
+# Fungsi untuk mengecek apakah cerita sudah selesai
+#func story_done():
+	#if !is_game_done:	
+		#if get_all_quiz_completed() >= 16 and !is_new_game:
+			#is_game_done = true
+		#return
+
+	
+	#if "path_map" in self and path_map.ENDINGCUTSCENE:
+		#change_map(path_map.ENDINGCUTSCENE)
+		#
+	#is_game_done = false
+
+func new_game():
+	#SaveManager.clear_data()  # Reset semua data game
+	change_map(path_map.STARTING_AREA)  # Mulai dari area awal

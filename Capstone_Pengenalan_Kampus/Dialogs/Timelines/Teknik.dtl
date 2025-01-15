@@ -6,10 +6,27 @@ join Player center
 Player: Wah, ini Fakultas Teknik ya?
 join NPC_Teknik center
 NPC_Teknik: Kamu siapa?
-Player: Oh
-NPC_Teknik: Iya, bener banget! Di Fakultas Teknik, kita belajar tentang teknik-teknik untuk merancang benda atau teknologi, baik yang kimiawi maupun non-kimiawi. Intinya, semuanya buat mempermudah kehidupan manusia.
-NPC_Teknik: Ini dialognya masih belum selesai. Penulisnya lelet bet.
-Player: Errm...
+Player: Oh, iya kak. Aku Yoto, peserta PKKMB tahun ini. Sekarang aku lagi cari panitia yang bertugas di depan Fakultas Teknik.
+NPC_Teknik: Oh, Yoto! Aku udah dengar nama kamu dari beberapa fakultas lain. Katanya, kamu cukup pintar ngerjain quest-quest dari panitia sebelumnya.
+Player: Errm…
+NPC_Teknik: Aku Wafi, panitia PKKMB di Fakultas Teknik. Semoga kamu bisa nyelesain quest-ku dengan cepat dan tepat, kayak yang dibicarain sama panitia lain.
+Player (dalam hati): (Hah, namaku sampai jadi obrolan panitia? Ngeri-ngeri sedap sih ini...)
+NPC_Teknik: Nah, selamat datang di Fakultas Teknik. Di sini kita belajar semua hal tentang teknik buat ngerancang benda atau teknologi, baik yang kimiawi maupun non-kimiawi. Intinya, buat mempermudah kehidupan manusia.
+Player: Wah, keren banget!
+NPC_Teknik: Iya, Fakultas Teknik punya visi jadi yang terbaik dalam pengembangan teknologi ramah lingkungan dan fokus ke pertanian industrial.
+Player: Wow, keren! Terus misinya apa aja, Kak?
+NPC_Teknik: Misinya banyak! Pertama, ngasih pendidikan yang berkualitas dan fokus sama lingkungan, sampai level internasional. Kedua, ngembangin teknologi ramah lingkungan yang tepat guna. Ketiga, tata kelolanya transparan dan berbasis teknologi informasi. Terakhir, kerja sama dengan lembaga dan industri, di dalam maupun luar negeri.
+Player: Wah, fakultas ini ambisius banget, ya.
+NPC_Teknik: Pastinya! Tujuannya juga nggak kalah keren\: pengin hasilin SDM yang bisa bersaing internasional, bikin penelitian buat nyelesain masalah masyarakat, bangun kerja sama yang saling menguntungkan, dan ningkatin tata kelola profesional.
+Player: Mantap banget, sih! Jadi makin semangat buat ngerjain quest dari Fakultas Teknik.
+NPC_Teknik: Hehe, bagus dong! Eksplor aja. Fakultas Teknik UNEJ banyak hal menarik buat dipelajari.
+Player: Hmm, Kak, aku ada pertanyaan, nih.
+NPC_Teknik: Apa tuh?
+Player: Kenapa di kampus lain jurusanku (Informatika) masuk ke Fakultas Teknik, bukan di Fakultas Ilmu Komputer?
+NPC_Teknik: Yo, ndak tau, kok tanya aku? Tanya Pak Rektor sana! Hahaha.
+Player (dalam hati): (Nggak membantu banget. Dasar.)
+Player: Ah, baiklah, Kak. Mungkin itu aja pertanyaanku.
+NPC_Teknik: Oke, kalau gitu sekarang waktunya kamu belajar. Aku akan kasih pertanyaan. Jawab dengan benar, ya!
 # Entering Quiz
 NPC_Teknik: Apa metode yang digunakan untuk memperkuat struktur bangunan terhadap gempa?
 - Pemasangan peredam seismik
@@ -27,13 +44,13 @@ NPC_Teknik: Dalam ilmu teknik, apa fungsi utama dari katrol?
 # Response
 if {JawabanQuiz} == 2:
 	set {QuizResult} = "completed"
-	NPC_Teknik: lorem benar semua
+	NPC_Teknik: Wah wah wah, tidak salah emang panitia lain menilai kamu sebagai maba yang pintar.
 elif {JawabanQuiz} == 1:
 	set {QuizResult} = "incomplete"
-	NPC_Teknik: Lorem gagal 1
+	NPC_Teknik: Hmm sepertinya ada yang salah. Coba kamu jawab lagi.
 elif {JawabanQuiz} == 0:
 	set {QuizResult} = "incomplete"
-	NPC_Teknik: Lorem gagal
+	NPC_Teknik: Dih! Apakah panitia lain salah menilai kamu? Kenapa kamu tidak bisa menjawab dengan benar semua pertanyaan di fakultas teknik. Sekarang kamu coba menjawab lagi, pastikan jawaban kamu benar.
 # Dialog End
 set {JawabanQuiz} = 0
 [signal arg="quiz_result_save"]

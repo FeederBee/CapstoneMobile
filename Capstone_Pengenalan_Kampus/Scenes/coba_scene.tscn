@@ -45,22 +45,22 @@ label_settings = ExtResource("1_72h3f")
 
 [node name="Player" parent="Karakter" instance=ExtResource("2_v7f8s")]
 y_sort_enabled = true
-position = Vector2(16, 240)
+position = Vector2(16, 256)
 
 [node name="Camera2D" type="Camera2D" parent="Karakter/Player"]
 zoom = Vector2(4, 4)
 
 [node name="NPC_fasilkom" parent="Karakter" instance=ExtResource("1_7jto6")]
-position = Vector2(64, 240)
+position = Vector2(64, 256)
 
 [node name="NPCFMIPA" parent="Karakter" instance=ExtResource("5_ggf07")]
-position = Vector2(120, 240)
+position = Vector2(120, 256)
 
 [node name="NPC_Faperta" parent="Karakter" instance=ExtResource("12_updtn")]
-position = Vector2(176, 240)
+position = Vector2(176, 256)
 
 [node name="NPC_FKIP" parent="Karakter" instance=ExtResource("12_r723r")]
-position = Vector2(232, 240)
+position = Vector2(232, 256)
 
 [node name="NPC_FEB" parent="Karakter" instance=ExtResource("6_vxmeq")]
 position = Vector2(176, 320)
@@ -89,6 +89,15 @@ position = Vector2(120, 376)
 [node name="NPC_Hukum" parent="Karakter" instance=ExtResource("16_m03q7")]
 position = Vector2(176, 376)
 
+[node name="NPC_Teknik" parent="Karakter" instance=ExtResource("17_lxfon")]
+position = Vector2(232, 376)
+
+[node name="NPC_FKM" parent="Karakter" instance=ExtResource("15_lroo0")]
+position = Vector2(280, 320)
+
+[node name="NPC_FIB" parent="Karakter" instance=ExtResource("13_qbijq")]
+position = Vector2(280, 376)
+
 [node name="Durung Mari" type="Node2D" parent="Karakter"]
 
 [node name="Label" type="Label" parent="Karakter/Durung Mari"]
@@ -98,15 +107,6 @@ offset_right = 665.0
 offset_bottom = 257.0
 text = "Durung Mari'"
 label_settings = ExtResource("1_72h3f")
-
-[node name="NPC_Teknik" parent="Karakter/Durung Mari" instance=ExtResource("17_lxfon")]
-position = Vector2(464, 280)
-
-[node name="NPC_FKM" parent="Karakter/Durung Mari" instance=ExtResource("15_lroo0")]
-position = Vector2(528, 280)
-
-[node name="NPC_FIB" parent="Karakter/Durung Mari" instance=ExtResource("13_qbijq")]
-position = Vector2(656, 280)
 
 [node name="Building" type="Node2D" parent="."]
 y_sort_enabled = true

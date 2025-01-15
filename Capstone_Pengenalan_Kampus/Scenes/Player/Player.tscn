@@ -123,6 +123,7 @@ texture_normal = ExtResource("5_vemkn")
 
 [node name="NgeTroll" type="CanvasLayer" parent="."]
 layer = 0
+visible = false
 script = ExtResource("8_qtw70")
 
 [node name="Label" type="Label" parent="NgeTroll"]
@@ -221,8 +222,8 @@ label_settings = ExtResource("8_fgcky")
 [connection signal="area_exited" from="Player_detection" to="." method="_on_player_detection_area_exited"]
 [connection signal="body_entered" from="Player_detection" to="." method="_on_player_detection_body_entered"]
 [connection signal="timeout" from="CanvasLayer/BgStamina/BarStamina/recover_timer" to="Components/PlayerRunComponent" method="_on_recover_timer_timeout"]
-[connection signal="timeout" from="CanvasLayer/BgStamina/BarStamina/recover_timer" to="CanvasLayer/BgStamina" method="_on_timer_timeout"]
 [connection signal="timeout" from="CanvasLayer/BgStamina/BarStamina/recover_timer" to="CanvasLayer/BgStamina" method="_on_recover_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/BgStamina/BarStamina/recover_timer" to="CanvasLayer/BgStamina" method="_on_timer_timeout"]
 [connection signal="timeout" from="CanvasLayer/BgStamina/BarStamina/deplented_timer" to="Components/PlayerRunComponent" method="_on_deplented_timer_timeout"]
 [connection signal="timeout" from="CanvasLayer/BgStamina/BarStamina/deplented_timer" to="CanvasLayer/BgStamina" method="_on_deplented_timer_timeout"]
 [connection signal="timeout" from="CanvasLayer/BgStamina/BarStamina/deplented_timer" to="CanvasLayer/BgStamina" method="_on_bgtimer_timeout"]

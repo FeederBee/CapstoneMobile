@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var transition = $Transition/AnimationPlayer
+#@onready var transition = $Transition/AnimationPlayer
 @onready var player = $Y_sort/Karakter/Player
 @onready var player_spawn_component: Node = $Components/PlayerSpawnComponent
 
@@ -9,14 +9,14 @@ var fkg_btn
 var fkg2_btn
 
 #path
-var transition_path = 'FTPAreaMap/Transition/AnimationPlayer'
+#var transition_path = 'FTPAreaMap/Transition/AnimationPlayer'
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Global.current_map = Global.path_map.FTP
 	Global.auto_save_is = true
 	AudioManager.play_bgm('entrance_area')
-	transition.play("screen_fade_in")
+	Global.transition_animation.play("screen_fade_in")
 	
 	player_spawn_component.spawn_player()
 	

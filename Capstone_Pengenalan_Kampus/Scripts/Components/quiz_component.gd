@@ -15,7 +15,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	show_tickets_obtain()
-	#print(SaveManager.load_data("cutscene").values())
+	print(tickets_obtained)
 
 func data_ticket_obtained():
 	var quest_progress = SaveManager.load_data("quiz_progress")
@@ -159,6 +159,35 @@ func save_quiz_progress():
 				"quiz_progress": data
 			})
 
+func get_all_ticketobtained() -> int:
+	# Memuat data progres kuis dari SaveManager
+	var quiz_progress = SaveManager.load_data("quiz_progress")
+	var quiz_completed = 0
+	
+	# Pastikan data kuis ada sebelum melanjutkan
+	if quiz_progress != null:
+		# Iterasi melalui setiap map untuk menghitung kuis yang selesai
+		for map_name in quiz_progress.keys():
+			var map_progress = quiz_progress[map_name]
+			# Pastikan map_progress adalah dictionary
+			if map_progress is Dictionary:
+				for quiz_name in map_progress.keys():
+					# Periksa apakah status kuis adalah "completed"
+					if map_progress[quiz_name] == "completed":
+						quiz_completed += 1
+			else:
+				printerr("Invalid data format for map_progress: ", map_name)
+	else:
+		printerr("Quiz progress data is null or corrupted.")
+		
+	return quiz_completed
+
 func _on_dialogic_signal(argument):
 	if argument == 'quiz_result_save' and current_map_name != 'EntranceAreaMap':
 		save_quiz_progress()
+		
+	if argument == 'dialog_finished':
+		await get_tree().create_timer(1).timeout
+		if get_all_ticketobtained() == 16:
+			await get_tree().create_timer(1).timeout
+			Global.change_map(Global.path_map.ENDINGCUTSCENE)

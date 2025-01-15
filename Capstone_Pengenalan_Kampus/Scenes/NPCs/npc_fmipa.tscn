@@ -43,7 +43,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_ko2qa")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 5.0
 }]
 
@@ -59,7 +59,7 @@ dialog_timeline_quest_name = "FMIPA"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_s1qvy")
-frame_progress = 0.3537
+animation = &"idle"
 offset = Vector2(0.495, -5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -11,7 +11,6 @@ var fasilkom_r_btn
 var fasilkom = "res://Scenes/Map/FasilkomAreaMap.tscn"
 
 #Transisi
-@export var transition_path = "EntranceAreaMap/Transition/AnimationPlayer"
 @onready var transition = $Transition/AnimationPlayer
 
 func _ready() -> void:
@@ -23,7 +22,7 @@ func _ready() -> void:
 	if SaveManager.load_data('timestamp') == null:
 		$Transition.visible = false
 	else:
-		transition.play("screen_fade_in")
+		Global.transition_animation.play("screen_fade_in")
 	
 	if Global.cutscene_status('Prolog'):
 		player_spawn_component.spawn_player()

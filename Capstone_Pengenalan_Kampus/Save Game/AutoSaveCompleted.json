@@ -1,0 +1,40 @@
+{
+	"current_map": "res://Scenes/Map/FasilkomAreaMap.tscn",
+	"cutscene": {
+		"Prolog": "completed"
+	},
+	"music_volume": 2.48,
+	"player_stamina": 100,
+	"player_x_position": 2416.6337890625,
+	"player_y_position": 1509.58288574219,
+	"quiz_progress": {
+		"EntranceAreaMap": {
+			"Prolog": "completed"
+		},
+		"FKGAreaMap": {
+			"FKG": "completed",
+			"FKM": "completed",
+			"Farmasi": "completed",
+			"Keperawatan": "completed"
+		},
+		"FKIPAreaMap": {
+			"FEB": "completed",
+			"FIB": "completed",
+			"FISIP": "completed",
+			"FKIP": "completed",
+			"Hukum": "completed"
+		},
+		"FTPAreaMap": {
+			"FK": "completed",
+			"FTP": "completed",
+			"Teknik": "completed"
+		},
+		"FasilkomAreaMap": {
+			"FMIPA": "completed",
+			"Faperta": "completed",
+			"Fasilkom": "incomplete"
+		}
+	},
+	"sfx_volume": 1.667,
+	"timestamp": "2025-01-10T14:38:50"
+}

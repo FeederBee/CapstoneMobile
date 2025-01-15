@@ -3,11 +3,26 @@
 set {TimelineName} = "Hukum"
 # Dialog Start
 join Player center
-Player: Wah, ini Fakultas Hukum ya? Di sini belajar apa aja sih?
+Player: Duh capek banget…
+Player: Permisi kak, apakah ini Fakultas Hukum?
 join NPC_Hukum center
-NPC_Hukum: Iya, bener banget! Di Fakultas Hukum, kita belajar segala macam ilmu hukum yang ada di Indonesia. Serunya, di sini pembelajarannya nggak cuma teori, tapi juga langsung praktek bareng para alumni yang udah jadi hakim, jaksa, advokat, notaris, bahkan pemimpin NGO.
-NPC_Hukum: Ini dialognya masih belum selesai. Penulisnya lelet bet.
-Player: Errm...
+NPC_Hukum:  Iya, bener banget! Ini Fakultas Hukum, kamu ada perlu apa?
+Player:  Saya sedang mencari panitia PKKMB kak, kebetulan saya perserta PKKMB.
+NPC_Hukum: Untuk apa kamu mencari panitia PKKMB?
+Player: Soalnya abis diberi tugas sama Kak Wildan, katanya suruh mencari panitia PKKMB yang ada di depan tiap - tiap fakultas.
+Player: Tapi daritadi aku liat cuma ada kakak disini. Kakak panitia PKKMB kah?
+NPC_Hukum: Hahaha, dasar maba. Iya aku panitia PKKMB, kenalin nama ku Genta.
+Player: Iya, salam kenal kak genta. Nama ku Yoto, dari Fakultas Ilmu Komputer.
+NPC_Hukum: Oh, fasilkom. Baik langsung saja yaa.
+NPC_Hukum: Selamat datang di Fakultas Hukum UNEJ. Fakultas Hukum merupakan fakultas tertua yang ada disini, sejarahnya sih gitu. Disini, kita belajar segala macam ilmu hukum yang ada di Indonesia. Serunya, di sini pembelajarannya nggak cuma teori, tapi juga langsung praktek bareng para alumni yang udah jadi hakim, jaksa, advokat, notaris, bahkan pemimpin NGO.
+NPC_Hukum: Visinya itu mau jadi fakultas hukum yang unggul dengan landasan ilmu, amal, dan integritas.
+NPC_Hukum: Selain visi ada beberapa misi nih. Pertama, ngembangin pendidikan hukum yang berkualitas dan profesional, tapi tetap punya wawasan kebangsaan. Kedua, ngembangin penelitian dan tulisan ilmiah yang relevan sama kebutuhan masyarakat. 
+NPC_Hukum: Ketiga, ngaplikasiin ilmu hukum ke masyarakat dengan menjunjung nilai-nilai keadilan. Keempat, membangun sistem pengelolaan yang transparan dan adaptif dengan teknologi. Terakhir, memperluas kerja sama sama berbagai pihak buat ningkatin kualitas fakultas.
+Player: Wah, komplit banget ya! Serasa nggak cuma belajar hukum, tapi juga praktik langsung dan berkontribusi buat masyarakat.
+NPC_Hukum:  Iya, bener banget! Apalagi Fakultas Hukum UNEJ ini udah punya pengalaman lebih dari 57 tahun, jadi nggak perlu diragukan lagi kualitasnya.
+Player: Wow, aku jadi makin penasaran sama Fakultas Hukum UNEJ. Kayaknya seru banget belajar di sini!
+NPC_Hukum: Hehe, pasti seru! Kalau penasaran, coba deh cari tahu lebih jauh atau datang langsung ke kampusnya. Banyak hal menarik yang bisa kamu pelajari di sini! Aku akan memberi kamu pertanyaan yang berkaitan dengan fakultas hukum, jawab dengan benar ya!
+Player:  Baik kak, aku pasti akan menjawab dengan benar.
 # Entering Quiz
 NPC_Hukum: Apa nama prinsip hukum yang menyatakan bahwa seseorang dianggap tidak bersalah sampai terbukti sebaliknya?
 - Habeas Corpus
@@ -25,13 +40,13 @@ NPC_Hukum: Apa istilah untuk kesepakatan yang mengikat secara hukum antara dua p
 # Response
 if {JawabanQuiz} == 2:
 	set {QuizResult} = "completed"
-	NPC_Hukum: Lorem benar semua
+	NPC_Hukum: Gokill, kamu bisa menjawab pertanyaan sesuai dengan omongan kamu.
 elif {JawabanQuiz} == 1:
 	set {QuizResult} = "incomplete"
-	NPC_Hukum: Lorem salah 1
+	NPC_Hukum: Nyaris banget jawaban kamu benar semua. Coba kamu jawab lagi, pastikan jawaban kamu benar!
 elif {JawabanQuiz} == 0:
 	set {QuizResult} = "incomplete"
-	NPC_Hukum: Lorem salah semua
+	NPC_Hukum: Salah semua! Jawab ulang pertanyaan nya, pastikan jawaban kamu kali ini benar.
 # Dialog End
 set {JawabanQuiz} = 0
 [signal arg="quiz_result_save"]

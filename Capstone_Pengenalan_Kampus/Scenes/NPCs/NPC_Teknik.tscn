@@ -1,18 +1,39 @@
-[gd_scene load_steps=7 format=3 uid="uid://j56hkpyspwrk"]
+[gd_scene load_steps=10 format=3 uid="uid://j56hkpyspwrk"]
 
 [ext_resource type="Script" path="res://Scripts/NPCs/npc.gd" id="1_tg2ic"]
-[ext_resource type="Texture2D" uid="uid://dxivw4qy5vrsk" path="res://icon.svg" id="2_hsfsc"]
+[ext_resource type="Texture2D" uid="uid://bt6km7shk83bd" path="res://Assets/Sprites/NPC/animation/Teknik.png" id="2_42whw"]
 [ext_resource type="PackedScene" uid="uid://4khffy12qyi0" path="res://Scenes/Components/NPCDialogComponent.tscn" id="3_kfrkj"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fb7gy"]
-atlas = ExtResource("2_hsfsc")
-region = Rect2(32, 64, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0cse"]
+atlas = ExtResource("2_42whw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_misu7"]
+atlas = ExtResource("2_42whw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0iwfq"]
+atlas = ExtResource("2_42whw")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70cmd"]
+atlas = ExtResource("2_42whw")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_guses"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fb7gy")
+"texture": SubResource("AtlasTexture_y0cse")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_misu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0iwfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70cmd")
 }],
 "loop": true,
 "name": &"idle",
@@ -26,12 +47,13 @@ radius = 8.0
 collision_layer = 2
 script = ExtResource("1_tg2ic")
 dialog_timeline_quest_name = "Teknik"
-dialog_timeline_name = "QuestDone_Draft"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_guses")
 animation = &"idle"
+frame_progress = 0.722448
+offset = Vector2(0.5, -4.925)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2baye")

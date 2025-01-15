@@ -9,6 +9,7 @@ extends Node2D
 func _ready() -> void:
 	await get_tree().create_timer(1).timeout
 	bg_fade_out.self_modulate = 0
+	Global.transition_animation.play("screen_fade_in")
 	animation_player.play("fade_in")
 	await animation_player.animation_finished
 	credits_animation.play("credit")

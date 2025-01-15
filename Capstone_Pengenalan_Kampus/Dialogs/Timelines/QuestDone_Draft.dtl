@@ -1,9 +1,4 @@
 [signal arg="entering_dialog"]
 join Player center
-Player: deqdasxwqdsadwq
-Player: deqdasxwqdsadwq
-Player: deqdasxwqdsadwq
-Player: deqdasxwqdsadwq
-Player: deqdasxwqdsadwq
-Player: deqdasxwqdsadwq
-[signal arg="dialog_finished"]
+Player: Kayaknya tugasku sudah selesai di Fakultas ini. Aku harus segera selesaikan tugas PKKMB yang lain!
+[signal arg="dialog_ended"]
