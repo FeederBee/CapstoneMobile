@@ -43,7 +43,7 @@ var auto_save_is:bool  #apakah sebuah scene bisa autosave atau tidak
 var last_check_time : float = 0.0
 var check_interval : float = 1.0 # Waktu jeda antar pengecekan dalam detik
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Periksa jika cukup waktu telah berlalu sejak pengecekan terakhir
 	if Time.get_ticks_msec() / 1000.0 - last_check_time >= check_interval:
 		last_check_time = Time.get_ticks_msec() / 1000.0
@@ -118,6 +118,47 @@ func get_all_quiz_completed() -> int :
 		printerr("Quiz progress data is null or corrupted.")
 		
 	return quiz_completed
+	
+func save_time(time:String):
+	if time == 'start':
+		SaveManager.save({
+				'start_time' : Time.get_unix_time_from_system()
+			})
+	elif time == 'end':
+		SaveManager.save({
+				'end_time' : Time.get_unix_time_from_system()
+			})
+	
+
+func get_score_time():
+	var start_time = SaveManager.load_data('start_time')
+	var end_time = SaveManager.load_data('end_time')
+	
+	if start_time == null || end_time == null:
+		print("Waktu tidak dapat dimuat!")
+		return
+
+	# Konversi waktu awal dan akhir ke objek DateTime
+	var dt_start = start_time
+
+	# Hitung selisih waktu dalam detik
+	var difference_in_seconds = end_time - start_time
+
+	# Konversi ke menit, jam, dan hari
+	var difference_in_minutes = difference_in_seconds / 60
+	var difference_in_hours = difference_in_minutes / 60
+	var difference_in_days = difference_in_hours / 24
+
+	# Total jam termasuk hari yang dikonversi ke jam
+	var total_hours = difference_in_days * 24 + (difference_in_hours % 24)
+	
+	return total_hours
+		# Cetak hasil
+	#print("Selisih waktu dalam detik: ", difference_in_seconds)
+	#print("Selisih waktu dalam menit: ", difference_in_minutes)
+	#print("Selisih waktu dalam jam: ", difference_in_hours)
+	#print("Selisih waktu dalam hari: ", difference_in_days)
+	#print("Total jam termasuk hari: ", total_hours)
 
 # Fungsi untuk mengecek apakah cerita sudah selesai
 #func story_done():

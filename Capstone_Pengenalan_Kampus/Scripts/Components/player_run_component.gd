@@ -1,8 +1,5 @@
 extends Node
 
-#Ngetroll (hapusable)
-@onready var nge_troll: CanvasLayer = $"../../NgeTroll"
-
 #parent Node
 @onready var player: CharacterBody2D = get_parent().get_parent()
 #Progresbar (stamina) Node
@@ -56,7 +53,7 @@ func _process(_delta: float) -> void:
 			is_recovering = false
 			await get_tree().create_timer(3).timeout
 	
-	depelented_rate = 0 if nge_troll.cheat else player.depelented_rate
+	depelented_rate = player.depelented_rate
 
 func _on_run_btn_pressed() -> void:
 	if stamina <= 10:

@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dm8leqypjc3fd"]
+
+[ext_resource type="Texture2D" uid="uid://duycgaferbuuy" path="res://Assets/Map/Gedung/FIBmerge.png" id="1_povp3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4olmx"]
+size = Vector2(1152, 384)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o7cjs"]
+size = Vector2(280, 138)
+
+[node name="FIBGedung" type="Node2D"]
+
+[node name="FiBmerge" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("1_povp3")
+offset = Vector2(0, -400)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(24, -136)
+shape = SubResource("RectangleShape2D_4olmx")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-244, 59)
+shape = SubResource("RectangleShape2D_o7cjs")

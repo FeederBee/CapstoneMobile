@@ -1,0 +1,18 @@
+{
+	"current_map": "res://Scenes/Map/FasilkomAreaMap.tscn",
+	"cutscene": {
+		"Prolog": "completed"
+	},
+	"music_volume": 0.87,
+	"player_stamina": 90,
+	"player_x_position": 2163.4833984375,
+	"player_y_position": 1507.21020507813,
+	"quiz_progress": {
+		"EntranceAreaMap": {
+			"Prolog": "completed"
+		}
+	},
+	"sfx_volume": 1.316,
+	"start_time": 1736912621.382,
+	"timestamp": "2025-01-16T11:48:19"
+}

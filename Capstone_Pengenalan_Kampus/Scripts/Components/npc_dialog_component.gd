@@ -36,14 +36,14 @@ func _on_dialogic_signal(argument:String):
 	if argument == "entering_dialog":
 		dialog_btn.hide()
 	elif argument == "dialog_finished":
-		if dialog_timeline_quest_name == Dialogic.VAR.TimelineName:
-			dialog_btn.show()
+		#if dialog_timeline_quest_name == Dialogic.VAR.TimelineName:
+			#dialog_btn.show()
 		Global.is_joystick= true
 		Global.is_dialog = false
 		Global.player_stop = false
 	elif argument == 'dialog_ended':
-		if dialog_timeline_quest_name == Dialogic.VAR.TimelineName:
-			dialog_btn.show()
+		#if dialog_timeline_quest_name == Dialogic.VAR.TimelineName:
+			#dialog_btn.show()
 		Global.is_joystick= true
 		Global.is_dialog = false
 		Global.player_stop = false

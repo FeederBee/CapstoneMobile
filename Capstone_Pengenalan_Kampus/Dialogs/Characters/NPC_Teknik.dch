@@ -19,7 +19,7 @@
 "portraits": {
 "New portrait": {
 "export_overrides": {
-"image": ""
+"image": "\"res://Dialogs/Potret/Teknik.png\""
 },
 "mirror": false,
 "offset": Vector2(450, 0),

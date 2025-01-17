@@ -62,6 +62,8 @@ func set_sfx_pitch(pitch_scale:float=1):
 func stop_sfx() -> void:
 	if sfx_files["walk"]: 
 		sfx_player_movement.stop()
+	elif sfx_files["button_click"]:
+		sfx_player_button.stop()
 	sfx_is_playing = false
 
 func get_sfx_duration(sfx_name:String):

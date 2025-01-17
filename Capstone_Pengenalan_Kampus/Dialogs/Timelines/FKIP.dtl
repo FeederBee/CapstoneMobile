@@ -6,18 +6,18 @@ join Player center
 Player: Permisi kak, kenalin aku Yoto mahasiswa baru dari Fakultas Ilmu Komputer
 Player: Sekarang sedang menjalankan tugas PKKMB dari Kak Wildan. Harus menemui panitia PKKMB di depan gedung fakultas.
 Player: Apakah kakak salah satu panitia PKKMB?
-join  center
+join NPC_FKIP center
 NPC_FKIP: Benar, aku Nasya salah satu panitia PKKMB yang ditugaskan untuk menjelaskan FKIP.
 NPC_FKIP: Mungkin langsung aja ya, aku akan menjelaskan tentang FKIP. FKIP itu singkatan dari Fakultas Keguruan dan Ilmu Pendidikan. Jadi singkatnya, ini fakultas buat jadi guru.
 NPC_FKIP: Di FKIP kita punya banyak program studi yang fokus untuk mendidik calon guru. Jadi, mahasiswa di sini dipersiapkan untuk jadi tenaga pendidik yang kompeten di bidangnya.
 NPC_FKIP: Ada 12 program studi, Mulai dari Pendidikan Luar Sekolah, Pendidikan Anak Usia Dini, Pendidikan Guru Sekolah Dasar, sampai Pendidikan Sejarah. Nggak cuma itu, ada juga prodi magister untuk yang pengen lanjut kuliah lagi.
 Player: Keren! Berarti kakak masuk FKIP untuk menjadi guru?
 NPC_FKIP: Engga juga, ini terpaksa. Tetapi saat aku sudah masuk FKIP, keterpaksaan aku sudah hilang, karena aku suka dengan bahasa inggris dan aku coba ambil Pendidikan Bahasa Inggris.
-NPC_FKIP:  Eh ternyata sekarang malah nyaman dan betah karena lingkungan kampus nya sangat positif dan baik sekali. Jadi, jika ada orang yang mau kuliah sesuai dengan passion nya FKIP bisa dijadikan opsi. Karena memiliki banyak program studi yang bisa disesuaikan dengan minat seseorang.
+NPC_FKIP: Eh ternyata sekarang malah nyaman dan betah karena lingkungan kampus nya sangat positif dan baik sekali. Jadi, jika ada orang yang mau kuliah sesuai dengan passion nya FKIP bisa dijadikan opsi. Karena memiliki banyak program studi yang bisa disesuaikan dengan minat seseorang.
 NPC_FKIP: Visinya FKIP sendiri adalah menjadi lembaga pendidikan unggul yang mengembangkan sains, teknologi, dan seni di bidang pendidikan, berwawasan lingkungan, dan bereputasi internasional. Jadi, mereka nggak cuma fokus di pendidikan dalam negeri, tapi juga internasional.
 Player: Wah, berarti ada peluang buat dikenal di dunia internasional, ya?
 NPC_FKIP: Iya, tepat! Selain itu, misi mereka juga menyelenggarakan pendidikan untuk menghasilkan tenaga pendidik yang kompeten, melakukan penelitian yang mendukung inovasi di bidang pendidikan, dan pengabdian masyarakat untuk mendukung program pendidikan.
-NPC_FKIP:  Jadi kamu nggak cuma belajar di kelas, tapi juga ada banyak kesempatan untuk terlibat dalam kegiatan yang bermanfaat langsung bagi masyarakat. FKIP juga punya jaringan kerjasama dengan banyak lembaga di dalam dan luar negeri.
+NPC_FKIP: Jadi kamu nggak cuma belajar di kelas, tapi juga ada banyak kesempatan untuk terlibat dalam kegiatan yang bermanfaat langsung bagi masyarakat. FKIP juga punya jaringan kerjasama dengan banyak lembaga di dalam dan luar negeri.
 Player: Sounds awesome! Jadi penasaran nih, pasti banyak hal seru yang bisa dipelajari di sini.
 NPC_FKIP: Iya, kalau kamu tertarik di dunia pendidikan, FKIP UNEJ bisa jadi pilihan yang tepat. Kapan-kapan, kalau ada waktu, kamu bisa datang ke fakultas ini dan ngobrol lebih lanjut sama dosen atau mahasiswa lainnya!
 NPC_FKIP: Makasih banyak, ya! Pasti aku bakal cari tahu lebih lanjut!

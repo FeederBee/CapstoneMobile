@@ -67,6 +67,7 @@ directories/dtl_directory={
 "Fasilkom": "res://Dialogs/Timelines/Fasilkom.dtl",
 "Hukum": "res://Dialogs/Timelines/Hukum.dtl",
 "Keperawatan": "res://Dialogs/Timelines/Keperawatan.dtl",
+"MapLock": "res://Dialogs/Timelines/MapLock.dtl",
 "Prolog": "res://Dialogs/Timelines/Prolog.dtl",
 "Prolog_Entrance": "res://Dialogs/Timelines/Prolog_Entrance.dtl",
 "QuestDone_Draft": "res://Dialogs/Timelines/QuestDone_Draft.dtl",

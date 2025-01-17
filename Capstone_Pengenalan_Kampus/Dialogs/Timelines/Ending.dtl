@@ -1,10 +1,16 @@
 [wait time="3.0"]
 join Player center
-Player: asdfadcwacascwa
-Player: scbthteghe
-Player: rgwrgwrtefcwef
+Player: 1... 2 [pause=0.5]... 3 [pause=0.5] ... [pause=0.5]
+Player: ...
+Player: ... [pause=0.5] 15. Kayaknya sudah semuanya nih.
+
 [signal arg="npc_masuk"]
-[wait time="1.0" hide_text="false"]
+Player: Oh... halo kak Wildan!
+[wait time="2.0" hide_text="false"]
 join NPC_Entrance center
-NPC_Entrance: adascqCVFBHYKJRTEH
+NPC_Entrance: Kamu sudah berkeliling ke semua fakultas?
+Player: Iya, saya sudah, kak.
+NPC_Entrance: Hebat sekali, Yoto! Kamu berhasil menyelesaikan tugas ini dengan sangat baik. Artinya kamu sudah siap untuk memulai petualanganmu di dunia perkuliahan.
+Player: Terima kasih banyak, Kak. Saya akan selalu ingat pesan-pesan Kakak yang saya temui.
+NPC_Entrance: Sekarang, saatnya kamu memulai babak baru dalam hidupmu. Selamat datang di dunia perkuliahan! Semoga kamu sukses selalu.
 [signal arg="dialog_finished"]

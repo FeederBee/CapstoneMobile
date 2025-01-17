@@ -1,12 +1,12 @@
 extends Control
 
-@onready var transition = $AnimationPlayer
+#@onready var transition = $AnimationPlayer
 @onready var setting_menu: Control =$CanvasLayer/SettingMenu
 @onready var button: Control = $Button
 @onready var lanjut_btn: TouchScreenButton = $Button/Lanjut
 @onready var start_btn: TouchScreenButton = $Button/Start
-@onready var credit_button: TouchScreenButton = $Credits/CanvasLayer/Button/CreditButton
 @onready var credit: TextureRect = $Credits/CanvasLayer/Control/Credit
+@onready var credit_button: TouchScreenButton = $Button/CreditButton
 
 #Path Scene
 var Entrance_map = "res://Scenes/Map/EntranceAreaMap.tscn"
@@ -45,6 +45,7 @@ func _process(_delta: float) -> void:
 
 func _on_play_pressed() -> void:
 	AudioManager.play_sfx("button_click")
+	Global.save_time('start')
 	Global.is_joystick = true
 	Global.player_stop = false
 	Global.change_map(Global.path_map.ENTRANCE)

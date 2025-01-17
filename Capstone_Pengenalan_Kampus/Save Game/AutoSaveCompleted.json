@@ -3,10 +3,11 @@
 	"cutscene": {
 		"Prolog": "completed"
 	},
-	"music_volume": 2.48,
+	"end_time": 1736912464.102,
+	"music_volume": 0,
 	"player_stamina": 100,
-	"player_x_position": 2416.6337890625,
-	"player_y_position": 1509.58288574219,
+	"player_x_position": 783.753723144531,
+	"player_y_position": 2154.05786132813,
 	"quiz_progress": {
 		"EntranceAreaMap": {
 			"Prolog": "completed"
@@ -36,5 +37,5 @@
 		}
 	},
 	"sfx_volume": 1.667,
-	"timestamp": "2025-01-10T14:38:50"
+	"timestamp": "2025-01-17T04:18:32"
 }

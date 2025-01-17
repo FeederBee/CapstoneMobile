@@ -189,5 +189,6 @@ func _on_dialogic_signal(argument):
 	if argument == 'dialog_finished':
 		await get_tree().create_timer(1).timeout
 		if get_all_ticketobtained() == 16:
+			Global.save_time('end')
 			await get_tree().create_timer(1).timeout
 			Global.change_map(Global.path_map.ENDINGCUTSCENE)

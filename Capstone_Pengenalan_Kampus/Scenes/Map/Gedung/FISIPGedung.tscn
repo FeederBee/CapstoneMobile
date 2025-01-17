@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1g7ccbaiogda"]
+
+[ext_resource type="Texture2D" uid="uid://bsyxves1woaet" path="res://Assets/Map/Gedung/FISIP_gedung.png" id="1_dkmy8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lkkn6"]
+size = Vector2(1104, 456)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m16f1"]
+size = Vector2(832, 401)
+
+[node name="FISIPGedung" type="Node2D"]
+
+[node name="FisipGedung" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("1_dkmy8")
+offset = Vector2(0, -300)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(312, -72)
+shape = SubResource("RectangleShape2D_lkkn6")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-528, -144.5)
+shape = SubResource("RectangleShape2D_m16f1")

@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcff0bvafy2tb"]
+
+[ext_resource type="Texture2D" uid="uid://dwbvb8wqbg0io" path="res://Assets/Map/Gedung/FT-export.png" id="1_7aow6"]
+[ext_resource type="Texture2D" uid="uid://cuekewkeiwtfo" path="res://Assets/Map/Gedung/Tugu FT-export.png" id="2_lblku"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xqqy4"]
+size = Vector2(256, 208)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ohgel"]
+size = Vector2(832, 320)
+
+[node name="TeknikGedung" type="Node2D"]
+
+[node name="Ft-export" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("1_7aow6")
+offset = Vector2(66, -200)
+
+[node name="TuguFt-export" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(4.00002, 120)
+scale = Vector2(0.36, 0.473941)
+texture = ExtResource("2_lblku")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 56)
+shape = SubResource("RectangleShape2D_xqqy4")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -200)
+shape = SubResource("RectangleShape2D_ohgel")

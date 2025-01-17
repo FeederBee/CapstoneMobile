@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dphnlgv7cexoq"]
+
+[ext_resource type="Texture2D" uid="uid://drrnoo8ve7ttv" path="res://Assets/Map/Gedung/FEB_gedung.png" id="1_gut0a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1teyi"]
+size = Vector2(1280, 442)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ycoot"]
+size = Vector2(317, 133)
+
+[node name="FEBGedung" type="Node2D"]
+
+[node name="FebGedung" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("1_gut0a")
+offset = Vector2(0, -300)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-3, -88)
+shape = SubResource("RectangleShape2D_1teyi")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1.5, 186.5)
+shape = SubResource("RectangleShape2D_ycoot")

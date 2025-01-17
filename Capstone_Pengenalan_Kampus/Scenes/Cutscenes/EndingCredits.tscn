@@ -1,17 +1,19 @@
-[gd_scene load_steps=11 format=3 uid="uid://dd2ab8ibpk8hs"]
+[gd_scene load_steps=12 format=3 uid="uid://dd2ab8ibpk8hs"]
 
 [ext_resource type="LabelSettings" uid="uid://dn3nilvhdaih5" path="res://Assets/font_game_menu.tres" id="1_kght6"]
 [ext_resource type="Script" path="res://Scripts/Cutscenes/ending_credits.gd" id="1_sks4a"]
+[ext_resource type="FontFile" uid="uid://c5fjgx33wdlaf" path="res://Assets/Sprites/UI/ARCADECLASSIC.TTF" id="3_o834d"]
 
-[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_k0ycc"]
-file = "res://Assets/Videos/Ending2.ogg"
+[sub_resource type="LabelSettings" id="LabelSettings_rrscc"]
+font = ExtResource("3_o834d")
+font_size = 80
 
 [sub_resource type="Animation" id="Animation_b24rc"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PM:visible")
+tracks/0/path = NodePath("Credit/PM:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -23,7 +25,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PM:self_modulate")
+tracks/1/path = NodePath("Credit/PM:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -35,7 +37,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Art:visible")
+tracks/2/path = NodePath("Credit/Art:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -47,7 +49,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Art:self_modulate")
+tracks/3/path = NodePath("Credit/Art:self_modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -59,7 +61,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("UI:visible")
+tracks/4/path = NodePath("Credit/UI:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -71,7 +73,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("UI:self_modulate")
+tracks/5/path = NodePath("Credit/UI:self_modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -83,7 +85,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("MusicDirector:visible")
+tracks/6/path = NodePath("Credit/MusicDirector:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -95,7 +97,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("MusicDirector:self_modulate")
+tracks/7/path = NodePath("Credit/MusicDirector:self_modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -107,7 +109,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Writer:visible")
+tracks/8/path = NodePath("Credit/Programer:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -119,7 +121,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Writer:modulate")
+tracks/9/path = NodePath("Credit/Programer:modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -131,7 +133,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Programer:visible")
+tracks/10/path = NodePath("Credit/Tester:visible")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -143,7 +145,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Programer:modulate")
+tracks/11/path = NodePath("Credit/Tester:modulate")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -155,7 +157,7 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("Tester:visible")
+tracks/12/path = NodePath("End/TerimaKasih:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -167,7 +169,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("Tester:modulate")
+tracks/13/path = NodePath("End/TerimaKasih:modulate")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -179,7 +181,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("TerimaKasih:visible")
+tracks/14/path = NodePath("Credit/Sponsored:visible")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -191,7 +193,7 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("TerimaKasih:modulate")
+tracks/15/path = NodePath("Credit/Sponsored:modulate")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
@@ -203,19 +205,19 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("Sponsored:visible")
+tracks/16/path = NodePath("Credit/PM:modulate")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("Sponsored:modulate")
+tracks/17/path = NodePath("Credit/Art:modulate")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
@@ -227,7 +229,7 @@ tracks/17/keys = {
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("PM:modulate")
+tracks/18/path = NodePath("Credit/UI:modulate")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
@@ -239,7 +241,7 @@ tracks/18/keys = {
 tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("Art:modulate")
+tracks/19/path = NodePath("Credit/MusicDirector:modulate")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
@@ -251,46 +253,22 @@ tracks/19/keys = {
 tracks/20/type = "value"
 tracks/20/imported = false
 tracks/20/enabled = true
-tracks/20/path = NodePath("UI:modulate")
+tracks/20/path = NodePath("BgFadeOut:self_modulate")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0.556863)]
 }
 tracks/21/type = "value"
 tracks/21/imported = false
 tracks/21/enabled = true
-tracks/21/path = NodePath("MusicDirector:modulate")
+tracks/21/path = NodePath("BgFadeOut:visible")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/22/type = "value"
-tracks/22/imported = false
-tracks/22/enabled = true
-tracks/22/path = NodePath("BgFadeOut:self_modulate")
-tracks/22/interp = 1
-tracks/22/loop_wrap = true
-tracks/22/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.556863)]
-}
-tracks/23/type = "value"
-tracks/23/imported = false
-tracks/23/enabled = true
-tracks/23/path = NodePath("BgFadeOut:visible")
-tracks/23/interp = 1
-tracks/23/loop_wrap = true
-tracks/23/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -299,11 +277,11 @@ tracks/23/keys = {
 
 [sub_resource type="Animation" id="Animation_l5mgp"]
 resource_name = "credit"
-length = 26.0
+length = 27.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PM:visible")
+tracks/0/path = NodePath("Credit/PM:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -315,11 +293,11 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PM:modulate")
+tracks/1/path = NodePath("Credit/PM:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1, 4, 5),
+"times": PackedFloat32Array(0, 1, 2, 3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -327,11 +305,11 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Art:visible")
+tracks/2/path = NodePath("Credit/Art:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -339,11 +317,11 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Art:modulate")
+tracks/3/path = NodePath("Credit/Art:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1.5, 3, 6, 7),
+"times": PackedFloat32Array(3, 4, 5, 6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -351,11 +329,11 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("UI:visible")
+tracks/4/path = NodePath("Credit/UI:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.0333334, 0.5),
+"times": PackedFloat32Array(0.0333334, 6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -363,11 +341,11 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("UI:modulate")
+tracks/5/path = NodePath("Credit/UI:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.5, 2, 5, 6),
+"times": PackedFloat32Array(6, 7, 8, 9),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -375,11 +353,11 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("MusicDirector:visible")
+tracks/6/path = NodePath("Credit/MusicDirector:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 8),
+"times": PackedFloat32Array(0, 9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -387,11 +365,11 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("MusicDirector:modulate")
+tracks/7/path = NodePath("Credit/MusicDirector:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(8, 9, 12, 13),
+"times": PackedFloat32Array(9, 10, 11, 12),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -399,11 +377,11 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Writer:visible")
+tracks/8/path = NodePath("Credit/Programer:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 6),
+"times": PackedFloat32Array(0, 12),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -411,11 +389,11 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Writer:modulate")
+tracks/9/path = NodePath("Credit/Programer:modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(6, 8, 11, 13),
+"times": PackedFloat32Array(12, 13, 14, 15),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -423,11 +401,11 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Programer:visible")
+tracks/10/path = NodePath("Credit/Tester:visible")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0, 6),
+"times": PackedFloat32Array(0, 15),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -435,11 +413,11 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Programer:modulate")
+tracks/11/path = NodePath("Credit/Tester:modulate")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(6, 7, 11, 13),
+"times": PackedFloat32Array(15, 16, 17, 18),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -447,11 +425,11 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("Tester:visible")
+tracks/12/path = NodePath("End/TerimaKasih:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0, 8),
+"times": PackedFloat32Array(0, 22),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -459,23 +437,23 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("Tester:modulate")
+tracks/13/path = NodePath("End/TerimaKasih:modulate")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(8, 9, 12, 13),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(22, 23, 25, 26),
+"transitions": PackedFloat32Array(3.03143, 1, 1, 0.450625),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("TerimaKasih:visible")
+tracks/14/path = NodePath("Credit/Sponsored:visible")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(0, 17.5),
+"times": PackedFloat32Array(0, 18),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -483,58 +461,34 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("TerimaKasih:modulate")
+tracks/15/path = NodePath("Credit/Sponsored:modulate")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(17.5, 19, 24, 26),
-"transitions": PackedFloat32Array(3.03143, 1, 1, 0.450625),
+"times": PackedFloat32Array(18, 19, 21, 22),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("Sponsored:visible")
+tracks/16/path = NodePath("BgFadeOut:visible")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
-"times": PackedFloat32Array(0, 12),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("Sponsored:modulate")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
-"times": PackedFloat32Array(12, 13.5, 16.5, 18),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/18/type = "value"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("BgFadeOut:visible")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
 "times": PackedFloat32Array(0, 17.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [false, true]
 }
-tracks/19/type = "value"
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/path = NodePath("BgFadeOut:self_modulate")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/keys = {
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("BgFadeOut:self_modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
 "times": PackedFloat32Array(17.5, 18.9333, 26),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
@@ -617,16 +571,13 @@ script = ExtResource("1_sks4a")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CanvasLayer"]
+[node name="BgBlack" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-stream = SubResource("VideoStreamTheora_k0ycc")
-autoplay = true
-expand = true
-bus = &"fixed"
+color = Color(0, 0, 0, 1)
 
 [node name="BgCredit" type="ColorRect" parent="CanvasLayer"]
 self_modulate = Color(1, 1, 1, 0.705882)
@@ -666,25 +617,28 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="PM" type="Label" parent="CanvasLayer"]
-visible = false
+[node name="Credit" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -520.0
-offset_top = -240.0
-offset_right = -144.0
-offset_bottom = -191.0
+offset_left = -576.0
+offset_top = -296.0
+offset_right = 576.0
+offset_bottom = 216.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="PM" type="Label" parent="CanvasLayer/Credit"]
+visible = false
+layout_mode = 2
 text = "Project Manager"
 label_settings = ExtResource("1_kght6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/PM"]
+[node name="Label" type="Label" parent="CanvasLayer/Credit/PM"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -703,32 +657,32 @@ label_settings = ExtResource("1_kght6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GarisBawah" type="Label" parent="CanvasLayer/PM"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "___________________"
-label_settings = ExtResource("1_kght6")
-
-[node name="Art" type="Label" parent="CanvasLayer"]
-visible = false
+[node name="GarisBawah" type="Label" parent="CanvasLayer/Credit/PM"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 152.0
-offset_top = -128.0
-offset_right = 449.0
-offset_bottom = -79.0
+offset_left = -192.0
+offset_top = -32.5
+offset_right = 192.0
+offset_bottom = 32.5
 grow_horizontal = 2
 grow_vertical = 2
+text = "___________________"
+label_settings = ExtResource("1_kght6")
+text_overrun_behavior = 1
+
+[node name="Art" type="Label" parent="CanvasLayer/Credit"]
+visible = false
+layout_mode = 2
 text = "Art Designer"
 label_settings = ExtResource("1_kght6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/Art"]
+[node name="Label" type="Label" parent="CanvasLayer/Credit/Art"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -750,33 +704,33 @@ label_settings = ExtResource("1_kght6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GarisBawah" type="Label" parent="CanvasLayer/Art"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "_______________"
-label_settings = ExtResource("1_kght6")
-
-[node name="UI" type="Label" parent="CanvasLayer"]
-visible = false
+[node name="GarisBawah" type="Label" parent="CanvasLayer/Credit/Art"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -528.0
-offset_top = 56.0
-offset_right = -160.0
-offset_bottom = 121.0
+offset_left = -156.0
+offset_top = -32.5
+offset_right = 156.0
+offset_bottom = 32.5
 grow_horizontal = 2
 grow_vertical = 2
+text = "_______________"
+label_settings = ExtResource("1_kght6")
+text_overrun_behavior = 1
+
+[node name="UI" type="Label" parent="CanvasLayer/Credit"]
+visible = false
+layout_mode = 2
 size_flags_horizontal = 4
 text = "UI/UX Desaigner"
 label_settings = ExtResource("1_kght6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/UI"]
+[node name="Label" type="Label" parent="CanvasLayer/Credit/UI"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -796,32 +750,23 @@ label_settings = ExtResource("1_kght6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GarisBawah" type="Label" parent="CanvasLayer/UI"]
+[node name="GarisBawah" type="Label" parent="CanvasLayer/Credit/UI"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_right = 376.0
+offset_bottom = 65.0
 text = "___________________"
 label_settings = ExtResource("1_kght6")
+text_overrun_behavior = 1
 
-[node name="MusicDirector" type="Label" parent="CanvasLayer"]
+[node name="MusicDirector" type="Label" parent="CanvasLayer/Credit"]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -512.0
-offset_top = -240.0
-offset_right = -163.0
-offset_bottom = -191.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Music Director"
+layout_mode = 2
+text = "Music Director -  Story Writer"
 label_settings = ExtResource("1_kght6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/MusicDirector"]
+[node name="Label" type="Label" parent="CanvasLayer/Credit/MusicDirector"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -829,9 +774,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -174.5
-offset_top = 71.5
+offset_top = 56.5
 offset_right = 264.5
-offset_bottom = 120.5
+offset_bottom = 105.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.8, 0.8)
@@ -840,130 +785,90 @@ label_settings = ExtResource("1_kght6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GarisBawah" type="Label" parent="CanvasLayer/MusicDirector"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "__________________"
-label_settings = ExtResource("1_kght6")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Writer" type="Label" parent="CanvasLayer"]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -480.0
-offset_top = 64.0
-offset_right = -183.0
-offset_bottom = 113.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Story Writer"
-label_settings = ExtResource("1_kght6")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label" type="Label" parent="CanvasLayer/Writer"]
+[node name="GarisBawah" type="Label" parent="CanvasLayer/Credit/MusicDirector"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -171.5
-offset_top = 55.5
-offset_right = 267.5
-offset_bottom = 104.5
+offset_left = -172.0
+offset_top = -29.5
+offset_right = 172.0
+offset_bottom = 35.5
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.8, 0.8)
-text = "Tegar   Wahyu    Akbar"
+text = "__________________"
 label_settings = ExtResource("1_kght6")
 horizontal_alignment = 1
 vertical_alignment = 1
+text_overrun_behavior = 1
 
-[node name="GarisBawah" type="Label" parent="CanvasLayer/Writer"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "_______________"
-label_settings = ExtResource("1_kght6")
-
-[node name="Programer" type="Label" parent="CanvasLayer"]
+[node name="Programer" type="Label" parent="CanvasLayer/Credit"]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 216.0
-offset_top = -232.0
-offset_right = 480.0
-offset_bottom = -183.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 text = "Programmer"
 label_settings = ExtResource("1_kght6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GarisBawah" type="Label" parent="CanvasLayer/Programer"]
-layout_mode = 0
-offset_left = -17.0
-offset_right = 282.0
-offset_bottom = 65.0
-text = "_______________"
-label_settings = ExtResource("1_kght6")
-
-[node name="Label" type="Label" parent="CanvasLayer/Programer"]
-layout_mode = 0
-offset_left = -76.0
-offset_top = 96.0
-offset_right = 475.0
-offset_bottom = 145.0
+[node name="Label" type="Label" parent="CanvasLayer/Credit/Programer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = 55.5
+offset_right = 335.0
+offset_bottom = 104.5
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.8, 0.8)
 text = "Ghilang    Surya    Manuril"
 label_settings = ExtResource("1_kght6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Tester" type="Label" parent="CanvasLayer"]
-visible = false
+[node name="GarisBawah" type="Label" parent="CanvasLayer/Credit/Programer"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 208.0
-offset_top = 24.0
-offset_right = 478.0
-offset_bottom = 73.0
+offset_left = -149.5
+offset_top = -32.5
+offset_right = 149.5
+offset_bottom = 32.5
 grow_horizontal = 2
 grow_vertical = 2
+text = "_______________"
+label_settings = ExtResource("1_kght6")
+text_overrun_behavior = 1
+
+[node name="Tester" type="Label" parent="CanvasLayer/Credit"]
+visible = false
+layout_mode = 2
 text = "Game Tester"
 label_settings = ExtResource("1_kght6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GarisBawah" type="Label" parent="CanvasLayer/Tester"]
-layout_mode = 0
-offset_left = -25.0
-offset_top = 0.5
-offset_right = 274.0
-offset_bottom = 65.5
-text = "________________"
-label_settings = ExtResource("1_kght6")
-
-[node name="Label" type="Label" parent="CanvasLayer/Tester"]
-layout_mode = 0
-offset_left = -97.0
-offset_top = 104.5
-offset_right = 480.0
-offset_bottom = 153.5
+[node name="Label" type="Label" parent="CanvasLayer/Credit/Tester"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -229.5
+offset_top = 56.5
+offset_right = 347.5
+offset_bottom = 157.5
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.8, 0.8)
 text = "Wildan    Ilhafa    Alamsyah
 Ghilang    Surya    Manuril"
@@ -971,71 +876,80 @@ label_settings = ExtResource("1_kght6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TerimaKasih" type="Label" parent="CanvasLayer"]
-visible = false
+[node name="GarisBawah" type="Label" parent="CanvasLayer/Credit/Tester"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -320.0
-offset_top = -50.0
-offset_right = 10.0
-offset_bottom = -1.0
+offset_left = -159.5
+offset_top = -32.5
+offset_right = 159.5
+offset_bottom = 32.5
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(2, 2)
-size_flags_horizontal = 4
-text = "Terima Kasih!"
+text = "________________"
 label_settings = ExtResource("1_kght6")
-horizontal_alignment = 1
-vertical_alignment = 1
+text_overrun_behavior = 1
 
-[node name="Sponsored" type="Label" parent="CanvasLayer"]
+[node name="Sponsored" type="Label" parent="CanvasLayer/Credit"]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -176.0
-offset_top = -144.0
-offset_right = 62.0
-offset_bottom = -95.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.5, 1.5)
+layout_mode = 2
 text = "Sponsored"
 label_settings = ExtResource("1_kght6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GarisBawah" type="Label" parent="CanvasLayer/Sponsored"]
-layout_mode = 0
-offset_left = -32.0
-offset_top = 0.5
-offset_right = 267.0
-offset_bottom = 65.5
-text = "_______________"
-label_settings = ExtResource("1_kght6")
-
-[node name="Label" type="Label" parent="CanvasLayer/Sponsored"]
+[node name="Label" type="Label" parent="CanvasLayer/Credit/Sponsored"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -227.0
-offset_top = 47.5
-offset_right = 344.0
-offset_bottom = 148.5
+offset_left = -228.0
+offset_top = 31.5
+offset_right = 343.0
+offset_bottom = 132.5
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.8, 0.8)
 text = "Universitas    Jember
 Team    Capstone"
 label_settings = ExtResource("1_kght6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GarisBawah" type="Label" parent="CanvasLayer/Credit/Sponsored"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -149.5
+offset_top = -32.5
+offset_right = 149.5
+offset_bottom = 32.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "_______________"
+label_settings = ExtResource("1_kght6")
+text_overrun_behavior = 1
+
+[node name="End" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TerimaKasih" type="Label" parent="CanvasLayer/End"]
+visible = false
+layout_mode = 2
+text = "Terima Kasih!"
+label_settings = SubResource("LabelSettings_rrscc")
 horizontal_alignment = 1
 vertical_alignment = 1
 

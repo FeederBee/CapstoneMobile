@@ -6,6 +6,7 @@ extends Node
 #@onready var tickets_count = parent.tickets_count
 #@onready var transition_path = parent.transition_path
 @onready var current_map_name = quiz_component.current_map_name
+@onready var control_layer: CanvasLayer = $"../../ControlLayer"
 
 @onready var tickets_obtained:int#quiz_component.tickets_obtained
 @onready var tickets_count:int#quiz_component.tickets_count
@@ -14,6 +15,7 @@ extends Node
 
 func _ready() -> void:
 	$CanvasLayer.visible = false
+	
 	tickets_count = quiz_component.tickets_count
 	tickets_obtained = quiz_component.get_ticket_obtained()
 	Dialogic.signal_event.connect(_on_dialogic_signal)
@@ -22,9 +24,20 @@ func _process(delta: float) -> void:
 	#print(SaveManager.load_data('quiz_progress')['EntranceAreaMap'].values())
 	pass
 
+func run_dialog(dialog_string):
+	Global.is_dialog = true
+	Dialogic.start(dialog_string)
+
 func _on_dialogic_signal(argument:String):
 	if argument == 'ticket_obtain':
 		tickets_obtained += 1 if tickets_obtained <= tickets_count else 0
+	elif argument == 'entering_dialog':
+		control_layer.visible = false
+	elif argument == 'dialog_finished':
+		control_layer.visible = true
+		Global.is_joystick= true
+		Global.is_dialog = false
+		Global.player_stop = false
 
 func check_data(target_map_name: String) -> bool:
 	"""
@@ -68,11 +81,12 @@ func check_data(target_map_name: String) -> bool:
 
 func change_map(target_map_name:String, map):
 	if !check_data(target_map_name):
-		print(check_data(target_map_name))
-		print("Oh tidak bisa")
-		$CanvasLayer.visible = true
-		await get_tree().create_timer(0.5).timeout
-		$CanvasLayer.visible = false
+		#print(check_data(target_map_name))
+		#print("Oh tidak bisa")
+		#$CanvasLayer.visible = true
+		#await get_tree().create_timer(0.5).timeout
+		#$CanvasLayer.visible = false
+		run_dialog('MapLock')
 		return
 
 	Global.change_map(map)

@@ -19,9 +19,9 @@
 "portraits": {
 "default": {
 "export_overrides": {
-"image": "\"res://Dialogs/Potret/Fasilkom.png\""
+"image": "\"res://Dialogs/Potret/MC Epilog.png\""
 },
-"mirror": false,
+"mirror": true,
 "offset": Vector2(450, 0),
 "scale": 0.65,
 "scene": ""

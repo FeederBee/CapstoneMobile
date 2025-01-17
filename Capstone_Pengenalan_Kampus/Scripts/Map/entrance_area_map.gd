@@ -19,10 +19,10 @@ func _ready() -> void:
 	Global.auto_save_is = true
 	AudioManager.play_bgm('entrance_area')
 	
-	if SaveManager.load_data('timestamp') == null:
-		$Transition.visible = false
-	else:
-		Global.transition_animation.play("screen_fade_in")
+	#if SaveManager.load_data('timestamp') == null:
+		#$Transition.visible = false
+	#else:
+	Global.transition_animation.play("screen_fade_in")
 	
 	if Global.cutscene_status('Prolog'):
 		player_spawn_component.spawn_player()

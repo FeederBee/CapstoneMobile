@@ -15,9 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://dfglyyy6s8e4p" path="res://Assets/Sprites/UI/Button/btnkcl_blue.png" id="13_ylx30"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4am6i"]
-line_spacing = 6.0
+line_spacing = 1.0
 font = ExtResource("3_sg51f")
-font_size = 70
+font_size = 106
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_rf8p2"]
 font = ExtResource("3_sg51f")
@@ -58,14 +60,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -576.0
-offset_top = -325.0
+offset_top = -288.0
 offset_right = 576.0
-offset_bottom = -135.0
+offset_bottom = -69.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-text = "Game   Pengenalan    Lingkungan
-Kampus"
+text = "UNEJ
+explorer"
 label_settings = SubResource("LabelSettings_4am6i")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -530,28 +532,6 @@ grow_horizontal = 0
 grow_vertical = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="CreditButton" type="TouchScreenButton" parent="Credits/CanvasLayer/Button"]
-position = Vector2(-80, -64)
-scale = Vector2(0.4375, 0.357143)
-texture_normal = ExtResource("13_ylx30")
-
-[node name="Label" type="Label" parent="Credits/CanvasLayer/Button/CreditButton"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -34.8
-offset_top = -49.0
-offset_right = 41.2
-offset_bottom = 25.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "@"
-label_settings = SubResource("LabelSettings_o87lu")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Button" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -619,6 +599,28 @@ grow_vertical = 2
 text = "Settings"
 label_settings = ExtResource("5_rpo0d")
 
+[node name="CreditButton" type="TouchScreenButton" parent="Button"]
+position = Vector2(560, 296)
+scale = Vector2(0.4375, 0.357143)
+texture_normal = ExtResource("13_ylx30")
+
+[node name="Label" type="Label" parent="Button/CreditButton"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.8
+offset_top = -49.0
+offset_right = 41.2
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "@"
+label_settings = SubResource("LabelSettings_o87lu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Quit" type="TouchScreenButton" parent="Button"]
 position = Vector2(240, 152)
 texture_normal = ExtResource("8_jx8k8")
@@ -645,9 +647,9 @@ offset_top = -72.0
 offset_bottom = -72.0
 
 [connection signal="pressed" from="Credits/CanvasLayer/Control/Credit/CloseButton" to="." method="_on_close_button_pressed"]
-[connection signal="pressed" from="Credits/CanvasLayer/Button/CreditButton" to="." method="_on_credit_button_pressed"]
 [connection signal="pressed" from="Button/Start" to="." method="_on_play_pressed"]
 [connection signal="released" from="Button/Start" to="." method="_on_play_released"]
 [connection signal="pressed" from="Button/Lanjut" to="." method="_on_lanjut_pressed"]
 [connection signal="pressed" from="Button/Setting" to="." method="_on_setting_pressed"]
+[connection signal="pressed" from="Button/CreditButton" to="." method="_on_credit_button_pressed"]
 [connection signal="pressed" from="Button/Quit" to="." method="_on_quit_pressed"]

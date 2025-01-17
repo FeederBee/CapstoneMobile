@@ -31,6 +31,7 @@ var npc_distance_traveled: float = 0
 var cutscene_done:bool = false
 
 func _ready() -> void:
+	AudioManager.sfx_player_movement.stop()
 	Global.transition_animation.play("screen_fade_in")
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	cinematic()
