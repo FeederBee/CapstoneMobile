@@ -22,6 +22,7 @@ radius = 15.0
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 126
 script = ExtResource("1_y8avl")
+run_speed = 200
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.4, 0.4)

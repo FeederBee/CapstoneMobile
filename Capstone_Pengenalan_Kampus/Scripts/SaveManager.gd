@@ -1,9 +1,9 @@
 extends Node
 
 # Nama file save
-const AUTO_SAVE_FILE_PATH: String = "user://SaveGame0.save"	# File path untuk save di mobile
+#const AUTO_SAVE_FILE_PATH: String = "user://SaveGame0.save"	# File path untuk save di mobile
 #const AUTO_SAVE_FILE_PATH: String = "res://Save Game/AutoSaveCompleted.json" #path untuk save pc testing
-#const AUTO_SAVE_FILE_PATH: String = "res://Save Game/AutoSave.json" #path untuk save pc testing
+const AUTO_SAVE_FILE_PATH: String = "res://Save Game/AutoSave.json" #path untuk save pc testing
 
 # Data yang akan disimpan
 var save_data: Dictionary = {}
